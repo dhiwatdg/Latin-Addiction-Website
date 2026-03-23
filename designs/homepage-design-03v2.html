@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latin Addiction — Bachata Classes in Reading & Leicester</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      background: #1A1A1A;
+      color: #F0E6D3;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    ::selection { background: #D4AF37; color: #1A1A1A; }
+    .font-display { font-family: 'Bebas Neue', Impact, sans-serif; text-transform: uppercase; letter-spacing: 0.02em; }
+    .font-serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    a { color: inherit; }
+    section { scroll-margin-top: 64px; }
+
+    /* ── Film Grain ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
+
+    /* ── Gold Shimmer ── */
+    .gold-shimmer {
+      background: linear-gradient(105deg, #D4AF37 0%, #E3C459 40%, #D4AF37 60%, #E3C459 80%, #D4AF37 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 5s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 200% center; }
+      50% { background-position: 0% center; }
+    }
+
+    /* ── Ticker ── */
+    .ticker-wrap { overflow: hidden; background: #0D0D0D; border-bottom: 1px solid rgba(212,175,55,0.15); padding: 0.6rem 0; }
+    .ticker-inner { display: flex; width: max-content; animation: ticker-scroll 22s linear infinite; }
+    .ticker-wrap:hover .ticker-inner { animation-play-state: paused; }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .ticker-text { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,230,211,0.58); white-space: nowrap; padding: 0 2rem; }
+    .ticker-diamond { color: #D4AF37; padding: 0 0.5rem; }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+
+    /* ── Nav ── */
+    #site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(26,26,26,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    #site-nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 1.25rem; height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+      letter-spacing: 0.04em; color: #F0E6D3; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 400; color: rgba(240,230,211,0.6);
+      text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em;
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: #D4AF37;
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: #F0E6D3; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links>li>a:hover::after { width: 100%; left: 0; }
+    .has-dd { position: relative; }
+    .has-dd>a { cursor: pointer; }
+    .has-dd::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
+    .dd {
+      position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(8px);
+      min-width: 190px; background: #1A1A1A; border: 1px solid rgba(212,175,55,0.15);
+      border-radius: 4px; padding: 0.4rem; list-style: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2);
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.2s cubic-bezier(.22,1,.36,1), transform 0.2s cubic-bezier(.22,1,.36,1);
+    }
+    .dd::before {
+      content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
+      width: 12px; height: 12px; background: #1A1A1A;
+      border-left: 1px solid rgba(212,175,55,0.15); border-top: 1px solid rgba(212,175,55,0.15);
+      border-radius: 2px 0 0 0; transform: translateX(-50%) rotate(45deg);
+    }
+    .has-dd:hover .dd { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+    .dd li a {
+      display: block; padding: 0.55rem 0.85rem; font-size: 0.8rem; color: rgba(240,230,211,0.6);
+      border-radius: 3px; transition: background 0.15s, color 0.15s;
+    }
+    .dd li a:hover { background: rgba(212,175,55,0.1); color: #F0E6D3; }
+    .dd li a::after { display: none; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: linear-gradient(135deg, #7F1D1D, #4A0E0E);
+      border: 1px solid rgba(212,175,55,0.4); color: #D4AF37;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em;
+      padding: 0.5rem 1.25rem; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { border-color: rgba(212,175,55,0.7); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(212,175,55,0.15); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; min-width: 44px; min-height: 44px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #F0E6D3; margin: 5px 0; transition: all 0.3s; }
+    #mobile-menu {
+      display: none; position: absolute; top: 64px; left: 0; right: 0;
+      background: #1A1A1A; border-bottom: 1px solid rgba(212,175,55,0.1);
+      padding: 1rem 1.25rem; flex-direction: column; gap: 0.75rem;
+      min-height: calc(100vh - 64px); overflow-y: auto;
+    }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a { font-size: 0.9rem; font-weight: 400; color: rgba(240,230,211,0.7); text-decoration: none; padding: 0.9rem 0; min-height: 44px; }
+    #mobile-menu>a:hover { color: #D4AF37; }
+    .mob-group { padding: 0.5rem 0; border-bottom: 1px solid rgba(212,175,55,0.08); }
+    .mob-label { display: block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #D4AF37; padding: 0 0 0.5rem; }
+    .mob-sub { display: inline-block; font-size: 0.88rem !important; padding: 0.35rem 0.75rem !important; margin: 0.15rem 0.25rem 0.15rem 0 !important; color: rgba(240,230,211,0.6) !important; border-bottom: none !important; background: rgba(212,175,55,0.06); border-radius: 4px; transition: background 0.15s, color 0.15s !important; }
+    .mob-sub:hover { background: rgba(212,175,55,0.12) !important; color: #F0E6D3 !important; }
+
+    @media (max-width: 767px) {
+      .nav-links, .nav-cta-wrap { display: none; }
+      .hamburger { display: block; }
+    }
+
+    /* ── Buttons ── */
+    .btn-burgundy {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, #7F1D1D, #4A0E0E);
+      border: 1px solid rgba(212,175,55,0.4); color: #F0E6D3;
+      font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 500;
+      padding: 0.85rem 2rem; letter-spacing: 0.04em;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .btn-burgundy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(212,175,55,0.2);
+      border-color: rgba(212,175,55,0.7);
+    }
+    .btn-outline-gold {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: transparent; border: 1px solid rgba(212,175,55,0.4); color: #D4AF37;
+      font-family: 'Poppins', sans-serif; font-size: 0.875rem; font-weight: 500;
+      padding: 0.75rem 1.75rem; letter-spacing: 0.04em;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-outline-gold:hover {
+      transform: translateY(-2px); border-color: #D4AF37;
+      background: rgba(212,175,55,0.08); box-shadow: 0 4px 20px rgba(212,175,55,0.12);
+    }
+
+    /* ── Sections ── */
+    .s-dark { background: #1A1A1A; }
+    .s-darker { background: #0D0D0D; }
+    .s-burg { background: #150808; }
+    .section-pad { padding: 5rem 1.25rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    @media (min-width: 768px) { .section-pad { padding: 6rem 2rem; } }
+
+    /* ── Eyebrow ── */
+    .section-eye {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+    }
+    .section-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.12em; color: #D4AF37; text-transform: uppercase;
+    }
+    .rule-gold { width: 40px; height: 1px; background: #D4AF37; display: inline-block; }
+    .section-label-text {
+      font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(240,230,211,0.58);
+    }
+
+    /* ── Section Titles ── */
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif; text-transform: uppercase;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      line-height: 1.05; letter-spacing: 0.02em; color: #F0E6D3; margin-bottom: 1.25rem;
+    }
+
+    /* ── Gold Dividers ── */
+    .gold-divider {
+      height: 1px; margin: 0;
+      background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent);
+    }
+
+    /* ── Cards ── */
+    .card-glow {
+      border: 1px solid rgba(127,29,29,0.4); border-radius: 4px;
+      padding: 2rem; background: rgba(26,26,26,0.7);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .card-glow:hover {
+      border-color: rgba(212,175,55,0.5);
+      box-shadow: 0 0 30px rgba(212,175,55,0.08), inset 0 0 30px rgba(74,14,14,0.15);
+      transform: translateY(-3px);
+    }
+
+    /* ── Worry Cards ── */
+    .worry-icon-b {
+      width: 52px; height: 52px; border-radius: 4px;
+      background: rgba(127,29,29,0.25); border: 1px solid rgba(212,175,55,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem; font-size: 1.5rem;
+    }
+    .worry-title-b { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.02em; margin-bottom: 0.5rem; color: #F0E6D3; }
+    .worry-text-b { font-size: 0.9rem; color: rgba(240,230,211,0.6); line-height: 1.7; margin-bottom: 0.75rem; }
+    .worry-tick-b { display: inline-flex; align-items: center; gap: 0.4rem; color: #D4AF37; font-weight: 500; font-size: 0.85rem; }
+
+    /* ── Icon Cards (Why Bachata) ── */
+    .icon-card-b {
+      text-align: center; padding: 2rem;
+      border: 1px solid rgba(127,29,29,0.4); border-radius: 4px;
+      background: rgba(26,26,26,0.7);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .icon-card-b:hover { border-color: rgba(212,175,55,0.5); box-shadow: 0 0 24px rgba(212,175,55,0.08); transform: translateY(-3px); }
+    .icon-card-b .icon { font-size: 2rem; color: #D4AF37; margin-bottom: 0.75rem; }
+    .icon-card-b h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
+    .icon-card-b p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: rgba(240,230,211,0.6); line-height: 1.75; }
+
+    /* ── Review Cards ── */
+    .review-card-b {
+      background: rgba(26,26,26,0.7); border: 1px solid rgba(127,29,29,0.35);
+      border-radius: 4px; padding: 1.75rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .review-card-b:hover { border-color: rgba(212,175,55,0.4); box-shadow: 0 0 20px rgba(212,175,55,0.06); }
+    .review-stars-b { color: #D4AF37; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .review-quote-b { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: rgba(240,230,211,0.8); line-height: 1.7; margin-bottom: 1rem; }
+    .review-author-b { font-size: 0.8rem; font-weight: 500; color: rgba(240,230,211,0.58); }
+
+    /* ── Instagram Grid ── */
+    .insta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    @media (min-width: 768px) { .insta-grid { grid-template-columns: repeat(6, 1fr); } }
+    .insta-tile-b {
+      aspect-ratio: 1; position: relative; overflow: hidden; cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .insta-tile-b:hover { transform: scale(0.97); }
+    .insta-tile-b:nth-child(1) { background: linear-gradient(160deg, #2E2E2E, #0D0D0D); }
+    .insta-tile-b:nth-child(2) { background: linear-gradient(200deg, #150808, #2E2E2E); }
+    .insta-tile-b:nth-child(3) { background: linear-gradient(130deg, #1A1A1A, #0D0D0D); }
+    .insta-tile-b:nth-child(4) { background: linear-gradient(170deg, #0D0D0D, #150808); }
+    .insta-tile-b:nth-child(5) { background: linear-gradient(140deg, #2E2E2E, #1A1A1A); }
+    .insta-tile-b:nth-child(6) { background: linear-gradient(155deg, #150808, #0D0D0D); }
+    .insta-overlay {
+      position: absolute; inset: 0; background: rgba(212,175,55,0);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.25s, background 0.25s;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #1A1A1A;
+    }
+    .insta-tile-b:hover .insta-overlay { opacity: 1; background: rgba(212,175,55,0.45); }
+
+    /* ── Step Circles ── */
+    .step-num-b {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(127,29,29,0.25); border: 2px solid rgba(212,175,55,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem;
+      color: #D4AF37; flex-shrink: 0;
+    }
+
+    /* ── Schedule ── */
+    .loc-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .loc-tab {
+      padding: 0.6rem 1.5rem; cursor: pointer; min-height: 44px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      border: 1px solid rgba(212,175,55,0.3); background: transparent; color: rgba(240,230,211,0.58);
+      transition: all 0.2s;
+    }
+    .loc-tab.active { background: linear-gradient(135deg, #7F1D1D, #4A0E0E); color: #D4AF37; border-color: rgba(212,175,55,0.5); }
+    .loc-panel { display: none; }
+    .loc-panel.active { display: block; }
+    .schedule-card-b { border: 1px solid rgba(127,29,29,0.4); border-radius: 4px; overflow: hidden; }
+    .schedule-header-b {
+      background: #0D0D0D; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .schedule-header-b h3 { font-family: 'Bebas Neue', sans-serif; color: #F0E6D3; font-size: 1.3rem; letter-spacing: 0.03em; }
+    .day-badge-b {
+      background: rgba(127,29,29,0.3); color: #D4AF37;
+      font-size: 0.7rem; font-weight: 600; padding: 0.35rem 1rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .schedule-row-b {
+      display: grid; grid-template-columns: 90px 1fr;
+      gap: 1rem; padding: 0.85rem 1.5rem; align-items: center;
+      border-bottom: 1px solid rgba(127,29,29,0.2);
+    }
+    .schedule-row-b:nth-child(odd) { background: rgba(21,8,8,0.3); }
+    .schedule-time-b { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: #F0E6D3; }
+    .schedule-desc-b { font-size: 0.85rem; color: rgba(240,230,211,0.58); }
+    .schedule-social-b .schedule-time-b { color: #D4AF37; }
+    .schedule-footer-b { padding: 1rem 1.5rem; background: rgba(13,13,13,0.5); font-size: 0.85rem; color: rgba(240,230,211,0.58); }
+    .schedule-footer-b a { color: #D4AF37; text-decoration: none; font-weight: 500; }
+
+    /* ── Level Cards ── */
+    .level-card-b {
+      border: 1px solid rgba(127,29,29,0.4); border-radius: 4px;
+      padding: 1.75rem; display: flex; flex-direction: column;
+      background: rgba(26,26,26,0.7);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .level-card-b:hover { border-color: rgba(212,175,55,0.5); box-shadow: 0 0 24px rgba(212,175,55,0.08); transform: translateY(-3px); }
+    .level-card-b.highlighted-b {
+      background: linear-gradient(145deg, #7F1D1D, #4A0E0E);
+      border-color: rgba(212,175,55,0.4);
+    }
+    .pill-b {
+      display: inline-block; font-size: 0.7rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0.25rem 0.75rem; margin-bottom: 0.75rem;
+      background: rgba(127,29,29,0.3); color: #D4AF37;
+    }
+    .level-card-b.highlighted-b .pill-b { background: rgba(212,175,55,0.15); }
+    .level-title-b { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
+    .level-desc-b { font-size: 0.85rem; color: rgba(240,230,211,0.6); line-height: 1.7; margin-bottom: 1rem; flex: 1; }
+    .level-price-box-b { background: rgba(127,29,29,0.2); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1rem; }
+    .level-card-b.highlighted-b .level-desc-b { color: rgba(240,230,211,0.85); }
+    .level-card-b.highlighted-b .level-price-box-b { background: rgba(212,175,55,0.1); }
+
+    /* ── Pricing ── */
+    .pricing-highlight-b {
+      background: linear-gradient(145deg, #0D0D0D, #150808);
+      border: 1px solid rgba(212,175,55,0.35); border-radius: 4px;
+      padding: 2rem; position: relative; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(62,31,0,0.25);
+    }
+    @media (min-width: 768px) { .pricing-highlight-b { margin-top: -1rem; } }
+    .pricing-table-b { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .pricing-table-b th { background: #0D0D0D; color: #D4AF37; padding: 0.75rem 1rem; font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; text-align: left; letter-spacing: 0.04em; }
+    .pricing-table-b td { padding: 0.75rem 1rem; font-size: 0.9rem; border-bottom: 1px solid rgba(127,29,29,0.2); color: rgba(240,230,211,0.7); }
+    .pricing-table-b tr:nth-child(odd) { background: rgba(21,8,8,0.3); }
+
+    /* ── Coaching ── */
+    .coaching-pill-b {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(127,29,29,0.2); border: 1px solid rgba(212,175,55,0.3);
+      color: #D4AF37; font-size: 0.7rem; font-weight: 600;
+      padding: 0.35rem 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;
+    }
+
+    /* ── Instructor ── */
+    .team-card-b {
+      display: flex; align-items: center; gap: 1rem;
+      border: 1px solid rgba(127,29,29,0.4); border-radius: 4px;
+      padding: 1rem; margin: 1.25rem 0;
+    }
+    .team-avatar-b {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #7F1D1D, #D4AF37);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: #F0E6D3; flex-shrink: 0;
+    }
+    .skill-pill-b {
+      display: inline-block; font-size: 0.7rem; font-weight: 500;
+      padding: 0.2rem 0.6rem; margin-right: 0.35rem; margin-top: 0.5rem;
+      background: rgba(212,175,55,0.12); color: #D4AF37;
+    }
+    .pull-quote-b {
+      border-left: 4px solid #D4AF37; padding-left: 1.25rem; margin: 1.25rem 0;
+    }
+    .pull-quote-b p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; line-height: 1.6; color: rgba(240,230,211,0.8); }
+    .pull-quote-b cite { font-size: 0.8rem; font-weight: 500; color: rgba(212,175,55,0.7); font-style: normal; }
+
+    .class-steps-card-b {
+      background: rgba(13,13,13,0.5); border: 1px solid rgba(127,29,29,0.3);
+      border-radius: 4px; padding: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    .class-step-b { display: flex; gap: 1rem; align-items: flex-start; }
+    .class-step-num-b {
+      width: 36px; height: 36px; border-radius: 4px;
+      background: linear-gradient(135deg, #7F1D1D, #4A0E0E);
+      border: 1px solid rgba(212,175,55,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: #D4AF37; flex-shrink: 0;
+    }
+    .class-step-title-b { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.15rem; }
+    .class-step-desc-b { font-size: 0.85rem; color: rgba(240,230,211,0.58); line-height: 1.6; }
+    .class-step-divider-b { height: 1px; background: rgba(127,29,29,0.3); margin: 1rem 0; }
+
+    /* ── FAQ ── */
+    .faq-item-b {
+      background: rgba(13,13,13,0.5); border: 1px solid rgba(127,29,29,0.25);
+      border-radius: 4px; overflow: hidden; margin-bottom: 0.75rem;
+    }
+    .faq-trigger-b {
+      width: 100%; text-align: left; display: flex; align-items: center;
+      justify-content: space-between; gap: 1rem;
+      padding: 1.15rem 1.5rem; background: none; border: none;
+      cursor: pointer; font-family: 'Poppins', sans-serif;
+      font-weight: 500; font-size: 0.95rem; color: #F0E6D3;
+    }
+    .faq-chevron-b { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.2s; color: #D4AF37; }
+    .faq-chevron-b.rotated { transform: rotate(180deg); }
+    .faq-answer-b { display: none; padding: 0 1.5rem 1.15rem; }
+    .faq-answer-b.open { display: block; }
+    .faq-answer-b p { font-size: 0.9rem; color: rgba(240,230,211,0.6); line-height: 1.7; }
+
+    /* ── Final CTA ── */
+    .cta-glow-b { background: radial-gradient(ellipse at 80% 50%, rgba(127,29,29,0.4) 0%, transparent 65%); position: absolute; inset: 0; pointer-events: none; }
+    .status-pill-b {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(127,29,29,0.2); border: 1px solid rgba(212,175,55,0.3);
+      padding: 0.4rem 1rem; margin-bottom: 1.5rem;
+    }
+    .status-dot-b { width: 8px; height: 8px; border-radius: 50%; background: #D4AF37; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .status-text-b { font-size: 0.7rem; font-weight: 700; color: #D4AF37; text-transform: uppercase; letter-spacing: 0.1em; }
+    .trust-check-b { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: rgba(240,230,211,0.58); }
+
+    /* ── Footer ── */
+    footer { background: #0D0D0D; color: #F0E6D3; padding: 4rem 1.25rem 2rem; border-top: 1px solid rgba(212,175,55,0.08); }
+    footer a { color: rgba(240,230,211,0.58); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #F0E6D3; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; gap: 2rem; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+    .footer-heading-b { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.1em; color: #D4AF37; margin-bottom: 0.75rem; }
+    .footer-text { font-size: 0.85rem; color: rgba(240,230,211,0.58); line-height: 1.7; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .footer-links a { font-size: 0.85rem; }
+    .footer-bottom { max-width: 1200px; margin: 2.5rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(212,175,55,0.08); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: 0.8rem; color: rgba(240,230,211,0.58); }
+
+    /* ── WhatsApp Float ── */
+    .wa-float-b {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #7F1D1D, #4A0E0E);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(127,29,29,0.4);
+      text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+      animation: wa-pulse-b 2.5s infinite;
+    }
+    .wa-float-b:hover { transform: scale(1.08); }
+    @keyframes wa-pulse-b {
+      0% { box-shadow: 0 0 0 0 rgba(127,29,29,0.6); }
+      70% { box-shadow: 0 0 0 14px rgba(127,29,29,0); }
+      100% { box-shadow: 0 0 0 0 rgba(127,29,29,0); }
+    }
+
+    /* ── Sticky Mobile ── */
+    .sticky-mobile-b {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
+      background: linear-gradient(135deg, #7F1D1D, #4A0E0E);
+      border-top: 1px solid rgba(212,175,55,0.3);
+      padding: 0.75rem 1.25rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .sticky-mobile-b a { color: #D4AF37; font-weight: 600; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 0.4rem; }
+    @media (min-width: 768px) { .sticky-mobile-b { display: none; } }
+
+    /* ── Grids ── */
+    .grid-3 { display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+    .grid-4 { display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
+    .grid-2 { display: grid; gap: 2rem; }
+    @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+
+    .text-center { text-align: center; }
+    .gap-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    /* ── Hero Split ── */
+    .hero-split { display: flex; min-height: 100vh; }
+    .hero-left { flex: 7; display: flex; flex-direction: column; justify-content: center; padding: 6rem 2rem 4rem clamp(1.5rem, 5vw, 5rem); }
+    .hero-right {
+      flex: 5; background: #0D0D0D; position: relative; overflow: hidden;
+      display: none;
+    }
+    @media (min-width: 768px) { .hero-right { display: flex; align-items: center; justify-content: center; } }
+    .hero-typo {
+      font-family: 'Bebas Neue', sans-serif; font-size: clamp(6rem, 18vw, 20rem);
+      line-height: 0.85; color: rgba(127,29,29,0.25); transform: rotate(-8deg);
+      user-select: none; text-align: center;
+    }
+    .hero-rays { position: absolute; bottom: 0; left: 0; right: 0; top: 0; pointer-events: none; }
+    .hero-ray {
+      position: absolute; bottom: 0; width: 1px; opacity: 0.15;
+      background: linear-gradient(to top, rgba(212,175,55,0.5), transparent);
+    }
+    .hero-info-strip {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      border-top: 1px solid rgba(212,175,55,0.15);
+      padding: 1rem 1.5rem; display: flex; justify-content: space-around;
+      font-size: 0.75rem; color: rgba(240,230,211,0.58);
+    }
+    .hero-info-strip strong { font-family: 'Bebas Neue', sans-serif; color: #D4AF37; font-size: 0.85rem; display: block; }
+
+    @keyframes scroll-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+    .scroll-cue { animation: scroll-bounce 1.8s ease-in-out infinite; }
+  a:focus-visible,button:focus-visible,.hamburger:focus-visible,.btn-burgundy:focus-visible,.btn-outline-gold:focus-visible,.loc-tab:focus-visible,.faq-trigger-b:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}
+    @media(prefers-reduced-motion:reduce){.reveal,.fade-up,.ticker-inner,.gold-shimmer,.scroll-cue,.wa-float-b,.status-dot-b{transition:none !important;animation:none !important;opacity:1 !important;transform:none !important}}
+    @media(max-width:767px){.wa-float-b{display:none}}
+  </style>
+</head>
+<body>
+
+  <!-- ═══ TICKER ═══ -->
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span class="ticker-text">Free first class <span class="ticker-diamond">◆</span> Reading Wednesdays <span class="ticker-diamond">◆</span> Leicester Tuesdays <span class="ticker-diamond">◆</span> ~300 dancers in Reading <span class="ticker-diamond">◆</span> ~100 dancers in Leicester <span class="ticker-diamond">◆</span> 5.0 on Google <span class="ticker-diamond">◆</span> 4+ years running <span class="ticker-diamond">◆</span> Bachata classes UK <span class="ticker-diamond">◆</span></span>
+      <span class="ticker-text">Free first class <span class="ticker-diamond">◆</span> Reading Wednesdays <span class="ticker-diamond">◆</span> Leicester Tuesdays <span class="ticker-diamond">◆</span> ~300 dancers in Reading <span class="ticker-diamond">◆</span> ~100 dancers in Leicester <span class="ticker-diamond">◆</span> 5.0 on Google <span class="ticker-diamond">◆</span> 4+ years running <span class="ticker-diamond">◆</span> Bachata classes UK <span class="ticker-diamond">◆</span></span>
+    </div>
+  </div>
+
+  <!-- ═══ NAV ═══ -->
+  <nav id="site-nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><img src="../logos/logo-mark-golden-tight.png" alt="Latin Addiction logo" style="height:32px;width:auto;vertical-align:middle;margin-right:0.5rem;"><span>LATIN ADDICTION</span></a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Reading</a></li>
+        <li><a href="#">Leicester</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li class="has-dd"><a href="#">Services <svg width="10" height="10" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-left:2px;opacity:.5;"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="dd"><li><a href="#">Private Coaching</a></li><li><a href="#">Corporate</a></li><li><a href="#">Hire Us</a></li></ul></li>
+        <li class="has-dd"><a href="#">About <svg width="10" height="10" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-left:2px;opacity:.5;"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="dd"><li><a href="#">Our Story</a></li><li><a href="#">FAQ</a></li><li><a href="#">Reviews</a></li><li><a href="#">Learn</a></li></ul></li>
+      </ul>
+      <div class="nav-cta-wrap">
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="nav-cta"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Free class</a>
+      </div>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="mobile-menu">
+      <a href="#">Home</a><a href="#">Reading</a><a href="#">Leicester</a>
+      <a href="#">Pricing</a>
+      <div class="mob-group"><span class="mob-label">Services</span><a href="#" class="mob-sub">Private Coaching</a><a href="#" class="mob-sub">Corporate</a><a href="#" class="mob-sub">Hire Us</a></div>
+      <div class="mob-group"><span class="mob-label">About</span><a href="#" class="mob-sub">Our Story</a><a href="#" class="mob-sub">FAQ</a><a href="#" class="mob-sub">Reviews</a><a href="#" class="mob-sub">Learn</a></div>
+      <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" style="color:#D4AF37; font-weight:600; border:none; margin-top:.5rem;">Claim your free class →</a>
+    </div>
+  </nav>
+
+  <!-- ═══ SECTION 1: HERO (Split) ═══ -->
+  <section class="hero-split" style="background:#0D0D0D;">
+    <div class="hero-left">
+      <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:2rem;" class="reveal">
+        <span class="rule-gold"></span>
+        <span style="font-size:0.7rem; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:rgba(240,230,211,0.58);">Bachata dance classes · UK</span>
+      </div>
+      <h1 class="font-display reveal" style="font-size:clamp(4rem,11vw,10rem); line-height:0.9; margin-bottom:1.5rem;">
+        <span style="color:#F0E6D3;">Learn</span><br>
+        <span class="gold-shimmer">Bachata</span><br>
+        <span style="color:rgba(240,230,211,0.45);">in Reading &amp;</span><br>
+        <span style="color:rgba(240,230,211,0.45);">Leicester</span>
+      </h1>
+      <p class="reveal" style="font-size:clamp(1rem,1.5vw,1.15rem); color:rgba(240,230,211,0.6); line-height:1.65; max-width:420px; margin-bottom:2rem;">
+        The Latin partner dance everyone's falling for.<br>No experience needed. No partner needed.<br>Your first class is <strong style="color:#D4AF37;">FREE.</strong>
+      </p>
+      <div class="gap-btns reveal" style="margin-bottom:1.5rem;">
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Claim your free class
+        </a>
+        <a href="#schedule" class="btn-outline-gold">See schedule ↓</a>
+      </div>
+      <p class="reveal" style="font-size:0.8rem;"><a href="#pricing" style="color:rgba(240,230,211,0.58); text-decoration:underline;">Already dance? → Schedule &amp; Pricing</a></p>
+      <div class="reveal" style="display:flex;flex-wrap:wrap;gap:1.25rem;padding-top:1.5rem;margin-top:2.5rem;border-top:1px solid rgba(240,230,211,0.08);">
+        <span style="font-size:.82rem;color:rgba(240,230,211,0.58);display:flex;align-items:center;gap:.35rem;"><span style="color:#D4AF37;">★</span> 5.0 on Google</span>
+        <span style="font-size:.82rem;color:rgba(240,230,211,0.58);">~300 in Reading</span>
+        <span style="font-size:.82rem;color:rgba(240,230,211,0.58);">~100 in Leicester</span>
+        <span style="font-size:.82rem;color:rgba(240,230,211,0.58);">4+ years running</span>
+      </div>
+      <div class="scroll-cue" style="margin-top:3rem; text-align:center; color:rgba(240,230,211,0.58);">
+        <div style="width:1px; height:32px; background:linear-gradient(to bottom, #D4AF37, transparent); margin:0 auto 0.5rem;"></div>
+        <span style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.15em;">Scroll</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-typo">BA<br>CHA<br>TA</div>
+      <div class="hero-rays">
+        <div class="hero-ray" style="left:20%; height:60%;"></div>
+        <div class="hero-ray" style="left:40%; height:75%;"></div>
+        <div class="hero-ray" style="left:60%; height:50%;"></div>
+        <div class="hero-ray" style="left:80%; height:65%;"></div>
+      </div>
+      <div style="position:absolute; left:0; right:0; top:50%; height:1px; background:linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent);"></div>
+      <div class="hero-info-strip">
+        <div><strong>Reading</strong>Wed 8pm</div>
+        <div><strong>Leicester</strong>Tue 7:15pm</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 2: WORRY-BUSTERS ═══ -->
+  <section class="s-dark section-pad">
+    <div class="container">
+      <div class="grid-3">
+        <div class="card-glow reveal">
+          <div class="worry-icon-b">👫</div>
+          <h3 class="worry-title-b">No Partner Needed</h3>
+          <p class="worry-text-b">We rotate partners throughout the class. Most people come alone — you'll dance with everyone and leave knowing half the room.</p>
+          <span class="worry-tick-b">✓ You're welcome to bring a friend, but it's definitely not required.</span>
+        </div>
+        <div class="card-glow reveal reveal-d1">
+          <div class="worry-icon-b">🌟</div>
+          <h3 class="worry-title-b">No Experience Needed</h3>
+          <p class="worry-text-b">Our beginner class starts from absolute zero, every single session. We break everything down until it clicks. You can't be "too bad" for this.</p>
+          <span class="worry-tick-b">✓ If you can walk, you can Bachata. Seriously.</span>
+        </div>
+        <div class="card-glow reveal reveal-d2">
+          <div class="worry-icon-b">🎁</div>
+          <h3 class="worry-title-b">Your First Class Is Free</h3>
+          <p class="worry-text-b">No card details. No sign-up form. No commitment. Just message us on WhatsApp, turn up, and dance. That's it.</p>
+          <span class="worry-tick-b">✓ Zero risk. Come see if you like it.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 3: WHY BACHATA ═══ -->
+  <section class="s-darker section-pad">
+    <div class="container text-center">
+      <div class="section-eye reveal" style="justify-content:center;">
+        <span class="section-num">02</span><span class="rule-gold"></span><span class="section-label-text">Why Bachata</span>
+      </div>
+      <h2 class="section-title reveal">Why People Fall in Love with Bachata</h2>
+      <div class="grid-4" style="margin-top:2rem;">
+        <div class="icon-card-b reveal">
+          <div class="icon">♪</div>
+          <h3>A Simple 4-Count Rhythm</h3>
+          <p>Side-to-side steps that let you focus on your partner, not your feet. If you can count to four, you're ready.</p>
+        </div>
+        <div class="icon-card-b reveal reveal-d1">
+          <div class="icon">🎸</div>
+          <h3>Music You'll Connect With</h3>
+          <p>Guitar-driven, melodic, and emotional. You'll feel the rhythm before you even step onto the floor.</p>
+        </div>
+        <div class="icon-card-b reveal reveal-d2">
+          <div class="icon">🌙</div>
+          <h3>Dance Socially From Night One</h3>
+          <p>You'll actually dance at the social party the same night you learn your first steps. Not months from now. Tonight.</p>
+        </div>
+        <div class="icon-card-b reveal reveal-d3">
+          <div class="icon">❤</div>
+          <h3>Connection Over Choreography</h3>
+          <p>Bachata is about how it feels between partners, not flashy footwork. Built for feeling, not performing.</p>
+        </div>
+      </div>
+      <p class="reveal" style="margin-top:1.5rem; color:rgba(240,230,211,0.58); font-size:0.95rem;">We teach both lead and follow — you choose which role suits you.</p>
+      <div class="reveal" style="margin-top:1.5rem;">
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy">Try it free</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 4: SOCIAL PROOF ═══ -->
+  <section class="s-dark section-pad">
+    <div class="container">
+      <div class="section-eye reveal"><span class="section-num">03</span><span class="rule-gold"></span><span class="section-label-text">What our students say</span></div>
+      <div class="grid-4" style="margin-top:0.5rem;">
+        <div class="review-card-b reveal">
+          <div class="review-stars-b">★★★★★</div>
+          <p class="review-quote-b">"As a complete beginner, I wasn't sure what to expect, but this dance school is amazing! The instructors were so encouraging, and the class atmosphere was really friendly."</p>
+          <p class="review-author-b">— G V James, Google Review</p>
+        </div>
+        <div class="review-card-b reveal reveal-d1">
+          <div class="review-stars-b">★★★★★</div>
+          <p class="review-quote-b">"It really feels like you're finding a new dance family. Would 1000% recommend, especially for beginners."</p>
+          <p class="review-author-b">— Amy, Google Review</p>
+        </div>
+        <div class="review-card-b reveal reveal-d2">
+          <div class="review-stars-b">★★★★★</div>
+          <p class="review-quote-b">"They don't just teach steps — they explain the technique in a way that makes it all click."</p>
+          <p class="review-author-b">— Jonathan, Google Review</p>
+        </div>
+        <div class="review-card-b reveal reveal-d3">
+          <div class="review-stars-b">★★★★★</div>
+          <p class="review-quote-b">"The teachers are really good. The social at the end is a great way to put learning into practice."</p>
+          <p class="review-author-b">— Siva, Google Review</p>
+        </div>
+      </div>
+
+      <div class="text-center reveal" style="margin-top:2rem;">
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy">Try a free class</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 5: GETTING STARTED ═══ -->
+  <section class="s-darker section-pad">
+    <div class="container text-center">
+      <div class="section-eye reveal" style="justify-content:center;">
+        <span class="section-num">04</span><span class="rule-gold"></span><span class="section-label-text">The Process</span>
+      </div>
+      <h2 class="section-title reveal">Getting Started Is <span class="font-serif" style="font-style:italic; color:#D4AF37; text-transform:none;">Ridiculously Easy</span></h2>
+      <div class="grid-3" style="margin-top:2.5rem;">
+        <div class="reveal" style="display:flex; flex-direction:column; align-items:center;">
+          <div class="step-num-b">1</div>
+          <h3 class="font-display" style="font-size:1.1rem; margin:1rem 0 0.5rem;">Send Us a Message</h3>
+          <p style="font-size:0.85rem; color:rgba(240,230,211,0.58);">Just say hi on WhatsApp — that's it. We'll confirm the next class and answer any questions.</p>
+        </div>
+        <div class="reveal reveal-d1" style="display:flex; flex-direction:column; align-items:center;">
+          <div class="step-num-b">2</div>
+          <h3 class="font-display" style="font-size:1.1rem; margin:1rem 0 0.5rem;">Turn Up</h3>
+          <p style="font-size:0.85rem; color:rgba(240,230,211,0.58);">Wear something comfortable. No special shoes needed. We'll be expecting you.</p>
+        </div>
+        <div class="reveal reveal-d2" style="display:flex; flex-direction:column; align-items:center;">
+          <div class="step-num-b">3</div>
+          <h3 class="font-display" style="font-size:1.1rem; margin:1rem 0 0.5rem;">Dance</h3>
+          <p style="font-size:0.85rem; color:rgba(240,230,211,0.58);">Your first class is free. Stay for the social party afterwards — that's where the real fun starts.</p>
+        </div>
+      </div>
+      <div class="reveal" style="margin-top:2rem;">
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy">Start here</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 6: SCHEDULE ═══ -->
+  <section id="schedule" class="s-burg section-pad">
+    <div class="container">
+      <div class="section-eye reveal"><span class="section-num">05</span><span class="rule-gold"></span><span class="section-label-text">Classes</span></div>
+      <h2 class="section-title reveal">When &amp; Where We Dance</h2>
+      <div class="loc-tabs reveal">
+        <button class="loc-tab active" data-loc="reading">Reading</button>
+        <button class="loc-tab" data-loc="leicester">Leicester</button>
+      </div>
+      <div class="loc-panel active reveal" id="panel-reading">
+        <div class="schedule-card-b">
+          <div class="schedule-header-b"><h3>Reading</h3><span class="day-badge-b">Every Wed</span></div>
+          <div>
+            <div class="schedule-row-b"><span class="schedule-time-b">7:45pm</span><span class="schedule-desc-b">Doors open</span></div>
+            <div class="schedule-row-b"><span class="schedule-time-b">8:00pm</span><span class="schedule-desc-b">Beginners &amp; Intermediate (two levels at the same time)</span></div>
+            <div class="schedule-row-b"><span class="schedule-time-b">9:00pm</span><span class="schedule-desc-b">Improvers &amp; Advanced (two levels at the same time)</span></div>
+            <div class="schedule-row-b schedule-social-b"><span class="schedule-time-b">10:00pm</span><span class="schedule-desc-b" style="color:#D4AF37; font-weight:500;">FREE Social Party</span></div>
+          </div>
+          <div class="schedule-footer-b">
+            <p><strong style="color:#F0E6D3;">Wesley Methodist Church</strong>, 84 Queen's Rd, Reading RG1 4BW</p>
+            <p style="margin-top:0.35rem;">🅿️ FREE on premises — register at the kiosk to avoid a fine.</p>
+            <p style="margin-top:0.35rem;"><a href="#">Get directions →</a></p>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Reading" class="btn-burgundy">Join the Reading class</a>
+        </div>
+      </div>
+      <div class="loc-panel reveal" id="panel-leicester">
+        <div class="schedule-card-b">
+          <div class="schedule-header-b"><h3>Leicester</h3><span class="day-badge-b">Every Tue</span></div>
+          <div>
+            <div class="schedule-row-b"><span class="schedule-time-b">7:00pm</span><span class="schedule-desc-b">Doors open</span></div>
+            <div class="schedule-row-b"><span class="schedule-time-b">7:15pm</span><span class="schedule-desc-b">Beginners (1 hr)</span></div>
+            <div class="schedule-row-b"><span class="schedule-time-b">8:15pm</span><span class="schedule-desc-b">Improver / Intermediate (1 hr)</span></div>
+            <div class="schedule-row-b"><span class="schedule-time-b">9:15pm</span><span class="schedule-desc-b">Intermediate / Advanced (1 hr)</span></div>
+            <div class="schedule-row-b schedule-social-b"><span class="schedule-time-b">10:15pm</span><span class="schedule-desc-b" style="color:#D4AF37; font-weight:500;">FREE Social Party</span></div>
+          </div>
+          <div class="schedule-footer-b">
+            <p><strong style="color:#F0E6D3;">Braunstone Frith Recreation Centre</strong>, 29A Sharmon Cres, Leicester LE3 6NW</p>
+            <p style="margin-top:0.35rem;">🅿️ FREE street parking.</p>
+            <p style="margin-top:0.35rem;"><a href="#">Get directions →</a></p>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Leicester" class="btn-burgundy">Join the Leicester class</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 7: CLASS LEVELS ═══ -->
+  <section class="s-darker section-pad">
+    <div class="container">
+      <div class="section-eye text-center reveal" style="justify-content:center;"><span class="section-num">06</span><span class="rule-gold"></span><span class="section-label-text">Find Your Level</span></div>
+      <h2 class="section-title text-center reveal">Which Level Sounds Like You?</h2>
+      <div class="grid-4" style="margin-top:2rem;">
+        <div class="level-card-b highlighted-b reveal">
+          <span class="pill-b">Start Here</span>
+          <h3 class="level-title-b">Level 1 — Starting From Scratch</h3>
+          <p class="level-desc-b">Learn the rhythm, basic footwork, and your first partner moves. No experience needed — we start from zero every session.</p>
+          <div class="level-price-box-b"><p style="font-size:0.75rem; color:rgba(240,230,211,0.58);">Included in your</p><p style="font-weight:700; font-size:1.1rem;">FREE first class</p></div>
+          <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy" style="width:100%; justify-content:center;">Claim free class →</a>
+        </div>
+        <div class="level-card-b reveal reveal-d1">
+          <span class="pill-b">Building</span>
+          <h3 class="level-title-b">Level 2 — Building Your Style</h3>
+          <p class="level-desc-b">Turn patterns, connection, and developing your personal style. Dancing with confidence and making it your own.</p>
+          <div class="level-price-box-b"><p style="font-size:0.75rem; color:rgba(240,230,211,0.58);">Drop-in from</p><p style="font-weight:700; font-size:1.1rem;">£10 / night</p></div>
+          <a href="#pricing" class="btn-outline-gold" style="width:100%; justify-content:center;">See pricing →</a>
+        </div>
+        <div class="level-card-b reveal reveal-d2">
+          <span class="pill-b">Flow</span>
+          <h3 class="level-title-b">Level 3 — Body &amp; Musicality</h3>
+          <p class="level-desc-b">Body movement, musical interpretation, and social dancing confidence. This is where Bachata starts to feel really good.</p>
+          <div class="level-price-box-b"><p style="font-size:0.75rem; color:rgba(240,230,211,0.58);">Drop-in from</p><p style="font-weight:700; font-size:1.1rem;">£10 / night</p></div>
+          <a href="#pricing" class="btn-outline-gold" style="width:100%; justify-content:center;">See pricing →</a>
+        </div>
+        <div class="level-card-b reveal reveal-d3">
+          <span class="pill-b">Express</span>
+          <h3 class="level-title-b">Level 4 — Making It Your Own</h3>
+          <p class="level-desc-b">Layered styling, advanced partner work, and deep musicality. You're not just dancing, you're expressing.</p>
+          <div class="level-price-box-b"><p style="font-size:0.75rem; color:rgba(240,230,211,0.58);">Drop-in from</p><p style="font-weight:700; font-size:1.1rem;">£10 / night</p></div>
+          <a href="#pricing" class="btn-outline-gold" style="width:100%; justify-content:center;">See pricing →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 8: PRICING ═══ -->
+  <section id="pricing" class="s-dark section-pad">
+    <div class="container">
+      <div class="section-eye text-center reveal" style="justify-content:center;"><span class="section-num">07</span><span class="rule-gold"></span><span class="section-label-text">Pricing</span></div>
+      <h2 class="section-title text-center reveal">Simple, Fair Prices</h2>
+      <p class="text-center reveal" style="color:rgba(240,230,211,0.58); margin-bottom:2rem;">No hidden fees. No contracts. Pay as you go, or start with our newcomer deal.</p>
+      <div class="reveal" style="max-width:560px; margin:0 auto;">
+        <div class="pricing-highlight-b">
+          <span style="display:inline-block; background:rgba(212,175,55,0.15); color:#D4AF37; font-size:0.7rem; font-weight:600; padding:0.3rem 0.75rem; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem;">New here?</span>
+          <h3 class="font-display" style="font-size:1.4rem; margin-bottom:0.75rem;">Start Dancing This Week</h3>
+          <p style="color:rgba(240,230,211,0.6); margin-bottom:0.5rem;"><strong style="color:#F0E6D3;">First class: FREE</strong> — just turn up.</p>
+          <p style="color:rgba(240,230,211,0.6); margin-bottom:1.5rem;"><strong style="color:#F0E6D3;">4-Week Newcomer Pass: £20</strong> — beginners only, 4 consecutive weeks.</p>
+          <div class="gap-btns">
+            <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy">Claim your free class</a>
+            <a href="#" class="btn-outline-gold">Buy newcomer pass — £20</a>
+          </div>
+        </div>
+        <div class="reveal" style="margin-top:2rem;">
+          <h3 class="font-display" style="font-size:1.15rem; margin-bottom:0.75rem;">Drop-In (Per Night)</h3>
+          <table class="pricing-table-b">
+            <thead><tr><th>Classes</th><th>Price</th></tr></thead>
+            <tbody>
+              <tr><td>1 class</td><td><strong>£10</strong></td></tr>
+              <tr><td>2 classes</td><td><strong>£15</strong></td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.85rem; color:rgba(240,230,211,0.58); margin-top:0.75rem;">Cash and card accepted at the door. Student &amp; NHS discount available — ask us on WhatsApp.</p>
+          <p style="font-size:0.88rem; margin-top:0.75rem; color:#D4AF37; font-weight:500;">Coming regularly? Passes from £8/class.</p>
+          <p style="margin-top:0.5rem;"><a href="#" style="color:#D4AF37; font-weight:500; font-size:0.9rem; text-decoration:none;">See all pricing options →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 9: INSTRUCTORS ═══ -->
+  <section class="s-dark section-pad">
+    <div class="container">
+      <div class="grid-2">
+        <div class="reveal">
+          <div class="section-eye"><span class="section-num">08</span><span class="rule-gold"></span><span class="section-label-text">Your Instructors</span></div>
+          <h2 class="section-title">People Who Actually Care If You Have Fun</h2>
+          <p style="color:rgba(240,230,211,0.6); font-size:0.95rem; line-height:1.7; margin-bottom:0.75rem;">The Latin Addiction team have been dancing Bachata for years — but they remember exactly what it felt like to be brand new. They teach with patience, warmth, and a very healthy sense of humour.</p>
+          <p style="color:rgba(240,230,211,0.6); font-size:0.95rem; line-height:1.7;">Expect clear instructions, lots of laughs, and a class where you'll actually understand what you're doing — even on your first night.</p>
+          <div class="pull-quote-b">
+            <p>"We're not just here to teach you steps. We're here to make sure you leave every class feeling better than when you arrived."</p>
+            <cite>— The Latin Addiction team</cite>
+          </div>
+          <div class="team-card-b">
+            <div class="team-avatar-b">LA</div>
+            <div>
+              <p style="font-weight:600; font-size:1rem; margin-bottom:0.15rem;">Latin Addiction Team</p>
+              <p style="font-size:0.85rem; color:rgba(240,230,211,0.58);">Reading &amp; Leicester · Bachata &amp; Sensual</p>
+              <div><span class="skill-pill-b">Bachata</span><span class="skill-pill-b">Sensual</span><span class="skill-pill-b">Beginner-Friendly</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-d1">
+          <div class="class-steps-card-b">
+            <h3 class="font-display" style="font-size:1.15rem; margin-bottom:1.25rem;">What a Typical Class Looks Like</h3>
+            <div class="class-step-b"><div class="class-step-num-b">01</div><div><p class="class-step-title-b">Warm welcome</p><p class="class-step-desc-b">Introductions, a quick warmup, no awkward standing around. Everyone here was new once.</p></div></div>
+            <div class="class-step-divider-b"></div>
+            <div class="class-step-b"><div class="class-step-num-b">02</div><div><p class="class-step-title-b">Foundation technique</p><p class="class-step-desc-b">The basic step, timing, how to hold frame — broken down until it clicks, not just demonstrated once.</p></div></div>
+            <div class="class-step-divider-b"></div>
+            <div class="class-step-b"><div class="class-step-num-b">03</div><div><p class="class-step-title-b">Rotating partners</p><p class="class-step-desc-b">You'll dance with everyone in the room. By the end, you'll have ten new mates.</p></div></div>
+            <div class="class-step-divider-b"></div>
+            <div class="class-step-b"><div class="class-step-num-b">04</div><div><p class="class-step-title-b">Social freestyle</p><p class="class-step-desc-b">Class ends, the music stays on. This is where the real magic happens.</p></div></div>
+          </div>
+          <div style="margin-top:1.5rem;">
+            <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy">Claim your free class</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 10: FAQ ═══ -->
+  <section class="s-darker section-pad">
+    <div class="container" style="max-width:760px;">
+      <div class="section-eye text-center reveal" style="justify-content:center;"><span class="section-num">09</span><span class="rule-gold"></span><span class="section-label-text">FAQ</span></div>
+      <h2 class="section-title text-center reveal">The Questions Everyone Asks First</h2>
+      <div style="margin-top:1.5rem;">
+        <div class="faq-item-b reveal"><button class="faq-trigger-b"><span>Do I really not need a partner?</span><svg class="faq-chevron-b" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer-b"><p>Nope. Most of our students come solo. We rotate partners throughout the class so everyone gets to dance with everyone. You're welcome to bring a friend, but it's definitely not required.</p></div></div>
+        <div class="faq-item-b reveal"><button class="faq-trigger-b"><span>What should I wear?</span><svg class="faq-chevron-b" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer-b"><p>Comfortable clothes you can move in — jeans are fine. Wear clean, smooth-soled shoes if you have them (trainers work too, just avoid anything that grips the floor). No special dance shoes needed.</p></div></div>
+        <div class="faq-item-b reveal"><button class="faq-trigger-b"><span>Will it be awkward?</span><svg class="faq-chevron-b" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer-b"><p>Honestly? The first five minutes might feel a bit new. But the class is structured so you're moving and laughing within minutes. Everyone remembers being a beginner — the room is on your side.</p></div></div>
+        <div class="faq-item-b reveal"><button class="faq-trigger-b"><span>What's the difference between Bachata and Salsa?</span><svg class="faq-chevron-b" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer-b"><p>Both are Latin partner dances, but they feel very different. Salsa is faster and more energetic with complex footwork. Bachata is slower, more intimate, built on a simple side-to-side rhythm. It's widely considered one of the most beginner-friendly Latin dances — you can be dancing socially after one class. We teach Bachata exclusively because we believe in doing one thing really well.</p></div></div>
+        <div class="faq-item-b reveal"><button class="faq-trigger-b"><span>Do I need to book in advance?</span><svg class="faq-chevron-b" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer-b"><p>You can turn up on the night, but we'd love a heads-up. Send us a WhatsApp message and we'll be expecting you — it also means we can answer any questions before you arrive.</p></div></div>
+        <div class="faq-item-b reveal"><button class="faq-trigger-b"><span>How quickly will I be able to dance socially?</span><svg class="faq-chevron-b" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer-b"><p>Tonight. Seriously. Our beginner class teaches you enough to dance at the social party straight after. It won't be perfect — but it'll be fun, and that's the point.</p></div></div>
+        <div class="faq-item-b reveal"><button class="faq-trigger-b"><span>Is there parking at the venues?</span><svg class="faq-chevron-b" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-answer-b"><p><strong>Reading:</strong> Free parking on the premises at Wesley Methodist Church. Register your car at the kiosk to avoid a fine.<br><strong>Leicester:</strong> Free street parking around Braunstone Frith Recreation Centre.</p></div></div>
+      </div>
+      <p class="text-center reveal" style="margin-top:1rem;"><a href="#" style="color:#D4AF37; font-weight:500; text-decoration:none;">See all FAQs →</a></p>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ═══ SECTION 11: FINAL CTA ═══ -->
+  <section class="s-darker section-pad" style="position:relative; overflow:hidden;">
+    <div class="cta-glow-b"></div>
+    <div class="container text-center" style="position:relative; z-index:1;">
+      <div class="reveal"><div class="status-pill-b" style="display:inline-flex;"><span class="status-dot-b"></span><span class="status-text-b">Classes running now</span></div></div>
+      <h2 class="font-display reveal" style="font-size:clamp(2rem,5vw,3.5rem); color:#F0E6D3; line-height:1.05; margin-bottom:1.25rem;">
+        Your Next Tuesday or Wednesday<br>Could Change <span class="gold-shimmer">Everything.</span>
+      </h2>
+      <p class="reveal" style="font-size:clamp(1rem,2vw,1.15rem); color:rgba(240,230,211,0.58); max-width:520px; margin:0 auto 2.5rem; line-height:1.7;">
+        One free class. No pressure. Just show up, and let's see what happens.
+      </p>
+      <div class="gap-btns reveal" style="justify-content:center;">
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn-burgundy" style="font-size:1.05rem; padding:1rem 2.25rem;">Claim your free class</a>
+        <a href="tel:07424063798" class="btn-outline-gold" style="font-size:1.05rem; padding:1rem 2.25rem;">Call 07424 063798</a>
+      </div>
+      <div class="reveal" style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(212,175,55,0.1);">
+        <span class="trust-check-b"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> First class free</span>
+        <span class="trust-check-b"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No partner needed</span>
+        <span class="trust-check-b"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Complete beginners welcome</span>
+        <span class="trust-check-b"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> No commitment required</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <p class="footer-heading-b">LATIN ADDICTION UK</p>
+        <p class="footer-text"><strong style="color:#F0E6D3;">Reading:</strong> Wesley Methodist Church, 84 Queen's Rd, Reading RG1 4BW — Wednesdays from 7:45pm</p>
+        <p class="footer-text" style="margin-top:0.5rem;"><strong style="color:#F0E6D3;">Leicester:</strong> Braunstone Frith Recreation Centre, 29A Sharmon Cres, Leicester LE3 6NW — Tuesdays from 7:00pm</p>
+        <p class="footer-text" style="margin-top:1rem;"><strong style="color:#F0E6D3;">WhatsApp:</strong> 07424 063798<br><strong style="color:#F0E6D3;">Email:</strong> info@latinaddiction.co.uk</p>
+      </div>
+      <div><p class="footer-heading-b">Pages</p><ul class="footer-links"><li><a href="#">Home</a></li><li><a href="#">Reading</a></li><li><a href="#">Leicester</a></li><li><a href="#">Pricing</a></li><li><a href="#">Classes</a></li></ul></div>
+      <div><p class="footer-heading-b">Services</p><ul class="footer-links"><li><a href="#">Private Coaching</a></li><li><a href="#">Corporate</a></li><li><a href="#">Hire Us</a></li></ul></div>
+      <div><p class="footer-heading-b">Connect</p><ul class="footer-links"><li><a href="https://www.instagram.com/latinaddictionuk">Instagram</a></li><li><a href="https://www.facebook.com/LatinAddictionUK">Facebook</a></li><li><a href="https://www.tiktok.com/@latin.addiction.uk">TikTok</a></li><li><a href="https://www.youtube.com/@LatinAddictionUK">YouTube</a></li><li><a href="#">Our Story</a></li><li><a href="#">FAQ</a></li><li><a href="#">Reviews</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>Student &amp; NHS discount available — ask us on WhatsApp.</p>
+      <p><a href="#">Privacy Policy</a> · © 2026 Latin Addiction UK Ltd</p>
+    </div>
+  </footer>
+
+  <!-- ═══ WHATSAPP FLOAT ═══ -->
+  <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="wa-float-b" aria-label="WhatsApp us" target="_blank" rel="noopener">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#D4AF37"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <!-- ═══ STICKY MOBILE CTA ═══ -->
+  <div class="sticky-mobile-b">
+    <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Claim your free class
+    </a>
+  </div>
+
+  <!-- ═══ JAVASCRIPT ═══ -->
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-trigger-b').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const chevron = btn.querySelector('.faq-chevron-b');
+        const isOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-answer-b').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-chevron-b').forEach(c => c.classList.remove('rotated'));
+        if (!isOpen) { answer.classList.add('open'); chevron.classList.add('rotated'); }
+      });
+    });
+    // Location Tabs
+    document.querySelectorAll('.loc-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.loc-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.loc-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.loc).classList.add('active');
+      });
+    });
+    // Mobile Menu
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => { const isOpen = mobileMenu.classList.toggle('open'); hamburger.setAttribute('aria-expanded', isOpen); });
+    // Scroll Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    // Nav scroll shadow
+    window.addEventListener('scroll',()=>{document.getElementById('site-nav').classList.toggle('scrolled',window.scrollY>10)});
+  </script>
+
+</body>
+</html>
