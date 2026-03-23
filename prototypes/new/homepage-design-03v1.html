@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latin Addiction — Bachata Classes in Reading & Leicester</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════
+       DESIGN B2 — MONOCHROME BRUTALIST
+       Only colour: #DC2626 red. Everything else: grayscale.
+       Bebas Neue + Poppins 300. Square corners. Solid shadows.
+       ══════════════════════════════════════════ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',sans-serif;font-weight:300;background:#FAFAFA;color:#0A0A0A;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+    ::selection{background:#DC2626;color:#FAFAFA}
+    .fd{font-family:'Bebas Neue',Impact,sans-serif;text-transform:uppercase;letter-spacing:.02em}
+    a{color:inherit}
+    section{scroll-margin-top:64px}
+
+    /* ── Fixed grain ── */
+    body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+
+    /* ── Reveal ── */
+    .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}.rv.visible{opacity:1;transform:translateY(0)}.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+    /* ── Ticker ── */
+    .ticker{overflow:hidden;background:#0A0A0A;border-bottom:1px solid #1C1C1C;padding:.55rem 0}.ticker-inner{display:flex;width:max-content;animation:tick 22s linear infinite}.ticker:hover .ticker-inner{animation-play-state:paused}@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.ticker-t{font-size:.68rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:#999;white-space:nowrap;padding:0 2rem}.ticker-s{color:#DC2626;padding:0 .5rem}
+
+    /* ── Nav ── */
+    #nav{position:sticky;top:0;z-index:100;background:rgba(250,250,248,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #D9D9D9;transition:box-shadow .25s}#nav.scrolled{box-shadow:0 1px 0 rgba(10,10,10,.06)}.nav-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;height:64px}.nav-logo{display:flex;align-items:center;gap:.6rem;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.04em;color:#0A0A0A;text-decoration:none}.nav-logo img{height:44px;width:auto;margin:-5px 0}.nav-links{display:flex;gap:1.75rem;list-style:none;align-items:center}.nav-links>li>a{font-size:.78rem;font-weight:400;color:#6B6B6B;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;position:relative;padding:.35rem 0;transition:color .2s;display:inline-flex;align-items:center;gap:3px}.nav-links>li>a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#DC2626;transition:width .2s,left .2s}.nav-links>li>a:hover{color:#0A0A0A}.nav-links>li>a:hover::after{width:100%;left:0}.has-dd{position:relative}.has-dd>a{cursor:pointer}.has-dd::after{content:'';position:absolute;top:100%;left:0;right:0;height:16px}.dd{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);min-width:190px;background:#FAFAFA;border:1px solid #D9D9D9;padding:.4rem;list-style:none;box-shadow:0 8px 32px rgba(10,10,10,.1),0 2px 8px rgba(10,10,10,.06);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s}.dd::before{content:'';position:absolute;top:-6px;left:50%;width:12px;height:12px;background:#FAFAFA;border-left:1px solid #D9D9D9;border-top:1px solid #D9D9D9;transform:translateX(-50%) rotate(45deg)}.has-dd:hover .dd,.dd:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}.dd li a{display:block;font-size:.78rem;font-weight:400;color:#6B6B6B;padding:.6rem 1rem;transition:background .15s,color .15s;white-space:nowrap;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;position:relative}.dd li a::after{display:none}.dd li a:hover{background:rgba(239,68,68,.06);color:#DC2626}.dd li+li{margin-top:1px}.nav-cta{display:inline-flex;align-items:center;gap:.4rem;background:#DC2626;color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.5rem 1.25rem;text-decoration:none;transition:background .2s}.nav-cta:hover{background:#B91C1C}.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.75rem;min-width:44px;min-height:44px}.hamburger span{display:block;width:22px;height:2px;background:#0A0A0A;margin:5px 0;transition:all .3s}#mob-menu{display:none;position:absolute;top:64px;left:0;right:0;background:#FAFAFA;border-bottom:1px solid #D9D9D9;padding:1.25rem 1.25rem;flex-direction:column;gap:0;box-shadow:0 12px 24px rgba(10,10,10,.06);min-height:calc(100vh - 64px);overflow-y:auto}#mob-menu.open{display:flex}#mob-menu>a{font-size:.9rem;font-weight:400;color:#0A0A0A;text-decoration:none;padding:.9rem 0;min-height:44px;border-bottom:1px solid #EFEFEF;transition:color .2s}#mob-menu>a:hover{color:#DC2626}.mob-group{padding:.5rem 0;border-bottom:1px solid #EFEFEF}.mob-label{display:block;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#DC2626;padding:0 0 .5rem}.mob-sub{display:inline-block;font-size:.88rem !important;padding:.35rem .75rem !important;margin:.15rem .25rem .15rem 0 !important;color:#6B6B6B !important;border-bottom:none !important;background:rgba(239,68,68,.06);border-radius:0;transition:background .15s,color .15s !important}.mob-sub:hover{background:rgba(239,68,68,.12) !important;color:#DC2626 !important}@media(max-width:767px){.nav-links,.nav-cta-wrap{display:none}.hamburger{display:block}}
+
+    /* ── Buttons ── */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;text-decoration:none;border:none;cursor:pointer;transition:all .2s}.btn-red{background:#DC2626;color:#fff}.btn-red:hover{background:#B91C1C;transform:translateY(-1px)}.btn-ghost{background:transparent;border:1px solid #929292;color:#6B6B6B}.btn-ghost:hover{border-color:#0A0A0A;color:#0A0A0A}.btn-ghost-w{background:transparent;border:1px solid #444;color:#929292}.btn-ghost-w:hover{border-color:#FAFAFA;color:#FAFAFA}.btn-white{background:#FAFAFA;color:#0A0A0A}.btn-white:hover{background:#EFEFEF;transform:translateY(-1px)}
+
+    /* ── Layout ── */
+    .sec{padding:3.5rem 1.25rem}@media(min-width:768px){.sec{padding:5rem 2rem}}@media(min-width:1024px){.sec{padding:6rem 2rem}}.wrap{max-width:1200px;margin:0 auto}.bg-w{background:#FAFAFA;color:#0A0A0A}.bg-b{background:#0A0A0A;color:#FAFAFA}.bg-g{background:#F7F7F7;color:#0A0A0A}
+
+    /* ── Eyebrow ── */
+    .eye{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;font-size:.68rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B}.eye-num{font-family:'Bebas Neue',sans-serif;font-size:.7rem;letter-spacing:.12em;color:#6B6B6B}.bg-b .eye-num{color:#999}.rule{width:40px;height:2px;background:#0A0A0A;display:inline-block}.rule-w{width:40px;height:2px;background:#FAFAFA;display:inline-block;opacity:.3}.rule-r{width:40px;height:2px;background:#DC2626;display:inline-block}.eye-c{justify-content:center}
+
+    /* ── Title ── */
+    .title{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;font-size:clamp(1.75rem,3.5vw,2.75rem);line-height:1.05;letter-spacing:.02em;margin-bottom:1rem}
+
+    /* ── Grids ── */
+    .g2{display:grid;gap:2rem}@media(min-width:768px){.g2{grid-template-columns:1fr 1fr}}.g3{display:grid;gap:1.25rem}@media(min-width:768px){.g3{grid-template-columns:repeat(3,1fr)}}.g4{display:grid;gap:1.25rem}@media(min-width:768px){.g4{grid-template-columns:repeat(2,1fr)}}@media(min-width:1024px){.g4{grid-template-columns:repeat(4,1fr)}}
+    .tc{text-align:center}.gb{display:flex;flex-wrap:wrap;gap:.75rem}
+
+    /* ━━━━ HERO ━━━━ */
+    .hero{display:flex;min-height:92vh;background:#0A0A0A;color:#FAFAFA;position:relative}.hero-l{flex:7;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem clamp(1.5rem,5vw,5rem)}.hero-r{flex:5;background:#111;position:relative;overflow:hidden;display:none}@media(min-width:768px){.hero-r{display:flex;align-items:center;justify-content:center}}
+    .video-ph{width:100%;max-width:280px;aspect-ratio:9/16;background:#1C1C1C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative}.video-ph::after{content:'';position:absolute;inset:0;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}.play-ic{width:60px;height:60px;border:2px solid #FAFAFA;display:flex;align-items:center;justify-content:center}.play-ic svg{margin-left:4px}.vid-label{font-size:.72rem;color:#999;letter-spacing:.1em;text-transform:uppercase}
+    .trust-bar{display:flex;flex-wrap:wrap;gap:1.25rem;padding-top:1.5rem;margin-top:2.5rem;border-top:1px solid #1C1C1C}.trust-item{font-size:.78rem;color:#999;display:flex;align-items:center;gap:.35rem}.trust-item .star{color:#DC2626}
+    @media(max-width:767px){.hero{min-height:85vh}.hero-l{text-align:center;padding:5rem 1.25rem 3rem}.trust-bar{justify-content:center}.gb.hero-btns{justify-content:center}}
+    @keyframes scroll-b{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}.scroll-cue{animation:scroll-b 1.8s ease-in-out infinite}
+
+    /* ━━━━ WORRY CARDS (brutalist) ━━━━ */
+    .worry{border:1px solid #D9D9D9;padding:1.75rem;background:#fff;transition:all .25s}.worry:hover{border-color:#0A0A0A;box-shadow:4px 4px 0 0 #0A0A0A;transform:translate(-2px,-2px)}.worry-ic{width:48px;height:48px;border:1px solid #0A0A0A;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.4rem}.worry h3{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.02em;margin-bottom:.4rem}.worry p{font-size:.88rem;color:#6B6B6B;line-height:1.7}.worry-tick{display:flex;align-items:center;gap:.4rem;margin-top:.75rem;color:#DC2626;font-weight:600;font-size:.8rem}
+
+    /* ━━━━ WHY BACHATA — offset brutalist ━━━━ */
+    .why{border:1px solid #1C1C1C;padding:1.75rem;background:rgba(10,10,10,.7);text-align:left;transition:all .25s}.why:hover{border-color:#FAFAFA;box-shadow:4px 4px 0 0 #FAFAFA;transform:translate(-2px,-2px)}@media(min-width:1024px){.why:nth-child(2),.why:nth-child(4){transform:translateY(1.5rem)}.why:nth-child(2):hover,.why:nth-child(4):hover{transform:translate(-2px,calc(1.5rem - 2px))}}.why .num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:rgba(250,250,248,.08);line-height:1;margin-bottom:.5rem}.why h3{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.02em;margin-bottom:.4rem;color:#FAFAFA}.why p{font-size:.85rem;color:#929292;line-height:1.7}
+
+    /* ━━━━ SOCIAL PROOF (dark) ━━━━ */
+    .proof{position:relative;overflow:hidden}.proof::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(239,68,68,.06) 0%,transparent 50%);pointer-events:none}
+    .hero-quote{border-left:4px solid #DC2626;padding-left:clamp(1.25rem,3vw,2rem);max-width:820px}.hero-quote blockquote{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3.5vw,2.5rem);line-height:1.12;color:#FAFAFA;letter-spacing:.01em}
+    .q-author{display:flex;align-items:center;gap:.75rem;margin-top:1.25rem}.q-avatar{width:44px;height:44px;background:#1C1C1C;border:1px solid #2E2E2E;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;color:#FAFAFA}
+    .mini-rv{background:rgba(250,250,248,.03);border:1px solid #1C1C1C;padding:1.25rem 1.5rem;display:flex;flex-direction:column;transition:border-color .25s}.mini-rv:hover{border-color:#444}.mini-rv q{font-size:.85rem;font-style:italic;color:#929292;line-height:1.7;flex:1;quotes:none}.mini-a{display:flex;align-items:center;gap:.5rem;margin-top:.75rem;padding-top:.75rem;border-top:1px solid #1C1C1C}.mini-av{width:28px;height:28px;background:#1C1C1C;border:1px solid #2E2E2E;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.6rem;color:#929292}
+    .g-pill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(250,250,248,.04);border:1px solid #1C1C1C;padding:.5rem 1.25rem;font-size:.78rem;font-weight:500;color:#929292}
+
+    /* ━━━━ STEPS ━━━━ */
+    .step-c{width:52px;height:52px;border:2px solid #0A0A0A;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#DC2626;flex-shrink:0;transition:all .3s}.step-w:hover .step-c{background:#DC2626;color:#FAFAFA;border-color:#DC2626}
+
+    /* ━━━━ SCHEDULE ━━━━ */
+    .tab{padding:.75rem 1.5rem;min-height:44px;cursor:pointer;font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;border:1px solid #444;background:transparent;color:#929292;transition:all .2s}.tab.active{background:#DC2626;color:#fff;border-color:#DC2626}.panel{display:none}.panel.active{display:block}
+    .sched{border:1px solid #1C1C1C;overflow:hidden}.sched-head{background:#111;padding:1.15rem 1.5rem;display:flex;align-items:center;justify-content:space-between}.sched-head h3{font-family:'Bebas Neue',sans-serif;color:#FAFAFA;font-size:1.25rem;letter-spacing:.03em}.badge{background:rgba(239,68,68,.15);color:#DC2626;font-size:.7rem;font-weight:600;padding:.3rem .9rem;letter-spacing:.06em;text-transform:uppercase}.srow{display:grid;grid-template-columns:85px 1fr;gap:1rem;padding:.75rem 1.5rem;align-items:center;border-bottom:1px solid #1C1C1C}.srow:nth-child(odd){background:rgba(17,17,17,.5)}.stime{font-family:'Bebas Neue',sans-serif;font-size:.95rem;color:#FAFAFA}.sdesc{font-size:.82rem;color:#6B6B6B}.bg-b .sdesc{color:#999}.srow.social .stime{color:#DC2626}.sfoot{padding:1rem 1.5rem;background:#111;font-size:.8rem;color:#999}.sfoot a{color:#DC2626;text-decoration:none;font-weight:500}
+
+    /* ━━━━ LEVEL CARDS ━━━━ */
+    .lvl{border:1px solid #D9D9D9;padding:1.75rem;display:flex;flex-direction:column;background:#fff;transition:all .25s}.lvl:hover{border-color:#0A0A0A;box-shadow:4px 4px 0 0 #0A0A0A;transform:translate(-2px,-2px)}.lvl.hl{background:#DC2626;color:#fff;border-color:#DC2626}.lvl.hl:hover{box-shadow:4px 4px 0 0 #0A0A0A}.lvl .pill{display:inline-block;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:.25rem .7rem;margin-bottom:.75rem;background:#F7F7F7;color:#6B6B6B}.lvl.hl .pill{background:rgba(255,255,255,.2);color:#fff}.lvl h3{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.02em;margin-bottom:.4rem}.lvl .desc{font-size:.82rem;color:#6B6B6B;line-height:1.7;margin-bottom:1rem;flex:1}.lvl.hl .desc{color:rgba(255,255,255,.8)}.lvl .pbox{background:#F7F7F7;padding:.7rem 1rem;margin-bottom:1rem}.lvl.hl .pbox{background:rgba(255,255,255,.15)}
+
+    /* ━━━━ PRICING ━━━━ */
+    .price-card{background:#0A0A0A;border:1px solid #1C1C1C;padding:2.5rem;color:#FAFAFA;position:relative;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.25)}.price-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 90% 10%,rgba(239,68,68,.1) 0%,transparent 50%);pointer-events:none}.price-table{width:100%;border-collapse:collapse;margin:1rem 0}.price-table th{background:#0A0A0A;color:#FAFAFA;padding:.65rem 1rem;font-family:'Bebas Neue',sans-serif;font-size:.85rem;text-align:left;letter-spacing:.04em;border-bottom:1px solid #1C1C1C}.price-table td{padding:.65rem 1rem;font-size:.85rem;border-bottom:1px solid #D9D9D9}
+
+    /* ━━━━ INSTRUCTORS ━━━━ */
+    .team-card{display:flex;align-items:center;gap:1rem;border:1px solid #D9D9D9;padding:1rem;margin:1rem 0}.team-av{width:64px;height:64px;background:linear-gradient(135deg,#444,#0A0A0A);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#FAFAFA;flex-shrink:0}.spill{display:inline-block;font-size:.7rem;font-weight:500;padding:.2rem .55rem;margin-right:.25rem;margin-top:.4rem;background:#F7F7F7;color:#6B6B6B}.pquote{border-left:3px solid #DC2626;padding-left:1.25rem;margin:1rem 0}.pquote p{font-style:italic;font-size:.9rem;line-height:1.65;color:#444}.pquote cite{font-size:.75rem;font-weight:600;color:#DC2626;font-style:normal;display:block;margin-top:.5rem}
+    .steps-box{background:#F7F7F7;padding:clamp(1.5rem,4vw,2.5rem)}.cstep{display:flex;gap:1rem;align-items:flex-start}.cstep-n{width:36px;height:36px;background:#0A0A0A;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#FAFAFA;flex-shrink:0}.cstep-t{font-size:.9rem;font-weight:600;margin-bottom:.1rem}.cstep-d{font-size:.8rem;color:#6B6B6B;line-height:1.6}.cstep-div{height:1px;background:#D9D9D9;margin:.75rem 0}
+
+    /* ━━━━ FAQ ━━━━ */
+    .faq{background:#F7F7F7;border:1px solid #EFEFEF;overflow:hidden;margin-bottom:.6rem}.faq-btn{width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:.88rem;color:#0A0A0A}.faq-chev{width:18px;height:18px;flex-shrink:0;transition:transform .25s;color:#6B6B6B}.faq-chev.rot{transform:rotate(180deg)}.faq-ans{display:none;padding:0 1.25rem 1rem}.faq-ans.open{display:block}.faq-ans p{font-size:.85rem;color:#6B6B6B;line-height:1.7}
+
+    /* ━━━━ FINAL CTA ━━━━ */
+    .cta-final{position:relative;overflow:hidden}.cta-bg{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:clamp(8rem,25vw,20rem);line-height:.85;color:#111;opacity:.6;pointer-events:none;top:50%;left:50%;transform:translate(-50%,-50%);user-select:none;letter-spacing:.05em}
+    .chk{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:#929292}
+
+    /* ━━━━ FOOTER ━━━━ */
+    footer{background:#111;color:#FAFAFA;padding:3.5rem 1.25rem 2rem;border-top:1px solid #1C1C1C}footer a{color:#999;text-decoration:none;transition:color .2s}footer a:hover{color:#FAFAFA}.ft-grid{max-width:1200px;margin:0 auto;display:grid;gap:2rem}@media(min-width:768px){.ft-grid{grid-template-columns:2fr 1fr 1fr 1fr}}.ft-h{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.1em;color:#FAFAFA;margin-bottom:.65rem}.ft-t{font-size:.8rem;color:#999;line-height:1.7}.ft-l{list-style:none;display:flex;flex-direction:column;gap:.35rem}.ft-l a{font-size:.8rem}.ft-bot{max-width:1200px;margin:2rem auto 0;padding-top:1.25rem;border-top:1px solid #1C1C1C;display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.72rem;color:#8A8A8A}
+
+    /* ── WA Float (SQUARE) ── */
+    .waf{position:fixed;bottom:24px;right:24px;z-index:200;width:56px;height:56px;background:#DC2626;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(239,68,68,.4);text-decoration:none;transition:transform .2s,box-shadow .2s;animation:wap 2.4s ease-in-out infinite}.waf:hover{transform:scale(1.08)}@keyframes wap{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 12px rgba(239,68,68,0)}}
+
+    /* ── Sticky Mobile ── */
+    .mob-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:#0A0A0A;border-top:1px solid #1C1C1C;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:center;gap:.5rem}.mob-bar a{color:#DC2626;font-weight:600;font-size:.85rem;text-decoration:none;display:flex;align-items:center;gap:.4rem;text-transform:uppercase;letter-spacing:.06em}@media(min-width:768px){.mob-bar{display:none}}
+  a:focus-visible,.btn:focus-visible,button:focus-visible,.tab:focus-visible,.faq-btn:focus-visible,.nav-cta:focus-visible,.hamburger:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:4px}
+    @media(prefers-reduced-motion:reduce){.reveal,.fade-up{transition:none !important;animation:none !important;opacity:1 !important;transform:none !important}.btn,.btn::before,.worry,.why-card,.lvl,.nav-link::after,.waf,.tab{transition:none !important}}
+    @media(max-width:767px){.waf{display:none}}
+  </style>
+</head>
+<body>
+
+  <!-- TICKER -->
+  <div class="ticker"><div class="ticker-inner"><span class="ticker-t">Free first class <span class="ticker-s">|</span> Reading Wednesdays <span class="ticker-s">|</span> Leicester Tuesdays <span class="ticker-s">|</span> No partner needed <span class="ticker-s">|</span> 5.0 on Google <span class="ticker-s">|</span> ~300 in Reading · ~100 in Leicester <span class="ticker-s">|</span></span><span class="ticker-t">Free first class <span class="ticker-s">|</span> Reading Wednesdays <span class="ticker-s">|</span> Leicester Tuesdays <span class="ticker-s">|</span> No partner needed <span class="ticker-s">|</span> 5.0 on Google <span class="ticker-s">|</span> ~300 in Reading · ~100 in Leicester <span class="ticker-s">|</span></span></div></div>
+
+  <!-- NAV -->
+  <nav id="nav"><div class="nav-in"><a href="#" class="nav-logo"><img src="../../Logos/logo-mark-bold.png" alt="Latin Addiction logo" style="height:44px;width:auto;margin:-5px 0;filter:brightness(0)"><span>LATIN ADDICTION</span></a><ul class="nav-links"><li><a href="#">Home</a></li><li><a href="#">Reading</a></li><li><a href="#">Leicester</a></li><li><a href="#">Pricing</a></li><li class="has-dd"><a href="#">Services <svg width="10" height="10" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-left:2px;opacity:.5;"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="dd"><li><a href="#">Private Coaching</a></li><li><a href="#">Corporate</a></li><li><a href="#">Hire Us</a></li></ul></li><li class="has-dd"><a href="#">About <svg width="10" height="10" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-left:2px;opacity:.5;"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a><ul class="dd"><li><a href="#">Our Story</a></li><li><a href="#">FAQ</a></li><li><a href="#">Reviews</a></li><li><a href="#">Learn</a></li></ul></li></ul><div class="nav-cta-wrap"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="nav-cta">Free class</a></div><button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button></div><div id="mob-menu"><a href="#">Home</a><a href="#">Reading</a><a href="#">Leicester</a><a href="#">Pricing</a><div class="mob-group"><span class="mob-label">Services</span><a href="#" class="mob-sub">Private Coaching</a><a href="#" class="mob-sub">Corporate</a><a href="#" class="mob-sub">Hire Us</a></div><div class="mob-group"><span class="mob-label">About</span><a href="#" class="mob-sub">Our Story</a><a href="#" class="mob-sub">FAQ</a><a href="#" class="mob-sub">Reviews</a><a href="#" class="mob-sub">Learn</a></div><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" style="color:#DC2626;font-weight:600;border:none;margin-top:.5rem;">Claim your free class →</a></div></nav>
+
+  <!-- HERO (split + video) -->
+  <section class="hero">
+    <div class="hero-l">
+      <div class="rv"><div style="display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;"><span class="rule-r"></span><span style="font-size:.68rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:#999;">Bachata dance classes · UK</span></div></div>
+      <h1 class="fd rv d1" style="font-size:clamp(4rem,11vw,10rem);line-height:.9;margin-bottom:1.5rem;"><span style="color:#FAFAFA;">Learn</span><br><span style="color:#D9D9D9;">Bachata</span><br><span style="color:#999;">in Reading &amp;</span><br><span style="color:#999;">Leicester</span></h1>
+      <p class="rv d2" style="font-size:clamp(1rem,1.5vw,1.15rem);color:#929292;line-height:1.65;max-width:420px;margin-bottom:2rem;">The Latin partner dance everyone's falling for.<br>No experience needed. No partner needed.<br>Your first class is <strong style="color:#DC2626;">FREE.</strong></p>
+      <div class="gb hero-btns rv d3" style="margin-bottom:1.25rem;"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-red"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Claim your free class</a><a href="#schedule" class="btn btn-ghost-w">See schedule ↓</a></div>
+      <p class="rv d3" style="font-size:.78rem;"><a href="#pricing" style="color:#999;text-decoration:underline;">Already dance? → Schedule &amp; Pricing</a></p>
+      <div class="trust-bar rv d4"><span class="trust-item"><span class="star">★</span> 5.0 on Google</span><span class="trust-item">~300 in Reading</span><span class="trust-item">~100 in Leicester</span><span class="trust-item">4+ years running</span></div>
+    </div>
+    <div class="hero-r"><div class="video-ph"><div class="play-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="#FAFAFA"><polygon points="8,5 19,12 8,19"/></svg></div><span class="vid-label">Watch: Your first class</span></div></div>
+  </section>
+
+  <!-- WORRY-BUSTERS (white) -->
+  <section class="bg-w sec"><div class="wrap g3">
+    <div class="worry rv"><div class="worry-ic">👫</div><h3>No Partner Needed</h3><p>We rotate partners throughout the class. Most people come alone — you'll dance with everyone and leave knowing half the room.</p><div class="worry-tick"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg> You're welcome to bring a friend, but it's definitely not required.</div></div>
+    <div class="worry rv d1"><div class="worry-ic">🌟</div><h3>No Experience Needed</h3><p>Our beginner class starts from absolute zero, every single session. We break everything down until it clicks. You can't be "too bad" for this.</p><div class="worry-tick"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg> If you can walk, you can Bachata. Seriously.</div></div>
+    <div class="worry rv d2"><div class="worry-ic">🎁</div><h3>Your First Class Is Free</h3><p>No card details. No sign-up form. No commitment. Just message us on WhatsApp, turn up, and dance. That's it.</p><div class="worry-tick"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg> Zero risk. Come see if you like it.</div></div>
+  </div></section>
+
+  <!-- WHY BACHATA (black, offset) -->
+  <section class="bg-b sec"><div class="wrap">
+    <div class="eye eye-c rv"><span style="color:#929292;">Why Bachata</span></div>
+    <h2 class="title tc rv">Why People Fall in Love with Bachata</h2>
+    <div class="g4" style="margin-top:2rem;">
+      <div class="why rv"><div class="num">01</div><h3>A Simple 4-Count Rhythm</h3><p>Side-to-side steps that let you focus on your partner, not your feet. If you can count to four, you're ready.</p></div>
+      <div class="why rv d1"><div class="num">02</div><h3>Music You'll Actually Connect With</h3><p>Guitar-driven, melodic, and emotional. You'll feel the rhythm before you even step onto the floor.</p></div>
+      <div class="why rv d2"><div class="num">03</div><h3>Dance Socially From Night One</h3><p>You'll actually dance at the social party the same night you learn your first steps. Not months from now. Tonight.</p></div>
+      <div class="why rv d3"><div class="num">04</div><h3>Connection Over Choreography</h3><p>Bachata is about how it feels between partners, not flashy footwork. Built for feeling, not performing.</p></div>
+    </div>
+    <p class="rv tc" style="margin-top:2rem;color:#929292;font-size:.88rem;">We teach both lead and follow — you choose which role suits you.</p>
+    <div class="tc rv" style="margin-top:1.25rem;"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-red">Try it free</a></div>
+  </div></section>
+
+  <!-- SOCIAL PROOF (gray, dark-ish) -->
+  <section class="bg-b proof sec"><div class="wrap" style="position:relative;z-index:1;">
+    <div class="eye rv" style="margin-bottom:1.75rem;"><span class="eye-num">03</span><span class="rule-w"></span><span style="color:#999;">What our students say</span></div>
+    <div class="hero-quote rv" style="margin-bottom:2.5rem;">
+      <blockquote>"As a complete beginner, I wasn't sure what to expect, but this dance school is amazing! The instructors were so encouraging, and the class atmosphere was really friendly."</blockquote>
+      <div class="q-author"><div class="q-avatar">G</div><div><p style="font-size:.82rem;font-weight:500;color:#FAFAFA;">G V James</p><p style="font-size:.72rem;color:#999;">Reading · <span style="color:#DC2626;">★★★★★</span></p></div></div>
+    </div>
+    <div class="g3" style="margin-bottom:2rem;">
+      <div class="mini-rv rv d1"><q>"It really feels like you're finding a new dance family. Would 1000% recommend, especially for beginners."</q><div class="mini-a"><div class="mini-av">A</div><div><p style="font-size:.75rem;font-weight:500;color:#FAFAFA;">Amy</p><span style="font-size:.62rem;color:#DC2626;">★★★★★</span></div></div></div>
+      <div class="mini-rv rv d2"><q>"They don't just teach steps — they explain the technique in a way that makes it all click."</q><div class="mini-a"><div class="mini-av">J</div><div><p style="font-size:.75rem;font-weight:500;color:#FAFAFA;">Jonathan</p><span style="font-size:.62rem;color:#DC2626;">★★★★★</span></div></div></div>
+      <div class="mini-rv rv d3"><q>"The teachers are really good. The social at the end is a great way to put learning into practice."</q><div class="mini-a"><div class="mini-av">S</div><div><p style="font-size:.75rem;font-weight:500;color:#FAFAFA;">Siva</p><span style="font-size:.62rem;color:#DC2626;">★★★★★</span></div></div></div>
+    </div>
+    <div class="rv" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;"><span class="g-pill"><span style="color:#DC2626;">★</span> 5.0 on Google Reviews</span><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-red">Try a free class</a></div>
+  </div></section>
+
+  <!-- GETTING STARTED (white) -->
+  <section class="bg-w sec"><div class="wrap tc">
+    <div class="eye eye-c rv"><span class="eye-num">04</span><span class="rule"></span><span>The Process</span></div>
+    <h2 class="title rv">Getting Started Is <span style="color:#DC2626;">Ridiculously Easy</span></h2>
+    <div class="g3" style="margin-top:2rem;">
+      <div class="step-w rv" style="display:flex;flex-direction:column;align-items:center;"><div class="step-c">1</div><h3 class="fd" style="font-size:1.05rem;margin:.75rem 0 .35rem;">Send Us a Message</h3><p style="font-size:.85rem;color:#6B6B6B;">Just say hi on WhatsApp — that's it. We'll confirm the next class and answer any questions.</p></div>
+      <div class="step-w rv d1" style="display:flex;flex-direction:column;align-items:center;"><div class="step-c">2</div><h3 class="fd" style="font-size:1.05rem;margin:.75rem 0 .35rem;">Turn Up</h3><p style="font-size:.85rem;color:#6B6B6B;">Wear something comfortable. No special shoes needed. We'll be expecting you.</p></div>
+      <div class="step-w rv d2" style="display:flex;flex-direction:column;align-items:center;"><div class="step-c">3</div><h3 class="fd" style="font-size:1.05rem;margin:.75rem 0 .35rem;">Dance</h3><p style="font-size:.85rem;color:#6B6B6B;">Your first class is free. Stay for the social party afterwards — that's where the real fun starts.</p></div>
+    </div>
+    <div class="rv" style="margin-top:1.75rem;"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-red">Start here</a></div>
+  </div></section>
+
+  <!-- SCHEDULE (black) -->
+  <section id="schedule" class="bg-b sec"><div class="wrap">
+    <div class="eye rv"><span class="eye-num">05</span><span class="rule-w"></span><span style="color:#999;">Classes</span></div>
+    <h2 class="title rv">When &amp; Where We Dance</h2>
+    <div style="display:flex;gap:.5rem;margin-bottom:1.25rem;" class="rv"><button class="tab active" data-loc="reading">Reading</button><button class="tab" data-loc="leicester">Leicester</button></div>
+    <div class="panel active rv" id="p-reading"><div class="sched"><div class="sched-head"><h3>Reading</h3><span class="badge">Every Wed</span></div><div><div class="srow"><span class="stime">7:45pm</span><span class="sdesc">Doors open</span></div><div class="srow"><span class="stime">8:00pm</span><span class="sdesc">Beginners &amp; Intermediate (two levels at the same time)</span></div><div class="srow"><span class="stime">9:00pm</span><span class="sdesc">Improvers &amp; Advanced (two levels at the same time)</span></div><div class="srow social"><span class="stime">10:00pm</span><span class="sdesc" style="color:#DC2626;font-weight:500;">FREE Social Party</span></div></div><div class="sfoot"><p><strong style="color:#FAFAFA;">Wesley Methodist Church</strong>, 84 Queen's Rd, Reading RG1 4BW</p><p style="margin-top:.3rem;">🅿️ FREE on premises — register at the kiosk to avoid a fine.</p><p style="margin-top:.3rem;"><a href="#">Get directions →</a></p></div></div><div style="margin-top:1.25rem;"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Reading" class="btn btn-red">Join the Reading class</a></div></div>
+    <div class="panel rv" id="p-leicester"><div class="sched"><div class="sched-head"><h3>Leicester</h3><span class="badge">Every Tue</span></div><div><div class="srow"><span class="stime">7:00pm</span><span class="sdesc">Doors open</span></div><div class="srow"><span class="stime">7:15pm</span><span class="sdesc">Beginners (1 hr)</span></div><div class="srow"><span class="stime">8:15pm</span><span class="sdesc">Improver / Intermediate (1 hr)</span></div><div class="srow"><span class="stime">9:15pm</span><span class="sdesc">Intermediate / Advanced (1 hr)</span></div><div class="srow social"><span class="stime">10:15pm</span><span class="sdesc" style="color:#DC2626;font-weight:500;">FREE Social Party</span></div></div><div class="sfoot"><p><strong style="color:#FAFAFA;">Braunstone Frith Recreation Centre</strong>, 29A Sharmon Cres, Leicester LE3 6NW</p><p style="margin-top:.3rem;">🅿️ FREE street parking.</p><p style="margin-top:.3rem;"><a href="#">Get directions →</a></p></div></div><div style="margin-top:1.25rem;"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Leicester" class="btn btn-red">Join the Leicester class</a></div></div>
+  </div></section>
+
+  <!-- CLASS LEVELS (white) -->
+  <section class="bg-w sec"><div class="wrap">
+    <div class="eye eye-c rv"><span class="eye-num">06</span><span class="rule"></span><span>Find Your Level</span></div>
+    <h2 class="title tc rv">Which Level Sounds Like You?</h2>
+    <div class="g4" style="margin-top:1.75rem;">
+      <div class="lvl hl rv"><span class="pill">Start Here</span><h3>Level 1 — Starting From Scratch</h3><p class="desc">Learn the rhythm, basic footwork, and your first partner moves. No experience needed — we start from zero every session.</p><div class="pbox"><p style="font-size:.7rem;opacity:.7;">Included in your</p><p style="font-weight:700;font-size:1.05rem;">FREE first class</p></div><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-white" style="width:100%;justify-content:center;">Claim free class →</a></div>
+      <div class="lvl rv d1"><span class="pill">Building</span><h3>Level 2 — Building Your Style</h3><p class="desc">Turn patterns, connection, and developing your personal style. Dancing with confidence and making it your own.</p><div class="pbox"><p style="font-size:.7rem;color:#6B6B6B;">Drop-in from</p><p style="font-weight:700;font-size:1.05rem;">£10 / night</p></div><a href="#pricing" class="btn btn-ghost" style="width:100%;justify-content:center;">See pricing →</a></div>
+      <div class="lvl rv d2"><span class="pill">Flow</span><h3>Level 3 — Body &amp; Musicality</h3><p class="desc">Body movement, musical interpretation, and social dancing confidence. This is where Bachata starts to feel really good.</p><div class="pbox"><p style="font-size:.7rem;color:#6B6B6B;">Drop-in from</p><p style="font-weight:700;font-size:1.05rem;">£10 / night</p></div><a href="#pricing" class="btn btn-ghost" style="width:100%;justify-content:center;">See pricing →</a></div>
+      <div class="lvl rv d3"><span class="pill">Express</span><h3>Level 4 — Making It Your Own</h3><p class="desc">Layered styling, advanced partner work, and deep musicality. You're not just dancing, you're expressing.</p><div class="pbox"><p style="font-size:.7rem;color:#6B6B6B;">Drop-in from</p><p style="font-weight:700;font-size:1.05rem;">£10 / night</p></div><a href="#pricing" class="btn btn-ghost" style="width:100%;justify-content:center;">See pricing →</a></div>
+    </div>
+  </div></section>
+
+  <!-- PRICING (gray) -->
+  <section id="pricing" class="bg-g sec"><div class="wrap">
+    <div class="eye eye-c rv"><span class="eye-num">07</span><span class="rule"></span><span>Pricing</span></div>
+    <h2 class="title tc rv">Simple, Fair Prices</h2>
+    <p class="tc rv" style="color:#6B6B6B;margin-bottom:2rem;">No hidden fees. No contracts. Pay as you go, or start with our newcomer deal.</p>
+    <div class="rv">
+      <div class="price-card" style="position:relative;z-index:1;"><span class="badge" style="margin-bottom:1rem;display:inline-block;">New here?</span><h3 class="fd" style="font-size:1.35rem;margin-bottom:.75rem;">Start Dancing This Week</h3><p style="color:#929292;margin-bottom:.4rem;"><strong style="color:#FAFAFA;">First class: FREE</strong> — just turn up.</p><p style="color:#929292;margin-bottom:1.5rem;"><strong style="color:#FAFAFA;">4-Week Newcomer Pass: £20</strong> — beginners only, 4 consecutive weeks.</p><div class="gb"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-white">Claim your free class</a><a href="#" class="btn btn-ghost-w">Buy newcomer pass — £20</a></div></div>
+      <div class="rv" style="margin-top:1.75rem;"><h3 class="fd" style="font-size:1.1rem;margin-bottom:.6rem;">Drop-In (Per Night)</h3><table class="price-table"><thead><tr><th>Classes</th><th>Price</th></tr></thead><tbody><tr><td>1 class</td><td><strong>£10</strong></td></tr><tr><td>2 classes</td><td><strong>£15</strong></td></tr></tbody></table><p style="font-size:.8rem;color:#6B6B6B;margin-top:.6rem;">Cash and card accepted at the door. Student &amp; NHS discount available — ask us on WhatsApp.</p><p style="font-size:.88rem;margin-top:.75rem;color:#DC2626;font-weight:500;">Coming regularly? Passes from &pound;8/class.</p><p style="margin-top:.5rem;"><a href="#" style="color:#DC2626;font-weight:500;font-size:.85rem;text-decoration:none;">See all pricing options →</a></p></div>
+    </div>
+  </div></section>
+
+  <!-- INSTRUCTORS (white) -->
+  <section class="bg-w sec"><div class="wrap g2">
+    <div class="rv">
+      <div class="eye"><span class="eye-num">08</span><span class="rule"></span><span>Your Instructors</span></div>
+      <h2 class="title">People Who Actually Care If You Have Fun.</h2>
+      <p style="color:#6B6B6B;font-size:.9rem;line-height:1.7;margin-bottom:.6rem;">The Latin Addiction team have been dancing Bachata for years — but they remember exactly what it felt like to be brand new. They teach with patience, warmth, and a very healthy sense of humour.</p>
+      <p style="color:#6B6B6B;font-size:.9rem;line-height:1.7;">Expect clear instructions, lots of laughs, and a class where you'll actually understand what you're doing — even on your first night.</p>
+      <div class="team-card"><div class="team-av">LA</div><div><p style="font-weight:600;font-size:.92rem;">Latin Addiction Team</p><p style="font-size:.8rem;color:#6B6B6B;">Reading &amp; Leicester · Bachata &amp; Sensual</p><div><span class="spill">Bachata</span><span class="spill">Sensual</span><span class="spill">Beginner-Friendly</span></div></div></div>
+      <div class="pquote"><p>"We're not just here to teach you steps. We're here to make sure you leave every class feeling better than when you arrived."</p><cite>— The Latin Addiction team</cite></div>
+    </div>
+    <div class="rv d1">
+      <div class="steps-box"><h3 class="fd" style="font-size:1.1rem;margin-bottom:1rem;">What a Typical Class Looks Like</h3>
+        <div class="cstep"><div class="cstep-n">01</div><div><p class="cstep-t">Warm welcome</p><p class="cstep-d">Introductions, a quick warmup, no awkward standing around. Everyone here was new once.</p></div></div><div class="cstep-div"></div>
+        <div class="cstep"><div class="cstep-n">02</div><div><p class="cstep-t">Foundation technique</p><p class="cstep-d">The basic step, timing, how to hold frame — broken down until it clicks, not just demonstrated once.</p></div></div><div class="cstep-div"></div>
+        <div class="cstep"><div class="cstep-n">03</div><div><p class="cstep-t">Rotating partners</p><p class="cstep-d">You'll dance with everyone in the room. By the end, you'll have ten new mates.</p></div></div><div class="cstep-div"></div>
+        <div class="cstep"><div class="cstep-n">04</div><div><p class="cstep-t">Social freestyle</p><p class="cstep-d">Class ends, the music stays on. This is where the real magic happens.</p></div></div>
+      </div>
+      <div style="margin-top:1.25rem;"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-red">Claim your free class</a></div>
+    </div>
+  </div></section>
+
+  <!-- FAQ (white) -->
+  <section class="bg-w sec" style="border-top:1px solid #EFEFEF;"><div class="wrap" style="max-width:760px;">
+    <div class="eye eye-c rv"><span class="eye-num">09</span><span class="rule"></span><span>FAQ</span></div>
+    <h2 class="title tc rv">The Questions Everyone Asks First</h2>
+    <div style="margin-top:1.25rem;">
+      <div class="faq rv"><button class="faq-btn"><span>Do I really not need a partner?</span><svg class="faq-chev" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><p>Nope. Most of our students come solo. We rotate partners throughout the class so everyone gets to dance with everyone. You're welcome to bring a friend, but it's definitely not required.</p></div></div>
+      <div class="faq rv"><button class="faq-btn"><span>What should I wear?</span><svg class="faq-chev" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><p>Comfortable clothes you can move in — jeans are fine. Wear clean, smooth-soled shoes if you have them (trainers work too, just avoid anything that grips the floor). No special dance shoes needed.</p></div></div>
+      <div class="faq rv"><button class="faq-btn"><span>Will it be awkward?</span><svg class="faq-chev" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><p>Honestly? The first five minutes might feel a bit new. But the class is structured so you're moving and laughing within minutes. Everyone remembers being a beginner — the room is on your side.</p></div></div>
+      <div class="faq rv"><button class="faq-btn"><span>What's the difference between Bachata and Salsa?</span><svg class="faq-chev" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><p>Both are Latin partner dances, but they feel very different. Salsa is faster and more energetic with complex footwork. Bachata is slower, more intimate, built on a simple side-to-side rhythm. It's widely considered one of the most beginner-friendly Latin dances — you can be dancing socially after one class. We teach Bachata exclusively because we believe in doing one thing really well.</p></div></div>
+      <div class="faq rv"><button class="faq-btn"><span>Do I need to book in advance?</span><svg class="faq-chev" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><p>You can turn up on the night, but we'd love a heads-up. Send us a WhatsApp message and we'll be expecting you — it also means we can answer any questions before you arrive.</p></div></div>
+      <div class="faq rv"><button class="faq-btn"><span>How quickly will I be able to dance socially?</span><svg class="faq-chev" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><p>Tonight. Seriously. Our beginner class teaches you enough to dance at the social party straight after. It won't be perfect — but it'll be fun, and that's the point.</p></div></div>
+      <div class="faq rv"><button class="faq-btn"><span>Is there parking at the venues?</span><svg class="faq-chev" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="faq-ans"><p><strong>Reading:</strong> Free parking on the premises at Wesley Methodist Church. Register your car at the kiosk to avoid a fine.<br><strong>Leicester:</strong> Free street parking around Braunstone Frith Recreation Centre.</p></div></div>
+    </div>
+    <p class="tc rv" style="margin-top:.75rem;"><a href="#" style="color:#DC2626;font-weight:500;text-decoration:none;font-size:.85rem;">See all FAQs →</a></p>
+  </div></section>
+
+  <!-- FINAL CTA (black + big FREE text) -->
+  <section class="bg-b cta-final sec"><div class="cta-bg">FREE</div><div class="wrap tc" style="position:relative;z-index:1;">
+    <div class="eye eye-c rv" style="margin-bottom:1.5rem;"><span class="eye-num">10</span><span class="rule-w"></span><span style="color:#929292;">Classes Running Now</span></div>
+    <h2 class="fd rv" style="font-size:clamp(2rem,5vw,3.5rem);color:#FAFAFA;line-height:1.05;margin-bottom:1rem;">Your Next Tuesday or Wednesday<br>Could Change Everything.</h2>
+    <p class="rv" style="font-size:clamp(1rem,2vw,1.12rem);color:#929292;max-width:500px;margin:0 auto 2rem;line-height:1.7;">One free class. No pressure. Just show up, and let's see what happens.</p>
+    <div class="gb rv" style="justify-content:center;"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="btn btn-red" style="font-size:.95rem;padding:1rem 2.25rem;">Claim your free class</a><a href="tel:07424063798" class="btn btn-ghost-w" style="font-size:.95rem;padding:1rem 2.25rem;">Call 07424 063798</a></div>
+    <div class="rv" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #1C1C1C;">
+      <span class="chk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg> First class free</span>
+      <span class="chk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg> No partner needed</span>
+      <span class="chk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg> Complete beginners welcome</span>
+      <span class="chk"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#DC2626" stroke-width="2" stroke-linecap="round"/></svg> No commitment required</span>
+    </div>
+  </div></section>
+
+  <!-- FOOTER -->
+  <footer><div class="ft-grid"><div><p class="ft-h">LATIN ADDICTION UK</p><p class="ft-t"><strong style="color:#FAFAFA;">Reading:</strong> Wesley Methodist Church, 84 Queen's Rd, Reading RG1 4BW — Wednesdays from 7:45pm</p><p class="ft-t" style="margin-top:.4rem;"><strong style="color:#FAFAFA;">Leicester:</strong> Braunstone Frith Recreation Centre, 29A Sharmon Cres, Leicester LE3 6NW — Tuesdays from 7:00pm</p><p class="ft-t" style="margin-top:.75rem;"><strong style="color:#FAFAFA;">WhatsApp:</strong> 07424 063798<br><strong style="color:#FAFAFA;">Email:</strong> info@latinaddiction.co.uk</p></div><div><p class="ft-h">Pages</p><ul class="ft-l"><li><a href="#">Home</a></li><li><a href="#">Reading</a></li><li><a href="#">Leicester</a></li><li><a href="#">Pricing</a></li><li><a href="#">Classes</a></li></ul></div><div><p class="ft-h">Services</p><ul class="ft-l"><li><a href="#">Private Coaching</a></li><li><a href="#">Corporate</a></li><li><a href="#">Hire Us</a></li></ul></div><div><p class="ft-h">Connect</p><ul class="ft-l"><li><a href="https://www.instagram.com/latinaddictionuk">Instagram</a></li><li><a href="https://www.facebook.com/LatinAddictionUK">Facebook</a></li><li><a href="https://www.tiktok.com/@latin.addiction.uk">TikTok</a></li><li><a href="https://www.youtube.com/@LatinAddictionUK">YouTube</a></li><li><a href="#">Our Story</a></li><li><a href="#">FAQ</a></li><li><a href="#">Reviews</a></li></ul></div></div><div class="ft-bot"><p>Student &amp; NHS discount available — ask us on WhatsApp.</p><p><a href="#">Privacy Policy</a> · © 2026 Latin Addiction UK Ltd</p></div></footer>
+
+  <!-- WA FLOAT (SQUARE) -->
+  <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" class="waf" aria-label="WhatsApp us" target="_blank" rel="noopener"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
+
+  <!-- STICKY MOBILE -->
+  <div class="mob-bar"><a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> Claim your free class</a></div>
+
+  <script>
+    document.querySelectorAll('.faq-btn').forEach(b=>{b.addEventListener('click',()=>{const a=b.nextElementSibling,c=b.querySelector('.faq-chev'),o=a.classList.contains('open');document.querySelectorAll('.faq-ans').forEach(x=>x.classList.remove('open'));document.querySelectorAll('.faq-chev').forEach(x=>x.classList.remove('rot'));if(!o){a.classList.add('open');c.classList.add('rot')}})});
+    document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById('p-'+t.dataset.loc).classList.add('active')})});
+    document.getElementById('ham').addEventListener('click',()=>{document.getElementById('mob-menu').classList.toggle('open')});
+    const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+    window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>10)});
+  </script>
+</body>
+</html>

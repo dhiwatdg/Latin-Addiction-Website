@@ -1,0 +1,30 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Astro
+dist/
+.astro/
+
+# Environment
+.env
+.env.*
+
+# Media (large binary files — keep locally, never commit)
+media/
+
+# Playwright
+.playwright-mcp/
+
+# Build
+.cache/

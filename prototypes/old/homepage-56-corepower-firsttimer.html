@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latin Addiction UK — Free Bachata Class in Reading & Leicester</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            orange: {
+              50:  '#FFF7ED',
+              100: '#FFEDD5',
+              200: '#FED7AA',
+              300: '#FDBA74',
+              400: '#FB923C',
+              500: '#F97316',
+              600: '#EA580C',
+              700: '#C2410C',
+              800: '#9A3412',
+              900: '#7C2D12',
+            },
+            stone: {
+              50:  '#FAFAF9',
+              100: '#F5F5F4',
+              200: '#E7E5E4',
+              300: '#D6D3D1',
+              400: '#A8A29E',
+              500: '#78716C',
+              600: '#57534E',
+              700: '#44403C',
+              800: '#292524',
+              900: '#1C1917',
+            },
+          },
+          fontFamily: {
+            sans:    ['"DM Sans"', 'sans-serif'],
+            display: ['"DM Sans"', 'sans-serif'],
+            body:    ['Poppins', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #FAFAF9;
+      color: #292524;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6, .font-display { font-family: 'DM Sans', sans-serif; }
+
+    /* ─── Sticky nav scroll behaviour ─── */
+    #site-nav {
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+    #site-nav.scrolled {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 #E7E5E4;
+    }
+
+    /* ─── Smooth underline nav links ─── */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: #EA580C;
+      transition: width 0.2s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ─── Hero abstract shape ─── */
+    .hero-blob {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(80px);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    /* ─── Pill badge ─── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Step connector ─── */
+    .step-line::before {
+      content: '';
+      position: absolute;
+      left: 19px; top: 40px;
+      width: 2px;
+      height: calc(100% - 20px);
+      background: #FED7AA;
+    }
+
+    /* ─── Class card hover ─── */
+    .class-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .class-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(234, 88, 12, 0.12);
+    }
+
+    /* ─── CTA pulse ring ─── */
+    @keyframes pulse-ring {
+      0%   { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    .cta-pulse::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 9999px;
+      border: 2px solid #EA580C;
+      animation: pulse-ring 1.8s ease-out infinite;
+    }
+
+    /* ─── Sticky bottom CTA bar ─── */
+    #sticky-cta {
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    #sticky-cta.visible {
+      transform: translateY(0);
+    }
+
+    /* ─── Accordion ─── */
+    .faq-answer {
+      display: none;
+    }
+    .faq-answer.open {
+      display: block;
+    }
+    .faq-chevron {
+      transition: transform 0.2s ease;
+    }
+    .faq-chevron.rotated {
+      transform: rotate(180deg);
+    }
+
+    /* ─── Location tab ─── */
+    .loc-tab { cursor: pointer; }
+    .loc-panel { display: none; }
+    .loc-panel.active { display: block; }
+    .loc-tab.active {
+      background: #EA580C;
+      color: #fff;
+    }
+
+    /* ─── Testimonial carousel ─── */
+    .testimonial-track {
+      display: flex;
+      gap: 1.5rem;
+      transition: transform 0.4s ease;
+    }
+    .testimonial-card {
+      flex: 0 0 100%;
+    }
+    @media(min-width: 768px) {
+      .testimonial-card { flex: 0 0 calc(50% - 0.75rem); }
+    }
+
+    /* ─── Scroll fade in ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════════ -->
+<nav id="site-nav" class="fixed top-0 left-0 right-0 z-50 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 flex-shrink-0">
+      <div class="w-8 h-8 rounded-full bg-orange-600 flex items-center justify-center">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 2C5.8 2 4 3.8 4 6c0 2.8 4 8 4 8s4-5.2 4-8c0-2.2-1.8-4-4-4zm0 5.5c-.8 0-1.5-.7-1.5-1.5S7.2 4.5 8 4.5s1.5.7 1.5 1.5S8.8 7.5 8 7.5z" fill="white"/>
+        </svg>
+      </div>
+      <span class="font-display font-800 text-[15px] tracking-tight text-stone-900" style="font-weight:800;">Latin Addiction <span class="text-orange-600">UK</span></span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#for-newcomers" class="nav-link text-sm font-medium text-stone-700 hover:text-orange-600 transition-colors">First-Timers</a>
+      <a href="#classes"       class="nav-link text-sm font-medium text-stone-700 hover:text-orange-600 transition-colors">Classes</a>
+      <a href="#locations"     class="nav-link text-sm font-medium text-stone-700 hover:text-orange-600 transition-colors">Locations</a>
+      <a href="#pricing"       class="nav-link text-sm font-medium text-stone-700 hover:text-orange-600 transition-colors">Pricing</a>
+      <a href="#faq"           class="nav-link text-sm font-medium text-stone-700 hover:text-orange-600 transition-colors">FAQ</a>
+    </div>
+
+    <!-- Nav CTA -->
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+         target="_blank" rel="noopener"
+         class="hidden sm:inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors relative">
+        <span>Claim free class</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <!-- Mobile hamburger -->
+      <button id="nav-toggle" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5 rounded-lg hover:bg-stone-100 transition-colors">
+        <span class="w-5 h-0.5 bg-stone-800 block"></span>
+        <span class="w-5 h-0.5 bg-stone-800 block"></span>
+        <span class="w-5 h-0.5 bg-stone-800 block"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-stone-100 px-5 py-4 space-y-3">
+    <a href="#for-newcomers" class="block text-sm font-medium text-stone-700 py-2">First-Timers Guide</a>
+    <a href="#classes"       class="block text-sm font-medium text-stone-700 py-2">Classes</a>
+    <a href="#locations"     class="block text-sm font-medium text-stone-700 py-2">Locations</a>
+    <a href="#pricing"       class="block text-sm font-medium text-stone-700 py-2">Pricing</a>
+    <a href="#faq"           class="block text-sm font-medium text-stone-700 py-2">FAQ</a>
+    <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+       target="_blank" rel="noopener"
+       class="block w-full text-center bg-orange-600 text-white text-sm font-semibold px-5 py-3 rounded-full mt-2">
+      Claim free class via WhatsApp
+    </a>
+  </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════════════════
+     HERO — Free trial as the dominant CTA
+════════════════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center overflow-hidden pt-16">
+
+  <!-- Abstract colour blobs -->
+  <div class="hero-blob w-[600px] h-[600px] bg-orange-400 -top-40 -right-40"></div>
+  <div class="hero-blob w-[400px] h-[400px] bg-orange-200 bottom-0 left-0"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-16 items-center">
+
+    <!-- Left: copy -->
+    <div>
+      <!-- Pill badge -->
+      <div class="pill bg-orange-50 text-orange-600 border border-orange-200 mb-6">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="5"/></svg>
+        Your first class is completely free
+      </div>
+
+      <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-stone-900 mb-6">
+        Dance Bachata.<br>
+        <span class="text-orange-600">Start tonight.</span><br>
+        <span class="text-stone-400 text-4xl sm:text-5xl lg:text-6xl font-semibold">No partner needed.</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-stone-600 leading-relaxed mb-8 max-w-lg" style="font-family:'Poppins',sans-serif;">
+        Fun, friendly Bachata nights in <strong class="text-stone-800">Leicester</strong> and <strong class="text-stone-800">Reading</strong>.
+        Start from zero, meet great people, and dance socially the very same night.
+      </p>
+
+      <!-- Primary CTA — dominant -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-10">
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+           target="_blank" rel="noopener"
+           class="relative inline-flex items-center justify-center gap-3 bg-orange-600 hover:bg-orange-700 text-white text-lg font-bold px-8 py-4 rounded-full transition-colors shadow-lg shadow-orange-200 cta-pulse">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C6.03 2 2 6.03 2 11c0 1.6.4 3.1 1.1 4.4L2 20l4.7-1.1A9 9 0 1 0 11 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10.5c.3.7.8 1.4 1.4 1.9.6.6 1.3 1.1 2 1.4l.7-1c.1-.2.4-.3.6-.2.6.2 1.2.5 1.7.9.2.1.3.4.2.6l-.5 1.4c-.1.3-.4.5-.7.5A8 8 0 0 1 7 9.5c0-.3.2-.6.5-.7l1.4-.5c.2-.1.5 0 .6.2.4.5.7 1.1.9 1.7.1.2 0 .5-.2.6z" fill="currentColor"/></svg>
+          Claim my free class
+        </a>
+        <a href="#for-newcomers"
+           class="inline-flex items-center justify-center gap-2 bg-stone-100 hover:bg-stone-200 text-stone-800 text-base font-semibold px-7 py-4 rounded-full transition-colors">
+          First-timer's guide
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l5 5-5 5M2 7h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Trust row -->
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-stone-500">
+        <span class="flex items-center gap-1.5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z" fill="#EA580C"/></svg>
+          5.0 stars on Google
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          No experience required
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          4+ years running
+        </span>
+        <span class="flex items-center gap-1.5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><circle cx="8" cy="8" r="7"/><path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Free social after every class
+        </span>
+      </div>
+    </div>
+
+    <!-- Right: at-a-glance cards -->
+    <div class="flex flex-col gap-5">
+
+      <!-- City finder prompt -->
+      <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6">
+        <p class="font-display font-bold text-stone-900 text-lg mb-1">Find your nearest night</p>
+        <p class="text-sm text-stone-500 mb-4" style="font-family:'Poppins',sans-serif;">Two cities, one community. Jump in any Tuesday or Wednesday.</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <a href="#locations" class="bg-white border-2 border-orange-600 rounded-xl p-4 flex items-start gap-3 hover:bg-orange-50 transition-colors group">
+            <div class="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">L</div>
+            <div>
+              <p class="font-semibold text-stone-900 text-sm">Leicester</p>
+              <p class="text-xs text-stone-500">Tuesdays · 7:15 pm</p>
+              <p class="text-xs text-orange-600 font-semibold mt-0.5 group-hover:underline">See details →</p>
+            </div>
+          </a>
+          <a href="#locations" class="bg-white border-2 border-stone-200 rounded-xl p-4 flex items-start gap-3 hover:border-orange-300 transition-colors group">
+            <div class="w-10 h-10 rounded-full bg-stone-800 text-white flex items-center justify-center font-bold text-sm flex-shrink-0">R</div>
+            <div>
+              <p class="font-semibold text-stone-900 text-sm">Reading</p>
+              <p class="text-xs text-stone-500">Wednesdays · 8:00 pm</p>
+              <p class="text-xs text-orange-600 font-semibold mt-0.5 group-hover:underline">See details →</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- What to expect tonight -->
+      <div class="bg-white border border-stone-200 rounded-2xl p-6 space-y-4">
+        <p class="font-display font-bold text-stone-900">What tonight looks like</p>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-xs font-bold flex-shrink-0">1</div>
+            <p class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;"><strong>Arrive</strong> — doors open 15 min early, no booking needed</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-xs font-bold flex-shrink-0">2</div>
+            <p class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;"><strong>Beginner class</strong> — 1 hour, zero experience assumed</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-xs font-bold flex-shrink-0">3</div>
+            <p class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;"><strong>Free social</strong> — practice what you learned, meet everyone</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 rounded-full bg-orange-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">£0</div>
+            <p class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;"><strong>First class is free.</strong> Pay only if you come back.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FIRST-TIMERS — Dedicated first-class section
+════════════════════════════════════════════════════════ -->
+<section id="for-newcomers" class="py-24 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-16 fade-up">
+      <div class="pill bg-orange-100 text-orange-700 mx-auto mb-5">First-Timers</div>
+      <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-stone-900 mb-4">Built for people<br>who've never danced.</h2>
+      <p class="text-lg text-stone-500 max-w-xl mx-auto" style="font-family:'Poppins',sans-serif;">
+        Every single thing on this page is designed for the person who's standing at the door wondering if they should come in. Yes, you should.
+      </p>
+    </div>
+
+    <!-- Worry-buster grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+      <div class="bg-white rounded-2xl p-7 border border-stone-200 fade-up">
+        <div class="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <p class="font-display font-bold text-stone-900 text-lg mb-2">"I don't have a partner."</p>
+        <p class="text-sm text-stone-600 leading-relaxed" style="font-family:'Poppins',sans-serif;">
+          Most people come alone. We rotate partners throughout the class — you'll dance with everyone. It's the best way to improve fast and it's genuinely how everyone does it.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-7 border border-stone-200 fade-up">
+        <div class="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <p class="font-display font-bold text-stone-900 text-lg mb-2">"I have two left feet."</p>
+        <p class="text-sm text-stone-600 leading-relaxed" style="font-family:'Poppins',sans-serif;">
+          Everyone in the beginners class started exactly where you are. We teach from absolute zero — no steps assumed, no experience required. If you can walk, you can Bachata.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-7 border border-stone-200 fade-up">
+        <div class="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <p class="font-display font-bold text-stone-900 text-lg mb-2">"What should I wear?"</p>
+        <p class="text-sm text-stone-600 leading-relaxed" style="font-family:'Poppins',sans-serif;">
+          Casual clothes are completely fine. Wear something you're comfortable moving in. Flat-soled shoes (trainers are great) or dance shoes work well. No heels needed for beginners.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-7 border border-stone-200 fade-up">
+        <div class="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <p class="font-display font-bold text-stone-900 text-lg mb-2">"Will it be awkward?"</p>
+        <p class="text-sm text-stone-600 leading-relaxed" style="font-family:'Poppins',sans-serif;">
+          Honestly? The first five minutes might feel a bit weird — that's totally normal. By the end of the class, you'll be laughing and wondering why you waited so long to try it.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl p-7 border border-stone-200 fade-up">
+        <div class="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EA580C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <p class="font-display font-bold text-stone-900 text-lg mb-2">"Am I too unfit / too old?"</p>
+        <p class="text-sm text-stone-600 leading-relaxed" style="font-family:'Poppins',sans-serif;">
+          We have students from their 20s to their 60s, all fitness levels. Bachata is low-impact to learn. The class is an hour; the pace is friendly. You set your own intensity.
+        </p>
+      </div>
+
+      <div class="bg-orange-600 rounded-2xl p-7 fade-up text-white">
+        <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center mb-5">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <p class="font-display font-bold text-xl mb-2">Your first class is free.</p>
+        <p class="text-sm text-white/80 leading-relaxed mb-5" style="font-family:'Poppins',sans-serif;">
+          No card details upfront. No commitment. Turn up, try it, love it — then decide. If it's not for you, no hard feelings and no cost.
+        </p>
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 bg-white text-orange-600 font-bold text-sm px-6 py-3 rounded-full hover:bg-orange-50 transition-colors">
+          Claim my free class
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Step-by-step "Your first night" timeline -->
+    <div class="max-w-2xl mx-auto bg-white rounded-3xl border border-stone-200 p-8 sm:p-10 fade-up">
+      <h3 class="font-display font-bold text-2xl text-stone-900 mb-8">Your first night, step by step</h3>
+      <div class="space-y-0">
+
+        <div class="relative flex gap-5 pb-8 step-line">
+          <div class="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 z-10">1</div>
+          <div class="pt-1.5">
+            <p class="font-semibold text-stone-900">Message us on WhatsApp</p>
+            <p class="text-sm text-stone-500 mt-1" style="font-family:'Poppins',sans-serif;">Just say "Hi, I'd like to try a free class." We'll confirm the next session near you and answer any questions.</p>
+          </div>
+        </div>
+
+        <div class="relative flex gap-5 pb-8 step-line">
+          <div class="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 z-10">2</div>
+          <div class="pt-1.5">
+            <p class="font-semibold text-stone-900">Arrive at the door</p>
+            <p class="text-sm text-stone-500 mt-1" style="font-family:'Poppins',sans-serif;">Doors open 15 minutes before class. No booking needed once you've messaged — just walk in. We'll be expecting you.</p>
+          </div>
+        </div>
+
+        <div class="relative flex gap-5 pb-8 step-line">
+          <div class="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 z-10">3</div>
+          <div class="pt-1.5">
+            <p class="font-semibold text-stone-900">Beginners class (1 hour)</p>
+            <p class="text-sm text-stone-500 mt-1" style="font-family:'Poppins',sans-serif;">Everything from scratch. You'll learn the basic rhythm, a few moves, and how to lead or follow. We rotate so you practice with different people.</p>
+          </div>
+        </div>
+
+        <div class="relative flex gap-5 pb-8 step-line">
+          <div class="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 z-10">4</div>
+          <div class="pt-1.5">
+            <p class="font-semibold text-stone-900">Free social dancing</p>
+            <p class="text-sm text-stone-500 mt-1" style="font-family:'Poppins',sans-serif;">After class, the music gets turned up. Practice what you learned, dance with the regulars, and soak up the vibe. It's free, and it's the best part.</p>
+          </div>
+        </div>
+
+        <div class="relative flex gap-5">
+          <div class="w-10 h-10 rounded-full bg-stone-100 border-2 border-dashed border-orange-400 text-orange-600 flex items-center justify-center text-sm font-bold flex-shrink-0">★</div>
+          <div class="pt-1.5">
+            <p class="font-semibold text-stone-900">Come back (optional £20 pass)</p>
+            <p class="text-sm text-stone-500 mt-1" style="font-family:'Poppins',sans-serif;">If you're hooked, our 4-Week Newcomer Pass (£20) keeps the momentum going. No pressure — it's there when you're ready.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FIND YOUR CLASS — Personalisation
+════════════════════════════════════════════════════════ -->
+<section id="classes" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="pill bg-stone-100 text-stone-600 mx-auto mb-5">Find the Right Class</div>
+      <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-stone-900 mb-4">Which level sounds like you?</h2>
+      <p class="text-lg text-stone-500 max-w-lg mx-auto" style="font-family:'Poppins',sans-serif;">
+        We run structured classes for every stage — from "I've never danced" to "I lead complex patterns." You'll always be in the right room.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      <!-- Beginner -->
+      <div class="class-card bg-orange-600 text-white rounded-2xl p-7 flex flex-col fade-up">
+        <div class="pill bg-white/20 text-white self-start mb-5">Start here</div>
+        <h3 class="font-display font-bold text-xl mb-3">Beginner</h3>
+        <p class="text-white/80 text-sm leading-relaxed mb-6 flex-1" style="font-family:'Poppins',sans-serif;">
+          Zero experience assumed. We build the rhythm, basic footwork, and your first partner moves from scratch. Rotational — solo arrivals welcome.
+        </p>
+        <div class="bg-white/10 rounded-xl p-4 mb-5">
+          <p class="text-xs text-white/70 mb-1">Included in your</p>
+          <p class="font-bold text-lg">FREE first class</p>
+        </div>
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" target="_blank" rel="noopener"
+           class="inline-flex items-center justify-center gap-2 bg-white text-orange-600 font-bold text-sm px-5 py-3 rounded-full hover:bg-orange-50 transition-colors">
+          Claim free class
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Improver -->
+      <div class="class-card bg-white border border-stone-200 rounded-2xl p-7 flex flex-col fade-up">
+        <div class="pill bg-stone-100 text-stone-600 self-start mb-5">Building</div>
+        <h3 class="font-display font-bold text-xl text-stone-900 mb-3">Improver</h3>
+        <p class="text-stone-600 text-sm leading-relaxed mb-6 flex-1" style="font-family:'Poppins',sans-serif;">
+          You know the basics and can follow a lead. Now we add turn patterns, connection, and start developing your Bachata style and musicality.
+        </p>
+        <div class="bg-stone-50 rounded-xl p-4 mb-5">
+          <p class="text-xs text-stone-400 mb-1">Drop-in from</p>
+          <p class="font-bold text-lg text-stone-900">£10 / night</p>
+        </div>
+        <a href="#pricing"
+           class="inline-flex items-center justify-center gap-2 border border-stone-300 text-stone-700 font-semibold text-sm px-5 py-3 rounded-full hover:border-orange-400 hover:text-orange-600 transition-colors">
+          See pricing
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Intermediate -->
+      <div class="class-card bg-white border border-stone-200 rounded-2xl p-7 flex flex-col fade-up">
+        <div class="pill bg-stone-100 text-stone-600 self-start mb-5">Progressing</div>
+        <h3 class="font-display font-bold text-xl text-stone-900 mb-3">Intermediate</h3>
+        <p class="text-stone-600 text-sm leading-relaxed mb-6 flex-1" style="font-family:'Poppins',sans-serif;">
+          Solid technique, working on body movement, leading complex combinations, and dancing comfortably at social nights with experienced partners.
+        </p>
+        <div class="bg-stone-50 rounded-xl p-4 mb-5">
+          <p class="text-xs text-stone-400 mb-1">Drop-in from</p>
+          <p class="font-bold text-lg text-stone-900">£15 / night</p>
+        </div>
+        <a href="#pricing"
+           class="inline-flex items-center justify-center gap-2 border border-stone-300 text-stone-700 font-semibold text-sm px-5 py-3 rounded-full hover:border-orange-400 hover:text-orange-600 transition-colors">
+          See pricing
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Advanced -->
+      <div class="class-card bg-white border border-stone-200 rounded-2xl p-7 flex flex-col fade-up">
+        <div class="pill bg-stone-100 text-stone-600 self-start mb-5">Advanced</div>
+        <h3 class="font-display font-bold text-xl text-stone-900 mb-3">Advanced</h3>
+        <p class="text-stone-600 text-sm leading-relaxed mb-6 flex-1" style="font-family:'Poppins',sans-serif;">
+          Deep musicality, layered styling, advanced turn sequences, and high-level partner connection. Push your dancing into genuinely impressive territory.
+        </p>
+        <div class="bg-stone-50 rounded-xl p-4 mb-5">
+          <p class="text-xs text-stone-400 mb-1">Drop-in from</p>
+          <p class="font-bold text-lg text-stone-900">£10–£18 / night</p>
+        </div>
+        <a href="#pricing"
+           class="inline-flex items-center justify-center gap-2 border border-stone-300 text-stone-700 font-semibold text-sm px-5 py-3 rounded-full hover:border-orange-400 hover:text-orange-600 transition-colors">
+          See pricing
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Private coaching callout -->
+    <div class="mt-10 bg-stone-900 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row sm:items-center gap-6 fade-up">
+      <div class="flex-1">
+        <p class="pill bg-white/10 text-white/80 self-start mb-3 inline-flex">1-to-1 Coaching</p>
+        <h3 class="font-display font-bold text-2xl text-white mb-2">Want to accelerate faster?</h3>
+        <p class="text-stone-400 text-sm" style="font-family:'Poppins',sans-serif;">Private Bachata coaching sessions tailored to your goals — technique, musicality, turns, styling, or performance prep. Pre-class slots available in both cities.</p>
+      </div>
+      <div class="flex flex-col gap-3 flex-shrink-0">
+        <p class="text-stone-400 text-xs text-center sm:text-left">From <span class="text-white font-bold text-xl">£40</span> / session</p>
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors">
+          Enquire via WhatsApp
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     LOCATIONS — Studio locator prominent
+════════════════════════════════════════════════════════ -->
+<section id="locations" class="py-24 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="pill bg-orange-100 text-orange-700 mx-auto mb-5">Find Us</div>
+      <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-stone-900 mb-4">Two cities, every week.</h2>
+      <p class="text-lg text-stone-500 max-w-lg mx-auto" style="font-family:'Poppins',sans-serif;">Tap your city to see full details — address, schedule, parking, and how to get in touch.</p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="flex gap-3 justify-center mb-8 fade-up">
+      <button class="loc-tab active font-semibold text-sm px-7 py-3 rounded-full border border-stone-300 transition-colors" data-tab="leicester">Leicester — Tuesdays</button>
+      <button class="loc-tab font-semibold text-sm px-7 py-3 rounded-full border border-stone-300 bg-white text-stone-700 hover:border-orange-400 transition-colors" data-tab="reading">Reading — Wednesdays</button>
+    </div>
+
+    <!-- Leicester panel -->
+    <div id="panel-leicester" class="loc-panel active fade-up">
+      <div class="grid lg:grid-cols-5 gap-6">
+
+        <!-- Map / video placeholder -->
+        <div class="lg:col-span-2 rounded-2xl overflow-hidden min-h-64 bg-stone-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="mx-auto mb-3"><path d="M24 6C16.3 6 10 12.3 10 20c0 10.5 14 26 14 26S38 30.5 38 20C38 12.3 31.7 6 24 6zm0 19a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="#fff"/></svg>
+            <p class="text-white text-sm font-semibold">Braunstone Frith</p>
+            <p class="text-white/70 text-xs">Recreation Centre</p>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4" style="z-index:2;">
+            <a href="https://maps.google.com/?q=Braunstone+Frith+Recreation+Centre+29A+Sharmon+Cres+Leicester+LE3+6NW"
+               target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 bg-white text-stone-800 font-semibold text-sm py-2.5 px-4 rounded-xl shadow-sm hover:bg-stone-50 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#EA580C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1C4.8 1 3 2.8 3 5c0 3.5 4 8 4 8s4-4.5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="7" cy="5" r="1.5"/></svg>
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="lg:col-span-3 grid sm:grid-cols-2 gap-5">
+
+          <div class="bg-white rounded-2xl p-6 border border-stone-200">
+            <p class="text-xs text-stone-400 uppercase tracking-wide font-semibold mb-3">Venue</p>
+            <p class="font-display font-bold text-stone-900 text-lg">Braunstone Frith Recreation Centre</p>
+            <p class="text-stone-600 text-sm mt-1" style="font-family:'Poppins',sans-serif;">29A Sharmon Crescent<br>Leicester, LE3 6NW</p>
+            <p class="text-sm text-orange-600 font-medium mt-3">Free street parking nearby</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-stone-200">
+            <p class="text-xs text-stone-400 uppercase tracking-wide font-semibold mb-3">Every Tuesday</p>
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;">Doors open</span>
+                <span class="font-semibold text-stone-900 text-sm">7:00 pm</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-medium text-orange-600">Beginners <span class="text-orange-400 text-xs">(FREE first)</span></span>
+                <span class="font-bold text-orange-600 text-sm">7:15 pm</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;">Improver / Intermediate</span>
+                <span class="font-semibold text-stone-900 text-sm">8:15 pm</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;">Intermediate / Advanced</span>
+                <span class="font-semibold text-stone-900 text-sm">9:15 pm</span>
+              </div>
+              <div class="flex items-center justify-between border-t border-stone-100 pt-2.5">
+                <span class="text-sm font-medium text-stone-700">Free social party</span>
+                <span class="font-bold text-stone-900 text-sm">10:15 pm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 sm:col-span-2">
+            <p class="font-display font-bold text-stone-900 mb-1">Newcomer tip for Leicester</p>
+            <p class="text-sm text-stone-600 mb-4" style="font-family:'Poppins',sans-serif;">
+              Arrive at 7:00 pm for the 7:15 pm beginners class. You can stay for as many classes as you like — beginners often stay for two. The free party from 10:15 pm is the highlight of the night.
+            </p>
+            <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors">
+              Book my free Tuesday class
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reading panel -->
+    <div id="panel-reading" class="loc-panel fade-up">
+      <div class="grid lg:grid-cols-5 gap-6">
+
+        <!-- Map / video placeholder -->
+        <div class="lg:col-span-2 rounded-2xl overflow-hidden min-h-64 bg-stone-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="mx-auto mb-3"><path d="M24 6C16.3 6 10 12.3 10 20c0 10.5 14 26 14 26S38 30.5 38 20C38 12.3 31.7 6 24 6zm0 19a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" fill="#fff"/></svg>
+            <p class="text-white text-sm font-semibold">Wesley Methodist Church</p>
+            <p class="text-white/70 text-xs">84 Queen's Rd, Reading</p>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4" style="z-index:2;">
+            <a href="https://maps.google.com/?q=Wesley+Methodist+Church+84+Queens+Rd+Reading+RG1+4BW"
+               target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 bg-white text-stone-800 font-semibold text-sm py-2.5 px-4 rounded-xl shadow-sm hover:bg-stone-50 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#EA580C" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 1C4.8 1 3 2.8 3 5c0 3.5 4 8 4 8s4-4.5 4-8c0-2.2-1.8-4-4-4z"/><circle cx="7" cy="5" r="1.5"/></svg>
+              Open in Google Maps
+            </a>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="lg:col-span-3 grid sm:grid-cols-2 gap-5">
+
+          <div class="bg-white rounded-2xl p-6 border border-stone-200">
+            <p class="text-xs text-stone-400 uppercase tracking-wide font-semibold mb-3">Venue</p>
+            <p class="font-display font-bold text-stone-900 text-lg">Wesley Methodist Church</p>
+            <p class="text-stone-600 text-sm mt-1" style="font-family:'Poppins',sans-serif;">84 Queen's Road<br>Reading, RG1 4BW</p>
+            <p class="text-sm text-orange-600 font-medium mt-3">Free on-site parking (register at kiosk)</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-stone-200">
+            <p class="text-xs text-stone-400 uppercase tracking-wide font-semibold mb-3">Every Wednesday</p>
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;">Doors open</span>
+                <span class="font-semibold text-stone-900 text-sm">7:45 pm</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-medium text-orange-600">Beginners &amp; Intermediate <span class="text-orange-400 text-xs">(FREE)</span></span>
+                <span class="font-bold text-orange-600 text-sm">8:00 pm</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-stone-700" style="font-family:'Poppins',sans-serif;">Improvers &amp; Advanced</span>
+                <span class="font-semibold text-stone-900 text-sm">9:00 pm</span>
+              </div>
+              <div class="flex items-center justify-between border-t border-stone-100 pt-2.5">
+                <span class="text-sm font-medium text-stone-700">Free social party</span>
+                <span class="font-bold text-stone-900 text-sm">10:00 pm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 sm:col-span-2">
+            <p class="font-display font-bold text-stone-900 mb-1">Newcomer tip for Reading</p>
+            <p class="text-sm text-stone-600 mb-4" style="font-family:'Poppins',sans-serif;">
+              Arrive at 7:45 pm for the 8:00 pm beginners class. Reading runs two classes simultaneously so you'll always be in a room with other beginners. Register your car at the kiosk on arrival (parking is free but registration avoids fines).
+            </p>
+            <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors">
+              Book my free Wednesday class
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     SOCIAL PROOF
+════════════════════════════════════════════════════════ -->
+<section id="reviews" class="py-24 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 fade-up">
+      <div>
+        <div class="pill bg-orange-100 text-orange-700 mb-4">What People Say</div>
+        <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-stone-900">Real words from<br>first-timers like you.</h2>
+      </div>
+      <div class="flex items-center gap-3 bg-stone-50 border border-stone-200 rounded-2xl px-5 py-4">
+        <div>
+          <div class="flex gap-1 mb-0.5">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          </div>
+          <p class="font-bold text-stone-900 text-lg leading-none">5.0</p>
+        </div>
+        <div class="w-px h-10 bg-stone-200"></div>
+        <div>
+          <p class="text-xs text-stone-400">on Google</p>
+          <p class="font-semibold text-stone-800 text-sm">14 reviews</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonial grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-stone-50 border border-stone-200 rounded-2xl p-7 fade-up">
+        <div class="flex gap-1 mb-4">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+        </div>
+        <p class="text-stone-700 text-sm leading-relaxed mb-5" style="font-family:'Poppins',sans-serif;">
+          "I came alone, not knowing anyone. Within twenty minutes I'd danced with five different people and was laughing my head off. The teacher made everything so clear. I signed up for the newcomer pass the same night."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-600 text-sm">S</div>
+          <div>
+            <p class="font-semibold text-stone-900 text-sm">Sarah M.</p>
+            <p class="text-xs text-stone-400">Reading — complete beginner</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-stone-50 border border-stone-200 rounded-2xl p-7 fade-up">
+        <div class="flex gap-1 mb-4">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="#EA580C"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+        </div>
+        <p class="text-stone-700 text-sm leading-relaxed mb-5" style="font-family:'Poppins',sans-serif;">
+          "I'd been putting this off for two years. Turns out the only thing stopping me was me. First class was free, no pressure, and the vibe was brilliant. I've been going every Tuesday for three months now."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-600 text-sm">J</div>
+          <div>
+            <p class="font-semibold text-stone-900 text-sm">James T.</p>
+            <p class="text-xs text-stone-400">Leicester — now an intermediate</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-orange-600 rounded-2xl p-7 text-white fade-up">
+        <div class="flex gap-1 mb-4">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="rgba(255,255,255,0.8)"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="rgba(255,255,255,0.8)"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="rgba(255,255,255,0.8)"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="rgba(255,255,255,0.8)"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="rgba(255,255,255,0.8)"><path d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10.1 4.4 12l.7-4L2.2 5.2l4-.6z"/></svg>
+        </div>
+        <p class="text-white/90 text-sm leading-relaxed mb-5" style="font-family:'Poppins',sans-serif;">
+          "As someone who's never danced in their life, I was terrified. But the rotation means you're never stuck awkwardly with one person, and everyone was so encouraging. I brought two friends the following week."
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-white text-sm">A</div>
+          <div>
+            <p class="font-semibold text-white text-sm">Amara K.</p>
+            <p class="text-xs text-white/70">Leicester — brought 2 friends</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     PRICING
+════════════════════════════════════════════════════════ -->
+<section id="pricing" class="py-24 bg-stone-50">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="pill bg-stone-200 text-stone-600 mx-auto mb-5">Pricing</div>
+      <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-stone-900 mb-4">Simple, honest pricing.</h2>
+      <p class="text-lg text-stone-500 max-w-xl mx-auto" style="font-family:'Poppins',sans-serif;">Start free. If you love it, the 4-Week Newcomer Pass (£20) is made for you. No hidden fees, no awkward upsells.</p>
+    </div>
+
+    <!-- Newcomer offer — hero -->
+    <div class="bg-white border-2 border-orange-400 rounded-3xl p-8 sm:p-10 mb-8 flex flex-col lg:flex-row lg:items-center gap-8 fade-up">
+      <div class="lg:flex-1">
+        <div class="pill bg-orange-100 text-orange-700 mb-4">Designed for newcomers</div>
+        <h3 class="font-display font-bold text-3xl text-stone-900 mb-3">Start your Bachata journey</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="mt-0.5 flex-shrink-0"><circle cx="9" cy="9" r="8" fill="#EA580C"/><path d="M5.5 9l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-stone-700 text-sm" style="font-family:'Poppins',sans-serif;"><strong>First class is completely free.</strong> No card needed upfront — just turn up.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="mt-0.5 flex-shrink-0"><circle cx="9" cy="9" r="8" fill="#EA580C"/><path d="M5.5 9l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-stone-700 text-sm" style="font-family:'Poppins',sans-serif;"><strong>4-Week Newcomer Pass — £20.</strong> Four weeks of beginners classes to build real confidence.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="mt-0.5 flex-shrink-0"><circle cx="9" cy="9" r="8" fill="#EA580C"/><path d="M5.5 9l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <p class="text-stone-700 text-sm" style="font-family:'Poppins',sans-serif;">Cash or card on the door. Online booking via SumUp store.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col items-center gap-4 lg:items-end">
+        <div class="text-center lg:text-right">
+          <p class="text-5xl font-extrabold font-display text-orange-600">Free</p>
+          <p class="text-stone-500 text-sm">your first visit</p>
+          <p class="text-stone-400 text-xs mt-1">then £20 for 4 weeks</p>
+        </div>
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+           target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-full text-base transition-colors shadow-lg shadow-orange-200">
+          Claim free class
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Drop-in + memberships -->
+    <div class="grid md:grid-cols-3 gap-6 mb-6 fade-up">
+
+      <!-- Drop-in -->
+      <div class="bg-white border border-stone-200 rounded-2xl p-6">
+        <p class="font-display font-bold text-stone-900 text-lg mb-1">Drop-in</p>
+        <p class="text-stone-500 text-xs mb-5" style="font-family:'Poppins',sans-serif;">Pay per night — no commitment</p>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">1 class / night</span>
+            <span class="font-bold text-stone-900">£10</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">2 classes / night</span>
+            <span class="font-bold text-stone-900">£15</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">3 classes / night</span>
+            <span class="font-bold text-stone-900">£18 <span class="text-xs text-stone-400">(Leicester)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-Week -->
+      <div class="bg-white border border-stone-200 rounded-2xl p-6">
+        <p class="font-display font-bold text-stone-900 text-lg mb-1">4-Week Pass</p>
+        <p class="text-stone-500 text-xs mb-5" style="font-family:'Poppins',sans-serif;">Fixed or Flexi — same classes, more flexibility</p>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">1 class/wk — Fixed</span>
+            <span class="font-bold text-stone-900">£36</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">2 classes/wk — Fixed</span>
+            <span class="font-bold text-stone-900">£52</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">1 class/wk — Flexi</span>
+            <span class="font-bold text-stone-900">£38</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">2 classes/wk — Flexi</span>
+            <span class="font-bold text-stone-900">£58</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8-Week -->
+      <div class="bg-white border border-stone-200 rounded-2xl p-6">
+        <p class="font-display font-bold text-stone-900 text-lg mb-1">8-Week Pass</p>
+        <p class="text-stone-500 text-xs mb-5" style="font-family:'Poppins',sans-serif;">Best value — Fixed or Flexi options</p>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">1 class/wk — Fixed</span>
+            <span class="font-bold text-stone-900">£64</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">2 classes/wk — Fixed</span>
+            <span class="font-bold text-stone-900">£92</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">1 class/wk — Flexi</span>
+            <span class="font-bold text-stone-900">£72</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-stone-700">2 classes/wk — Flexi</span>
+            <span class="font-bold text-stone-900">£104</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing note -->
+    <p class="text-center text-xs text-stone-400 fade-up" style="font-family:'Poppins',sans-serif;">
+      Fixed pass = used in consecutive weeks. Flexi = same number of classes, double the calendar window. Leicester offers up to 3 classes/night. Cash &amp; card accepted on the door.
+    </p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════════════ -->
+<section id="faq" class="py-24 bg-white">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="pill bg-stone-100 text-stone-600 mx-auto mb-5">FAQ</div>
+      <h2 class="font-display text-4xl sm:text-5xl font-extrabold text-stone-900 mb-4">Every question<br>first-timers ask.</h2>
+    </div>
+
+    <div class="space-y-3 fade-up">
+
+      <div class="faq-item bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden">
+        <button class="faq-trigger w-full text-left flex items-center justify-between gap-4 px-6 py-5">
+          <span class="font-semibold text-stone-900">Do I really not need a partner?</span>
+          <svg class="faq-chevron w-5 h-5 text-stone-400 flex-shrink-0" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-5">
+          <p class="text-stone-600 text-sm leading-relaxed" style="font-family:'Poppins',sans-serif;">Absolutely not. The majority of people who come to our classes arrive solo. We rotate partners throughout the session — everyone dances with everyone. It actually makes you a better dancer faster, because you're not relying on one person's style.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden">
+        <button class="faq-trigger w-full text-left flex items-center justify-between gap-4 px-6 py-5">
+          <span class="font-semibold text-stone-900">Do I need to book in advance?</span>
+          <svg class="faq-chevron w-5 h-5 text-stone-400 flex-shrink-0" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-5">
+          <p class="text-stone-600 text-sm leading-relaxed" style="font-family:'Poppins',sans-serif;">No booking required — just turn up. We do recommend sending us a quick WhatsApp message first so we know to expect you and can make sure you're in the right place. But there are no reserved spots; every class is walk-in.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden">
+        <button class="faq-trigger w-full text-left flex items-center justify-between gap-4 px-6 py-5">
+          <span class="font-semibold text-stone-900">What is Bachata, exactly?</span>
+          <svg class="faq-chevron w-5 h-5 text-stone-400 flex-shrink-0" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-5">
+          <p class="text-stone-600 text-sm leading-relaxed" style="font-family:'Poppins',sans-serif;">Bachata is a Latin partner dance from the Dominican Republic — think sensual movement, rhythmic footwork, and a close connection with your partner. The music is melodic and emotional, and the dance style is warm and expressive. It's one of the fastest-growing social dances in the UK right now.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden">
+        <button class="faq-trigger w-full text-left flex items-center justify-between gap-4 px-6 py-5">
+          <span class="font-semibold text-stone-900">How quickly will I be able to dance socially?</span>
+          <svg class="faq-chevron w-5 h-5 text-stone-400 flex-shrink-0" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-5">
+          <p class="text-stone-600 text-sm leading-relaxed" style="font-family:'Poppins',sans-serif;">You can dance at the free social party after your very first class. You won't have every move nailed, but you'll know enough to enjoy yourself. Most people feel comfortable dancing socially after 4–6 weeks of regular classes. The 4-Week Newcomer Pass is designed exactly for this transition.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden">
+        <button class="faq-trigger w-full text-left flex items-center justify-between gap-4 px-6 py-5">
+          <span class="font-semibold text-stone-900">What's the age range like?</span>
+          <svg class="faq-chevron w-5 h-5 text-stone-400 flex-shrink-0" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-5">
+          <p class="text-stone-600 text-sm leading-relaxed" style="font-family:'Poppins',sans-serif;">Our community spans 20s to 60s. There's no typical age — we have university students, professionals, retirees, parents, and everyone in between. The vibe is warm and inclusive. Latin dance has a way of making age completely irrelevant.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden">
+        <button class="faq-trigger w-full text-left flex items-center justify-between gap-4 px-6 py-5">
+          <span class="font-semibold text-stone-900">Is there parking at the venues?</span>
+          <svg class="faq-chevron w-5 h-5 text-stone-400 flex-shrink-0" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-5">
+          <p class="text-stone-600 text-sm leading-relaxed" style="font-family:'Poppins',sans-serif;"><strong>Leicester:</strong> Free street parking on Sharmon Crescent and nearby roads — usually easy to find. <br><br><strong>Reading:</strong> Free on-site car park at Wesley Methodist Church. You must register your number plate at the kiosk when you arrive to avoid an automatic fine. We'll remind you on the night.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-stone-50 border border-stone-200 rounded-2xl overflow-hidden">
+        <button class="faq-trigger w-full text-left flex items-center justify-between gap-4 px-6 py-5">
+          <span class="font-semibold text-stone-900">Do you offer private lessons?</span>
+          <svg class="faq-chevron w-5 h-5 text-stone-400 flex-shrink-0" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer px-6 pb-5">
+          <p class="text-stone-600 text-sm leading-relaxed" style="font-family:'Poppins',sans-serif;">Yes. Solo 1-to-1 Bachata coaching is available in both cities, tailored to your specific goals — whether that's technique, timing, body movement, musicality, turns, or styling. Sessions from £40 (off-peak). Pre-class slots are available. Message us on WhatsApp to enquire.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Final push CTA -->
+    <div class="mt-14 bg-stone-900 rounded-3xl p-8 sm:p-12 text-center fade-up">
+      <p class="font-display font-extrabold text-3xl sm:text-4xl text-white mb-3">Still on the fence?</p>
+      <p class="text-stone-400 text-base max-w-md mx-auto mb-8" style="font-family:'Poppins',sans-serif;">Message us. We'll answer any question you have — no sales pitch, no pressure. And remember: your first class is free.</p>
+      <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center gap-3 bg-orange-600 hover:bg-orange-700 text-white font-bold text-lg px-10 py-5 rounded-full transition-colors shadow-xl shadow-orange-900/40">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C6.03 2 2 6.03 2 11c0 1.6.4 3.1 1.1 4.4L2 20l4.7-1.1A9 9 0 1 0 11 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Message us on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════ -->
+<footer class="bg-stone-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 rounded-full bg-orange-600 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M8 2C5.8 2 4 3.8 4 6c0 2.8 4 8 4 8s4-5.2 4-8c0-2.2-1.8-4-4-4zm0 5.5c-.8 0-1.5-.7-1.5-1.5S7.2 4.5 8 4.5s1.5.7 1.5 1.5S8.8 7.5 8 7.5z" fill="white"/></svg>
+          </div>
+          <span class="font-display font-extrabold text-white text-base">Latin Addiction UK</span>
+        </div>
+        <p class="text-stone-400 text-sm leading-relaxed max-w-xs mb-6" style="font-family:'Poppins',sans-serif;">
+          Fun, friendly Bachata nights in Leicester and Reading. Start from zero, meet great people, and learn to dance. First class is always free.
+        </p>
+        <!-- Social icons -->
+        <div class="flex gap-3">
+          <a href="https://www.instagram.com/latinaddictionuk" target="_blank" rel="noopener"
+             class="w-9 h-9 rounded-full bg-white/10 hover:bg-orange-600 flex items-center justify-center transition-colors" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@latin.addiction.uk" target="_blank" rel="noopener"
+             class="w-9 h-9 rounded-full bg-white/10 hover:bg-orange-600 flex items-center justify-center transition-colors" aria-label="TikTok">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.16a8.16 8.16 0 0 0 4.77 1.53V7.24a4.85 4.85 0 0 1-1.01-.55z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/LatinAddictionUK" target="_blank" rel="noopener"
+             class="w-9 h-9 rounded-full bg-white/10 hover:bg-orange-600 flex items-center justify-center transition-colors" aria-label="Facebook">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@LatinAddictionUK" target="_blank" rel="noopener"
+             class="w-9 h-9 rounded-full bg-white/10 hover:bg-orange-600 flex items-center justify-center transition-colors" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Leicester -->
+      <div>
+        <p class="font-display font-bold text-white mb-4">Leicester</p>
+        <div class="space-y-2.5 text-sm text-stone-400" style="font-family:'Poppins',sans-serif;">
+          <p>Braunstone Frith Recreation Centre</p>
+          <p>29A Sharmon Crescent</p>
+          <p>Leicester, LE3 6NW</p>
+          <p class="text-orange-400 font-medium">Tuesdays · Beginners 7:15 pm</p>
+        </div>
+      </div>
+
+      <!-- Reading -->
+      <div>
+        <p class="font-display font-bold text-white mb-4">Reading</p>
+        <div class="space-y-2.5 text-sm text-stone-400" style="font-family:'Poppins',sans-serif;">
+          <p>Wesley Methodist Church</p>
+          <p>84 Queen's Road</p>
+          <p>Reading, RG1 4BW</p>
+          <p class="text-orange-400 font-medium">Wednesdays · Beginners 8:00 pm</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact bar -->
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-5">
+      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-5 text-sm text-stone-500">
+        <a href="mailto:info@latinaddiction.co.uk" class="hover:text-orange-400 transition-colors">info@latinaddiction.co.uk</a>
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class" target="_blank" rel="noopener" class="hover:text-orange-400 transition-colors">07424 063798</a>
+        <a href="https://www.instagram.com/latinaddictionuk" target="_blank" rel="noopener" class="hover:text-orange-400 transition-colors">@latinaddictionuk</a>
+      </div>
+      <p class="text-stone-600 text-sm">&copy; 2026 Latin Addiction UK Ltd.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════════════
+     STICKY BOTTOM CTA BAR (mobile)
+════════════════════════════════════════════════════════ -->
+<div id="sticky-cta" class="fixed bottom-0 left-0 right-0 z-40 p-4 sm:hidden">
+  <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class"
+     target="_blank" rel="noopener"
+     class="flex items-center justify-center gap-3 w-full bg-orange-600 hover:bg-orange-700 text-white font-bold text-base py-4 rounded-2xl shadow-2xl shadow-orange-600/40 transition-colors">
+    <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><path d="M11 2C6.03 2 2 6.03 2 11c0 1.6.4 3.1 1.1 4.4L2 20l4.7-1.1A9 9 0 1 0 11 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+    Claim my free class
+  </a>
+</div>
+
+
+<!-- ════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════ -->
+<script>
+  // ── Nav scroll class
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+  // ── Mobile nav toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  navToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+  });
+
+  // ── Sticky bottom CTA
+  const stickyCta = document.getElementById('sticky-cta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      stickyCta.classList.add('visible');
+    } else {
+      stickyCta.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // ── Location tabs
+  document.querySelectorAll('.loc-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      // Deactivate all
+      document.querySelectorAll('.loc-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.loc-panel').forEach(p => p.classList.remove('active'));
+      // Activate clicked
+      tab.classList.add('active');
+      document.getElementById('panel-' + target).classList.add('active');
+    });
+  });
+
+  // ── FAQ accordion
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const chevron = item.querySelector('.faq-chevron');
+      const isOpen = answer.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+      document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotated'));
+
+      // Toggle current
+      if (!isOpen) {
+        answer.classList.add('open');
+        chevron.classList.add('rotated');
+      }
+    });
+  });
+
+  // ── Scroll fade-in
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
