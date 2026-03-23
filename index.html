@@ -19,7 +19,7 @@
       flex-direction: column;
     }
 
-    /* Tab navigation */
+    /* Tab navigation (desktop) */
     .tabs {
       background: #fff;
       border-bottom: 1px solid #e0e0e0;
@@ -64,26 +64,6 @@
       border-bottom-color: #1a1a1a;
     }
 
-    /* Mobile dropdown (hidden on desktop) */
-    .mobile-select-wrap {
-      display: none;
-      padding: 0.75rem 1rem;
-      background: #fff;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .mobile-select {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      font-size: 0.9rem;
-      font-family: inherit;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #fafafa;
-      color: #1a1a1a;
-      cursor: pointer;
-      appearance: auto;
-    }
-
     /* Preview iframe */
     .preview {
       flex: 1;
@@ -107,10 +87,65 @@
       font-size: 0.9rem;
     }
 
+    /* Floating design switcher (mobile) */
+    .fab {
+      display: none;
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transition: transform 0.2s, background 0.2s;
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .fab:hover { background: #333; }
+    .fab.open { transform: rotate(45deg); }
+
+    .fab-menu {
+      display: none;
+      position: fixed;
+      bottom: 5rem;
+      right: 1.5rem;
+      background: #1a1a1a;
+      border-radius: 14px;
+      padding: 0.5rem 0;
+      z-index: 999;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      min-width: 180px;
+    }
+    .fab-menu.open { display: block; }
+    .fab-item {
+      display: block;
+      width: 100%;
+      padding: 0.7rem 1.25rem;
+      font-size: 0.88rem;
+      font-family: inherit;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .fab-item:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .fab-item.active {
+      color: #fff;
+      font-weight: 600;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .tabs { display: none; }
-      .mobile-select-wrap { display: block; }
+      .fab { display: flex; align-items: center; justify-content: center; }
     }
   </style>
 </head>
@@ -134,31 +169,32 @@
     </div>
   </div>
 
-  <!-- Mobile select -->
-  <div class="mobile-select-wrap">
-    <select class="mobile-select" aria-label="Choose a design">
-      <option value="homepage-design-01v1.html" selected>Warm Earthy</option>
-      <option value="homepage-design-01v2.html">Cream Navy</option>
-      <option value="homepage-design-01v3.html">Teal Coral</option>
-      <option value="homepage-design-02v3.html">Broadway Rose</option>
-      <option value="homepage-design-02v1.html">Dark Gold</option>
-      <option value="homepage-design-02v2.html">Sunset Fire</option>
-      <option value="homepage-design-03v1.html">Mono Brutalist</option>
-      <option value="homepage-design-03v2.html">Dark Elegant</option>
-    </select>
-  </div>
-
   <!-- Preview -->
   <div class="preview">
     <div class="preview-loading" id="loading">Loading design...</div>
     <iframe id="preview-frame" title="Design preview"></iframe>
   </div>
 
+  <!-- Mobile floating button + menu -->
+  <button class="fab" id="fab" aria-label="Switch design">+</button>
+  <div class="fab-menu" id="fab-menu">
+    <button class="fab-item active" data-design="homepage-design-01v1.html">Warm Earthy</button>
+    <button class="fab-item" data-design="homepage-design-01v2.html">Cream Navy</button>
+    <button class="fab-item" data-design="homepage-design-01v3.html">Teal Coral</button>
+    <button class="fab-item" data-design="homepage-design-02v3.html">Broadway Rose</button>
+    <button class="fab-item" data-design="homepage-design-02v1.html">Dark Gold</button>
+    <button class="fab-item" data-design="homepage-design-02v2.html">Sunset Fire</button>
+    <button class="fab-item" data-design="homepage-design-03v1.html">Mono Brutalist</button>
+    <button class="fab-item" data-design="homepage-design-03v2.html">Dark Elegant</button>
+  </div>
+
   <script>
     const frame = document.getElementById('preview-frame');
     const loading = document.getElementById('loading');
     const tabs = document.querySelectorAll('.tab');
-    const select = document.querySelector('.mobile-select');
+    const fab = document.getElementById('fab');
+    const fabMenu = document.getElementById('fab-menu');
+    const fabItems = document.querySelectorAll('.fab-item');
 
     function loadDesign(file) {
       loading.style.display = 'flex';
@@ -176,18 +212,35 @@
       tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        select.value = tab.dataset.design;
+        fabItems.forEach(f => f.classList.toggle('active', f.dataset.design === tab.dataset.design));
         loadDesign(tab.dataset.design);
       });
     });
 
-    // Mobile select
-    select.addEventListener('change', () => {
-      const file = select.value;
-      tabs.forEach(t => {
-        t.classList.toggle('active', t.dataset.design === file);
+    // Mobile FAB
+    fab.addEventListener('click', () => {
+      fab.classList.toggle('open');
+      fabMenu.classList.toggle('open');
+    });
+
+    fabItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const file = item.dataset.design;
+        fabItems.forEach(f => f.classList.remove('active'));
+        item.classList.add('active');
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.design === file));
+        loadDesign(file);
+        fab.classList.remove('open');
+        fabMenu.classList.remove('open');
       });
-      loadDesign(file);
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!fab.contains(e.target) && !fabMenu.contains(e.target)) {
+        fab.classList.remove('open');
+        fabMenu.classList.remove('open');
+      }
     });
 
     // Load first design on page load
