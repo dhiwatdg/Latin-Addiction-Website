@@ -108,49 +108,10 @@
       font-size: 0.9rem;
     }
 
-    /* Vote CTA bar */
-    .vote-bar {
-      background: #1a1a1a;
-      padding: 0.85rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-    .vote-bar p {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.82rem;
-    }
-    .vote-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #fff;
-      color: #1a1a1a;
-      font-family: inherit;
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 0.65rem 1.5rem;
-      border-radius: 100px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .vote-btn:hover {
-      background: #f0f0f0;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .tabs { display: none; }
       .mobile-select-wrap { display: block; }
-      .vote-bar { flex-direction: column; text-align: center; padding: 0.75rem 1rem; }
-      .vote-bar p { font-size: 0.78rem; }
     }
   </style>
 </head>
@@ -194,14 +155,6 @@
   <div class="preview">
     <div class="preview-loading" id="loading">Loading design...</div>
     <iframe id="preview-frame" title="Design preview"></iframe>
-  </div>
-
-  <!-- Vote bar -->
-  <div class="vote-bar">
-    <p>Seen enough? Pick your favourite(s) and leave any feedback.</p>
-    <a href="#vote" target="_blank" rel="noopener" class="vote-btn" id="vote-link">
-      Cast your vote →
-    </a>
   </div>
 
   <script>
