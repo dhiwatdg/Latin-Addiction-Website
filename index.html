@@ -19,26 +19,6 @@
       flex-direction: column;
     }
 
-    /* Header */
-    .header {
-      background: #fff;
-      border-bottom: 1px solid #e0e0e0;
-      padding: 1.5rem 1.5rem 1rem;
-      text-align: center;
-    }
-    .header h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-    .header p {
-      font-size: 0.88rem;
-      color: #666;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
     /* Tab navigation */
     .tabs {
       background: #fff;
@@ -49,28 +29,6 @@
       gap: 0;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-    }
-    .tab-group {
-      display: flex;
-      align-items: stretch;
-      position: relative;
-    }
-    .tab-group + .tab-group::before {
-      content: '';
-      width: 1px;
-      background: #e0e0e0;
-      margin: 0.6rem 0;
-    }
-    .tab-group-label {
-      display: flex;
-      align-items: center;
-      padding: 0 0.75rem;
-      font-size: 0.68rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #999;
-      white-space: nowrap;
     }
     .tab {
       display: flex;
@@ -178,8 +136,6 @@
     @media (max-width: 768px) {
       .tabs { display: none; }
       .mobile-select-wrap { display: block; }
-      .header h1 { font-size: 1.15rem; }
-      .header p { font-size: 0.82rem; }
       .vote-bar { flex-direction: column; text-align: center; padding: 0.75rem 1rem; }
       .vote-bar p { font-size: 0.78rem; }
     }
@@ -187,49 +143,29 @@
 </head>
 <body>
 
-  <div class="header">
-    <h1>Latin Addiction — Homepage Design Review</h1>
-    <p>Browse each design below, then cast your vote. Click the tabs to switch between designs — take your time scrolling through each one!</p>
-  </div>
-
   <!-- Desktop tabs -->
   <div class="tabs" role="tablist">
-    <div class="tab-group">
-      <span class="tab-group-label">Warm & Light</span>
-      <button class="tab active" role="tab" data-design="homepage-design-01v1.html">Warm Earthy</button>
-      <button class="tab" role="tab" data-design="homepage-design-01v2.html">Cream Navy</button>
-      <button class="tab" role="tab" data-design="homepage-design-01v3.html">Teal Coral</button>
-    </div>
-    <div class="tab-group">
-      <span class="tab-group-label">Dark & Bold</span>
-      <button class="tab" role="tab" data-design="homepage-design-02v1.html">Dark Gold</button>
-      <button class="tab" role="tab" data-design="homepage-design-02v2.html">Sunset Fire</button>
-      <button class="tab" role="tab" data-design="homepage-design-02v3.html">Broadway Rose</button>
-    </div>
-    <div class="tab-group">
-      <span class="tab-group-label">Experimental</span>
-      <button class="tab" role="tab" data-design="homepage-design-03v1.html">Mono Brutalist</button>
-      <button class="tab" role="tab" data-design="homepage-design-03v2.html">Dark Elegant</button>
-    </div>
+    <button class="tab active" role="tab" data-design="homepage-design-01v1.html">Warm Earthy</button>
+    <button class="tab" role="tab" data-design="homepage-design-01v2.html">Cream Navy</button>
+    <button class="tab" role="tab" data-design="homepage-design-01v3.html">Teal Coral</button>
+    <button class="tab" role="tab" data-design="homepage-design-02v1.html">Dark Gold</button>
+    <button class="tab" role="tab" data-design="homepage-design-02v2.html">Sunset Fire</button>
+    <button class="tab" role="tab" data-design="homepage-design-02v3.html">Broadway Rose</button>
+    <button class="tab" role="tab" data-design="homepage-design-03v1.html">Mono Brutalist</button>
+    <button class="tab" role="tab" data-design="homepage-design-03v2.html">Dark Elegant</button>
   </div>
 
   <!-- Mobile select -->
   <div class="mobile-select-wrap">
     <select class="mobile-select" aria-label="Choose a design">
-      <optgroup label="Warm & Light">
-        <option value="homepage-design-01v1.html" selected>Warm Earthy</option>
-        <option value="homepage-design-01v2.html">Cream Navy</option>
-        <option value="homepage-design-01v3.html">Teal Coral</option>
-      </optgroup>
-      <optgroup label="Dark & Bold">
-        <option value="homepage-design-02v1.html">Dark Gold</option>
-        <option value="homepage-design-02v2.html">Sunset Fire</option>
-        <option value="homepage-design-02v3.html">Broadway Rose</option>
-      </optgroup>
-      <optgroup label="Experimental">
-        <option value="homepage-design-03v1.html">Mono Brutalist</option>
-        <option value="homepage-design-03v2.html">Dark Elegant</option>
-      </optgroup>
+      <option value="homepage-design-01v1.html" selected>Warm Earthy</option>
+      <option value="homepage-design-01v2.html">Cream Navy</option>
+      <option value="homepage-design-01v3.html">Teal Coral</option>
+      <option value="homepage-design-02v1.html">Dark Gold</option>
+      <option value="homepage-design-02v2.html">Sunset Fire</option>
+      <option value="homepage-design-02v3.html">Broadway Rose</option>
+      <option value="homepage-design-03v1.html">Mono Brutalist</option>
+      <option value="homepage-design-03v2.html">Dark Elegant</option>
     </select>
   </div>
 
