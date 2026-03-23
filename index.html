@@ -23,12 +23,25 @@
     .tabs {
       background: #fff;
       border-bottom: 1px solid #e0e0e0;
-      padding: 0 1rem;
+      padding: 0;
       display: flex;
       align-items: stretch;
+      justify-content: center;
       gap: 0;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+    }
+    .tab-group {
+      display: flex;
+      align-items: stretch;
+      flex: 1;
+      justify-content: center;
+    }
+    .tab-group + .tab-group::before {
+      content: '';
+      width: 1px;
+      background: #e0e0e0;
+      margin: 0.6rem 0;
     }
     .tab {
       display: flex;
@@ -145,14 +158,20 @@
 
   <!-- Desktop tabs -->
   <div class="tabs" role="tablist">
-    <button class="tab active" role="tab" data-design="homepage-design-01v1.html">Warm Earthy</button>
-    <button class="tab" role="tab" data-design="homepage-design-01v2.html">Cream Navy</button>
-    <button class="tab" role="tab" data-design="homepage-design-01v3.html">Teal Coral</button>
-    <button class="tab" role="tab" data-design="homepage-design-02v1.html">Dark Gold</button>
-    <button class="tab" role="tab" data-design="homepage-design-02v2.html">Sunset Fire</button>
-    <button class="tab" role="tab" data-design="homepage-design-02v3.html">Broadway Rose</button>
-    <button class="tab" role="tab" data-design="homepage-design-03v1.html">Mono Brutalist</button>
-    <button class="tab" role="tab" data-design="homepage-design-03v2.html">Dark Elegant</button>
+    <div class="tab-group">
+      <button class="tab active" role="tab" data-design="homepage-design-01v1.html">Warm Earthy</button>
+      <button class="tab" role="tab" data-design="homepage-design-01v2.html">Cream Navy</button>
+      <button class="tab" role="tab" data-design="homepage-design-01v3.html">Teal Coral</button>
+      <button class="tab" role="tab" data-design="homepage-design-02v3.html">Broadway Rose</button>
+    </div>
+    <div class="tab-group">
+      <button class="tab" role="tab" data-design="homepage-design-02v1.html">Dark Gold</button>
+      <button class="tab" role="tab" data-design="homepage-design-02v2.html">Sunset Fire</button>
+    </div>
+    <div class="tab-group">
+      <button class="tab" role="tab" data-design="homepage-design-03v1.html">Mono Brutalist</button>
+      <button class="tab" role="tab" data-design="homepage-design-03v2.html">Dark Elegant</button>
+    </div>
   </div>
 
   <!-- Mobile select -->
@@ -161,9 +180,11 @@
       <option value="homepage-design-01v1.html" selected>Warm Earthy</option>
       <option value="homepage-design-01v2.html">Cream Navy</option>
       <option value="homepage-design-01v3.html">Teal Coral</option>
+      <option value="homepage-design-02v3.html">Broadway Rose</option>
+      <option disabled>───────────</option>
       <option value="homepage-design-02v1.html">Dark Gold</option>
       <option value="homepage-design-02v2.html">Sunset Fire</option>
-      <option value="homepage-design-02v3.html">Broadway Rose</option>
+      <option disabled>───────────</option>
       <option value="homepage-design-03v1.html">Mono Brutalist</option>
       <option value="homepage-design-03v2.html">Dark Elegant</option>
     </select>
