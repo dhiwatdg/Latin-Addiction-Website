@@ -16,7 +16,9 @@ New website for **Latin Addiction UK**, a Bachata dance school with locations in
 - **Design doc (SINGLE SOURCE OF TRUTH):** `docs/plans/2026-03-21-website-design.md` — all design decisions, content specs, technical requirements
 - **BUILD-PLAN.md** — partially stale (hosting/payments/nav superseded by design doc), but Astro project structure + verification checklists still valid
 - **Archived plans:** `docs/plans/archive/` — superseded brainstorming docs
-- **Prototypes (active):** `prototypes/new/` — 8 homepage design prototypes (3 designs × 3 variants, minus content draft). `homepage-design-01v1.html` is the reference file (Design A — Warm Earthy). All 8 prototypes are fully synced (content/structure/UX), WCAG AA contrast-fixed, and have palette-matched nav logos. Prototype phase complete — ready for design selection. See memory for intentional spec deviations.
+- **Prototypes (active):** `prototypes/new/` — 12 homepage design prototypes (A-L). A-H are the original 8 (3 design families, synced/contrast-fixed/logo-matched). I-L are purple/gold brand palette variants (I/J based on B's warm layout, K/L based on F's cinematic layout). See memory for intentional spec deviations.
+- **Video prototypes:** `prototypes/video/` — 9 files showing video integration in designs B, F, G (3 variants each: poster, play button, autoplay simulation). For post-vote exploration.
+- **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero, encoding pipeline, Astro components. Challenged by Gemini/GPT/Perplexity.
 - **Contrast fixes plan:** `docs/plans/2026-03-22-palette-contrast-fixes.md` — audit results + exact CSS fixes applied per file
 - **Prototypes (old):** `prototypes/old/` — 13 earlier prototypes from brainstorming phase, kept for CSS pattern reference
 - **Homepage content draft (APPROVED):** `prototypes/new/homepage-content-draft.html` — v2, fully reviewed/fact-checked/challenged. Ready for design phase.
