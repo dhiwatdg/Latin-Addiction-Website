@@ -1,0 +1,483 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { newcomerPass, dropInProducts, membershipRows } from '../data/pricing';
+import { whatsappUrl } from '../data/locations';
+
+const waUrl = whatsappUrl("Hi! I'd like to find out about pricing for Latin Addiction classes");
+const formatPrice = (pence: number) => `£${(pence / 100).toFixed(0)}`;
+---
+
+<BaseLayout
+  title="Dance Class Prices | Latin Addiction UK"
+  description="Transparent pricing for Bachata and Salsa classes in Milton Keynes, Leicester, and Reading. Drop-in from £10. 4 and 8-week memberships available. First class always free."
+>
+
+  {/* ── HERO ── */}
+  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[42vh] px-5 py-14 md:px-8 md:py-20">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center md:text-left">
+      <div data-reveal class="flex items-center gap-3 mb-3 justify-center md:justify-start">
+        <span class="hidden md:block w-12 h-[3px] bg-rose-light rounded-sm" aria-hidden="true"></span>
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">Pricing</span>
+      </div>
+      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-5 text-[clamp(2.5rem,6vw,4.5rem)]">
+        Simple, transparent pricing
+      </h1>
+      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[540px] mb-8 mx-auto md:mx-0">
+        Your first class is always free. After that, pay as you go or save with a membership pass.
+      </p>
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center md:justify-start">
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">Claim your free class</a>
+        <a href="#memberships" class="btn-white-outline">See memberships ↓</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── NEWCOMER OFFER ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[800px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Best for beginners</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">
+        The newcomer offer
+      </h2>
+      <div data-reveal data-reveal-delay="2" class="bg-dark text-white rounded-[20px] p-7 md:p-10 relative overflow-hidden">
+        <div class="hero-glow-left opacity-50" aria-hidden="true"></div>
+        <div class="relative z-10">
+          <div class="flex flex-wrap items-start justify-between gap-6">
+            <div>
+              <p class="text-rose-light text-[0.8rem] font-bold uppercase tracking-[0.1em] mb-2">Step 1</p>
+              <p class="font-display font-bold text-[1.6rem] leading-[1.15] mb-1">First class FREE</p>
+              <p class="text-white/60 text-[0.92rem]">Just show up. No payment, no commitment.</p>
+            </div>
+            <div class="h-px md:h-auto md:w-px bg-white/10 self-stretch hidden md:block" aria-hidden="true"></div>
+            <div>
+              <p class="text-rose-light text-[0.8rem] font-bold uppercase tracking-[0.1em] mb-2">Step 2 — loved it?</p>
+              <p class="font-display font-bold text-[1.6rem] leading-[1.15] mb-1">
+                4-Week Pass — <span class="text-rose-light">{formatPrice(newcomerPass.amountPence)}</span>
+              </p>
+              <p class="text-white/60 text-[0.92rem] mb-5">
+                4 consecutive weekly classes. Beginners only. All locations.
+              </p>
+              <button
+                class="btn-rose btn-checkout"
+                data-product-id={newcomerPass.id}
+                data-amount={newcomerPass.amountPence}
+                data-description={newcomerPass.checkoutDescription}
+              >
+                Buy newcomer pass — {formatPrice(newcomerPass.amountPence)}
+              </button>
+            </div>
+          </div>
+          <div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap gap-4">
+            {(['First class free', 'No partner needed', 'All locations', 'Beginners only'] as const).map(item => (
+              <span class="text-[0.8rem] text-white/50 flex items-center gap-1.5">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── DROP-IN ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[800px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Pay as you go</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-3">
+        Drop-in prices
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-muted text-[0.95rem] mb-8">
+        No commitment. Turn up when you can.
+      </p>
+
+      {/* MK */}
+      <div data-reveal class="mb-5 bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6 md:p-8">
+        <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-muted mb-1">Milton Keynes — Mondays</p>
+        <p class="font-display font-bold text-[1.4rem] mb-2">
+          £10 <span class="font-body font-normal text-muted text-[0.95rem]">for the night</span>
+        </p>
+        <p class="text-[0.88rem] text-muted mb-4">
+          Includes Bachata <em>and</em> Salsa (2 classes + free social party). One flat price.
+        </p>
+        <button
+          class="btn-rose btn-checkout"
+          data-product-id="dropin-mk"
+          data-amount="1000"
+          data-description="Latin Addiction MK – 1-night ticket (Bachata + Salsa)"
+        >
+          Buy MK night ticket — £10
+        </button>
+      </div>
+
+      {/* Leicester & Reading */}
+      <div data-reveal data-reveal-delay="1" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6 md:p-8">
+        <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-muted mb-1">Leicester & Reading</p>
+        <p class="text-[0.88rem] text-muted mb-5">Choose how many classes you want on the night.</p>
+        <div class="grid gap-3 sm:grid-cols-3">
+          {dropInProducts.filter(p => p.locations !== 'mk').map((product) => (
+            <div class="border border-[#e8e8e8] rounded-[14px] p-4">
+              <p class="font-display font-bold text-[1.3rem] mb-0.5">{formatPrice(product.amountPence)}</p>
+              <p class="text-muted text-[0.85rem] mb-3">
+                {product.id === 'dropin-1class' && '1 class'}
+                {product.id === 'dropin-2class' && '2 classes'}
+                {product.id === 'dropin-3class' && <>3 classes <span class="text-[0.75rem]">(Leicester only)</span></>}
+              </p>
+              <button
+                class="btn-rose btn-checkout text-[0.82rem]"
+                style="padding:0.6rem 1.2rem;"
+                data-product-id={product.id}
+                data-amount={product.amountPence}
+                data-description={product.checkoutDescription}
+              >
+                Buy
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── MEMBERSHIPS ── */}
+  <section id="memberships" class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[900px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Save more, dance more</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-3">
+        Membership passes
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-muted text-[0.95rem] mb-2">
+        Leicester & Reading only. Choose a 4-week or 8-week block.
+      </p>
+      <p data-reveal data-reveal-delay="3" class="text-muted text-[0.88rem] mb-8">
+        <strong>Fixed</strong> — use in consecutive weeks at the lower price.
+        <strong class="ml-3">Flexi</strong> — same classes, double the window (4-week pass valid 8 weeks; 8-week valid 12 weeks). Useful if you travel or work shifts.
+      </p>
+
+      {/* 4-Week table */}
+      <div data-reveal class="mb-8">
+        <h3 class="font-display font-semibold text-[1.15rem] mb-4">4-week passes</h3>
+        <div class="overflow-x-auto rounded-[18px] border-[1.5px] border-[#e8e8e8]">
+          <table class="w-full text-[0.88rem]">
+            <thead>
+              <tr class="bg-[#f5f5f5] border-b border-[#e8e8e8]">
+                <th class="text-left px-5 py-3 font-semibold text-muted">Classes/week</th>
+                <th class="px-5 py-3 font-semibold text-center">Fixed <span class="font-normal text-muted">(4 wks)</span></th>
+                <th class="px-5 py-3 font-semibold text-center">Flexi <span class="font-normal text-muted">(valid 8 wks)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {membershipRows.map((row, i) => (
+                <tr class={i < membershipRows.length - 1 ? 'border-b border-[#f0f0f0]' : ''}>
+                  <td class="px-5 py-4 font-medium">
+                    {row.classesPerWeek} class{row.classesPerWeek > 1 ? 'es' : ''}/week
+                    {row.locations === 'leicester' && <span class="ml-2 text-[0.75rem] text-muted">(Leicester only)</span>}
+                  </td>
+                  <td class="px-5 py-4 text-center">
+                    <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.fixed4.amountPence)}</p>
+                    <button
+                      class="btn-rose btn-checkout text-[0.78rem]"
+                      style="padding:0.45rem 1rem;"
+                      data-product-id={row.fixed4.id}
+                      data-amount={row.fixed4.amountPence}
+                      data-description={row.fixed4.checkoutDescription}
+                    >
+                      Buy
+                    </button>
+                  </td>
+                  <td class="px-5 py-4 text-center">
+                    <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.flexi4.amountPence)}</p>
+                    <button
+                      class="btn-rose btn-checkout text-[0.78rem]"
+                      style="padding:0.45rem 1rem;"
+                      data-product-id={row.flexi4.id}
+                      data-amount={row.flexi4.amountPence}
+                      data-description={row.flexi4.checkoutDescription}
+                    >
+                      Buy
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* 8-Week table */}
+      <div data-reveal>
+        <h3 class="font-display font-semibold text-[1.15rem] mb-4">8-week passes</h3>
+        <div class="overflow-x-auto rounded-[18px] border-[1.5px] border-[#e8e8e8]">
+          <table class="w-full text-[0.88rem]">
+            <thead>
+              <tr class="bg-[#f5f5f5] border-b border-[#e8e8e8]">
+                <th class="text-left px-5 py-3 font-semibold text-muted">Classes/week</th>
+                <th class="px-5 py-3 font-semibold text-center">Fixed <span class="font-normal text-muted">(8 wks)</span></th>
+                <th class="px-5 py-3 font-semibold text-center">Flexi <span class="font-normal text-muted">(valid 12 wks)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {membershipRows.map((row, i) => (
+                <tr class={i < membershipRows.length - 1 ? 'border-b border-[#f0f0f0]' : ''}>
+                  <td class="px-5 py-4 font-medium">
+                    {row.classesPerWeek} class{row.classesPerWeek > 1 ? 'es' : ''}/week
+                    {row.locations === 'leicester' && <span class="ml-2 text-[0.75rem] text-muted">(Leicester only)</span>}
+                  </td>
+                  <td class="px-5 py-4 text-center">
+                    <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.fixed8.amountPence)}</p>
+                    <button
+                      class="btn-rose btn-checkout text-[0.78rem]"
+                      style="padding:0.45rem 1rem;"
+                      data-product-id={row.fixed8.id}
+                      data-amount={row.fixed8.amountPence}
+                      data-description={row.fixed8.checkoutDescription}
+                    >
+                      Buy
+                    </button>
+                  </td>
+                  <td class="px-5 py-4 text-center">
+                    <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.flexi8.amountPence)}</p>
+                    <button
+                      class="btn-rose btn-checkout text-[0.78rem]"
+                      style="padding:0.45rem 1rem;"
+                      data-product-id={row.flexi8.id}
+                      data-amount={row.flexi8.amountPence}
+                      data-description={row.flexi8.checkoutDescription}
+                    >
+                      Buy
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── PRIVATE COACHING ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[800px] mx-auto">
+      <div data-reveal class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5">
+        <div class="flex-1">
+          <p class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-muted mb-1">Private coaching</p>
+          <p class="font-display font-bold text-[1.3rem] leading-[1.2] mb-2">From £40 / session</p>
+          <p class="text-[0.88rem] text-muted">
+            1-to-1 or couples. Off-peak, standard, and pre-class slots available. Packs of 4 or 8 sessions.
+          </p>
+        </div>
+        <a href="/services/private-coaching" class="btn-rose self-start md:self-center" style="white-space:nowrap;">
+          See coaching options →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── DISCOUNT NOTE ── */}
+  <section class="bg-white px-5 py-10 md:px-8">
+    <div class="max-w-[800px] mx-auto">
+      <div data-reveal class="flex items-start gap-3 bg-[#f5f5f5] rounded-[14px] p-5">
+        <svg class="w-5 h-5 text-rose flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+        </svg>
+        <p class="text-[0.88rem] text-muted">
+          <strong class="text-dark">Student & NHS discount</strong> — £2 off any purchase. Ask us on WhatsApp or at the door.{' '}
+          <a href={waUrl} class="text-rose-dark font-semibold hover:underline" target="_blank" rel="noopener">
+            Message us →
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ── FINAL CTA ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto text-center">
+      <div data-reveal class="mb-6">
+        <span class="inline-flex items-center gap-2 bg-[rgba(225,29,72,0.12)] border border-[rgba(225,29,72,0.25)] rounded-full" style="padding:0.35rem 1rem;">
+          <span class="cta-pulse-dot w-2 h-2 rounded-full bg-rose inline-block" aria-hidden="true"></span>
+          <span class="text-rose-light text-[0.72rem] font-bold uppercase tracking-[0.1em]">Classes running now</span>
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(2rem,5vw,3.5rem)]">
+        Still not sure? Your first class is free.
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-[clamp(1rem,2vw,1.12rem)] text-white/[0.55] max-w-[460px] mx-auto leading-[1.7] mb-8">
+        Come and try it with no obligation. If you love it, the £20 newcomer pass keeps you going.
+      </p>
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center">
+        <a href={waUrl} class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
+          Claim your free class
+        </a>
+      </div>
+      <div data-reveal data-reveal-delay="4" class="flex flex-wrap justify-center gap-x-5 gap-y-2.5 mt-8 pt-6 border-t border-white/[0.08]">
+        {(['No partner needed', 'Complete beginners welcome', 'MK · Leicester · Reading'] as const).map(item => (
+          <span class="inline-flex items-center gap-1.5 text-[0.82rem] text-white/[0.55]">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── CHECKOUT MODAL ── */}
+  <dialog id="checkout-modal" class="bg-white rounded-[20px] p-6 md:p-8 max-w-[480px] w-[calc(100%-2rem)] border-none shadow-2xl">
+    <button id="checkout-close" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-dark text-xl leading-none cursor-pointer" aria-label="Close">&times;</button>
+
+    <div id="checkout-loading" class="flex flex-col items-center gap-4 py-8">
+      <div class="checkout-spinner" aria-hidden="true"></div>
+      <p class="text-muted text-[0.92rem]">Setting up payment&hellip;</p>
+    </div>
+
+    <div id="sumup-widget"></div>
+
+    <div id="checkout-error" hidden class="text-center py-8">
+      <p class="text-rose font-semibold text-[1.1rem] mb-2">Something went wrong</p>
+      <p class="text-muted text-[0.9rem] mb-4">We couldn't set up the payment. Please try again or pay in person.</p>
+      <button id="checkout-retry" class="btn-rose text-[0.85rem]" style="padding:0.6rem 1.4rem;">Try again</button>
+    </div>
+
+    <div id="checkout-success" hidden class="text-center py-8">
+      <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="24" fill="#E11D48" opacity="0.1"/>
+        <path d="M15 25l6 6 12-12" stroke="#E11D48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="font-display font-bold text-[1.2rem] mb-2">Payment successful!</p>
+      <p class="text-muted text-[0.9rem] mb-4">Check WhatsApp for a confirmation.</p>
+      <a href={waUrl} class="btn-rose text-[0.85rem]" style="padding:0.6rem 1.4rem;" target="_blank" rel="noopener">
+        Open WhatsApp &rarr;
+      </a>
+    </div>
+  </dialog>
+
+  <style>
+    #checkout-modal::backdrop {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+    }
+    #checkout-modal[open] {
+      display: flex;
+      flex-direction: column;
+    }
+    .checkout-spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid #e8e8e8;
+      border-top-color: #E11D48;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script>
+    const WORKER_URL = 'https://latin-addiction-checkout.latin-addiction-uk.workers.dev';
+    const SUMUP_PUBLIC_KEY = 'sup_pk_1jmjRI7tjZHI4XbsvBVtMKPmLZJyue3Iz';
+
+    const modal = document.getElementById('checkout-modal') as HTMLDialogElement;
+    const loadingEl = document.getElementById('checkout-loading')!;
+    const widgetEl = document.getElementById('sumup-widget')!;
+    const errorEl = document.getElementById('checkout-error')!;
+    const successEl = document.getElementById('checkout-success')!;
+    const closeBtn = document.getElementById('checkout-close')!;
+    const retryBtn = document.getElementById('checkout-retry')!;
+
+    let paymentInProgress = false;
+    let lastArgs: { productId: string; amountPence: number; description: string } | null = null;
+
+    // Load SumUp SDK
+    const sdkScript = document.createElement('script');
+    sdkScript.src = 'https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js';
+    sdkScript.async = true;
+    document.head.appendChild(sdkScript);
+
+    async function openCheckout(productId: string, amountPence: number, description: string) {
+      lastArgs = { productId, amountPence, description };
+      paymentInProgress = true;
+
+      // Reset states
+      loadingEl.hidden = false;
+      widgetEl.replaceChildren();
+      widgetEl.hidden = true;
+      errorEl.hidden = true;
+      successEl.hidden = true;
+
+      modal.showModal();
+
+      try {
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ productId, amountPence, description }),
+        });
+
+        if (!res.ok) throw new Error('Worker error');
+
+        const { checkoutId } = await res.json();
+
+        loadingEl.hidden = true;
+        widgetEl.hidden = false;
+
+        // @ts-ignore — SumUpCard is loaded from the SDK script
+        SumUpCard.mount({
+          id: checkoutId,
+          key: SUMUP_PUBLIC_KEY,
+          onResponse(type: string, _body: unknown) {
+            paymentInProgress = false;
+            if (type === 'success') {
+              widgetEl.hidden = true;
+              successEl.hidden = false;
+            } else {
+              widgetEl.hidden = true;
+              errorEl.hidden = false;
+            }
+          },
+        });
+      } catch {
+        loadingEl.hidden = true;
+        errorEl.hidden = false;
+        paymentInProgress = false;
+      }
+    }
+
+    // Wire up all checkout buttons
+    document.querySelectorAll<HTMLButtonElement>('.btn-checkout').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const productId = btn.dataset.productId!;
+        const amountPence = parseInt(btn.dataset.amount!, 10);
+        const description = btn.dataset.description!;
+        openCheckout(productId, amountPence, description);
+      });
+    });
+
+    // Close modal
+    closeBtn.addEventListener('click', () => {
+      if (!paymentInProgress) modal.close();
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal && !paymentInProgress) modal.close();
+    });
+
+    // Retry
+    retryBtn.addEventListener('click', () => {
+      if (lastArgs) openCheckout(lastArgs.productId, lastArgs.amountPence, lastArgs.description);
+    });
+  </script>
+
+</BaseLayout>
