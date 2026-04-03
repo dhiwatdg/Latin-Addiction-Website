@@ -119,6 +119,36 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Social proof decorative glows */
+.proof-glow-left {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 5%;
+  top: 15%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.15) 0%, transparent 55%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+.proof-glow-right {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  right: 10%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.08) 0%, transparent 50%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* Step circle hover */
+.step-card:hover .step-num {
+  background: #E11D48;
+  color: #fff;
+  border-color: #E11D48;
+  transform: scale(1.1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { whatsappUrl } from '../data/locations';
+import { reviews } from '../data/reviews';
 
 const waUrl = whatsappUrl();
+const featuredReview = reviews.find((r) => r.featured)!;
+const miniReviews = reviews.filter((r) => !r.featured);
 ---
 
 <BaseLayout
@@ -281,6 +284,138 @@ const waUrl = whatsappUrl();
             Claim your free class
           </a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 4: SOCIAL PROOF (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    {/* Decorative radial gradient glows */}
+    <div class="proof-glow-left" aria-hidden="true"></div>
+    <div class="proof-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto">
+      {/* Eyebrow */}
+      <div class="text-center mb-7">
+        <span class="text-rose-light uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          What our students say
+        </span>
+      </div>
+
+      {/* Visually-hidden heading for accessibility */}
+      <h2 class="sr-only">Student Reviews</h2>
+
+      {/* Featured review */}
+      <div class="mb-10 border-l-4 border-rose pl-[clamp(1.25rem,3vw,2rem)] max-w-[820px]">
+        <blockquote class="font-display font-bold text-[clamp(1.5rem,3.5vw,2.5rem)] leading-[1.18] text-white">
+          &ldquo;{featuredReview.text}&rdquo;
+        </blockquote>
+        <div class="flex items-center gap-3 mt-5">
+          <div class="w-[44px] h-[44px] rounded-full bg-gradient-to-br from-rose to-rose-dark flex items-center justify-center font-display font-bold text-base text-white">
+            {featuredReview.initial}
+          </div>
+          <div>
+            <p class="text-[0.85rem] font-medium text-white">{featuredReview.author}</p>
+            <p class="text-[0.75rem] text-white/40">
+              {featuredReview.source} · <span class="text-gold">★★★★★</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* 3 mini review cards */}
+      <div class="grid gap-5 md:grid-cols-3 mb-8">
+        {miniReviews.map((review) => (
+          <div class="mini-review-card bg-white/[0.04] border border-[rgba(225,29,72,0.12)] rounded-[16px] p-5 px-6 flex flex-col transition-colors duration-300 hover:border-[rgba(225,29,72,0.3)]">
+            <q class="text-[0.88rem] italic text-white/70 leading-[1.7] flex-1" style="quotes:none;">
+              &ldquo;{review.text}&rdquo;
+            </q>
+            <div class="flex items-center gap-2 mt-3 pt-3 border-t border-white/[0.06]">
+              <div class="w-7 h-7 rounded-full bg-rose/20 border border-rose/25 flex items-center justify-center font-display font-bold text-[0.65rem] text-rose-light">
+                {review.initial}
+              </div>
+              <div>
+                <p class="text-[0.78rem] font-medium text-white">{review.author}</p>
+                <span class="text-[0.65rem] text-gold">★★★★★</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom row — Google pill + CTA */}
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <span class="inline-flex items-center gap-2 bg-white/[0.06] border border-[rgba(225,29,72,0.15)] rounded-full px-5 py-2 text-[0.82rem] font-medium text-white/65">
+          <span class="text-gold">★</span> 5.0 on Google Reviews
+        </span>
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          Try a free class
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 5: GETTING STARTED (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto text-center">
+      {/* Eyebrow */}
+      <div class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          The process
+        </span>
+      </div>
+
+      {/* Title */}
+      <h2 class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-4">
+        Getting started is <span class="font-display text-rose">ridiculously easy</span>
+      </h2>
+
+      {/* 3 step cards */}
+      <div class="grid gap-5 md:grid-cols-3 mt-8">
+        {/* Step 1 */}
+        <div class="step-card flex flex-col items-center">
+          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
+            1
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Send us a message</h3>
+          <p class="text-[0.88rem] text-muted">
+            Just say hi on WhatsApp — that's it. We'll confirm the next class and answer any questions.
+          </p>
+        </div>
+
+        {/* Step 2 */}
+        <div class="step-card flex flex-col items-center">
+          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
+            2
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Turn up</h3>
+          <p class="text-[0.88rem] text-muted">
+            Wear something comfortable. No special shoes needed. We'll be expecting you.
+          </p>
+        </div>
+
+        {/* Step 3 */}
+        <div class="step-card flex flex-col items-center">
+          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
+            3
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Dance</h3>
+          <p class="text-[0.88rem] text-muted">
+            Your first class is free. Stay for the social party afterwards — that's where the real fun starts.
+          </p>
+        </div>
+      </div>
+
+      {/* Note */}
+      <p class="text-[0.88rem] text-muted mt-5">
+        Everyone starts at Level 1 — we run 4 levels from complete beginner to advanced, so there's always a place for you.
+      </p>
+
+      {/* CTA */}
+      <div class="mt-5">
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          Start here
+        </a>
       </div>
     </div>
   </section>
