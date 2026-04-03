@@ -134,4 +134,154 @@ const waUrl = whatsappUrl();
       </div>
     </div>
   </section>
+
+  {/* ── SECTION 3: INSTRUCTORS (light gray bg) ── */}
+  <section class="relative overflow-hidden bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="relative z-10 max-w-[1200px] mx-auto">
+
+      {/* Section header */}
+      <div class="text-center mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          Your Instructors
+        </span>
+      </div>
+      <h2 class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] text-center mb-4">
+        People who actually care if you have fun
+      </h2>
+
+      {/* Founders feature — 2-column grid */}
+      <div class="grid gap-8 md:grid-cols-2 mt-10 items-center">
+
+        {/* LEFT: Founders photo */}
+        <div class="flex justify-center">
+          <div class="relative">
+            <img
+              src="/images/instructors/Dhiwa & Gloria.jpeg"
+              alt="Dhiwa and Gloria — founders of Latin Addiction"
+              width="400"
+              height="400"
+              loading="lazy"
+              class="w-full max-w-[400px] rounded-[24px] border-2 border-rose/[0.08]"
+              style="box-shadow: 0 20px 60px rgba(225,29,72,.12), 0 8px 24px rgba(0,0,0,.08);"
+            />
+            {/* Rose pill badge */}
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-rose text-white font-display font-bold text-[0.72rem] uppercase tracking-[0.08em] px-5 py-1.5 rounded-full whitespace-nowrap shadow-[0_4px_16px_rgba(225,29,72,.3)]">
+              Dhiwa &amp; Gloria · Founders
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT: Story */}
+        <div>
+          <p class="text-[0.95rem] text-muted leading-[1.8] mb-4">
+            Latin Addiction was founded by Dhiwa and Gloria — two people who built a teaching method around technique, safety, and genuine fun.
+          </p>
+
+          {/* Gloria mini-feature */}
+          <div class="flex gap-4 items-start mb-4">
+            <img
+              src="/images/instructors/Gloria.jpg"
+              alt="Gloria"
+              width="56"
+              height="56"
+              loading="lazy"
+              class="w-14 h-14 rounded-full object-cover object-[center_top] border-2 border-rose/[0.12] shrink-0 mt-0.5"
+            />
+            <p class="text-[0.92rem] text-muted leading-[1.7]">
+              Gloria discovered Bachata in 2019. She was once exactly where you are — no dance experience, no idea what to expect, nervous about walking through the door. That perspective shapes everything about how we teach.
+            </p>
+          </div>
+
+          <p class="text-[0.92rem] text-muted leading-[1.7] mb-5">
+            Together, they teach and DJ at festivals across the UK, and run classes in Milton Keynes, Leicester, and Reading.
+          </p>
+
+          {/* Pull quote — white bg to stand out against gray section */}
+          <div class="bg-white rounded-[16px] p-5 border-l-4 border-rose">
+            <p class="italic text-[0.92rem] leading-[1.65] text-dark">
+              "We're not just here to teach you steps. We're here to make sure you leave every class feeling better than when you arrived."
+            </p>
+            <cite class="block mt-2 text-[0.78rem] font-semibold text-rose-dark not-italic">
+              — Dhiwa &amp; Gloria
+            </cite>
+          </div>
+        </div>
+      </div>
+
+      {/* Team strip + skill pills */}
+      <div class="mt-10 text-center">
+        <p class="text-[0.85rem] text-muted mb-3">
+          Supported by a team of 10+ instructors across all three cities.
+        </p>
+        <div class="flex gap-2.5 justify-center flex-wrap items-center">
+          <img src="/images/instructors/Chido.jpg" alt="Chido" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Daniella.jpeg" alt="Daniella" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Irina.jpg" alt="Irina" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Meg.jpg" alt="Meg" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Imogen.jpg" alt="Imogen" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+        </div>
+
+        {/* Skill pills */}
+        <div class="flex gap-1.5 justify-center flex-wrap mt-3">
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-rose/[0.08] text-rose-9f">Bachata</span>
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-gold/[0.08] text-party">Salsa</span>
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-dark/[0.06] text-muted">Sensual</span>
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-[rgba(34,197,94,.08)] text-[#166534]">Beginner-Friendly</span>
+        </div>
+      </div>
+
+      {/* What a typical class looks like */}
+      <div class="mt-10 max-w-[700px] mx-auto">
+        <div class="bg-white rounded-[20px] p-[clamp(1.5rem,4vw,2.5rem)]">
+          <h3 class="font-display font-bold text-[1.1rem] mb-4">What a typical class looks like</h3>
+
+          {/* Step 1 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">01</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Warm welcome</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">Introductions, a quick warmup, no awkward standing around. Everyone here was new once.</p>
+            </div>
+          </div>
+          <div class="h-px bg-rose/[0.1] my-3"></div>
+
+          {/* Step 2 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">02</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Foundation technique</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">The basic step, timing, how to hold frame — broken down until it clicks, not just demonstrated once.</p>
+            </div>
+          </div>
+          <div class="h-px bg-rose/[0.1] my-3"></div>
+
+          {/* Step 3 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">03</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Rotating partners</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">You'll dance with everyone in the room. By the end, you'll have ten new mates.</p>
+            </div>
+          </div>
+          <div class="h-px bg-rose/[0.1] my-3"></div>
+
+          {/* Step 4 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">04</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Social freestyle</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">Class ends, the music stays on. This is where the real magic happens.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div class="mt-5 text-center">
+          <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+            Claim your free class
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
