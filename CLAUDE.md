@@ -6,45 +6,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 New website for **Latin Addiction UK**, a Bachata and Salsa dance school with locations in Milton Keynes, Leicester, and Reading.
 
-- **Tech stack:** Astro + Tailwind CSS
-- **Hosting:** Cloudflare Workers & Pages (free, auto-deploy from GitHub)
-- **Payments:** SumUp Card Widget + Cloudflare Worker for on-site checkout (SumUp store links as temporary stopgap until Worker is built)
+- **Tech stack:** Astro 6.1 + Tailwind CSS 4.2 (via `@tailwindcss/vite`) + TypeScript
+- **Node:** v22+ required (`.nvmrc` set)
+- **Hosting:** Cloudflare Pages (free, auto-deploy from GitHub on push to `main`)
+- **Payments:** SumUp store links (temporary) → Phase 2: SumUp Card Widget + Cloudflare Worker for on-site checkout
 - **Domain:** latinaddiction.co.uk (registered at Hostinger, DNS on Cloudflare)
 - **Repo:** `dhiwatdg/Latin-Addiction-Website` → Cloudflare auto-builds on push to `main`
 
+## Commands
+
+```bash
+source ~/.nvm/nvm.sh && nvm use 22  # Required before any npm command
+npm run dev      # Dev server at localhost:4321
+npm run build    # Production build → dist/
+npm run preview  # Preview production build locally
+```
+
 ## Current Status (2026-04-03)
 
-- **Infrastructure:** DONE — Cloudflare account, DNS, Pages/Workers connected, custom domain wired
-- **Content:** DONE — design doc + content draft v2.1 both updated with MK
-- **Design choice:** DONE — Design D (Broadway Rose) chosen. Prototype D-v2 complete and reviewed.
-- **Astro project:** NOT STARTED — scaffold now, build, push = live site
+- **Phase 1:** LIVE — Homepage + 3 location pages + 404 deployed to latinaddiction.co.uk
+- **Phase 2:** NOT STARTED — /pricing page + on-site SumUp checkout
+- **Phase 3:** NOT STARTED — remaining pages (/services, /about, /faq, /reviews, /learn, etc.)
 
 ## Build Phases
 
-### Phase 1 — Go Live (current)
-1. **Scaffold Astro project** — `npm create astro@latest`, add Tailwind, configure `astro.config.mjs` for static output. Set Design D palette in `tailwind.config.mjs`: dark #111, rose #E11D48, pink #fecdd3, gray #f5f5f5. Fonts: Poppins (800 hero, 600 titles) + DM Sans (body).
-2. **Build shared shell** — BaseLayout, Header (responsive nav + ARIA), Footer, WhatsApp button, mobile sticky bar, SEO component
-3. **Build pages:**
-   - Homepage (8-section layout from D-v2 prototype — NOT the 12-section content draft)
-   - `/milton-keynes` — location page (Salsa & Bachata, Mondays)
-   - `/leicester` — location page (Bachata, Tuesdays)
-   - `/reading` — location page (Bachata, Wednesdays)
-   - `/404` — friendly error page
-4. **Accessibility** (not in prototype, must be in Astro build):
-   - `<main>` landmark + skip-to-content link
-   - Keyboard-accessible nav dropdowns with ARIA
-   - `<h2>` headings for Worry-Busters and Social Proof sections
-   - `loading="lazy"` + width/height on below-fold images
-   - `aria-expanded` on hamburger
-   - `100dvh` for mobile menu on iOS
-5. **"Book Now" links** → SumUp store (`latinaddictionuk.sumupstore.com`) as temporary stopgap
-6. **Push to main** → Cloudflare auto-builds → live at `latinaddiction.co.uk`
+### Phase 1 — Go Live (DONE ✓)
+Deployed 2026-04-03. Homepage (8 sections), /milton-keynes, /leicester, /reading, /404. Full accessibility (ARIA tabs, keyboard nav, skip-to-content, reduced-motion). Sitemap. Scroll reveal animations. All CTAs → WhatsApp or SumUp store (temporary).
 
-### Phase 2 — On-Site Checkout
-- `/pricing` page with full pricing tables
+### Phase 2 — On-Site Checkout (next)
+- `/pricing` page with full pricing tables (Leicester 3-class £18 tier, memberships, private coaching headline)
 - Cloudflare Worker for SumUp Card Widget (on-site checkout, ~25 lines)
 - Replace all SumUp store links with on-site checkout
 - SumUp API key as Cloudflare Worker secret
+- Set `NODE_VERSION=22` in Cloudflare Pages environment if build fails
 
 ### Phase 3 — Full Site
 - `/services/private-coaching`, `/services/corporate`, `/services/hire-us`
@@ -58,15 +52,25 @@ After each major build step, use Codex plugin for code review (scaffold, layout/
 
 ## Key Files
 
-- **Homepage prototype (BUILD REFERENCE):** `prototypes/homepage-design-D-v2.html` — the 8-section restructured homepage. This is what the Astro build should reproduce. See memory `project_homepage_prototype_final.md` for full section breakdown.
-- **Homepage content draft:** `prototypes/homepage-content-draft.html` — v2.1 source content. The prototype restructures this (12→8 sections), so use the prototype as the primary reference.
-- **Design doc:** `docs/plans/2026-03-21-website-design.md` — single source of truth for business data, but the 12-section layout is superseded by the 8-section prototype.
-- **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero. Post-launch feature.
-- **Archived plans:** `docs/plans/archive/` — completed implementation plans
-- **Archived prototypes:** `prototypes/archive/` — A-O designs + video prototypes (25 files)
-- **Logo assets:** `Logos/` — nav: `logo-mark-bold.png` with `filter:brightness(0)`. Footer: `logo-mark-golden-tight.png`.
-- **Instructor photos:** `images/instructors/` — Dhiwa & Gloria (founders), Gloria (solo), Chido, Daniella, Irina, Meg, Imogen
-- **Event images:** `images/` — per-location event graphics (social media assets, NOT for web use). Real class photography needed post-launch.
+- **Design doc:** `docs/plans/2026-03-21-website-design.md` — single source of truth for business data and full site architecture
+- **Phase 1 plan:** `docs/plans/2026-04-03-phase1-go-live.md` — 18-task implementation plan (completed)
+- **Homepage prototype:** `prototypes/homepage-design-D-v2.html` — visual reference the Astro build reproduces
+- **Data files:** `src/data/locations.ts` — all venue/schedule/pricing/WhatsApp data
+- **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero. Post-launch.
+
+## Project Structure
+
+```
+src/
+  pages/           index.astro, milton-keynes.astro, leicester.astro, reading.astro, 404.astro
+  layouts/         BaseLayout.astro (HTML shell, fonts, SEO, header/footer)
+  components/      Header, Footer, WhatsAppButton, MobileStickyBar, ScheduleCard, SEO
+  data/            locations.ts, navigation.ts, reviews.ts, faqs.ts
+  styles/          global.css (Tailwind v4 @theme tokens, button styles, reveal animations)
+public/images/     instructors/ (7 photos), logos/ (2 logos)
+```
+
+**Tailwind v4:** No `tailwind.config.mjs`. Design tokens in CSS `@theme` block in `global.css`. Uses `@tailwindcss/vite` plugin.
 
 ## Key Design Decisions
 
