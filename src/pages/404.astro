@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappUrl } from '../data/locations';
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The page you're looking for doesn't exist."
+>
+  <section class="bg-dark min-h-[60vh] flex items-center justify-center py-20 px-5">
+    <div class="text-center max-w-lg">
+      <p class="text-rose font-display font-bold text-7xl mb-4">404</p>
+      <h1 class="font-display font-bold text-2xl md:text-3xl text-white mb-4">
+        Page not found
+      </h1>
+      <p class="text-white/55 mb-8 leading-relaxed">
+        The page you're looking for doesn't exist. But your first dance class is still free.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn-rose">Go to homepage</a>
+        <a href={whatsappUrl()} class="btn-white-outline" target="_blank" rel="noopener noreferrer">
+          Claim your free class
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
