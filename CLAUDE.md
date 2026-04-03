@@ -19,6 +19,22 @@ New website for **Latin Addiction UK**, a Bachata and Salsa dance school with lo
 - **Design choice:** PENDING — D choosing between prototypes M (warm), N (bold), O (dark)
 - **Astro project:** NOT STARTED — scaffold when vibe is chosen, then build + push = live site
 
+## Next Steps (pick up here)
+
+1. **Ask D which vibe: M, N, or O** — ask ONCE, then wait. See `prototypes/new/homepage-design-M.html`, `N.html`, `O.html`. M=warm champagne, N=bold lavender, O=dark purple.
+2. **Scaffold Astro project** — `npm create astro@latest`, add Tailwind, configure `astro.config.mjs` for static output. Set palette from chosen vibe in `tailwind.config.mjs`.
+3. **Build MVP pages** (3hr target):
+   - Homepage (12-section conversion funnel from content draft v2.1)
+   - `/reading` — location page (Bachata, Wednesdays)
+   - `/leicester` — location page (Bachata, Tuesdays)
+   - `/milton-keynes` — location page (Salsa & Bachata, Mondays)
+   - Shared: nav, footer, WhatsApp button, base layout
+4. **"Book Now" links** → SumUp store (`latinaddictionuk.sumupstore.com`) — no payment integration for MVP
+5. **Push to main** → Cloudflare auto-builds → live at `latinaddiction.co.uk`
+6. **Post-launch iteration:** /pricing, /about, /faq, /classes, /contact, /reviews, /services/*
+
+All content is in `prototypes/new/homepage-content-draft.html` (v2.1). All business details are in the design doc. All build answers (MK schedule, WhatsApp number, photos, etc.) are in memory file `project_build_answers.md`.
+
 ## Key Files
 
 - **Design doc (SINGLE SOURCE OF TRUTH):** `docs/plans/2026-03-21-website-design.md` — all design decisions, content specs, technical requirements (updated 2026-04-03 with MK)
