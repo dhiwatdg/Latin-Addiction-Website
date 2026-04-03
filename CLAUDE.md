@@ -25,7 +25,7 @@ npm run preview  # Preview production build locally
 ## Current Status (2026-04-03)
 
 - **Phase 1:** LIVE — Homepage + 3 location pages + 404 deployed to latinaddiction.co.uk
-- **Phase 2:** NOT STARTED — /pricing page + on-site SumUp checkout
+- **Phase 2:** READY TO BUILD — /pricing page + on-site SumUp checkout. API keys ready. See memory `project_phase2_scope.md`.
 - **Phase 3:** NOT STARTED — remaining pages (/services, /about, /faq, /reviews, /learn, etc.)
 
 ## Build Phases
