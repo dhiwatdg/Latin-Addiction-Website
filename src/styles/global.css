@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-dark: #111111;
+  --color-rose: #E11D48;
+  --color-rose-dark: #BE123C;
+  --color-rose-light: #fecdd3;
+  --color-rose-9f: #9F1239;
+  --color-muted: #555555;
+  --color-gold: #F59E0B;
+  --color-party: #B45309;
+  --color-whatsapp: #25D366;
+
+  /* Fonts */
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: #E11D48;
+    color: #fff;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
