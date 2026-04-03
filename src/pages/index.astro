@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { whatsappUrl } from '../data/locations';
+import { locations, whatsappUrl, mapsUrl } from '../data/locations';
 import { reviews } from '../data/reviews';
 
 const waUrl = whatsappUrl();
 const featuredReview = reviews.find((r) => r.featured)!;
 const miniReviews = reviews.filter((r) => !r.featured);
+
+/** Map location slug to short panel ID used in the prototype */
+const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
 ---
 
 <BaseLayout
@@ -419,4 +422,158 @@ const miniReviews = reviews.filter((r) => !r.featured);
       </div>
     </div>
   </section>
+
+  {/* ── SECTION 6: SCHEDULE + LOCATIONS + PRICE (light gray bg) ── */}
+  <section id="schedule" class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto">
+      {/* Eyebrow */}
+      <div class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          Classes
+        </span>
+      </div>
+
+      {/* Title */}
+      <h2 class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-4">
+        When &amp; where we dance
+      </h2>
+
+      {/* Tab buttons */}
+      <div class="flex gap-2 flex-wrap mb-5">
+        {locations.map((loc, i) => (
+          <button
+            class:list={[
+              'schedule-tab font-body font-semibold text-[0.82rem] px-6 py-3 min-h-[44px] rounded-full border-2 cursor-pointer transition-all duration-200',
+              i === 0
+                ? 'active-tab bg-rose text-white border-rose'
+                : 'bg-transparent text-muted border-[rgba(225,29,72,0.25)]',
+            ]}
+            data-loc={panelId(loc.slug)}
+          >
+            {loc.name}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab panels */}
+      {locations.map((loc, i) => (
+        <div
+          id={`p-${panelId(loc.slug)}`}
+          class:list={['schedule-panel', i !== 0 && 'hidden']}
+        >
+          {/* Schedule card */}
+          <div class="border-[1.5px] border-[#e8e8e8] rounded-[18px] overflow-hidden">
+            {/* Card header */}
+            <div class="bg-dark flex items-center justify-between" style="padding:1.15rem 1.5rem;">
+              <h3 class="font-display font-bold text-white text-[1.25rem]">{loc.name}</h3>
+              <span class="bg-[rgba(225,29,72,0.2)] text-rose-light text-[0.72rem] font-semibold py-1 px-3.5 rounded-full uppercase tracking-[0.04em]">
+                {loc.badgeText}
+              </span>
+            </div>
+
+            {/* Schedule rows */}
+            <div>
+              {loc.schedule.map((row, ri) => (
+                <div
+                  class:list={[
+                    'grid grid-cols-[85px_1fr] gap-4 items-center',
+                    ri % 2 === 0 ? 'bg-[#f5f5f5]' : 'bg-white',
+                  ]}
+                  style="padding:0.75rem 1.5rem;"
+                >
+                  <span
+                    class:list={[
+                      'font-display font-bold text-[0.95rem]',
+                      row.isSocial ? 'text-party' : 'text-dark',
+                    ]}
+                  >
+                    {row.time}
+                  </span>
+                  <span
+                    class:list={[
+                      'text-[0.85rem]',
+                      row.isSocial ? 'text-party font-semibold' : 'text-muted',
+                    ]}
+                  >
+                    {row.description}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Card footer */}
+            <div class="bg-[#f5f5f5] text-[0.82rem] text-muted" style="padding:1rem 1.5rem;">
+              <p>
+                <strong>{loc.venue}</strong>, {loc.address} {loc.postcode}
+              </p>
+              <p class="mt-1">
+                🅿️ <strong>Parking:</strong> {loc.parking}
+              </p>
+              <p class="mt-1">
+                <a
+                  href={mapsUrl(loc.mapsQuery)}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-rose-dark font-medium no-underline"
+                >
+                  Get directions →
+                </a>
+              </p>
+              <p class="mt-1">💰 {loc.priceNote}</p>
+            </div>
+          </div>
+
+          {/* Location note (MK only) */}
+          {loc.note && (
+            <p class="text-[0.85rem] text-muted italic mt-3">{loc.note}</p>
+          )}
+
+          {/* Per-location CTA */}
+          <div class={loc.note ? 'mt-4' : 'mt-5'}>
+            <a
+              href={whatsappUrl(loc.whatsappMessage)}
+              class="btn-rose"
+              target="_blank"
+              rel="noopener"
+            >
+              Join the {loc.name} class
+            </a>
+          </div>
+        </div>
+      ))}
+
+      {/* Price summary box (always visible) */}
+      <div class="mt-8 p-6 bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px]">
+        <p class="font-bold text-[1.05rem]">
+          First class: FREE · Newcomer 4-week pass: £20 · Drop-in from £10/night
+        </p>
+        <p class="text-[0.82rem] text-muted mt-1.5">
+          Cash and card accepted. Student &amp; NHS discount available — ask on WhatsApp.{' '}
+          <a href="/pricing" class="text-rose-dark font-medium">See all pricing →</a>
+        </p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll('.schedule-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Deactivate all tabs
+      document.querySelectorAll('.schedule-tab').forEach(t => {
+        t.classList.remove('active-tab', 'bg-rose', 'text-white', 'border-rose');
+        t.classList.add('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
+      });
+      // Hide all panels
+      document.querySelectorAll('.schedule-panel').forEach(p => p.classList.add('hidden'));
+
+      // Activate clicked tab
+      tab.classList.add('active-tab', 'bg-rose', 'text-white', 'border-rose');
+      tab.classList.remove('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
+
+      // Show matching panel
+      const loc = (tab as HTMLElement).dataset.loc;
+      document.getElementById('p-' + loc)?.classList.remove('hidden');
+    });
+  });
+</script>
