@@ -38,6 +38,87 @@
   }
 }
 
+/* Hero decorative glows */
+.hero-glow-left {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  left: 10%;
+  top: 20%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.18) 0%, transparent 60%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+.hero-glow-right {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: 5%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.12) 0%, transparent 60%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Reusable button styles */
+.btn-rose {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  background: #E11D48;
+  color: #fff;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-rose:hover {
+  background: #BE123C;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.3);
+}
+.btn-rose::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+.btn-rose:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-white-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-white-outline:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

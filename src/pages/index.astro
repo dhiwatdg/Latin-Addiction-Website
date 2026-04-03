@@ -1,10 +1,137 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappUrl } from '../data/locations';
+
+const waUrl = whatsappUrl();
 ---
 
 <BaseLayout
   title="Bachata & Salsa Classes in Milton Keynes, Leicester & Reading"
   description="Learn Bachata and Salsa with Latin Addiction UK. Free first class, no partner needed. Weekly classes in Milton Keynes (Mon), Leicester (Tue) & Reading (Wed)."
 >
-  <h1 class="text-4xl font-display font-extrabold text-center mt-20">Coming soon</h1>
+  {/* ── SECTION 1: HERO (dark bg) ── */}
+  <section class="hero-section relative overflow-hidden bg-dark text-white flex items-center min-h-[85vh] md:min-h-[92vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    {/* Decorative radial gradient glows */}
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center md:text-left">
+      {/* Eyebrow */}
+      <div class="flex items-center gap-3 mb-3 justify-center md:justify-start">
+        <span class="hidden md:block w-12 h-[3px] bg-rose-light rounded-sm" aria-hidden="true"></span>
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">
+          Bachata &amp; Salsa dance classes · UK
+        </span>
+      </div>
+
+      {/* H1 */}
+      <h1 class="font-display font-extrabold text-white leading-[1.02] tracking-[-0.02em] mb-5 text-[clamp(3rem,8vw,5.5rem)]">
+        No partner needed.<br />
+        No experience needed.<br />
+        <em class="not-italic text-rose">Your first class is free.</em>
+      </h1>
+
+      {/* Subtitle */}
+      <p class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[520px] mb-8 mx-auto md:mx-0">
+        Bachata &amp; Salsa classes in Milton Keynes, Leicester &amp; Reading — the Latin partner dances everyone's falling for.
+      </p>
+
+      {/* CTA buttons */}
+      <div class="flex flex-wrap gap-3 mb-5 justify-center md:justify-start">
+        <a
+          href={waUrl}
+          class="btn-rose"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Claim your free class
+        </a>
+        <a href="#schedule" class="btn-white-outline">
+          See schedule ↓
+        </a>
+      </div>
+
+      {/* Reply note */}
+      <p class="text-[0.82rem] text-white/40 mb-2">
+        We typically reply within a few hours.
+      </p>
+
+      {/* Already dance link */}
+      <p class="text-[0.82rem]">
+        <a href="#schedule" class="text-white/55 underline hover:text-white/80 transition-colors">
+          Already dance? → Schedule &amp; Pricing
+        </a>
+      </p>
+
+      {/* Trust bar */}
+      <div class="flex flex-wrap gap-5 pt-6 mt-10 border-t border-white/[0.08] justify-center md:justify-start">
+        <span class="text-[0.82rem] text-white/45 flex items-center gap-1.5">
+          <span class="text-gold">★</span> 5.0 on Google
+        </span>
+        <span class="text-[0.82rem] text-white/45">3 cities</span>
+        <span class="text-[0.82rem] text-white/45">100+ students weekly</span>
+        <span class="text-[0.82rem] text-white/45">4+ years running</span>
+        <span class="text-[0.82rem] text-white/45">Free social after every class</span>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 2: WORRY-BUSTERS (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto">
+      {/* Visually-hidden heading for accessibility */}
+      <h2 class="sr-only">Why choose Latin Addiction</h2>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        {/* Card 1 */}
+        <div class="worry-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] hover:border-rose-light hover:shadow-[0_12px_40px_rgba(225,29,72,.1)] hover:-translate-y-[3px]">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-light to-rose/[0.08] flex items-center justify-center mb-4 text-[1.4rem]" aria-hidden="true">
+            👫
+          </div>
+          <h3 class="font-display font-bold text-[1.15rem] mb-1.5">No partner needed</h3>
+          <p class="text-[0.9rem] text-muted leading-[1.7]">
+            We rotate partners throughout the class. Most people come alone — you'll dance with everyone and leave knowing half the room.
+          </p>
+          <div class="flex items-center gap-1.5 mt-3 text-rose font-semibold text-[0.82rem]">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+            You're welcome to bring a friend, but it's definitely not required.
+          </div>
+        </div>
+
+        {/* Card 2 */}
+        <div class="worry-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] hover:border-rose-light hover:shadow-[0_12px_40px_rgba(225,29,72,.1)] hover:-translate-y-[3px]">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-light to-rose/[0.08] flex items-center justify-center mb-4 text-[1.4rem]" aria-hidden="true">
+            🌟
+          </div>
+          <h3 class="font-display font-bold text-[1.15rem] mb-1.5">No experience needed</h3>
+          <p class="text-[0.9rem] text-muted leading-[1.7]">
+            Our beginner class starts from absolute zero, every single session. We break everything down until it clicks. You can't be "too bad" for this.
+          </p>
+          <div class="flex items-center gap-1.5 mt-3 text-rose font-semibold text-[0.82rem]">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+            If you can walk, you can Bachata. Seriously.
+          </div>
+        </div>
+
+        {/* Card 3 */}
+        <div class="worry-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] hover:border-rose-light hover:shadow-[0_12px_40px_rgba(225,29,72,.1)] hover:-translate-y-[3px]">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-light to-rose/[0.08] flex items-center justify-center mb-4 text-[1.4rem]" aria-hidden="true">
+            🎁
+          </div>
+          <h3 class="font-display font-bold text-[1.15rem] mb-1.5">Your first class is free</h3>
+          <p class="text-[0.9rem] text-muted leading-[1.7]">
+            No card details. No sign-up form. No commitment. Just message us on WhatsApp, turn up, and dance. That's it.
+          </p>
+          <div class="flex items-center gap-1.5 mt-3 text-rose font-semibold text-[0.82rem]">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+            Zero risk. Come see if you like it.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
