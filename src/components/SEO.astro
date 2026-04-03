@@ -27,7 +27,7 @@ const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:site_name" content={siteName} />
-<meta property="og:image" content={ogImage} />
+<meta property="og:image" content={new URL(ogImage, Astro.site).href} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary" />
