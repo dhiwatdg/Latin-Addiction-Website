@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-dark: #111111;
+  --color-rose: #E11D48;
+  --color-rose-dark: #BE123C;
+  --color-rose-light: #fecdd3;
+  --color-rose-9f: #9F1239;
+  --color-muted: #555555;
+  --color-gold: #F59E0B;
+  --color-party: #B45309;
+  --color-whatsapp: #25D366;
+
+  /* Fonts */
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: #E11D48;
+    color: #fff;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+/* Hero decorative glows */
+.hero-glow-left {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  left: 10%;
+  top: 20%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.18) 0%, transparent 60%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+.hero-glow-right {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: 5%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.12) 0%, transparent 60%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Reusable button styles */
+.btn-rose {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  background: #E11D48;
+  color: #fff;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-rose:hover {
+  background: #BE123C;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.3);
+}
+.btn-rose::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+.btn-rose:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-white-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-white-outline:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Social proof decorative glows */
+.proof-glow-left {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 5%;
+  top: 15%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.15) 0%, transparent 55%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+.proof-glow-right {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  right: 10%;
+  bottom: 10%;
+  background: radial-gradient(circle, rgba(225, 29, 72, 0.08) 0%, transparent 50%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+/* Step circle hover */
+.step-card:hover .step-num {
+  background: #E11D48;
+  color: #fff;
+  border-color: #E11D48;
+  transform: scale(1.1);
+}
+
+/* FAQ chevron rotation */
+.faq-chevron {
+  transition: transform 0.25s;
+  color: #555;
+  flex-shrink: 0;
+}
+.faq-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* CTA pulse dot */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.cta-pulse-dot {
+  animation: pulse 2s infinite;
+}
+
+/* CTA section decorative glows (reuses hero glow classes) */
+
+@layer utilities {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1);
+  }
+  [data-reveal].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [data-reveal][data-reveal-delay="1"] { transition-delay: 80ms; }
+  [data-reveal][data-reveal-delay="2"] { transition-delay: 160ms; }
+  [data-reveal][data-reveal-delay="3"] { transition-delay: 240ms; }
+  [data-reveal][data-reveal-delay="4"] { transition-delay: 320ms; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

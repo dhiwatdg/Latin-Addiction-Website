@@ -1,0 +1,71 @@
+---
+import type { Location } from '../data/locations';
+import { mapsUrl } from '../data/locations';
+
+interface Props {
+  location: Location;
+}
+
+const { location: loc } = Astro.props;
+---
+
+<div class="border-[1.5px] border-[#e8e8e8] rounded-[18px] overflow-hidden">
+  {/* Card header */}
+  <div class="bg-dark flex items-center justify-between" style="padding:1.15rem 1.5rem;">
+    <h3 class="font-display font-bold text-white text-[1.25rem]">{loc.name}</h3>
+    <span class="bg-[rgba(225,29,72,0.2)] text-rose-light text-[0.72rem] font-semibold py-1 px-3.5 rounded-full uppercase tracking-[0.04em]">
+      {loc.badgeText}
+    </span>
+  </div>
+
+  {/* Schedule rows */}
+  <div>
+    {loc.schedule.map((row, ri) => (
+      <div
+        class:list={[
+          'grid grid-cols-[85px_1fr] gap-4 items-center',
+          ri % 2 === 0 ? 'bg-[#f5f5f5]' : 'bg-white',
+        ]}
+        style="padding:0.75rem 1.5rem;"
+      >
+        <span
+          class:list={[
+            'font-display font-bold text-[0.95rem]',
+            row.isSocial ? 'text-party' : 'text-dark',
+          ]}
+        >
+          {row.time}
+        </span>
+        <span
+          class:list={[
+            'text-[0.85rem]',
+            row.isSocial ? 'text-party font-semibold' : 'text-muted',
+          ]}
+        >
+          {row.description}
+        </span>
+      </div>
+    ))}
+  </div>
+
+  {/* Card footer */}
+  <div class="bg-[#f5f5f5] text-[0.82rem] text-muted" style="padding:1rem 1.5rem;">
+    <p>
+      <strong>{loc.venue}</strong>, {loc.address} {loc.postcode}
+    </p>
+    <p class="mt-1">
+      🅿️ <strong>Parking:</strong> {loc.parking}
+    </p>
+    <p class="mt-1">
+      <a
+        href={mapsUrl(loc.mapsQuery)}
+        target="_blank"
+        rel="noopener"
+        class="text-rose-dark font-medium no-underline"
+      >
+        Get directions →
+      </a>
+    </p>
+    <p class="mt-1">💰 {loc.priceNote}</p>
+  </div>
+</div>

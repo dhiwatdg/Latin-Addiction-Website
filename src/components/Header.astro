@@ -1,0 +1,317 @@
+---
+import { navigation } from '../data/navigation';
+import { whatsappUrl } from '../data/locations';
+
+const ctaHref = whatsappUrl();
+---
+
+<nav id="nav" class="sticky top-0 z-100 bg-white/92 backdrop-blur-[16px] border-b border-rose/6 transition-shadow duration-300">
+  <div class="max-w-[1280px] mx-auto flex items-center justify-between px-5 h-16">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2.5 no-underline">
+      <img
+        src="/images/logos/logo-mark-bold.png"
+        alt="Latin Addiction logo"
+        width="48"
+        height="48"
+        class="h-12 w-auto -my-1.5"
+        style="filter:brightness(0)"
+      />
+      <span class="font-display font-[800] text-[1.25rem] text-dark">Latin Addiction</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex gap-7 list-none">
+      {navigation.map((item) =>
+        item.children ? (
+          <li class="has-dd relative">
+            <a
+              href={item.href}
+              class="nav-link dd-trigger text-[.82rem] font-medium text-muted no-underline relative pb-[3px] transition-colors duration-200"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {item.label}
+              <svg width="10" height="10" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-left:2px;opacity:.5;">
+                <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <ul class="dd">
+              {item.children.map((child) => (
+                <li>
+                  <a href={child.href}>{child.label}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ) : (
+          <li>
+            <a
+              href={item.href}
+              class="nav-link text-[.82rem] font-medium text-muted no-underline relative pb-[3px] transition-colors duration-200"
+            >
+              {item.label}
+            </a>
+          </li>
+        )
+      )}
+    </ul>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:block">
+      <a
+        href={ctaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 bg-rose text-white text-[.78rem] font-semibold py-2 px-5 rounded-full no-underline transition-all duration-200 hover:bg-rose-dark hover:-translate-y-px"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        Free class
+      </a>
+    </div>
+
+    <!-- Hamburger (mobile only) -->
+    <button
+      id="ham"
+      class="md:hidden bg-transparent border-none cursor-pointer p-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center"
+      aria-label="Menu"
+      aria-expanded="false"
+    >
+      <span class="block w-[22px] h-[2px] bg-dark my-[2.5px] transition-all duration-300"></span>
+      <span class="block w-[22px] h-[2px] bg-dark my-[2.5px] transition-all duration-300"></span>
+      <span class="block w-[22px] h-[2px] bg-dark my-[2.5px] transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mob-menu" class="hidden absolute top-16 left-0 right-0 bg-white border-b border-rose/6 px-5 pt-6 pb-6 flex-col gap-2 overflow-y-auto" style="min-height:calc(100dvh - 64px)">
+    {navigation.map((item) =>
+      item.children ? (
+        <div class="py-2 border-b border-rose/6">
+          <span class="block text-[.7rem] font-semibold uppercase tracking-[.1em] text-rose pb-2">{item.label}</span>
+          <div class="flex flex-wrap">
+            {item.children.map((child) => (
+              <a
+                href={child.href}
+                class="mob-link inline-block text-[.88rem] py-1.5 px-3 my-0.5 mr-1 text-muted no-underline bg-rose/6 rounded-lg transition-colors duration-150 hover:bg-rose/14 hover:text-rose"
+              >
+                {child.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <a
+          href={item.href}
+          class="mob-link block text-[.95rem] font-medium text-dark no-underline py-2.5 border-b border-rose/6"
+        >
+          {item.label}
+        </a>
+      )
+    )}
+    <a
+      href={ctaHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mob-link block text-rose font-semibold no-underline border-none mt-2"
+    >
+      Claim your free class &rarr;
+    </a>
+  </div>
+</nav>
+
+<style>
+  /* Desktop nav-link underline effect */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #E11D48;
+    border-radius: 1px;
+    transition: width 0.3s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-link:hover {
+    color: #111;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Dropdown: invisible bridge so hover doesn't break */
+  .has-dd::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 16px;
+  }
+
+  /* Dropdown panel */
+  .dd {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 190px;
+    background: #FFFFFF;
+    border: 1px solid rgba(225,29,72,.12);
+    border-radius: 12px;
+    padding: 0.4rem;
+    list-style: none;
+    box-shadow: 0 8px 32px rgba(17,17,17,.1), 0 2px 8px rgba(17,17,17,.06);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s cubic-bezier(.22,1,.36,1), transform 0.2s cubic-bezier(.22,1,.36,1);
+  }
+
+  /* Dropdown arrow/caret */
+  .dd::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: #FFFFFF;
+    border-left: 1px solid rgba(225,29,72,.12);
+    border-top: 1px solid rgba(225,29,72,.12);
+    border-radius: 2px 0 0 0;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  /* Show dropdown on hover, focus-within, or keyboard open */
+  .has-dd:hover .dd,
+  .has-dd:focus-within .dd,
+  .has-dd.dd-open .dd {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Dropdown items */
+  .dd li a {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: #555;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+    text-decoration: none;
+    position: relative;
+  }
+  /* Prevent underline pseudo-element on dropdown links */
+  .dd li a::after {
+    display: none;
+  }
+  .dd li a:hover {
+    background: rgba(225,29,72,.1);
+    color: #E11D48;
+  }
+  .dd li + li {
+    margin-top: 1px;
+  }
+
+  /* Scroll shadow class toggled by JS */
+  :global(#nav.scrolled) {
+    box-shadow: 0 4px 30px rgba(17,17,17,.06);
+  }
+
+  /* Mobile menu open state */
+  #mob-menu.open {
+    display: flex;
+  }
+</style>
+
+<script>
+  // Hamburger toggle
+  const ham = document.getElementById('ham');
+  const mobMenu = document.getElementById('mob-menu');
+
+  if (ham && mobMenu) {
+    ham.addEventListener('click', () => {
+      const isOpen = mobMenu.classList.toggle('open');
+      ham.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close mobile menu on link click
+    mobMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobMenu.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Scroll shadow
+  const nav = document.getElementById('nav');
+  if (nav) {
+    const onScroll = () => {
+      if (window.scrollY > 10) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Check initial scroll position
+    onScroll();
+  }
+
+  // Desktop dropdown keyboard accessibility
+  function closeAllDropdowns() {
+    document.querySelectorAll('.has-dd').forEach((li) => {
+      li.classList.remove('dd-open');
+      const trigger = li.querySelector('.dd-trigger') as HTMLElement | null;
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.querySelectorAll('.dd-trigger').forEach((trigger) => {
+    trigger.addEventListener('keydown', (e) => {
+      const event = e as KeyboardEvent;
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        const parent = trigger.closest('.has-dd') as HTMLElement;
+        const isOpen = parent.classList.contains('dd-open');
+
+        closeAllDropdowns();
+
+        if (!isOpen) {
+          parent.classList.add('dd-open');
+          trigger.setAttribute('aria-expanded', 'true');
+          // Focus first link inside dropdown
+          const firstLink = parent.querySelector('.dd a') as HTMLElement | null;
+          if (firstLink) firstLink.focus();
+        }
+      } else if (event.key === 'Escape') {
+        closeAllDropdowns();
+        (trigger as HTMLElement).focus();
+      }
+    });
+  });
+
+  // Escape key closes dropdowns from anywhere inside them
+  document.querySelectorAll('.has-dd .dd').forEach((dropdown) => {
+    dropdown.addEventListener('keydown', (e) => {
+      const event = e as KeyboardEvent;
+      if (event.key === 'Escape') {
+        const parent = dropdown.closest('.has-dd') as HTMLElement;
+        const trigger = parent.querySelector('.dd-trigger') as HTMLElement | null;
+        closeAllDropdowns();
+        if (trigger) trigger.focus();
+      }
+    });
+  });
+</script>

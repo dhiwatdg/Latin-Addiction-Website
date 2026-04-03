@@ -1,0 +1,668 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScheduleCard from '../components/ScheduleCard.astro';
+import { locations, whatsappUrl, mapsUrl, PHONE_TEL } from '../data/locations';
+import { reviews } from '../data/reviews';
+import { homepageFaqs } from '../data/faqs';
+
+const waUrl = whatsappUrl();
+const featuredReview = reviews.find((r) => r.featured)!;
+const miniReviews = reviews.filter((r) => !r.featured);
+
+/** Map location slug to short panel ID used in the prototype */
+const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
+---
+
+<BaseLayout
+  title="Bachata & Salsa Classes in Milton Keynes, Leicester & Reading"
+  description="Learn Bachata and Salsa with Latin Addiction UK. Free first class, no partner needed. Weekly classes in Milton Keynes (Mon), Leicester (Tue) & Reading (Wed)."
+>
+  {/* ── SECTION 1: HERO (dark bg) ── */}
+  <section class="hero-section relative overflow-hidden bg-dark text-white flex items-center min-h-[85vh] md:min-h-[92vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    {/* Decorative radial gradient glows */}
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center md:text-left">
+      {/* Eyebrow */}
+      <div data-reveal class="flex items-center gap-3 mb-3 justify-center md:justify-start">
+        <span class="hidden md:block w-12 h-[3px] bg-rose-light rounded-sm" aria-hidden="true"></span>
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">
+          Bachata &amp; Salsa dance classes · UK
+        </span>
+      </div>
+
+      {/* H1 */}
+      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.02] tracking-[-0.02em] mb-5 text-[clamp(3rem,8vw,5.5rem)]">
+        No partner needed.<br />
+        No experience needed.<br />
+        <em class="not-italic text-rose">Your first class is free.</em>
+      </h1>
+
+      {/* Subtitle */}
+      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[520px] mb-8 mx-auto md:mx-0">
+        Bachata &amp; Salsa classes in Milton Keynes, Leicester &amp; Reading — the Latin partner dances everyone's falling for.
+      </p>
+
+      {/* CTA buttons */}
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 mb-5 justify-center md:justify-start">
+        <a
+          href={waUrl}
+          class="btn-rose"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Claim your free class
+        </a>
+        <a href="#schedule" class="btn-white-outline">
+          See schedule ↓
+        </a>
+      </div>
+
+      {/* Reply note */}
+      <p data-reveal data-reveal-delay="4" class="text-[0.82rem] text-white/40 mb-2">
+        We typically reply within a few hours.
+      </p>
+
+      {/* Already dance link */}
+      <p data-reveal data-reveal-delay="4" class="text-[0.82rem]">
+        <a href="#schedule" class="text-white/55 underline hover:text-white/80 transition-colors">
+          Already dance? → Schedule &amp; Pricing
+        </a>
+      </p>
+
+      {/* Trust bar */}
+      <div data-reveal data-reveal-delay="4" class="flex flex-wrap gap-5 pt-6 mt-10 border-t border-white/[0.08] justify-center md:justify-start">
+        <span class="text-[0.82rem] text-white/45 flex items-center gap-1.5">
+          <span class="text-gold">★</span> 5.0 on Google
+        </span>
+        <span class="text-[0.82rem] text-white/45">3 cities</span>
+        <span class="text-[0.82rem] text-white/45">100+ students weekly</span>
+        <span class="text-[0.82rem] text-white/45">4+ years running</span>
+        <span class="text-[0.82rem] text-white/45">Free social after every class</span>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 2: WORRY-BUSTERS (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto">
+      {/* Visually-hidden heading for accessibility */}
+      <h2 class="sr-only">Why choose Latin Addiction</h2>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        {/* Card 1 */}
+        <div data-reveal data-reveal-delay="1" class="worry-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] hover:border-rose-light hover:shadow-[0_12px_40px_rgba(225,29,72,.1)] hover:-translate-y-[3px]">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-light to-rose/[0.08] flex items-center justify-center mb-4 text-[1.4rem]" aria-hidden="true">
+            👫
+          </div>
+          <h3 class="font-display font-bold text-[1.15rem] mb-1.5">No partner needed</h3>
+          <p class="text-[0.9rem] text-muted leading-[1.7]">
+            We rotate partners throughout the class. Most people come alone — you'll dance with everyone and leave knowing half the room.
+          </p>
+          <div class="flex items-center gap-1.5 mt-3 text-rose font-semibold text-[0.82rem]">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+            You're welcome to bring a friend, but it's definitely not required.
+          </div>
+        </div>
+
+        {/* Card 2 */}
+        <div data-reveal data-reveal-delay="2" class="worry-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] hover:border-rose-light hover:shadow-[0_12px_40px_rgba(225,29,72,.1)] hover:-translate-y-[3px]">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-light to-rose/[0.08] flex items-center justify-center mb-4 text-[1.4rem]" aria-hidden="true">
+            🌟
+          </div>
+          <h3 class="font-display font-bold text-[1.15rem] mb-1.5">No experience needed</h3>
+          <p class="text-[0.9rem] text-muted leading-[1.7]">
+            Our beginner class starts from absolute zero, every single session. We break everything down until it clicks. You can't be "too bad" for this.
+          </p>
+          <div class="flex items-center gap-1.5 mt-3 text-rose font-semibold text-[0.82rem]">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+            If you can walk, you can Bachata. Seriously.
+          </div>
+        </div>
+
+        {/* Card 3 */}
+        <div data-reveal data-reveal-delay="3" class="worry-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] hover:border-rose-light hover:shadow-[0_12px_40px_rgba(225,29,72,.1)] hover:-translate-y-[3px]">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-light to-rose/[0.08] flex items-center justify-center mb-4 text-[1.4rem]" aria-hidden="true">
+            🎁
+          </div>
+          <h3 class="font-display font-bold text-[1.15rem] mb-1.5">Your first class is free</h3>
+          <p class="text-[0.9rem] text-muted leading-[1.7]">
+            No card details. No sign-up form. No commitment. Just message us on WhatsApp, turn up, and dance. That's it.
+          </p>
+          <div class="flex items-center gap-1.5 mt-3 text-rose font-semibold text-[0.82rem]">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+            Zero risk. Come see if you like it.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 3: INSTRUCTORS (light gray bg) ── */}
+  <section class="relative overflow-hidden bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="relative z-10 max-w-[1200px] mx-auto">
+
+      {/* Section header */}
+      <div data-reveal class="text-center mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          Your Instructors
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] text-center mb-4">
+        People who actually care if you have fun
+      </h2>
+
+      {/* Founders feature — 2-column grid */}
+      <div class="grid gap-8 md:grid-cols-2 mt-10 items-center">
+
+        {/* LEFT: Founders photo */}
+        <div data-reveal class="flex justify-center">
+          <div class="relative">
+            <img
+              src="/images/instructors/Dhiwa & Gloria.jpeg"
+              alt="Dhiwa and Gloria — founders of Latin Addiction"
+              width="400"
+              height="400"
+              loading="lazy"
+              class="w-full max-w-[400px] rounded-[24px] border-2 border-rose/[0.08]"
+              style="box-shadow: 0 20px 60px rgba(225,29,72,.12), 0 8px 24px rgba(0,0,0,.08);"
+            />
+            {/* Rose pill badge */}
+            <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-rose text-white font-display font-bold text-[0.72rem] uppercase tracking-[0.08em] px-5 py-1.5 rounded-full whitespace-nowrap shadow-[0_4px_16px_rgba(225,29,72,.3)]">
+              Dhiwa &amp; Gloria · Founders
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT: Story */}
+        <div data-reveal data-reveal-delay="1">
+          <p class="text-[0.95rem] text-muted leading-[1.8] mb-4">
+            Latin Addiction was founded by Dhiwa and Gloria — two people who built a teaching method around technique, safety, and genuine fun.
+          </p>
+
+          {/* Gloria mini-feature */}
+          <div class="flex gap-4 items-start mb-4">
+            <img
+              src="/images/instructors/Gloria.jpg"
+              alt="Gloria"
+              width="56"
+              height="56"
+              loading="lazy"
+              class="w-14 h-14 rounded-full object-cover object-[center_top] border-2 border-rose/[0.12] shrink-0 mt-0.5"
+            />
+            <p class="text-[0.92rem] text-muted leading-[1.7]">
+              Gloria discovered Bachata in 2019. She was once exactly where you are — no dance experience, no idea what to expect, nervous about walking through the door. That perspective shapes everything about how we teach.
+            </p>
+          </div>
+
+          <p class="text-[0.92rem] text-muted leading-[1.7] mb-5">
+            Together, they teach and DJ at festivals across the UK, and run classes in Milton Keynes, Leicester, and Reading.
+          </p>
+
+          {/* Pull quote — white bg to stand out against gray section */}
+          <div class="bg-white rounded-[16px] p-5 border-l-4 border-rose">
+            <p class="italic text-[0.92rem] leading-[1.65] text-dark">
+              "We're not just here to teach you steps. We're here to make sure you leave every class feeling better than when you arrived."
+            </p>
+            <cite class="block mt-2 text-[0.78rem] font-semibold text-rose-dark not-italic">
+              — Dhiwa &amp; Gloria
+            </cite>
+          </div>
+        </div>
+      </div>
+
+      {/* Team strip + skill pills */}
+      <div data-reveal class="mt-10 text-center">
+        <p class="text-[0.85rem] text-muted mb-3">
+          Supported by a team of 10+ instructors across all three cities.
+        </p>
+        <div class="flex gap-2.5 justify-center flex-wrap items-center">
+          <img src="/images/instructors/Chido.jpg" alt="Chido" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Daniella.jpeg" alt="Daniella" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Irina.jpg" alt="Irina" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Meg.jpg" alt="Meg" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+          <img src="/images/instructors/Imogen.jpg" alt="Imogen" width="52" height="52" loading="lazy" class="w-[52px] h-[52px] rounded-full object-cover border-2 border-rose/[0.08]" />
+        </div>
+
+        {/* Skill pills */}
+        <div class="flex gap-1.5 justify-center flex-wrap mt-3">
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-rose/[0.08] text-rose-9f">Bachata</span>
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-gold/[0.08] text-party">Salsa</span>
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-dark/[0.06] text-muted">Sensual</span>
+          <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-[rgba(34,197,94,.08)] text-[#166534]">Beginner-Friendly</span>
+        </div>
+      </div>
+
+      {/* What a typical class looks like */}
+      <div data-reveal class="mt-10 max-w-[700px] mx-auto">
+        <div class="bg-white rounded-[20px] p-[clamp(1.5rem,4vw,2.5rem)]">
+          <h3 class="font-display font-bold text-[1.1rem] mb-4">What a typical class looks like</h3>
+
+          {/* Step 1 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">01</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Warm welcome</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">Introductions, a quick warmup, no awkward standing around. Everyone here was new once.</p>
+            </div>
+          </div>
+          <div class="h-px bg-rose/[0.1] my-3"></div>
+
+          {/* Step 2 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">02</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Foundation technique</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">The basic step, timing, how to hold frame — broken down until it clicks, not just demonstrated once.</p>
+            </div>
+          </div>
+          <div class="h-px bg-rose/[0.1] my-3"></div>
+
+          {/* Step 3 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">03</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Rotating partners</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">You'll dance with everyone in the room. By the end, you'll have ten new mates.</p>
+            </div>
+          </div>
+          <div class="h-px bg-rose/[0.1] my-3"></div>
+
+          {/* Step 4 */}
+          <div class="flex gap-4 items-start">
+            <div class="w-9 h-9 rounded-[10px] bg-rose flex items-center justify-center text-[0.72rem] font-bold text-white shrink-0">04</div>
+            <div>
+              <p class="text-[0.92rem] font-semibold mb-0.5">Social freestyle</p>
+              <p class="text-[0.82rem] text-muted leading-[1.6]">Class ends, the music stays on. This is where the real magic happens.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div data-reveal class="mt-5 text-center">
+          <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+            Claim your free class
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 4: SOCIAL PROOF (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    {/* Decorative radial gradient glows */}
+    <div class="proof-glow-left" aria-hidden="true"></div>
+    <div class="proof-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto">
+      {/* Eyebrow */}
+      <div data-reveal class="text-center mb-7">
+        <span class="text-rose-light uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          What our students say
+        </span>
+      </div>
+
+      {/* Visually-hidden heading for accessibility */}
+      <h2 class="sr-only">Student Reviews</h2>
+
+      {/* Featured review */}
+      <div data-reveal data-reveal-delay="1" class="mb-10 border-l-4 border-rose pl-[clamp(1.25rem,3vw,2rem)] max-w-[820px]">
+        <blockquote class="font-display font-bold text-[clamp(1.5rem,3.5vw,2.5rem)] leading-[1.18] text-white">
+          &ldquo;{featuredReview.text}&rdquo;
+        </blockquote>
+        <div class="flex items-center gap-3 mt-5">
+          <div class="w-[44px] h-[44px] rounded-full bg-gradient-to-br from-rose to-rose-dark flex items-center justify-center font-display font-bold text-base text-white">
+            {featuredReview.initial}
+          </div>
+          <div>
+            <p class="text-[0.85rem] font-medium text-white">{featuredReview.author}</p>
+            <p class="text-[0.75rem] text-white/40">
+              {featuredReview.source} · <span class="text-gold">★★★★★</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* 3 mini review cards */}
+      <div data-reveal data-reveal-delay="2" class="grid gap-5 md:grid-cols-3 mb-8">
+        {miniReviews.map((review) => (
+          <div class="mini-review-card bg-white/[0.04] border border-[rgba(225,29,72,0.12)] rounded-[16px] p-5 px-6 flex flex-col transition-colors duration-300 hover:border-[rgba(225,29,72,0.3)]">
+            <q class="text-[0.88rem] italic text-white/70 leading-[1.7] flex-1" style="quotes:none;">
+              &ldquo;{review.text}&rdquo;
+            </q>
+            <div class="flex items-center gap-2 mt-3 pt-3 border-t border-white/[0.06]">
+              <div class="w-7 h-7 rounded-full bg-rose/20 border border-rose/25 flex items-center justify-center font-display font-bold text-[0.65rem] text-rose-light">
+                {review.initial}
+              </div>
+              <div>
+                <p class="text-[0.78rem] font-medium text-white">{review.author}</p>
+                <span class="text-[0.65rem] text-gold">★★★★★</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom row — Google pill + CTA */}
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap items-center justify-center gap-4">
+        <span class="inline-flex items-center gap-2 bg-white/[0.06] border border-[rgba(225,29,72,0.15)] rounded-full px-5 py-2 text-[0.82rem] font-medium text-white/65">
+          <span class="text-gold">★</span> 5.0 on Google Reviews
+        </span>
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          Try a free class
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 5: GETTING STARTED (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto text-center">
+      {/* Eyebrow */}
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          The process
+        </span>
+      </div>
+
+      {/* Title */}
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-4">
+        Getting started is <span class="font-display text-rose">ridiculously easy</span>
+      </h2>
+
+      {/* 3 step cards */}
+      <div class="grid gap-5 md:grid-cols-3 mt-8">
+        {/* Step 1 */}
+        <div data-reveal data-reveal-delay="1" class="step-card flex flex-col items-center">
+          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
+            1
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Send us a message</h3>
+          <p class="text-[0.88rem] text-muted">
+            Just say hi on WhatsApp — that's it. We'll confirm the next class and answer any questions.
+          </p>
+        </div>
+
+        {/* Step 2 */}
+        <div data-reveal data-reveal-delay="2" class="step-card flex flex-col items-center">
+          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
+            2
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Turn up</h3>
+          <p class="text-[0.88rem] text-muted">
+            Wear something comfortable. No special shoes needed. We'll be expecting you.
+          </p>
+        </div>
+
+        {/* Step 3 */}
+        <div data-reveal data-reveal-delay="3" class="step-card flex flex-col items-center">
+          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
+            3
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Dance</h3>
+          <p class="text-[0.88rem] text-muted">
+            Your first class is free. Stay for the social party afterwards — that's where the real fun starts.
+          </p>
+        </div>
+      </div>
+
+      {/* Note */}
+      <p data-reveal data-reveal-delay="4" class="text-[0.88rem] text-muted mt-5">
+        Everyone starts at Level 1 — we run classes from complete beginner to advanced, so there's always a place for you.
+      </p>
+
+      {/* CTA */}
+      <div data-reveal data-reveal-delay="4" class="mt-5">
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          Start here
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 6: SCHEDULE + LOCATIONS + PRICE (light gray bg) ── */}
+  <section id="schedule" class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto">
+      {/* Eyebrow */}
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          Classes
+        </span>
+      </div>
+
+      {/* Title */}
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-4">
+        When &amp; where we dance
+      </h2>
+
+      {/* Tab buttons */}
+      <div data-reveal data-reveal-delay="2" class="flex gap-2 flex-wrap mb-5" role="tablist" aria-label="Choose a location">
+        {locations.map((loc, i) => (
+          <button
+            id={`tab-${panelId(loc.slug)}`}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`p-${panelId(loc.slug)}`}
+            class:list={[
+              'schedule-tab font-body font-semibold text-[0.82rem] px-6 py-3 min-h-[44px] rounded-full border-2 cursor-pointer transition-all duration-200',
+              i === 0
+                ? 'active-tab bg-rose text-white border-rose'
+                : 'bg-transparent text-muted border-[rgba(225,29,72,0.25)]',
+            ]}
+            data-loc={panelId(loc.slug)}
+          >
+            {loc.name}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab panels */}
+      {locations.map((loc, i) => (
+        <div
+          data-reveal
+          data-reveal-delay="3"
+          id={`p-${panelId(loc.slug)}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${panelId(loc.slug)}`}
+          class:list={['schedule-panel', i !== 0 && 'hidden']}
+        >
+          <ScheduleCard location={loc} />
+
+          {/* Location note (MK only) */}
+          {loc.note && (
+            <p class="text-[0.85rem] text-muted italic mt-3">{loc.note}</p>
+          )}
+
+          {/* Per-location CTA */}
+          <div class={loc.note ? 'mt-4' : 'mt-5'}>
+            <a
+              href={whatsappUrl(loc.whatsappMessage)}
+              class="btn-rose"
+              target="_blank"
+              rel="noopener"
+            >
+              Join the {loc.name} class
+            </a>
+          </div>
+        </div>
+      ))}
+
+      {/* Price summary box (always visible) */}
+      <div data-reveal data-reveal-delay="4" class="mt-8 p-6 bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px]">
+        <p class="font-bold text-[1.05rem]">
+          First class: FREE · Newcomer 4-week pass: £20 · Drop-in from £10/night
+        </p>
+        <p class="text-[0.82rem] text-muted mt-1.5">
+          Cash and card accepted. Student &amp; NHS discount available — ask on WhatsApp.{' '}
+          <a href="/pricing" class="text-rose-dark font-medium">See all pricing →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 7: FAQ (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[760px] mx-auto">
+      {/* Eyebrow */}
+      <div data-reveal class="text-center mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          FAQ
+        </span>
+      </div>
+
+      {/* Title */}
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] text-center mb-4">
+        The questions everyone asks first
+      </h2>
+
+      {/* Accordion */}
+      <div class="mt-5">
+        {homepageFaqs.map((faq, i) => (
+          <div data-reveal class="bg-[#f5f5f5] border border-[rgba(225,29,72,0.06)] rounded-[16px] overflow-hidden mb-2.5">
+            <button
+              id={`faq-btn-${i}`}
+              class="faq-btn w-full flex items-center justify-between gap-4 text-left cursor-pointer bg-transparent border-none"
+              style="padding:1rem 1.25rem;"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+            >
+              <span class="font-body font-semibold text-[0.9rem] text-dark">{faq.question}</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div
+              id={`faq-answer-${i}`}
+              class="faq-answer hidden"
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+            >
+              <p class="text-[0.88rem] text-muted leading-[1.7]" style="padding:0 1.25rem 1rem;">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* See all FAQs link */}
+      <p class="text-center mt-3">
+        <a href="/faq" class="text-rose-dark font-medium text-[0.88rem] no-underline hover:underline">
+          See all FAQs &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  {/* ── SECTION 8: FINAL CTA (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    {/* Decorative radial gradient glows */}
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto text-center">
+      {/* Status pill */}
+      <div data-reveal class="mb-6">
+        <span class="inline-flex items-center gap-2 bg-[rgba(225,29,72,0.12)] border border-[rgba(225,29,72,0.25)] rounded-full" style="padding:0.35rem 1rem;">
+          <span class="cta-pulse-dot w-2 h-2 rounded-full bg-rose inline-block" aria-hidden="true"></span>
+          <span class="text-rose-light text-[0.72rem] font-bold uppercase tracking-[0.1em]">
+            Classes running now
+          </span>
+        </span>
+      </div>
+
+      {/* Headline */}
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(2rem,5vw,3.5rem)]">
+        Your next Monday, Tuesday or Wednesday<br class="hidden md:inline" />
+        could change everything.
+      </h2>
+
+      {/* Copy */}
+      <p data-reveal data-reveal-delay="2" class="text-[clamp(1rem,2vw,1.12rem)] text-white/[0.55] max-w-[500px] mx-auto leading-[1.7] mb-8">
+        One free class. No pressure. Just show up, and let's see what happens.
+      </p>
+
+      {/* CTA buttons */}
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center">
+        <a
+          href={waUrl}
+          class="btn-rose"
+          style="font-size:1.02rem;padding:1rem 2.25rem;"
+          target="_blank"
+          rel="noopener"
+        >
+          Claim your free class
+        </a>
+        <a
+          href={`tel:${PHONE_TEL}`}
+          class="btn-white-outline"
+          style="font-size:1.02rem;padding:1rem 2.25rem;"
+        >
+          Call 07424 063798
+        </a>
+      </div>
+
+      {/* Trust checklist */}
+      <div data-reveal data-reveal-delay="4" class="flex flex-wrap justify-center gap-x-5 gap-y-2.5 mt-8 pt-6 border-t border-white/[0.08]">
+        {(['First class free', 'No partner needed', 'Complete beginners welcome', 'No commitment required'] as const).map((item) => (
+          <span class="inline-flex items-center gap-1.5 text-[0.82rem] text-white/[0.55]">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('.schedule-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Deactivate all tabs
+      document.querySelectorAll('.schedule-tab').forEach(t => {
+        t.classList.remove('active-tab', 'bg-rose', 'text-white', 'border-rose');
+        t.classList.add('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
+        t.setAttribute('aria-selected', 'false');
+      });
+      // Hide all panels
+      document.querySelectorAll('.schedule-panel').forEach(p => p.classList.add('hidden'));
+
+      // Activate clicked tab
+      tab.classList.add('active-tab', 'bg-rose', 'text-white', 'border-rose');
+      tab.classList.remove('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
+      tab.setAttribute('aria-selected', 'true');
+
+      // Show matching panel
+      const loc = (tab as HTMLElement).dataset.loc;
+      document.getElementById('p-' + loc)?.classList.remove('hidden');
+    });
+  });
+
+  // FAQ accordion — single open at a time
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const answer = btn.nextElementSibling as HTMLElement;
+      const chevron = btn.querySelector('.faq-chevron') as SVGElement;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+      document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotated'));
+      document.querySelectorAll('.faq-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      // Open clicked (if it was closed)
+      if (!isOpen) {
+        answer.classList.remove('hidden');
+        chevron.classList.add('rotated');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
