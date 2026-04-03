@@ -8,7 +8,7 @@ const formatPrice = (pence: number) => `£${(pence / 100).toFixed(0)}`;
 ---
 
 <BaseLayout
-  title="Dance Class Prices | Latin Addiction UK"
+  title="Dance Class Prices"
   description="Transparent pricing for Bachata and Salsa classes in Milton Keynes, Leicester, and Reading. Drop-in from £10. 4 and 8-week memberships available. First class always free."
 >
 
@@ -432,6 +432,7 @@ const formatPrice = (pence: number) => `£${(pence / 100).toFixed(0)}`;
         const { checkoutId } = await res.json();
 
         loadingEl.hidden = true;
+        widgetEl.id = checkoutId; // SumUp widget mounts into the element whose id matches checkoutId
         widgetEl.hidden = false;
 
         // @ts-ignore — SumUpCard is loaded from the SDK script
