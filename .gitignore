@@ -28,3 +28,4 @@ media/
 
 # Build
 .cache/
+.playwright-mcp/
