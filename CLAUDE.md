@@ -8,7 +8,7 @@ New website for **Latin Addiction UK**, a Bachata and Salsa dance school with lo
 
 - **Tech stack:** Astro + Tailwind CSS
 - **Hosting:** Cloudflare Workers & Pages (free, auto-deploy from GitHub)
-- **Payments:** SumUp (link to SumUp store for MVP; Card Widget + Cloudflare Worker planned for on-site checkout)
+- **Payments:** SumUp Card Widget + Cloudflare Worker for on-site checkout (SumUp store links as temporary stopgap until Worker is built)
 - **Domain:** latinaddiction.co.uk (registered at Hostinger, DNS on Cloudflare)
 - **Repo:** `dhiwatdg/Latin-Addiction-Website` → Cloudflare auto-builds on push to `main`
 
@@ -19,26 +19,42 @@ New website for **Latin Addiction UK**, a Bachata and Salsa dance school with lo
 - **Design choice:** DONE — Design D (Broadway Rose) chosen. Prototype D-v2 complete and reviewed.
 - **Astro project:** NOT STARTED — scaffold now, build, push = live site
 
-## Next Steps (pick up here)
+## Build Phases
 
+### Phase 1 — Go Live (current)
 1. **Scaffold Astro project** — `npm create astro@latest`, add Tailwind, configure `astro.config.mjs` for static output. Set Design D palette in `tailwind.config.mjs`: dark #111, rose #E11D48, pink #fecdd3, gray #f5f5f5. Fonts: Poppins (800 hero, 600 titles) + DM Sans (body).
-2. **Build MVP pages** — use `prototypes/homepage-design-D-v2.html` as the visual reference:
+2. **Build shared shell** — BaseLayout, Header (responsive nav + ARIA), Footer, WhatsApp button, mobile sticky bar, SEO component
+3. **Build pages:**
    - Homepage (8-section layout from D-v2 prototype — NOT the 12-section content draft)
    - `/milton-keynes` — location page (Salsa & Bachata, Mondays)
    - `/leicester` — location page (Bachata, Tuesdays)
    - `/reading` — location page (Bachata, Wednesdays)
-   - Shared: nav, footer, WhatsApp button, mobile sticky bar, base layout
-3. **Accessibility fixes** (not in prototype, must be in Astro build):
+   - `/404` — friendly error page
+4. **Accessibility** (not in prototype, must be in Astro build):
    - `<main>` landmark + skip-to-content link
    - Keyboard-accessible nav dropdowns with ARIA
    - `<h2>` headings for Worry-Busters and Social Proof sections
    - `loading="lazy"` + width/height on below-fold images
    - `aria-expanded` on hamburger
    - `100dvh` for mobile menu on iOS
-4. **"Book Now" links** → SumUp store (`latinaddictionuk.sumupstore.com`) — no payment integration for MVP
-5. **Push to main** → Cloudflare auto-builds → live at `latinaddiction.co.uk`
-6. **Post-launch iteration:** /pricing, /about, /faq, /classes, /contact, /reviews, /services/*
-7. **Codex quality gate:** After each major build step, use Codex plugin for code review (scaffold, layout/nav, homepage, location pages, final pre-push). See memory `feedback_codex_usage_strategy.md`.
+5. **"Book Now" links** → SumUp store (`latinaddictionuk.sumupstore.com`) as temporary stopgap
+6. **Push to main** → Cloudflare auto-builds → live at `latinaddiction.co.uk`
+
+### Phase 2 — On-Site Checkout
+- `/pricing` page with full pricing tables
+- Cloudflare Worker for SumUp Card Widget (on-site checkout, ~25 lines)
+- Replace all SumUp store links with on-site checkout
+- SumUp API key as Cloudflare Worker secret
+
+### Phase 3 — Full Site
+- `/services/private-coaching`, `/services/corporate`, `/services/hire-us`
+- `/about`, `/faq`, `/reviews`, `/classes`, `/contact`, `/privacy`
+- `/learn` — 3-5 SEO articles (Bachata vs Salsa, What to Wear, etc.)
+- All schema markup (DanceStudio, FAQPage, Course, Organization)
+- OG share images per page
+
+### Quality Gate
+After each major build step, use Codex plugin for code review (scaffold, layout/nav, homepage, location pages, final pre-push). See memory `feedback_codex_usage_strategy.md`.
 
 ## Key Files
 
