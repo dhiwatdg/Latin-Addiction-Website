@@ -20,7 +20,7 @@ For true context separation, the user should ideally run `/clear` before invokin
    - If $ARGUMENTS is empty, ask the user which file to review. Do not guess.
 
 2. **Read ONLY these files:**
-   - The deliverable at the path in $ARGUMENTS (works with markdown and HTML; for HTML, focus on text content, ignore markup/CSS)
+   - The deliverable at the path in $ARGUMENTS (works with markdown, HTML, and .astro files; for HTML/Astro, focus on text content, ignore markup/CSS/frontmatter)
    - `../Latin Addiction/KNOWLEDGE-BASE.md` (single source of truth for operations, pricing, schedules, and business data)
    - If a design doc exists at `docs/plans/`, read the most recent one for consistency checks
    - Nothing else. Do NOT read memory files, conversation history, or other project files.

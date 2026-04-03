@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-New website for **Latin Addiction UK**, a Bachata and Salsa dance school with locations in Leicester, Reading, and Milton Keynes.
+New website for **Latin Addiction UK**, a Bachata and Salsa dance school with locations in Milton Keynes, Leicester, and Reading.
 
 - **Tech stack:** Astro + Tailwind CSS
 - **Hosting:** Cloudflare Workers & Pages (free, auto-deploy from GitHub)
@@ -16,38 +16,51 @@ New website for **Latin Addiction UK**, a Bachata and Salsa dance school with lo
 
 - **Infrastructure:** DONE — Cloudflare account, DNS, Pages/Workers connected, custom domain wired
 - **Content:** DONE — design doc + content draft v2.1 both updated with MK
-- **Design choice:** PENDING — D choosing between prototypes M (warm), N (bold), O (dark)
-- **Astro project:** NOT STARTED — scaffold when vibe is chosen, then build + push = live site
+- **Design choice:** DONE — Design D (Broadway Rose) chosen. Prototype D-v2 complete and reviewed.
+- **Astro project:** NOT STARTED — scaffold now, build, push = live site
 
 ## Next Steps (pick up here)
 
-1. **Ask D which vibe: M, N, or O** — ask ONCE, then wait. See `prototypes/new/homepage-design-M.html`, `N.html`, `O.html`. M=warm champagne, N=bold lavender, O=dark purple.
-2. **Scaffold Astro project** — `npm create astro@latest`, add Tailwind, configure `astro.config.mjs` for static output. Set palette from chosen vibe in `tailwind.config.mjs`.
-3. **Build MVP pages** (3hr target):
-   - Homepage (12-section conversion funnel from content draft v2.1)
-   - `/reading` — location page (Bachata, Wednesdays)
-   - `/leicester` — location page (Bachata, Tuesdays)
+1. **Scaffold Astro project** — `npm create astro@latest`, add Tailwind, configure `astro.config.mjs` for static output. Set Design D palette in `tailwind.config.mjs`: dark #111, rose #E11D48, pink #fecdd3, gray #f5f5f5. Fonts: Poppins (800 hero, 600 titles) + DM Sans (body).
+2. **Build MVP pages** — use `prototypes/homepage-design-D-v2.html` as the visual reference:
+   - Homepage (8-section layout from D-v2 prototype — NOT the 12-section content draft)
    - `/milton-keynes` — location page (Salsa & Bachata, Mondays)
-   - Shared: nav, footer, WhatsApp button, base layout
+   - `/leicester` — location page (Bachata, Tuesdays)
+   - `/reading` — location page (Bachata, Wednesdays)
+   - Shared: nav, footer, WhatsApp button, mobile sticky bar, base layout
+3. **Accessibility fixes** (not in prototype, must be in Astro build):
+   - `<main>` landmark + skip-to-content link
+   - Keyboard-accessible nav dropdowns with ARIA
+   - `<h2>` headings for Worry-Busters and Social Proof sections
+   - `loading="lazy"` + width/height on below-fold images
+   - `aria-expanded` on hamburger
+   - `100dvh` for mobile menu on iOS
 4. **"Book Now" links** → SumUp store (`latinaddictionuk.sumupstore.com`) — no payment integration for MVP
 5. **Push to main** → Cloudflare auto-builds → live at `latinaddiction.co.uk`
 6. **Post-launch iteration:** /pricing, /about, /faq, /classes, /contact, /reviews, /services/*
-
-All content is in `prototypes/new/homepage-content-draft.html` (v2.1). All business details are in the design doc. All build answers (MK schedule, WhatsApp number, photos, etc.) are in memory file `project_build_answers.md`.
+7. **Codex quality gate:** After each major build step, use Codex plugin for code review (scaffold, layout/nav, homepage, location pages, final pre-push). See memory `feedback_codex_usage_strategy.md`.
 
 ## Key Files
 
-- **Design doc (SINGLE SOURCE OF TRUTH):** `docs/plans/2026-03-21-website-design.md` — all design decisions, content specs, technical requirements (updated 2026-04-03 with MK)
-- **BUILD-PLAN.md** — partially stale (hosting/payments/nav superseded by design doc), but Astro project structure + verification checklists still valid
-- **Archived plans:** `docs/plans/archive/` — superseded brainstorming docs
-- **Prototypes (active):** `prototypes/new/` — 15 homepage design prototypes (A-O). A-H are the original 8 (3 design families). I-L are purple/gold brand palette variants. M-O are voting-informed final candidates (D's structure + E's typography + purple/gold at 3 intensity levels). See memory for intentional spec deviations.
-- **Video prototypes:** `prototypes/video/` — 9 files showing video integration in designs B, F, G (3 variants each: poster, play button, autoplay simulation).
-- **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero, encoding pipeline, Astro components.
-- **Contrast fixes plan:** `docs/plans/2026-03-22-palette-contrast-fixes.md` — audit results + exact CSS fixes applied per file
-- **Prototypes (old):** `prototypes/old/` — 13 earlier prototypes from brainstorming phase, kept for CSS pattern reference
-- **Homepage content draft (APPROVED v2.1):** `prototypes/new/homepage-content-draft.html` — v2.1 with MK. Fully reviewed/fact-checked/challenged. Ready for Astro build.
-- **Logo assets:** `Logos/` — original PNGs + processed web variants. Use `logo-mark-bold.png` on light bg, `logo-mark-golden-tight.png` on dark bg.
-- **Event images:** `images/` — event design graphics per location (square + landscape). Leicester and Reading have real dance photos. MK still has 8Dance co-branding (update later). Private coaching portrait of Dhiwa.
+- **Homepage prototype (BUILD REFERENCE):** `prototypes/homepage-design-D-v2.html` — the 8-section restructured homepage. This is what the Astro build should reproduce. See memory `project_homepage_prototype_final.md` for full section breakdown.
+- **Homepage content draft:** `prototypes/homepage-content-draft.html` — v2.1 source content. The prototype restructures this (12→8 sections), so use the prototype as the primary reference.
+- **Design doc:** `docs/plans/2026-03-21-website-design.md` — single source of truth for business data, but the 12-section layout is superseded by the 8-section prototype.
+- **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero. Post-launch feature.
+- **Archived plans:** `docs/plans/archive/` — completed implementation plans
+- **Archived prototypes:** `prototypes/archive/` — A-O designs + video prototypes (25 files)
+- **Logo assets:** `Logos/` — nav: `logo-mark-bold.png` with `filter:brightness(0)`. Footer: `logo-mark-golden-tight.png`.
+- **Instructor photos:** `images/instructors/` — Dhiwa & Gloria (founders), Gloria (solo), Chido, Daniella, Irina, Meg, Imogen
+- **Event images:** `images/` — per-location event graphics (social media assets, NOT for web use). Real class photography needed post-launch.
+
+## Key Design Decisions
+
+- **City order:** MK → Leicester → Reading everywhere (Mon, Tue, Wed)
+- **MK pricing:** £10 flat for the night (Reading/Leicester: £10/£15)
+- **Newcomer pass:** £20 at ALL locations including MK
+- **8 sections:** Hero, Worry-Busters, Instructors, Social Proof, Getting Started, Schedule+Price, FAQ (4 Qs), Final CTA
+- **Removed from homepage:** Why Bachata → /classes, Class Levels → /classes, Pricing → embedded in schedule, Private Coaching → /services/private-coaching
+- **Hero:** Text-only (no photo), dark bg. Founders photo is in instructor section instead.
+- **Event flyer images:** Not suitable for web — social media assets with text overlays. Use real class photography when available.
 
 ## Sibling Project Access Rules
 
