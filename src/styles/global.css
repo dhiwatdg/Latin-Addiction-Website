@@ -149,6 +149,27 @@
   transform: scale(1.1);
 }
 
+/* FAQ chevron rotation */
+.faq-chevron {
+  transition: transform 0.25s;
+  color: #555;
+  flex-shrink: 0;
+}
+.faq-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* CTA pulse dot */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.cta-pulse-dot {
+  animation: pulse 2s infinite;
+}
+
+/* CTA section decorative glows (reuses hero glow classes) */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
