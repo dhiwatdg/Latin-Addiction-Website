@@ -1,8 +1,10 @@
 # Latin Addiction UK — Website Design Document
 
-> **Date:** 2026-03-21
+> **Date:** 2026-03-21 (updated 2026-04-03)
 > **Status:** FINAL — reviewed, cross-checked against KB, ready for implementation planning
 > **Source of truth for pricing/schedules:** `../Latin Addiction/KNOWLEDGE-BASE.md` (SumUp store data as of 2026-02-15)
+>
+> **2026-04-03 UPDATE:** Milton Keynes added as third location. 8Dance acquisition completed 2026-03-28 (£3,900 buyout). MK teaches Salsa & Bachata (Mondays at Midsummer Tap). All sections updated: nav, pages, hero, schedule, SEO, schema, scope guards, build list. MK removed from "out of scope" — now fully in scope with `/milton-keynes` city page.
 
 ---
 
@@ -10,12 +12,12 @@
 
 ### 1.1 What We're Building
 
-A new website for Latin Addiction UK, a Bachata dance school operating in Reading (Wednesdays) and Leicester (Tuesdays). The site replaces a SumUp store page that currently serves as the only web presence.
+A new website for Latin Addiction UK, a Bachata and Salsa dance school operating in Reading (Wednesdays), Leicester (Tuesdays), and Milton Keynes (Mondays). The site replaces a SumUp store page that currently serves as the only web presence.
 
 ### 1.2 Goals
 
 1. **Convert nervous first-timers** into WhatsApp messages requesting a free class
-2. **Rank in local search** for Bachata, Latin dance, and related terms in both cities
+2. **Rank in local search** for Bachata, Salsa, Latin dance, and related terms in all three cities
 3. **Appear in AI search results** (Google AI Overviews, ChatGPT, Perplexity, Gemini)
 4. **Provide transparent information** about classes, pricing, schedule, and locations
 5. **Generate enquiries** for private coaching and corporate bookings
@@ -34,7 +36,7 @@ A new website for Latin Addiction UK, a Bachata dance school operating in Readin
 
 ### 2.1 Primary Audience: Person A (Never Danced)
 
-The homepage scroll journey is designed for someone who has never danced before and is nervous about trying. They may have searched for "salsa classes reading" or "Latin dance leicester" and don't know what Bachata is. They need:
+The homepage scroll journey is designed for someone who has never danced before and is nervous about trying. They may have searched for "salsa classes reading", "Latin dance leicester", or "dance classes milton keynes" and don't know what Bachata is. They need:
 
 - Immediate clarity: what this is, where, when, how much
 - Emotional reassurance: they belong here, no judgment
@@ -78,9 +80,10 @@ The website's job is to drive ONE action: a WhatsApp message. The £20 upsell ha
 ### 2.6 WhatsApp Deep Links
 
 Each page uses a city-specific pre-filled message:
-- Homepage: "Hi! I'd like to try a free Bachata class"
+- Homepage: "Hi! I'd like to try a free class"
 - /reading: "Hi! I'd like to try a free Bachata class in Reading"
 - /leicester: "Hi! I'd like to try a free Bachata class in Leicester"
+- /milton-keynes: "Hi! I'd like to try a free Salsa & Bachata class in Milton Keynes"
 - /services/private-coaching: "Hi! I'm interested in private Bachata coaching"
 - /services/corporate: "Hi! I'd like to enquire about a corporate dance workshop"
 - /services/hire-us: "Hi! I'd like to enquire about guest teaching or DJ services for an event"
@@ -92,11 +95,11 @@ Each page uses a city-specific pre-filled message:
 ### 3.1 Navigation (6 top-level items)
 
 ```
-HOME | READING | LEICESTER | PRICING | SERVICES ▼ | ABOUT ▼
-                                        ├── Private Coaching   ├── Our Story
-                                        ├── Corporate          ├── FAQ
-                                        └── Hire Us            ├── Reviews
-                                                               └── Learn
+HOME | READING | LEICESTER | MILTON KEYNES | PRICING | SERVICES ▼ | ABOUT ▼
+                                                       ├── Private Coaching   ├── Our Story
+                                                       ├── Corporate          ├── FAQ
+                                                       └── Hire Us            ├── Reviews
+                                                                              └── Learn
 ```
 
 ### 3.2 All Pages
@@ -106,6 +109,7 @@ HOME | READING | LEICESTER | PRICING | SERVICES ▼ | ABOUT ▼
 | Homepage | `/` | Yes (HOME) | Single-page conversion funnel for Person A |
 | Reading | `/reading` | Yes | Reading-specific: venue, schedule, parking, classes |
 | Leicester | `/leicester` | Yes | Leicester-specific: venue, schedule, parking, classes |
+| Milton Keynes | `/milton-keynes` | Yes | MK-specific: venue, schedule, parking, Salsa & Bachata classes |
 | Pricing | `/pricing` | Yes | Full pricing: drop-in, passes, memberships, newcomer offer |
 | Private Coaching | `/services/private-coaching` | Yes (Services ▼) | Detailed coaching info with headline pricing + SumUp links |
 | Corporate | `/services/corporate` | Yes (Services ▼) | Team-building workshops for companies |
@@ -115,7 +119,7 @@ HOME | READING | LEICESTER | PRICING | SERVICES ▼ | ABOUT ▼
 | Reviews | `/reviews` | Yes (About ▼) | Google review quotes, star ratings, future video testimonials |
 | Classes | `/classes` | No (linked contextually) | Class level detail + progression path |
 | Learn | `/learn` | Yes (About ▼) | Evergreen educational content: "Bachata vs Salsa", "What to Wear", etc. |
-| Contact | `/contact` | No (in footer) | Contact details, both locations, WhatsApp |
+| Contact | `/contact` | No (in footer) | Contact details, all three locations, WhatsApp |
 | Privacy Policy | `/privacy` | No (footer link) | Basic privacy policy (UK Ltd requirement) |
 | 404 | — | No | Friendly error page with CTA |
 
@@ -143,13 +147,13 @@ Based on adversarial critique from Gemini, Codex/GPT, and Perplexity.
 #### Section 1: HERO
 
 **Content:**
-- Headline: "Learn Bachata in Reading & Leicester" (or similar — bold, clear)
-- One-line Bachata context: "The Latin partner dance everyone's falling for" (for salsa searchers)
+- Headline: "Learn Bachata & Salsa in Reading, Leicester & Milton Keynes" (or similar — bold, clear)
+- One-line context: "The Latin partner dances everyone's falling for" (for searchers)
 - Sub-copy: "No experience needed. No partner needed. Your first class is FREE."
 - Primary CTA: "Claim your free class" (WhatsApp)
 - Secondary CTA: "See schedule" (scroll to section 4)
 - Dual-track link: "Already dance? → Schedule & Pricing"
-- Trust bar: 5.0 Google stars | 4+ years | 100+ students weekly | Free social party after every class
+- Trust bar: 5.0 Google stars | 4+ years | 3 cities | 100+ students weekly | Free social party after every class
 - Video: vertical Reel on mobile (newcomer-focused), text-only on desktop for v1
 
 **Design reference:** #14's hero typography (bold serif headline) + #66's trust bar
@@ -181,10 +185,11 @@ Each with an accent-coloured tick confirmation line (#66 style).
 
 #### Section 6: SCHEDULE + LOCATIONS (was 4, tabbed by city)
 
-**Content (tabs: Reading | Leicester):**
+**Content (tabs: Reading | Leicester | Milton Keynes):**
 
 **Reading tab:**
 - Venue: Wesley Methodist Church, 84 Queen's Rd, Reading RG1 4BW
+- Day: Every Wednesday
 - Doors: 7:45pm
 - 8:00pm — Beginners & Intermediate (two levels running simultaneously)
 - 9:00pm — Improvers & Advanced (two levels running simultaneously)
@@ -195,6 +200,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 
 **Leicester tab:**
 - Venue: Braunstone Frith Recreation Centre, 29A Sharmon Cres, Leicester LE3 6NW
+- Day: Every Tuesday
 - Doors: 7:00pm
 - 7:15pm — Beginners (1 hr)
 - 8:15pm — Improver / Intermediate (1 hr)
@@ -203,6 +209,18 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - Parking: FREE street parking
 - "Get directions →" (Google Maps link)
 - CTA: "Join the Leicester class" (WhatsApp deep link)
+
+**Milton Keynes tab:**
+- Venue: Midsummer Tap, Theatre District, Milton Keynes MK9 3PU
+- Day: Every Monday
+- Doors: 7:45pm
+- 8:00pm — Bachata (Beginners / Improvers / Intermediate-Advanced)
+- 9:00pm — Salsa (Beginners / Improvers / Intermediate-Advanced)
+- 10:00pm — FREE Social Party
+- Parking: FREE from 6pm
+- "Get directions →" (Google Maps link)
+- CTA: "Join the Milton Keynes class" (WhatsApp deep link)
+- Note: MK runs both Salsa AND Bachata (unlike Reading/Leicester which are Bachata-only)
 
 **Design reference:** #66's timetable cards with dark headers + day badges. Tabs within one section.
 
@@ -280,8 +298,8 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - Heading: "People who actually care if you have fun"
 - Left column: About copy — founded by Dhiwa & Gloria, who built a teaching method around technique, safety, and genuine fun. Gloria discovered Bachata in 2019 — she was once exactly where you are. They teach and DJ at festivals across the UK.
 - Pull quote: "We're not just here to teach you steps. We're here to make sure you leave every class feeling better than when you arrived."
-- Founder card: Photo + "Latin Addiction Team" + "Reading & Leicester" + skill pills (Bachata, Sensual, Beginner-Friendly)
-- Team line: "Supported by a team of 8+ trained instructors across both cities."
+- Founder card: Photo + "Latin Addiction Team" + "Reading, Leicester & Milton Keynes" + skill pills (Bachata, Salsa, Sensual, Beginner-Friendly)
+- Team line: "Supported by a team of 10+ instructors across all three cities."
 - Right column: "What a typical class looks like" — 4-step numbered list:
   1. Warm welcome — introductions, no awkward standing around
   2. Foundation technique — broken down until it clicks
@@ -294,7 +312,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 
 **Content:**
 - 3-4 Google review quotes with first names and star ratings
-- Stats bar: 5.0 Google Reviews | 4+ Years Running | 2 Cities | 100+ Students Weekly
+- Stats bar: 5.0 Google Reviews | 4+ Years Running | 3 Cities | 100+ Students Weekly
 - Instagram grid: 6-cell grid of recent Reels, linking to @latinaddictionuk
 - "Follow us on Instagram →"
 - "Bring a friend or come alone — most of our regulars arrived solo."
@@ -314,14 +332,14 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - Is there parking at the venues?
 - Link: "See all FAQs →" to /faq
 
-**Moved to /faq only:** Am I too old / too unfit? | What is Bachata, exactly? | What's the age range like? | Do you offer private lessons? | Do you teach both lead and follow?
+**Moved to /faq only:** Am I too old / too unfit? | What is Bachata, exactly? | What's the age range like? | Do you offer private lessons? | Do you teach both lead and follow? | Which locations teach Salsa? (answer: Milton Keynes — Reading and Leicester are Bachata-only)
 
 **Design reference:** #68's FAQ accordion with sand-coloured rows
 
 #### Section 12: FINAL CTA
 
 **Content:**
-- Heading: "Your next Tuesday or Wednesday could change everything." ← **DECIDED** (2026-03-22: both Gemini and Codex agreed "No excuses left" is shaming tone for nervous first-timers; "Tuesday or Wednesday" is concrete, aspirational, references both cities)
+- Heading: "Your next Monday, Tuesday or Wednesday could change everything." ← **UPDATED 2026-04-03** (added Monday for Milton Keynes. Original decision 2026-03-22: Gemini and Codex agreed "No excuses left" is shaming tone for nervous first-timers; day names are concrete, aspirational, reference all three cities)
 - Copy: "One free class. No pressure. Just show up, and let's see what happens." (adapted from #66 — trust checklist below handles the "no commitment/no partner" reassurance, so body copy does the emotional close instead of repeating negatives)
 - CTAs: "Claim your free class" (primary, WhatsApp) + "Call 07424 063798" (secondary)
 - Trust checklist below: First class free | No partner needed | Complete beginners welcome | No commitment required
@@ -332,7 +350,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 
 - **Sticky WhatsApp bar (mobile only):** fixed at bottom of screen, always one tap away
 - **Floating WhatsApp button (all devices):** green circle, bottom-right, always visible
-- **Footer:** Nav links (all pages) | Social media (Instagram, Facebook, TikTok, YouTube) | Contact (email, phone, WhatsApp) | Both location addresses | Privacy policy link | "Student & NHS discount available"
+- **Footer:** Nav links (all pages) | Social media (Instagram, Facebook, TikTok, YouTube) | Contact (email, phone, WhatsApp) | All three location addresses | Privacy policy link | "Student & NHS discount available"
 
 ---
 
@@ -427,6 +445,23 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - No kiosk parking warning (free street parking)
 - SEO: targets "bachata classes leicester", "latin dance leicester"
 
+### 6.2b /milton-keynes
+
+**Added 2026-04-03 — MK acquisition completed 2026-03-28.**
+
+- Hero: "Salsa & Bachata Classes in Milton Keynes — Every Monday"
+- Full schedule: Bachata hour (8pm, 3 levels) + Salsa hour (9pm, 3 levels) + Free Social Party (10pm)
+- Venue details: Midsummer Tap, Theatre District, MK9 3PU
+- Parking: FREE from 6pm
+- Directions link (Google Maps)
+- "What a typical Monday looks like" (timeline)
+- Note difference from Reading/Leicester: MK teaches BOTH Salsa and Bachata
+- Classes: Beginners / Improvers / Intermediate-Advanced in both Salsa and Bachata
+- CTA: "Claim your free class in Milton Keynes" (WhatsApp deep link)
+- SEO: targets "salsa classes milton keynes", "bachata classes milton keynes", "dance classes milton keynes", "latin dance milton keynes"
+- Teaching team: Dhiwa (management + advanced classes), Sean, Rakesh
+- Same newcomer offer: first class FREE, £10 PAYG
+
 ### 6.3 /pricing
 
 - Full pricing table from KNOWLEDGE-BASE.md (all tiers)
@@ -443,6 +478,8 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - Detailed coaching info: what it covers, who it's for
 - Pricing: singles (off-peak/peak/pre-class) and packs (4/8 sessions)
 - Recommended duration: 90 minutes
+- Available in Reading, Leicester, and Milton Keynes
+- Pre-class slots: Mon 7-8pm (MK), Tue 6-7pm (Leicester), Wed 6-7:30pm (Reading)
 - Booking process: purchase via SumUp → confirm via WhatsApp
 - SumUp buy links
 - CTA: "Enquire via WhatsApp" for questions
@@ -473,7 +510,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - Values: inclusive, passionate, community
 - Founder photo
 - Team mention with photos if available
-- "Supported by 8+ trained instructors across both cities"
+- "Supported by 10+ instructors across all three cities"
 
 ### 6.8 /faq
 
@@ -496,7 +533,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - What you learn at each level (plain English)
 - How to know when you're ready for the next level
 - Available at which location
-- Links to /reading and /leicester for schedules
+- Links to /reading, /leicester, and /milton-keynes for schedules
 
 ### 6.11 /learn
 
@@ -512,7 +549,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 - Contact form fallback: Web3Forms (free, 250 submissions/month, delivers to info@latinaddiction.co.uk)
 - Phone: 07424 063798
 - Email: info@latinaddiction.co.uk
-- Both location addresses with directions links
+- All three location addresses with directions links
 - Social media links
 
 ### 6.13 /privacy
@@ -527,7 +564,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 
 ### 6.14 404 Page
 
-- Friendly message: "This page doesn't exist, but your first Bachata class is waiting."
+- Friendly message: "This page doesn't exist, but your first class is waiting."
 - Links to homepage, schedule, contact
 - WhatsApp CTA
 
@@ -557,7 +594,7 @@ Each with an accent-coloured tick confirmation line (#66 style).
 
 ### 7.3 Schema Markup (JSON-LD)
 
-- **DanceStudio** (subtype of LocalBusiness) — for both Reading and Leicester locations
+- **DanceStudio** (subtype of LocalBusiness) — for all three locations (Reading, Leicester, Milton Keynes)
   - Name, address, geo-coordinates, opening hours, telephone, priceRange
 - **Course** — for each class level
   - Name, description, provider, offers (price)
@@ -641,6 +678,7 @@ Critical because WhatsApp is the primary sharing channel — link previews must 
 | Homepage | "bachata UK", "latin addiction uk" | "latin dance classes", "bachata dance school" |
 | /reading | "bachata classes reading", "dance classes reading" | "latin dance reading", "partner dance reading berkshire" |
 | /leicester | "bachata classes leicester", "dance classes leicester" | "latin dance leicester" |
+| /milton-keynes | "salsa classes milton keynes", "bachata classes milton keynes" | "dance classes milton keynes", "latin dance milton keynes" |
 | /classes | "bachata beginner classes", "bachata levels" | "learn bachata UK" |
 | /pricing | "bachata class prices", "dance class costs" | "dance school membership UK" |
 | /private-coaching | "private bachata lessons", "1-to-1 dance coaching" | "bachata private teacher reading" |
@@ -650,13 +688,18 @@ Critical because WhatsApp is the primary sharing channel — link previews must 
 
 ### 9.2 Salsa Searcher Strategy
 
+**Updated 2026-04-03:** With MK acquisition, LA now genuinely teaches Salsa (MK Mondays). Strategy updated:
+
 69% of Google traffic searches for "salsa" not "bachata." Strategy:
-- Do NOT claim to teach salsa (misleading)
-- USE broader terms: "Latin dance classes", "Latin partner dance"
+- **MK legitimately teaches Salsa** — rank for "salsa classes milton keynes" directly and honestly
+- Reading and Leicester remain Bachata-only — do NOT claim salsa in those cities
+- USE broader terms site-wide: "Latin dance classes", "Bachata & Salsa"
+- Homepage can now honestly say "Bachata & Salsa classes" because LA teaches both (in different cities)
 - ADD FAQ question: "What's the difference between Bachata and Salsa?"
-- ADD hero context line: "the Latin partner dance everyone's falling for"
+- ADD FAQ question: "Which locations teach Salsa?" (answer: Milton Keynes)
 - WRITE blog post: "Bachata vs Salsa: What's the Difference?"
-- META descriptions include "Latin dance" where natural
+- META descriptions include "Latin dance" and "Salsa & Bachata" where natural
+- /milton-keynes page targets salsa keywords directly
 
 ### 9.3 AI Search Optimization
 
@@ -677,7 +720,7 @@ Critical because WhatsApp is the primary sharing channel — link previews must 
 | Design B direction | #69 (burgundy/gold — recommended) vs #10 (monochrome — when pro video available) | Secondary design, lower priority than Design A |
 
 **Previously open, now decided:**
-- Final CTA heading: **"Your next Tuesday or Wednesday could change everything."** (2026-03-22 — Gemini + Codex both argued "No excuses left" is shaming/confrontational for nervous first-timers; "Tuesday or Wednesday" is aspirational, concrete, references both cities)
+- Final CTA heading: **"Your next Monday, Tuesday or Wednesday could change everything."** (2026-03-22, updated 2026-04-03 — added Monday for MK; Gemini + Codex argued "No excuses left" is shaming/confrontational for nervous first-timers; day names are aspirational, concrete, reference all three cities)
 
 **Previously open, now decided:**
 - Tech stack: **Astro + Tailwind CSS** (see BUILD-PLAN.md)
@@ -738,12 +781,12 @@ Sections sourced from specific prototypes:
 
 ### 12.4 Key Differentiation for LA
 
-1. Bachata-specialist positioning (no competitor does this)
+1. Bachata-specialist positioning with Salsa in MK (no competitor covers both well)
 2. Modern, mobile-first design (open goal vs all competitors)
 3. On-site checkout (80% of competitors have none)
-4. Multi-city unified brand
+4. Three-city unified brand (Reading, Leicester, Milton Keynes)
 5. Transparent pricing (most competitors hide it)
-6. "New to Bachata?" myth-busting (no competitor does this well)
+6. "New to Bachata/Salsa?" myth-busting (no competitor does this well)
 
 ---
 
@@ -753,7 +796,7 @@ These are explicitly OUT OF SCOPE for this website:
 
 - **Content platform / online classes:** Recorded workshops behind membership = separate project, fundamentally different architecture (auth, video hosting, access control)
 - **D's personal teaching/DJing brand:** Not on the LA business site. Brief About page mention at most. Separate personal brand.
-- **Milton Keynes:** Guest teaching at 8Dance (70/30 split), not an LA-operated venue. Excluded from v1. When deal is fully finalised, add as a city page using same template.
+- **Milton Keynes:** ~~Excluded from v1~~ **NOW IN SCOPE.** Acquisition completed 2026-03-28. MK is a fully LA-operated venue (Midsummer Tap, Mondays). Gets its own `/milton-keynes` city page using same template as Reading/Leicester. Teaches Salsa & Bachata (unlike Reading/Leicester which are Bachata-only).
 - **Events section:** No events/workshops/parties pages for v1 — D has no current events to populate them. Add when content exists.
 - **Sunday online workshops:** Retention/upsell tool for existing students, would dilute newcomer conversion. Not on homepage.
 - **"Perks / Partners" section:** May add later as a content page — no architecture impact.
@@ -773,7 +816,7 @@ These are explicitly OUT OF SCOPE for this website:
 All pages built in one phase — component reuse means subpages are fast once homepage is done:
 
 - Homepage (single-page conversion funnel, 12 sections)
-- /reading and /leicester (location landing pages)
+- /reading, /leicester, and /milton-keynes (location landing pages)
 - /pricing (full pricing with on-site SumUp checkout)
 - /services/private-coaching (detailed coaching info + checkout)
 - /services/corporate (team-building workshops)
@@ -834,6 +877,7 @@ The /classes page is not in the main nav but is linked from:
 - Homepage Section 5 (Class Levels): "See full level details →"
 - /reading page: link in class descriptions
 - /leicester page: link in class descriptions
+- /milton-keynes page: link in class descriptions
 
 ### H1 Clarification: Site Replaces SumUp
 The website replaces the SumUp store page as the public-facing web presence AND handles checkout on-site via the SumUp Card Widget + Cloudflare Worker. Customers never leave the site to pay. SumUp remains the payment processor behind the scenes.

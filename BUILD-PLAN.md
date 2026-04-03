@@ -2,7 +2,7 @@
 
 ## Context
 
-Latin Addiction UK is a Bachata-only dance school running weekly classes in Reading (Wednesdays), Leicester (Tuesdays), and now Milton Keynes (Mondays, starting 16 Mar 2026). The business has been running 4+ years, nets ~£30k/year, and is growing — but has no published website. The domain `latinaddiction.co.uk` is parked on Hostinger with an unpublished WordPress install. The current online presence is a basic SumUp store at `latinaddictionuk.sumupstore.com`.
+Latin Addiction UK is a Bachata and Salsa dance school running weekly classes in Reading (Wednesdays), Leicester (Tuesdays), and Milton Keynes (Mondays). The business has been running 4+ years, nets ~£30k/year, and is growing — but has no published website. The domain `latinaddiction.co.uk` is parked on Hostinger with an unpublished WordPress install. The current online presence is a basic SumUp store at `latinaddictionuk.sumupstore.com`.
 
 This plan covers building a new, non-WordPress website from scratch in `/Users/dhiwatdg/Projects/Latin Addiction Website/`.
 
@@ -38,7 +38,7 @@ Two sibling folders provide all the business context and existing site reference
 | Detail | Value |
 |--------|-------|
 | Business name | Latin Addiction UK (Ltd, Co. #14773454) |
-| Dance style | Bachata only (Dominican, Moderna, Sensual, Bachazouk) |
+| Dance style | Bachata (Dominican, Moderna, Sensual, Bachazouk) + Salsa (MK) |
 | Founder | D — software engineer (10+ years) who also teaches |
 | Contact | 07424 063798 |
 | Email | info@latinaddiction.co.uk |
@@ -64,16 +64,22 @@ Two sibling folders provide all the business context and existing site reference
 - Parking: FREE on-site (register at kiosk)
 - Margins: 53% net (higher venue + team payroll costs)
 
-**Milton Keynes — Mondays (NEW, starting 16 Mar 2026)**
-- Venue: 8Dance MK (FREE, permanently at no cost)
-- 2 hours: Bachata + Salsa, 3 levels per hour
-- Deal: 70/30 profit split with 8Dance, D has full control
-- Attendance: 65-70 people/night (existing 8Dance crowd)
-- Currently in 8-week transition period (absorbing existing passes)
+**Milton Keynes — Mondays (acquired from 8Dance, 28 Mar 2026)**
+- Venue: Midsummer Tap, Theatre District, MK9 3PU (FREE venue)
+- Doors: 7:45pm
+- 8:00pm — Bachata (Beginners / Improvers / Intermediate-Advanced)
+- 9:00pm — Salsa (Beginners / Improvers / Intermediate-Advanced)
+- 10:00pm — FREE Social Party
+- Fully owned by Latin Addiction (acquired from 8Dance for £3,900 on 28 Mar 2026)
+- Teaching team: Dhiwa (management + advanced), Sean (£105/night), Rakesh (£40/night)
+- Attendance: 65-70 people/night
+- Parking: FREE from 6pm
+- Pricing: £10 PAYG (passes coming May 2026+)
+- MK is the only location that teaches both Salsa AND Bachata
 
 ### 1.4 Complete Pricing Structure
 
-**Newcomer Offer (both cities):**
+**Newcomer Offer (Reading & Leicester — MK uses £10 PAYG, passes coming May 2026):**
 - First class: FREE
 - 4-Week Newcomer Pass (beginners only): £20
 
@@ -102,7 +108,7 @@ Two sibling folders provide all the business context and existing site reference
 | 60 min | £40 | £50 |
 | 90 min (recommended) | £60 | £75 |
 | 120 min | £80 | £100 |
-| Pre-class (Tue 6-7pm / Wed 6-7:30pm) | £40/hr | — |
+| Pre-class (Mon 7-8pm / Tue 6-7pm / Wed 6-7:30pm) | £40/hr | — |
 
 Packs: 4-session and 8-session at ~£40/hr equivalent.
 
@@ -160,7 +166,7 @@ From the 7 deep research reports and 1,900-line content strategy:
 - **No direct bachata-only competitor** in either Reading or Leicester
 - Reading: SBSC teaches salsa AND bachata (same Wed night), £12 drop-in, ~6k IG followers
 - Leicester: Havana Salsa (franchise, ~22k IG), Salsa en Leicester (same Tue night, different style)
-- LA's advantages: bachata-only focus, best newcomer offer (free class + £20 pass), dual-city brand, WhatsApp-first pipeline, no competitor running Meta Ads, ready promo videos
+- LA's advantages: bachata-specialist with salsa in MK, best newcomer offer (free class + £20 pass), three-city brand, WhatsApp-first pipeline, no competitor running Meta Ads, ready promo videos
 - LA's vulnerabilities: **no website** (limits SEO/discoverability), low social following, founder dependency
 
 ---
@@ -295,7 +301,7 @@ All ~22 products created in Stripe Dashboard:
 - 12 membership tiers (4-week and 8-week, fixed and flexi, 1/2/3 classes)
 - 6 private lesson options
 
-Each product has location metadata (Reading/Leicester/Both) for filtering on the shop page.
+Each product has location metadata (Reading/Leicester/Milton Keynes/All) for filtering on the shop page.
 
 ### 3.4 Contact Form: WhatsApp CTA + Web3Forms
 
@@ -350,6 +356,7 @@ Developer workflow:
 HOME                    → /                     (index.astro)
 READING                 → /reading              (reading.astro)
 LEICESTER               → /leicester            (leicester.astro)
+MILTON KEYNES           → /milton-keynes        (milton-keynes.astro)
 EVENTS ▼                → /events               (events/index.astro)
   ├── Calendar          → /events/calendar      (events/calendar.astro)
   ├── SBK Parties       → /events/sbk-parties   (events/sbk-parties.astro)
@@ -374,6 +381,7 @@ Latin Addiction Website/
 │   │   ├── index.astro             # Homepage
 │   │   ├── reading.astro           # Reading classes page
 │   │   ├── leicester.astro         # Leicester classes page
+│   │   ├── milton-keynes.astro     # Milton Keynes classes page
 │   │   ├── pricing.astro           # Pricing tables (all tiers)
 │   │   ├── contact.astro           # WhatsApp CTA + contact form
 │   │   ├── shop/
@@ -493,7 +501,7 @@ Every page includes:
 - **robots.txt** allowing all crawlers
 - **Canonical URLs** to prevent duplicate content
 - **Alt text** on all images
-- Target keywords: "bachata classes Reading", "bachata classes Leicester", "dance classes near me", "learn bachata UK"
+- Target keywords: "bachata classes Reading", "bachata classes Leicester", "salsa classes Milton Keynes", "dance classes near me", "learn bachata UK"
 
 ### 4.5 Key Page Content
 
@@ -503,7 +511,7 @@ Every page includes:
 
 **Pricing** — Full pricing tables (drop-ins, 4-week, 8-week, private coaching). Comparison view. Newcomer offer highlighted. Student discount noted. CTAs to shop.
 
-**Shop** — Product grid filtered by location (All/Reading/Leicester). Each product card has name, price, description, and "Buy Now" button triggering Stripe Checkout. City filter mirrors the WordPress site's custom implementation.
+**Shop** — Product grid filtered by location (All/Reading/Leicester/Milton Keynes). Each product card has name, price, description, and "Buy Now" button triggering Stripe Checkout. City filter mirrors the WordPress site's custom implementation.
 
 **Events** — Upcoming events list. Calendar view. Workshop series info with next workshop highlighted. SBK party info.
 
@@ -539,6 +547,7 @@ Every page includes:
 - Homepage with hero, location cards, social proof, CTAs
 - Reading page with schedule, venue, map, newcomer offer
 - Leicester page with schedule, venue, map, newcomer offer
+- Milton Keynes page with schedule, venue, map, newcomer offer (Salsa & Bachata)
 - Pricing page with all tables
 - Contact page with WhatsApp CTA + Web3Forms form
 - About page
@@ -595,7 +604,7 @@ Every page includes:
 - All pages render correctly
 - Navigation works (desktop + mobile)
 - All links are valid (no 404s)
-- Shop filter works (All/Reading/Leicester)
+- Shop filter works (All/Reading/Leicester/Milton Keynes)
 - Stripe Checkout redirects correctly (test mode)
 - Payment completes and returns to success page
 - Contact form submits and delivers email

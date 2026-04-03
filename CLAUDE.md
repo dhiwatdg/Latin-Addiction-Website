@@ -4,24 +4,32 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-New website for **Latin Addiction UK**, a Bachata dance school with locations in Leicester and Reading.
+New website for **Latin Addiction UK**, a Bachata and Salsa dance school with locations in Leicester, Reading, and Milton Keynes.
 
 - **Tech stack:** Astro + Tailwind CSS
-- **Hosting:** Cloudflare Pages (free, auto-deploy from GitHub)
-- **Payments:** SumUp Card Widget + Cloudflare Worker (on-site checkout)
-- **Domain:** latinaddiction.co.uk (Hostinger, DNS pointed to Cloudflare)
+- **Hosting:** Cloudflare Workers & Pages (free, auto-deploy from GitHub)
+- **Payments:** SumUp (link to SumUp store for MVP; Card Widget + Cloudflare Worker planned for on-site checkout)
+- **Domain:** latinaddiction.co.uk (registered at Hostinger, DNS on Cloudflare)
+- **Repo:** `dhiwatdg/Latin-Addiction-Website` → Cloudflare auto-builds on push to `main`
+
+## Current Status (2026-04-03)
+
+- **Infrastructure:** DONE — Cloudflare account, DNS, Pages/Workers connected, custom domain wired
+- **Content:** DONE — design doc + content draft v2.1 both updated with MK
+- **Design choice:** PENDING — D choosing between prototypes M (warm), N (bold), O (dark)
+- **Astro project:** NOT STARTED — scaffold when vibe is chosen, then build + push = live site
 
 ## Key Files
 
-- **Design doc (SINGLE SOURCE OF TRUTH):** `docs/plans/2026-03-21-website-design.md` — all design decisions, content specs, technical requirements
+- **Design doc (SINGLE SOURCE OF TRUTH):** `docs/plans/2026-03-21-website-design.md` — all design decisions, content specs, technical requirements (updated 2026-04-03 with MK)
 - **BUILD-PLAN.md** — partially stale (hosting/payments/nav superseded by design doc), but Astro project structure + verification checklists still valid
 - **Archived plans:** `docs/plans/archive/` — superseded brainstorming docs
-- **Prototypes (active):** `prototypes/new/` — 12 homepage design prototypes (A-L). A-H are the original 8 (3 design families, synced/contrast-fixed/logo-matched). I-L are purple/gold brand palette variants (I/J based on B's warm layout, K/L based on F's cinematic layout). See memory for intentional spec deviations.
-- **Video prototypes:** `prototypes/video/` — 9 files showing video integration in designs B, F, G (3 variants each: poster, play button, autoplay simulation). For post-vote exploration.
-- **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero, encoding pipeline, Astro components. Challenged by Gemini/GPT/Perplexity.
+- **Prototypes (active):** `prototypes/new/` — 15 homepage design prototypes (A-O). A-H are the original 8 (3 design families). I-L are purple/gold brand palette variants. M-O are voting-informed final candidates (D's structure + E's typography + purple/gold at 3 intensity levels). See memory for intentional spec deviations.
+- **Video prototypes:** `prototypes/video/` — 9 files showing video integration in designs B, F, G (3 variants each: poster, play button, autoplay simulation).
+- **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero, encoding pipeline, Astro components.
 - **Contrast fixes plan:** `docs/plans/2026-03-22-palette-contrast-fixes.md` — audit results + exact CSS fixes applied per file
 - **Prototypes (old):** `prototypes/old/` — 13 earlier prototypes from brainstorming phase, kept for CSS pattern reference
-- **Homepage content draft (APPROVED):** `prototypes/new/homepage-content-draft.html` — v2, fully reviewed/fact-checked/challenged. Ready for design phase.
+- **Homepage content draft (APPROVED v2.1):** `prototypes/new/homepage-content-draft.html` — v2.1 with MK. Fully reviewed/fact-checked/challenged. Ready for Astro build.
 - **Logo assets:** `Logos/` — original PNGs + processed web variants. Use `logo-mark-bold.png` on light bg, `logo-mark-golden-tight.png` on dark bg.
 
 ## Sibling Project Access Rules
