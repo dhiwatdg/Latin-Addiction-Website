@@ -47,6 +47,7 @@ All content is in `prototypes/new/homepage-content-draft.html` (v2.1). All busin
 - **Prototypes (old):** `prototypes/old/` — 13 earlier prototypes from brainstorming phase, kept for CSS pattern reference
 - **Homepage content draft (APPROVED v2.1):** `prototypes/new/homepage-content-draft.html` — v2.1 with MK. Fully reviewed/fact-checked/challenged. Ready for Astro build.
 - **Logo assets:** `Logos/` — original PNGs + processed web variants. Use `logo-mark-bold.png` on light bg, `logo-mark-golden-tight.png` on dark bg.
+- **Event images:** `images/` — event design graphics per location (square + landscape). Leicester and Reading have real dance photos. MK still has 8Dance co-branding (update later). Private coaching portrait of Dhiwa.
 
 ## Sibling Project Access Rules
 
