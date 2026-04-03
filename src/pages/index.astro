@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ScheduleCard from '../components/ScheduleCard.astro';
 import { locations, whatsappUrl, mapsUrl, PHONE_TEL } from '../data/locations';
 import { reviews } from '../data/reviews';
 import { homepageFaqs } from '../data/faqs';
@@ -440,9 +441,13 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
       </h2>
 
       {/* Tab buttons */}
-      <div data-reveal data-reveal-delay="2" class="flex gap-2 flex-wrap mb-5">
+      <div data-reveal data-reveal-delay="2" class="flex gap-2 flex-wrap mb-5" role="tablist" aria-label="Choose a location">
         {locations.map((loc, i) => (
           <button
+            id={`tab-${panelId(loc.slug)}`}
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            aria-controls={`p-${panelId(loc.slug)}`}
             class:list={[
               'schedule-tab font-body font-semibold text-[0.82rem] px-6 py-3 min-h-[44px] rounded-full border-2 cursor-pointer transition-all duration-200',
               i === 0
@@ -462,69 +467,11 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
           data-reveal
           data-reveal-delay="3"
           id={`p-${panelId(loc.slug)}`}
+          role="tabpanel"
+          aria-labelledby={`tab-${panelId(loc.slug)}`}
           class:list={['schedule-panel', i !== 0 && 'hidden']}
         >
-          {/* Schedule card */}
-          <div class="border-[1.5px] border-[#e8e8e8] rounded-[18px] overflow-hidden">
-            {/* Card header */}
-            <div class="bg-dark flex items-center justify-between" style="padding:1.15rem 1.5rem;">
-              <h3 class="font-display font-bold text-white text-[1.25rem]">{loc.name}</h3>
-              <span class="bg-[rgba(225,29,72,0.2)] text-rose-light text-[0.72rem] font-semibold py-1 px-3.5 rounded-full uppercase tracking-[0.04em]">
-                {loc.badgeText}
-              </span>
-            </div>
-
-            {/* Schedule rows */}
-            <div>
-              {loc.schedule.map((row, ri) => (
-                <div
-                  class:list={[
-                    'grid grid-cols-[85px_1fr] gap-4 items-center',
-                    ri % 2 === 0 ? 'bg-[#f5f5f5]' : 'bg-white',
-                  ]}
-                  style="padding:0.75rem 1.5rem;"
-                >
-                  <span
-                    class:list={[
-                      'font-display font-bold text-[0.95rem]',
-                      row.isSocial ? 'text-party' : 'text-dark',
-                    ]}
-                  >
-                    {row.time}
-                  </span>
-                  <span
-                    class:list={[
-                      'text-[0.85rem]',
-                      row.isSocial ? 'text-party font-semibold' : 'text-muted',
-                    ]}
-                  >
-                    {row.description}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Card footer */}
-            <div class="bg-[#f5f5f5] text-[0.82rem] text-muted" style="padding:1rem 1.5rem;">
-              <p>
-                <strong>{loc.venue}</strong>, {loc.address} {loc.postcode}
-              </p>
-              <p class="mt-1">
-                🅿️ <strong>Parking:</strong> {loc.parking}
-              </p>
-              <p class="mt-1">
-                <a
-                  href={mapsUrl(loc.mapsQuery)}
-                  target="_blank"
-                  rel="noopener"
-                  class="text-rose-dark font-medium no-underline"
-                >
-                  Get directions →
-                </a>
-              </p>
-              <p class="mt-1">💰 {loc.priceNote}</p>
-            </div>
-          </div>
+          <ScheduleCard location={loc} />
 
           {/* Location note (MK only) */}
           {loc.note && (
@@ -578,6 +525,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
         {homepageFaqs.map((faq, i) => (
           <div data-reveal class="bg-[#f5f5f5] border border-[rgba(225,29,72,0.06)] rounded-[16px] overflow-hidden mb-2.5">
             <button
+              id={`faq-btn-${i}`}
               class="faq-btn w-full flex items-center justify-between gap-4 text-left cursor-pointer bg-transparent border-none"
               style="padding:1rem 1.25rem;"
               aria-expanded="false"
@@ -681,6 +629,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
       document.querySelectorAll('.schedule-tab').forEach(t => {
         t.classList.remove('active-tab', 'bg-rose', 'text-white', 'border-rose');
         t.classList.add('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
+        t.setAttribute('aria-selected', 'false');
       });
       // Hide all panels
       document.querySelectorAll('.schedule-panel').forEach(p => p.classList.add('hidden'));
@@ -688,6 +637,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
       // Activate clicked tab
       tab.classList.add('active-tab', 'bg-rose', 'text-white', 'border-rose');
       tab.classList.remove('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
+      tab.setAttribute('aria-selected', 'true');
 
       // Show matching panel
       const loc = (tab as HTMLElement).dataset.loc;

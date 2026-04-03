@@ -28,7 +28,9 @@ const ctaHref = whatsappUrl();
           <li class="has-dd relative">
             <a
               href={item.href}
-              class="nav-link text-[.82rem] font-medium text-muted no-underline relative pb-[3px] transition-colors duration-200"
+              class="nav-link dd-trigger text-[.82rem] font-medium text-muted no-underline relative pb-[3px] transition-colors duration-200"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
               {item.label}
               <svg width="10" height="10" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-left:2px;opacity:.5;">
@@ -186,9 +188,10 @@ const ctaHref = whatsappUrl();
     transform: translateX(-50%) rotate(45deg);
   }
 
-  /* Show dropdown on hover */
+  /* Show dropdown on hover, focus-within, or keyboard open */
   .has-dd:hover .dd,
-  .has-dd:focus-within .dd {
+  .has-dd:focus-within .dd,
+  .has-dd.dd-open .dd {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -265,4 +268,50 @@ const ctaHref = whatsappUrl();
     // Check initial scroll position
     onScroll();
   }
+
+  // Desktop dropdown keyboard accessibility
+  function closeAllDropdowns() {
+    document.querySelectorAll('.has-dd').forEach((li) => {
+      li.classList.remove('dd-open');
+      const trigger = li.querySelector('.dd-trigger') as HTMLElement | null;
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.querySelectorAll('.dd-trigger').forEach((trigger) => {
+    trigger.addEventListener('keydown', (e) => {
+      const event = e as KeyboardEvent;
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        const parent = trigger.closest('.has-dd') as HTMLElement;
+        const isOpen = parent.classList.contains('dd-open');
+
+        closeAllDropdowns();
+
+        if (!isOpen) {
+          parent.classList.add('dd-open');
+          trigger.setAttribute('aria-expanded', 'true');
+          // Focus first link inside dropdown
+          const firstLink = parent.querySelector('.dd a') as HTMLElement | null;
+          if (firstLink) firstLink.focus();
+        }
+      } else if (event.key === 'Escape') {
+        closeAllDropdowns();
+        (trigger as HTMLElement).focus();
+      }
+    });
+  });
+
+  // Escape key closes dropdowns from anywhere inside them
+  document.querySelectorAll('.has-dd .dd').forEach((dropdown) => {
+    dropdown.addEventListener('keydown', (e) => {
+      const event = e as KeyboardEvent;
+      if (event.key === 'Escape') {
+        const parent = dropdown.closest('.has-dd') as HTMLElement;
+        const trigger = parent.querySelector('.dd-trigger') as HTMLElement | null;
+        closeAllDropdowns();
+        if (trigger) trigger.focus();
+      }
+    });
+  });
 </script>
