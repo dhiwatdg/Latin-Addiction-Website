@@ -9,7 +9,7 @@ New website for **Latin Addiction UK**, a Bachata and Salsa dance school with lo
 - **Tech stack:** Astro 6.1 + Tailwind CSS 4.2 (via `@tailwindcss/vite`) + TypeScript
 - **Node:** v22+ required (`.nvmrc` set)
 - **Hosting:** Cloudflare Pages (free, auto-deploy from GitHub on push to `main`)
-- **Payments:** SumUp store links (temporary) → Phase 2: SumUp Card Widget + Cloudflare Worker for on-site checkout
+- **Payments:** SumUp Card Widget via Cloudflare Worker (on-site checkout)
 - **Domain:** latinaddiction.co.uk (registered at Hostinger, DNS on Cloudflare)
 - **Repo:** `dhiwatdg/Latin-Addiction-Website` → Cloudflare auto-builds on push to `main`
 
@@ -22,52 +22,53 @@ npm run build    # Production build → dist/
 npm run preview  # Preview production build locally
 ```
 
-## Current Status (2026-04-03)
+## Current Status (2026-04-04)
 
-- **Phase 1:** LIVE — Homepage + 3 location pages + 404 deployed to latinaddiction.co.uk
-- **Phase 2:** READY TO BUILD — /pricing page + on-site SumUp checkout. API keys ready. See memory `project_phase2_scope.md`.
-- **Phase 3:** NOT STARTED — remaining pages (/services, /about, /faq, /reviews, /learn, etc.)
+- **Phase 1:** DONE — Homepage + 3 location pages + 404 deployed to latinaddiction.co.uk
+- **Phase 2:** DONE — /pricing page + SumUp on-site checkout via Cloudflare Worker
+- **Phase 3:** MOSTLY DONE — 8 new pages built. Location pages redesigned with blurred hero backgrounds. Services + About hidden from nav (need design polish). Private coaching pricing WRONG (shows headcount columns, should be duration). /learn deferred.
 
 ## Build Phases
 
 ### Phase 1 — Go Live (DONE ✓)
 Deployed 2026-04-03. Homepage (8 sections), /milton-keynes, /leicester, /reading, /404. Full accessibility (ARIA tabs, keyboard nav, skip-to-content, reduced-motion). Sitemap. Scroll reveal animations. All CTAs → WhatsApp or SumUp store (temporary).
 
-### Phase 2 — On-Site Checkout (next)
-- `/pricing` page with full pricing tables (Leicester 3-class £18 tier, memberships, private coaching headline)
-- Cloudflare Worker for SumUp Card Widget (on-site checkout, ~25 lines)
-- Replace all SumUp store links with on-site checkout
-- SumUp API key as Cloudflare Worker secret
-- Set `NODE_VERSION=22` in Cloudflare Pages environment if build fails
+### Phase 2 — On-Site Checkout (DONE ✓)
+Deployed 2026-04-03. `/pricing` page with full pricing tables. Cloudflare Worker for SumUp Card Widget (on-site checkout). Worker at `latin-addiction-checkout.latin-addiction-uk.workers.dev`.
 
-### Phase 3 — Full Site
-- `/services/private-coaching`, `/services/corporate`, `/services/hire-us`
-- `/about`, `/faq`, `/reviews`, `/classes`, `/contact`, `/privacy`
-- `/learn` — 3-5 SEO articles (Bachata vs Salsa, What to Wear, etc.)
-- All schema markup (DanceStudio, FAQPage, Course, Organization)
+### Phase 3 — Full Site (MOSTLY DONE)
+Built 2026-04-04. Location pages redesigned with blurred event image hero backgrounds, timeline schedules, level cards, featured reviews. New pages: /about, /faq, /reviews, /classes, /privacy, /services/private-coaching, /services/corporate, /services/hire-us. Schema markup on faq, reviews, classes, about, location pages.
+
+**Still needed:**
+- Fix private coaching pricing (duration columns, not headcount)
+- Design polish on /about, /services/* before unhiding from nav
+- /learn articles deferred to Phase 4
 - OG share images per page
 
 ### Quality Gate
-After each major build step, use Codex plugin for code review (scaffold, layout/nav, homepage, location pages, final pre-push). See memory `feedback_codex_usage_strategy.md`.
+After each major build step, use Codex plugin for code review. See memory `feedback_codex_usage_strategy.md`.
 
 ## Key Files
 
 - **Design doc:** `docs/plans/2026-03-21-website-design.md` — single source of truth for business data and full site architecture
 - **Phase 1 plan:** `docs/plans/2026-04-03-phase1-go-live.md` — 18-task implementation plan (completed)
 - **Homepage prototype:** `prototypes/homepage-design-D-v2.html` — visual reference the Astro build reproduces
-- **Data files:** `src/data/locations.ts` — all venue/schedule/pricing/WhatsApp data
+- **Location prototypes:** `prototypes/reading-v3.html`, `prototypes/leicester-v1.html`, `prototypes/mk-v1.html` — redesigned location page references
+- **Phase 3 plan:** `docs/plans/2026-04-03-phase3-pages.md` — 8-page implementation plan (mostly completed)
+- **Data files:** `src/data/locations.ts`, `pricing.ts`, `reviews.ts`, `faqs.ts`, `navigation.ts`
 - **Video strategy:** `docs/plans/2026-03-23-video-strategy-design.md` — R2 hosting, poster-first hero. Post-launch.
 
 ## Project Structure
 
 ```
 src/
-  pages/           index.astro, milton-keynes.astro, leicester.astro, reading.astro, 404.astro
+  pages/           index, milton-keynes, leicester, reading, pricing, classes, about, faq, reviews, privacy, 404
+  pages/services/  private-coaching, corporate, hire-us
   layouts/         BaseLayout.astro (HTML shell, fonts, SEO, header/footer)
-  components/      Header, Footer, WhatsAppButton, MobileStickyBar, ScheduleCard, SEO
-  data/            locations.ts, navigation.ts, reviews.ts, faqs.ts
+  components/      Header, Footer, CheckoutModal, WhatsAppButton, MobileStickyBar, ScheduleCard, SEO
+  data/            locations.ts, navigation.ts, reviews.ts, faqs.ts, pricing.ts
   styles/          global.css (Tailwind v4 @theme tokens, button styles, reveal animations)
-public/images/     instructors/ (7 photos), logos/ (2 logos)
+public/images/     instructors/ (7 photos), logos/ (2 logos), locations/ (3 bg images)
 ```
 
 **Tailwind v4:** No `tailwind.config.mjs`. Design tokens in CSS `@theme` block in `global.css`. Uses `@tailwindcss/vite` plugin.

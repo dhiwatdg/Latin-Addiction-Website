@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bachata in Reading | Latin Addiction UK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'DM Sans', sans-serif; color: #111; line-height: 1.6; overflow-x: hidden; }
+  img { max-width: 100%; height: auto; }
+  a { color: inherit; }
+  ::selection { background: #E11D48; color: #fff; }
+
+  :root {
+    --dark: #111111; --rose: #E11D48; --rose-dark: #BE123C; --rose-light: #fecdd3;
+    --rose-9f: #9F1239; --muted: #555555; --gold: #F59E0B; --party: #B45309; --gray-bg: #f5f5f5;
+  }
+
+  /* ── Buttons ── */
+  .btn-rose {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem;
+    letter-spacing: 0.02em; padding: 0.85rem 2rem; border-radius: 100px;
+    text-decoration: none; border: none; cursor: pointer;
+    background: #E11D48; color: #fff;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-rose:hover { background: #BE123C; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(225,29,72,0.3); }
+  .btn-white-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem;
+    padding: 0.85rem 2rem; border-radius: 100px; text-decoration: none; cursor: pointer;
+    background: transparent; border: 2px solid rgba(255,255,255,0.3); color: #fff;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-white-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); }
+
+  /* ── Layout ── */
+  .section { padding: 3.5rem 1.25rem; }
+  @media (min-width: 768px) { .section { padding: 5rem 2rem; } }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .narrow { max-width: 860px; margin: 0 auto; }
+  .eyebrow { text-transform: uppercase; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; }
+  .heading { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: clamp(1.75rem, 3.5vw, 2.75rem); line-height: 1.12; }
+  .heading-lg { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.08; letter-spacing: -0.02em; }
+
+  /* ── Hero ── */
+  .hero { position: relative; overflow: hidden; min-height: 60vh; display: flex; align-items: center; color: #fff; }
+  .hero-bg { position: absolute; inset: -20px; background: url('reading-bg.png') center/cover no-repeat; filter: blur(10px); z-index: 0; }
+  .hero-overlay { position: absolute; inset: 0; background: rgba(17,17,17,0.87); z-index: 1; }
+  .hero-glow { position: absolute; pointer-events: none; filter: blur(70px); z-index: 2; }
+  .hero-glow.left { width: 600px; height: 600px; left: 10%; top: 20%; background: radial-gradient(circle, rgba(225,29,72,0.18) 0%, transparent 60%); }
+  .hero-glow.right { width: 500px; height: 500px; right: 5%; bottom: 10%; background: radial-gradient(circle, rgba(225,29,72,0.12) 0%, transparent 60%); }
+  .hero-content { position: relative; z-index: 3; width: 100%; }
+  .hero h1 { font-family: 'Poppins', sans-serif; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem; font-size: clamp(2.5rem, 6vw, 4.5rem); }
+  .hero .subtitle { font-weight: 300; font-size: clamp(1rem, 2vw, 1.15rem); color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 560px; margin-bottom: 2rem; }
+
+  /* Team photos in hero */
+  .team-strip { display: flex; align-items: center; gap: 0; margin-bottom: 1.5rem; }
+  .team-strip img {
+    width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+    border: 2.5px solid rgba(255,255,255,0.15); margin-left: -10px;
+    transition: transform 0.3s;
+  }
+  .team-strip img:first-child { margin-left: 0; }
+  .team-strip img:hover { transform: scale(1.2); z-index: 2; }
+  .team-label { margin-left: 0.75rem; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+  .team-label strong { color: rgba(255,255,255,0.8); }
+
+  /* Trust / worry-buster badges */
+  .trust-row { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; padding-top: 1.5rem; margin-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); }
+  .trust-item { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+  .trust-item svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  /* ── Timeline ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; background: linear-gradient(to bottom, var(--rose-light), var(--rose), var(--gold)); border-radius: 2px; }
+  .tl-item { position: relative; padding-bottom: 2rem; padding-left: 1.5rem; }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-dot { position: absolute; left: -2rem; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--rose); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--rose-light); }
+  .tl-item.social .tl-dot { background: var(--gold); box-shadow: 0 0 0 2px rgba(245,158,11,0.3); }
+  .tl-time { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.15rem; }
+  .tl-item.social .tl-time { color: var(--party); }
+  .tl-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.65; }
+
+  /* ── Event image visual break ── */
+  .visual-break { text-align: center; padding: 3rem 1.25rem; background: var(--dark); position: relative; overflow: hidden; }
+  .visual-break::before { content: ''; position: absolute; width: 500px; height: 500px; left: 50%; top: 50%; transform: translate(-50%,-50%); background: radial-gradient(circle, rgba(225,29,72,0.1) 0%, transparent 60%); filter: blur(60px); pointer-events: none; }
+  .visual-break img { max-width: 620px; width: 90%; border-radius: 18px; box-shadow: 0 16px 50px rgba(0,0,0,0.4); position: relative; z-index: 1; }
+  .visual-break p { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-top: 1rem; position: relative; z-index: 1; }
+
+  /* ── Level cards ── */
+  .level-grid { display: grid; gap: 1rem; }
+  @media (min-width: 768px) { .level-grid { grid-template-columns: repeat(2, 1fr); } }
+  .lcard { border-radius: 18px; padding: 2rem 1.75rem; border: 1.5px solid #e8e8e8; background: #fff; display: flex; flex-direction: column; transition: transform 0.25s, box-shadow 0.25s; }
+  .lcard:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+  .lcard.hi { background: var(--rose); color: #fff; border-color: var(--rose); }
+  .lcard.hi .lpill { background: rgba(255,255,255,0.25); color: #fff; }
+  .lcard.hi .ldesc { color: rgba(255,255,255,0.85); }
+  .lcard.hi .lprice { color: rgba(255,255,255,0.7); }
+  .lcard.hi .lcta { background: #fff; color: var(--dark); border: none; }
+  .lcard.hi .lcta:hover { background: #f0f0f0; }
+  .lpill { display: inline-block; font-weight: 600; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.75rem; border-radius: 100px; margin-bottom: 0.75rem; background: rgba(225,29,72,0.08); color: var(--rose-9f); width: fit-content; }
+  .lname { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.15rem; line-height: 1.2; margin-bottom: 0.5rem; }
+  .ldesc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+  .lprice { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+  .lcta { display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.85rem; padding: 0.6rem 1.25rem; border-radius: 100px; text-decoration: none; border: 1.5px solid rgba(225,29,72,0.25); color: var(--rose-dark); background: transparent; cursor: pointer; transition: all 0.25s; }
+  .lcta:hover { border-color: var(--rose); background: rgba(225,29,72,0.04); }
+
+  /* ── Pricing ── */
+  .newcomer { background: var(--dark); color: #fff; border-radius: 20px; padding: 2rem; position: relative; overflow: hidden; margin-bottom: 2rem; }
+  .newcomer::before { content: ''; position: absolute; width: 400px; height: 400px; right: -100px; top: -100px; background: radial-gradient(circle, rgba(225,29,72,0.15) 0%, transparent 60%); filter: blur(60px); pointer-events: none; }
+  .newcomer-pill { display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.75rem; border-radius: 100px; background: rgba(225,29,72,0.2); color: var(--rose-light); margin-bottom: 1rem; }
+  .ptable { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .ptable td { padding: 0.85rem 0; border-bottom: 1px solid #f0f0f0; }
+  .ptable tr:last-child td { border-bottom: none; }
+  .ptable .price { text-align: right; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.05rem; }
+
+  /* ── Reviews ── */
+  .rev-grid { display: grid; gap: 1rem; }
+  @media (min-width: 768px) { .rev-grid { grid-template-columns: repeat(3, 1fr); } }
+  .rcard { background: #fff; border: 1.5px solid #e8e8e8; border-radius: 18px; padding: 1.5rem; transition: transform 0.25s, box-shadow 0.25s; }
+  .rcard:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
+  .ravatar { width: 40px; height: 40px; border-radius: 50%; background: var(--rose); display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.9rem; }
+
+  /* ── Two-col ── */
+  .two-col { display: grid; gap: 2rem; }
+  @media (min-width: 768px) { .two-col { grid-template-columns: 1fr 1fr; } }
+  .venue-card { background: var(--gray-bg); border-radius: 18px; padding: 1.75rem; }
+  .step { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num { width: 44px; height: 44px; min-width: 44px; border-radius: 50%; background: var(--rose-light); border: 2px solid rgba(225,29,72,0.3); display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--rose); transition: all 0.3s; }
+  .step:hover .step-num { background: var(--rose); color: #fff; border-color: var(--rose); transform: scale(1.1); }
+
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rose); display: inline-block; animation: pulse 2s infinite; }
+
+  .check { width: 15px; height: 15px; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero section">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-glow left" aria-hidden="true"></div>
+  <div class="hero-glow right" aria-hidden="true"></div>
+
+  <div class="hero-content container" style="text-align:left;">
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
+      <span style="display:none;width:48px;height:3px;background:var(--rose-light);border-radius:2px;" class="eline" aria-hidden="true"></span>
+      <span class="eyebrow" style="color:var(--rose-light);">Bachata classes · Reading</span>
+    </div>
+    <style>@media(min-width:768px){.eline{display:block!important;}}</style>
+
+    <h1>Bachata in Reading</h1>
+    <p class="subtitle">Every Wednesday at Wesley Methodist Church, 84 Queen's Rd, Reading RG1 4BW</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1.5rem;">
+      <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Reading" class="btn-rose" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Claim your free class
+      </a>
+      <a href="#schedule" class="btn-white-outline">See schedule ↓</a>
+    </div>
+
+    <!-- Team strip -->
+    <div class="team-strip">
+      <img src="img/Dhiwa & Gloria.jpeg" alt="Dhiwa" style="object-position:left center;">
+      <img src="img/Gloria.jpg" alt="Gloria" style="object-position:center top;">
+      <img src="img/Chido.jpg" alt="Chido">
+      <img src="img/Daniella.jpeg" alt="Daniella">
+      <img src="img/Imogen.jpg" alt="Imogen">
+      <img src="img/Meg.jpg" alt="Megan">
+      <img src="img/Irina.jpg" alt="Irina">
+      <span class="team-label"><strong>7 instructors</strong> · Your Reading team</span>
+    </div>
+
+    <!-- Worry-buster trust row (replaces generic badges) -->
+    <div class="trust-row">
+      <span class="trust-item">
+        <svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+        First class free
+      </span>
+      <span class="trust-item">
+        <svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+        No partner needed
+      </span>
+      <span class="trust-item">
+        <svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+        Complete beginners welcome
+      </span>
+      <span class="trust-item">
+        <svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
+        Free social party after every class
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ YOUR WEDNESDAY NIGHT ═══ -->
+<section id="schedule" class="section" style="background:#fff;">
+  <div class="narrow">
+    <span class="eyebrow" style="color:var(--rose);display:block;margin-bottom:0.75rem;">Your first night</span>
+    <h2 class="heading" style="margin-bottom:0.5rem;">Here's what your Wednesday looks like</h2>
+    <p style="color:var(--muted);font-size:0.95rem;margin-bottom:2.5rem;">Turn up, follow along, stay for the party. That's it.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">7:45pm</div>
+        <div class="tl-desc">Doors open. Arrive, grab a drink. We'll introduce ourselves.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">8:00pm — Beginners & Intermediate</div>
+        <div class="tl-desc">Separate groups, same room. If it's your first time, this is your class. We build from scratch — no experience needed.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:00pm — Improvers & Advanced</div>
+        <div class="tl-desc">Been coming a few months? This is your next step. More complex moves, musicality, and partner work.</div>
+      </div>
+      <div class="tl-item social">
+        <div class="tl-dot"></div>
+        <div class="tl-time">10:00pm — FREE Social Party</div>
+        <div class="tl-desc">This is where it all clicks. Practice what you just learned, dance with everyone, and enjoy the music. The best part of the night.</div>
+      </div>
+    </div>
+
+    <p style="font-size:0.88rem;color:var(--muted);margin-top:2rem;font-style:italic;">Not sure which class? Start with 8pm. Everyone does.</p>
+    <div style="margin-top:1.5rem;">
+      <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Reading" class="btn-rose" target="_blank" rel="noopener">Claim your free class</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHICH LEVEL? (2×2 grid) ═══ -->
+<section class="section" style="background:var(--gray-bg);">
+  <div class="container" style="max-width:920px;">
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <span class="eyebrow" style="color:var(--rose);display:block;margin-bottom:0.75rem;">Find your level</span>
+      <h2 class="heading">Which level sounds like you?</h2>
+    </div>
+
+    <div class="level-grid">
+      <div class="lcard hi">
+        <span class="lpill">Start here</span>
+        <div class="lname">Level 1 — Starting from scratch</div>
+        <div class="ldesc">Learn the rhythm, basic footwork, and your first partner moves. No experience needed — we start from zero every session.</div>
+        <div class="lprice">Included in your<br><strong style="color:#fff;font-size:1rem;">FREE first class</strong></div>
+        <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Reading" class="lcta" target="_blank" rel="noopener">Claim free class →</a>
+      </div>
+      <div class="lcard">
+        <span class="lpill">Building</span>
+        <div class="lname">Level 2 — Building your style</div>
+        <div class="ldesc">Turn patterns, connection, and developing your personal style. Dancing with confidence and making it your own.</div>
+        <div class="lprice">Drop-in from<br><strong style="color:var(--dark);font-size:1rem;">£10 / night</strong></div>
+        <a href="/pricing" class="lcta">See pricing →</a>
+      </div>
+      <div class="lcard">
+        <span class="lpill">Flow</span>
+        <div class="lname">Level 3 — Body & musicality</div>
+        <div class="ldesc">Body movement, musical interpretation, and social dancing confidence. This is where Bachata starts to feel really good.</div>
+        <div class="lprice">Drop-in from<br><strong style="color:var(--dark);font-size:1rem;">£10 / night</strong></div>
+        <a href="/pricing" class="lcta">See pricing →</a>
+      </div>
+      <div class="lcard">
+        <span class="lpill">Express</span>
+        <div class="lname">Level 4 — Making it your own</div>
+        <div class="ldesc">Layered styling, advanced partner work, and deep musicality. You're not just dancing, you're expressing.</div>
+        <div class="lprice">Drop-in from<br><strong style="color:var(--dark);font-size:1rem;">£10 / night</strong></div>
+        <a href="/pricing" class="lcta">See pricing →</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--muted);font-size:0.88rem;margin-top:2rem;">
+      Not sure? Just <a href="https://wa.me/447424063798?text=Hi!%20I'm%20not%20sure%20which%20level%20to%20join" style="color:var(--rose-dark);font-weight:600;text-decoration:none;" target="_blank" rel="noopener">message us</a> — we'll point you in the right direction.
+    </p>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ -->
+<section class="section" style="background:#fff;">
+  <div class="narrow">
+    <span class="eyebrow" style="color:var(--rose);display:block;margin-bottom:0.75rem;">Pricing</span>
+    <h2 class="heading" style="margin-bottom:0.35rem;">Simple, fair prices</h2>
+    <p style="color:var(--muted);font-size:0.95rem;margin-bottom:2rem;">No hidden fees. No contracts. Pay as you go, or start with our newcomer deal.</p>
+
+    <div class="newcomer">
+      <div style="position:relative;z-index:1;">
+        <span class="newcomer-pill">New here?</span>
+        <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.5rem;margin-bottom:1rem;">Start dancing this week</h3>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;margin-bottom:0.5rem;"><strong style="color:#fff;">First class: FREE</strong> — just turn up.</p>
+        <p style="color:rgba(255,255,255,0.7);font-size:0.95rem;margin-bottom:1.75rem;"><strong style="color:#fff;">4-Week Newcomer Pass: £20</strong> — beginners only, 4 consecutive weeks.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+          <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Reading" class="btn-rose" style="background:#fff;color:var(--dark);" target="_blank" rel="noopener">Claim your free class</a>
+          <a href="/pricing" class="btn-white-outline" style="border-color:rgba(255,255,255,0.25);">Buy newcomer pass — £20</a>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Poppins',sans-serif;font-weight:600;font-size:1.1rem;margin-bottom:1rem;">Drop-in (per night)</h3>
+    <table class="ptable">
+      <tr><td>1 class</td><td class="price">£10</td></tr>
+      <tr><td>2 classes</td><td class="price">£15</td></tr>
+    </table>
+    <p style="font-size:0.85rem;color:var(--muted);margin-top:1.25rem;line-height:1.7;">Cash and card accepted at the door. Student & NHS discount available — <a href="https://wa.me/447424063798" style="color:var(--rose-dark);font-weight:600;text-decoration:none;" target="_blank" rel="noopener">ask us on WhatsApp</a>.</p>
+    <p style="margin-top:0.75rem;"><span style="color:var(--rose);font-weight:600;font-size:0.92rem;">Coming regularly? Passes from £8/class.</span></p>
+    <p style="margin-top:0.5rem;"><a href="/pricing" style="color:var(--rose-dark);font-weight:600;font-size:0.92rem;text-decoration:none;">See all pricing options →</a></p>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section class="section" style="background:var(--gray-bg);">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <span class="eyebrow" style="color:var(--rose);display:block;margin-bottom:0.75rem;">Reviews</span>
+      <h2 class="heading">What our Reading students say</h2>
+      <p style="font-size:0.92rem;color:var(--gold);font-weight:600;margin-top:0.5rem;">★★★★★ 14 reviews · 5.0 on Google</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rcard">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <div class="ravatar">G</div>
+          <div><div style="font-weight:600;font-size:0.88rem;">G V James</div><div style="font-size:0.75rem;color:var(--muted);">Google Review</div></div>
+          <div style="margin-left:auto;color:var(--gold);font-size:0.82rem;">★★★★★</div>
+        </div>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.65;">"As a complete beginner, I wasn't sure what to expect, but this dance school is amazing! The instructors were so encouraging, and the class atmosphere was really friendly."</p>
+      </div>
+      <div class="rcard">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <div class="ravatar">J</div>
+          <div><div style="font-weight:600;font-size:0.88rem;">Jonathan Marodona</div><div style="font-size:0.75rem;color:var(--muted);">Google Review</div></div>
+          <div style="margin-left:auto;color:var(--gold);font-size:0.82rem;">★★★★★</div>
+        </div>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.65;">"The attention to detail from the instructors is incredible. They don't just teach steps, they explain the technique and timing in a way that makes it all click."</p>
+      </div>
+      <div class="rcard">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;">
+          <div class="ravatar">M</div>
+          <div><div style="font-weight:600;font-size:0.88rem;">Moha Taher</div><div style="font-size:0.75rem;color:var(--muted);">Google Review</div></div>
+          <div style="margin-left:auto;color:var(--gold);font-size:0.82rem;">★★★★★</div>
+        </div>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.65;">"The teachers, including Dhiwa and Gloria, are exceptional. Their passion and dedication truly shine through. They create a welcoming environment where dancers of all levels can thrive."</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;"><a href="/reviews" style="color:var(--rose-dark);font-weight:600;font-size:0.92rem;text-decoration:none;">See all 14 reviews →</a></p>
+  </div>
+</section>
+
+<!-- ═══ FINDING US + GETTING STARTED ═══ -->
+<section class="section" style="background:#fff;">
+  <div class="narrow">
+    <div class="two-col">
+      <div>
+        <span class="eyebrow" style="color:var(--rose);display:block;margin-bottom:0.75rem;">Location</span>
+        <h2 class="heading" style="margin-bottom:1.5rem;">Finding us</h2>
+        <div class="venue-card">
+          <p style="font-weight:700;font-size:1.05rem;margin-bottom:0.5rem;">Wesley Methodist Church</p>
+          <p style="font-size:0.92rem;color:var(--muted);margin-bottom:0.75rem;">84 Queen's Rd, Reading RG1 4BW</p>
+          <p style="font-size:0.92rem;color:var(--muted);margin-bottom:1rem;">🅿️ <strong style="color:var(--dark);">Parking:</strong> FREE on premises — register at the kiosk to avoid a fine.</p>
+          <a href="https://maps.google.com/?q=Wesley+Methodist+Church+84+Queens+Rd+Reading+RG1+4BW" style="color:var(--rose-dark);font-weight:600;font-size:0.92rem;text-decoration:none;" target="_blank" rel="noopener">Get directions →</a>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" style="color:var(--rose);display:block;margin-bottom:0.75rem;">The process</span>
+        <h2 class="heading" style="margin-bottom:1.5rem;">Getting started</h2>
+        <div class="step"><div class="step-num">1</div><div><p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.15rem;">Send us a message</p><p style="font-size:0.88rem;color:var(--muted);">Just say hi on WhatsApp — we'll confirm the next class.</p></div></div>
+        <div class="step"><div class="step-num">2</div><div><p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.15rem;">Turn up</p><p style="font-size:0.88rem;color:var(--muted);">Wear something comfortable. No special shoes needed.</p></div></div>
+        <div class="step"><div class="step-num">3</div><div><p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:0.15rem;">Dance</p><p style="font-size:0.88rem;color:var(--muted);">Your first class is free. Stay for the social party.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="section" style="background:var(--dark);position:relative;overflow:hidden;">
+  <div class="hero-glow left" aria-hidden="true"></div>
+  <div class="hero-glow right" aria-hidden="true"></div>
+  <div class="container" style="position:relative;z-index:2;text-align:center;">
+    <div style="margin-bottom:1.5rem;">
+      <span style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(225,29,72,0.12);border:1px solid rgba(225,29,72,0.25);border-radius:100px;padding:0.35rem 1rem;">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span style="color:var(--rose-light);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;">Classes running now</span>
+      </span>
+    </div>
+    <h2 class="heading-lg" style="color:#fff;margin-bottom:1rem;">Your next Wednesday could change everything.</h2>
+    <p style="font-size:clamp(1rem,2vw,1.12rem);color:rgba(255,255,255,0.55);max-width:460px;margin:0 auto 2rem;line-height:1.7;">One free class. No pressure. Just show up.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;">
+      <a href="https://wa.me/447424063798?text=Hi!%20I'd%20like%20to%20try%20a%20free%20Bachata%20class%20in%20Reading" class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Claim your free class
+      </a>
+      <a href="tel:07424063798" class="btn-white-outline" style="font-size:1.02rem;padding:1rem 2.25rem;">Call 07424 063798</a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 1.5rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.08);">
+      <span class="trust-item"><svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>First class free</span>
+      <span class="trust-item"><svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>No partner needed</span>
+      <span class="trust-item"><svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>Complete beginners welcome</span>
+      <span class="trust-item"><svg class="check" viewBox="0 0 16 16" fill="none"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>No commitment required</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
