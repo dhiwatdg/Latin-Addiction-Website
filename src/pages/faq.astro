@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappUrl } from '../data/locations';
+import { pageFaqs } from '../data/faqs';
+
+const waUrl = whatsappUrl();
+---
+
+<BaseLayout
+  title="FAQ — Common Questions"
+  description="Answers to the most common questions about Latin Addiction dance classes — what to wear, what level to join, pricing, and more."
+>
+  {/* ── HERO (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[40vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[760px] mx-auto w-full text-center">
+      <div data-reveal class="mb-3">
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">FAQ</span>
+      </div>
+      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-4 text-[clamp(2.2rem,5vw,3.75rem)]">
+        Your questions, answered
+      </h1>
+      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.12rem)] text-white/60 leading-[1.7] max-w-[520px] mx-auto">
+        Everything you need to know before your first class.
+      </p>
+    </div>
+  </section>
+
+  {/* ── FAQ ACCORDION (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[760px] mx-auto">
+      <div class="mt-2">
+        {pageFaqs.map((faq, i) => (
+          <div data-reveal class="bg-[#f5f5f5] border border-[rgba(225,29,72,0.06)] rounded-[16px] overflow-hidden mb-2.5">
+            <button
+              id={`faq-btn-${i}`}
+              class="faq-btn w-full flex items-center justify-between gap-4 text-left cursor-pointer bg-transparent border-none"
+              style="padding:1rem 1.25rem;"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+            >
+              <span class="font-body font-semibold text-[0.9rem] text-dark">{faq.question}</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div
+              id={`faq-answer-${i}`}
+              class="faq-answer hidden"
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+            >
+              <p class="text-[0.88rem] text-muted leading-[1.7]" style="padding:0 1.25rem 1rem;">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── FINAL CTA (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[760px] mx-auto text-center">
+      <h2 data-reveal class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(1.75rem,4vw,3rem)]">
+        Still have a question?
+      </h2>
+      <p data-reveal data-reveal-delay="1" class="text-[clamp(0.95rem,2vw,1.05rem)] text-white/[0.55] max-w-[440px] mx-auto leading-[1.7] mb-8">
+        Message us on WhatsApp — we reply fast and we're happy to help before you commit to anything.
+      </p>
+      <div data-reveal data-reveal-delay="2">
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Ask us on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // FAQ accordion — single open at a time
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const chevron = btn.querySelector('.faq-chevron') as SVGElement;
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close all
+        document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+        document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('rotated'));
+        document.querySelectorAll('.faq-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+        // Open clicked (if it was closed)
+        if (!isOpen) {
+          answer.classList.remove('hidden');
+          chevron.classList.add('rotated');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+  <Fragment set:html={`<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  })}</script>`} />
+</BaseLayout>

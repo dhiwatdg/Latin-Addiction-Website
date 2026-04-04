@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappUrl } from '../data/locations';
+import { reviews } from '../data/reviews';
+
+const waUrl = whatsappUrl();
+const totalReviews = reviews.length;
+const averageRating = 5.0;
+---
+
+<BaseLayout
+  title="Student Reviews"
+  description={`${totalReviews} five-star Google reviews for Latin Addiction dance classes in Milton Keynes, Leicester, and Reading.`}
+>
+  {/* ── HERO (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[40vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[760px] mx-auto w-full text-center">
+      <div data-reveal class="mb-3">
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">Reviews</span>
+      </div>
+      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-6 text-[clamp(2.2rem,5vw,3.75rem)]">
+        What our students say
+      </h1>
+      {/* Aggregate rating badge */}
+      <div data-reveal data-reveal-delay="2" class="inline-flex items-center gap-2 bg-[rgba(255,255,255,0.07)] border border-white/[0.12] rounded-full px-5 py-2.5">
+        <span class="text-gold text-[1.05rem]">★★★★★</span>
+        <span class="text-white font-semibold text-[0.9rem]">{totalReviews} reviews · {averageRating.toFixed(1)} on Google</span>
+      </div>
+    </div>
+  </section>
+
+  {/* ── REVIEWS GRID (light gray bg) ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1100px] mx-auto">
+      <div class="grid gap-4 md:grid-cols-2">
+        {reviews.map((review, i) => (
+          <div data-reveal class="bg-white border border-[#e8e8e8] rounded-[18px] p-6 flex flex-col gap-3">
+            {/* Author row */}
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-rose flex items-center justify-center text-white font-display font-bold text-[1rem] shrink-0" aria-hidden="true">
+                {review.initial}
+              </div>
+              <div>
+                <p class="font-semibold text-[0.9rem] text-dark leading-tight">{review.author}</p>
+                <p class="text-[0.78rem] text-muted">{review.source}</p>
+              </div>
+              <div class="ml-auto text-gold text-[0.95rem]" aria-label={`${review.stars} out of 5 stars`}>
+                {"★".repeat(review.stars)}
+              </div>
+            </div>
+            {/* Quote */}
+            <p class="text-[0.88rem] text-muted leading-[1.7]">{review.text}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Leave a review link */}
+      <div data-reveal class="text-center mt-8">
+        <!-- TODO: add Google review URL -->
+        <a href="#" class="text-rose-dark font-semibold text-[0.92rem] no-underline hover:underline">
+          Leave us a review →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── FINAL CTA (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[760px] mx-auto text-center">
+      <h2 data-reveal class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(1.75rem,4vw,3rem)]">
+        Ready to join them?
+      </h2>
+      <p data-reveal data-reveal-delay="1" class="text-[clamp(0.95rem,2vw,1.05rem)] text-white/[0.55] max-w-[440px] mx-auto leading-[1.7] mb-8">
+        First class is free. No partner needed. Everyone starts as a beginner.
+      </p>
+      <div data-reveal data-reveal-delay="2">
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Claim your free class
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Fragment set:html={`<script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Latin Addiction UK",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": averageRating.toFixed(1),
+      "reviewCount": totalReviews,
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": reviews.map(r => ({
+      "@type": "Review",
+      "author": { "@type": "Person", "name": r.author },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": r.stars.toString(),
+        "bestRating": "5"
+      },
+      "reviewBody": r.text
+    }))
+  })}</script>`} />
+</BaseLayout>

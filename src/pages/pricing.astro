@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CheckoutModal from '../components/CheckoutModal.astro';
 import { newcomerPass, dropInProducts, membershipRows } from '../data/pricing';
 import { whatsappUrl } from '../data/locations';
 
@@ -275,8 +276,8 @@ const formatPrice = (pence: number) => `£${(pence / 100).toFixed(0)}`;
             1-to-1 or couples. Off-peak, standard, and pre-class slots available. Packs of 4 or 8 sessions.
           </p>
         </div>
-        <a href="/services/private-coaching" class="btn-rose self-start md:self-center" style="white-space:nowrap;">
-          See coaching options →
+        <a href={whatsappUrl("Hi! I'd like to enquire about private coaching")} class="btn-rose self-start md:self-center" style="white-space:nowrap;" target="_blank" rel="noopener">
+          Enquire on WhatsApp →
         </a>
       </div>
     </div>
@@ -334,151 +335,6 @@ const formatPrice = (pence: number) => `£${(pence / 100).toFixed(0)}`;
     </div>
   </section>
 
-  {/* ── CHECKOUT MODAL ── */}
-  <dialog id="checkout-modal" class="bg-white rounded-[20px] p-6 md:p-8 max-w-[480px] w-[calc(100%-2rem)] border-none shadow-2xl">
-    <button id="checkout-close" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-muted hover:text-dark text-xl leading-none cursor-pointer" aria-label="Close">&times;</button>
-
-    <div id="checkout-loading" class="flex flex-col items-center gap-4 py-8">
-      <div class="checkout-spinner" aria-hidden="true"></div>
-      <p class="text-muted text-[0.92rem]">Setting up payment&hellip;</p>
-    </div>
-
-    <div id="sumup-widget"></div>
-
-    <div id="checkout-error" hidden class="text-center py-8">
-      <p class="text-rose font-semibold text-[1.1rem] mb-2">Something went wrong</p>
-      <p class="text-muted text-[0.9rem] mb-4">We couldn't set up the payment. Please try again or pay in person.</p>
-      <button id="checkout-retry" class="btn-rose text-[0.85rem]" style="padding:0.6rem 1.4rem;">Try again</button>
-    </div>
-
-    <div id="checkout-success" hidden class="text-center py-8">
-      <svg class="mx-auto mb-4" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="24" r="24" fill="#E11D48" opacity="0.1"/>
-        <path d="M15 25l6 6 12-12" stroke="#E11D48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <p class="font-display font-bold text-[1.2rem] mb-2">Payment successful!</p>
-      <p class="text-muted text-[0.9rem] mb-4">Check WhatsApp for a confirmation.</p>
-      <a href={waUrl} class="btn-rose text-[0.85rem]" style="padding:0.6rem 1.4rem;" target="_blank" rel="noopener">
-        Open WhatsApp &rarr;
-      </a>
-    </div>
-  </dialog>
-
-  <style>
-    #checkout-modal::backdrop {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-    }
-    #checkout-modal[open] {
-      display: flex;
-      flex-direction: column;
-    }
-    .checkout-spinner {
-      width: 36px;
-      height: 36px;
-      border: 3px solid #e8e8e8;
-      border-top-color: #E11D48;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-  </style>
-
-  <script>
-    const WORKER_URL = 'https://latin-addiction-checkout.latin-addiction-uk.workers.dev';
-    const SUMUP_PUBLIC_KEY = 'sup_pk_1jmjRI7tjZHI4XbsvBVtMKPmLZJyue3Iz';
-
-    const modal = document.getElementById('checkout-modal') as HTMLDialogElement;
-    const loadingEl = document.getElementById('checkout-loading')!;
-    const widgetEl = document.getElementById('sumup-widget')!;
-    const errorEl = document.getElementById('checkout-error')!;
-    const successEl = document.getElementById('checkout-success')!;
-    const closeBtn = document.getElementById('checkout-close')!;
-    const retryBtn = document.getElementById('checkout-retry')!;
-
-    let paymentInProgress = false;
-    let lastArgs: { productId: string; amountPence: number; description: string } | null = null;
-
-    // Load SumUp SDK
-    const sdkScript = document.createElement('script');
-    sdkScript.src = 'https://gateway.sumup.com/gateway/ecom/card/v2/sdk.js';
-    sdkScript.async = true;
-    document.head.appendChild(sdkScript);
-
-    async function openCheckout(productId: string, amountPence: number, description: string) {
-      lastArgs = { productId, amountPence, description };
-      paymentInProgress = true;
-
-      // Reset states
-      loadingEl.hidden = false;
-      widgetEl.replaceChildren();
-      widgetEl.hidden = true;
-      errorEl.hidden = true;
-      successEl.hidden = true;
-
-      modal.showModal();
-
-      try {
-        const res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ productId, amountPence, description }),
-        });
-
-        if (!res.ok) throw new Error('Worker error');
-
-        const { checkoutId } = await res.json();
-
-        loadingEl.hidden = true;
-        widgetEl.id = checkoutId; // SumUp widget mounts into the element whose id matches checkoutId
-        widgetEl.hidden = false;
-
-        // @ts-ignore — SumUpCard is loaded from the SDK script
-        SumUpCard.mount({
-          id: checkoutId,
-          key: SUMUP_PUBLIC_KEY,
-          onResponse(type: string, _body: unknown) {
-            paymentInProgress = false;
-            if (type === 'success') {
-              widgetEl.hidden = true;
-              successEl.hidden = false;
-            } else {
-              widgetEl.hidden = true;
-              errorEl.hidden = false;
-            }
-          },
-        });
-      } catch {
-        loadingEl.hidden = true;
-        errorEl.hidden = false;
-        paymentInProgress = false;
-      }
-    }
-
-    // Wire up all checkout buttons
-    document.querySelectorAll<HTMLButtonElement>('.btn-checkout').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const productId = btn.dataset.productId!;
-        const amountPence = parseInt(btn.dataset.amount!, 10);
-        const description = btn.dataset.description!;
-        openCheckout(productId, amountPence, description);
-      });
-    });
-
-    // Close modal
-    closeBtn.addEventListener('click', () => {
-      if (!paymentInProgress) modal.close();
-    });
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal && !paymentInProgress) modal.close();
-    });
-
-    // Retry
-    retryBtn.addEventListener('click', () => {
-      if (lastArgs) openCheckout(lastArgs.productId, lastArgs.amountPence, lastArgs.description);
-    });
-  </script>
+  <CheckoutModal waUrl={waUrl} />
 
 </BaseLayout>

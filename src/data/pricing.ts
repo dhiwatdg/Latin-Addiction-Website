@@ -162,3 +162,106 @@ export const membershipRows: MembershipRow[] = [
     },
   },
 ];
+
+// ── PRIVATE COACHING ────────────────────────────────────────────────────────
+// Singles: per-session pricing by time slot and group size
+// Packs: 4 or 8 sessions by group size
+
+export const coachingProducts: PricingProduct[] = [
+  // Off-peak singles (Mon-Fri 9am-5pm)
+  {
+    id: 'coaching-offpeak-1',
+    label: 'Off-peak – 1 person',
+    checkoutDescription: 'Latin Addiction – Private Coaching, Off-peak, 1 person',
+    amountPence: 4000,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-offpeak-2',
+    label: 'Off-peak – 2 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, Off-peak, 2 people',
+    amountPence: 6000,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-offpeak-3',
+    label: 'Off-peak – 3 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, Off-peak, 3 people',
+    amountPence: 8000,
+    locations: 'all',
+  },
+  // Standard/peak singles (evenings & weekends)
+  {
+    id: 'coaching-standard-1',
+    label: 'Standard – 1 person',
+    checkoutDescription: 'Latin Addiction – Private Coaching, Standard, 1 person',
+    amountPence: 5000,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-standard-2',
+    label: 'Standard – 2 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, Standard, 2 people',
+    amountPence: 7500,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-standard-3',
+    label: 'Standard – 3 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, Standard, 3 people',
+    amountPence: 10000,
+    locations: 'all',
+  },
+  // Pre-class singles (1 person only)
+  {
+    id: 'coaching-preclass-1',
+    label: 'Pre-class – 1 person',
+    checkoutDescription: 'Latin Addiction – Private Coaching, Pre-class, 1 person',
+    amountPence: 4000,
+    locations: 'all',
+  },
+  // 4-session packs
+  {
+    id: 'coaching-pack4-1',
+    label: '4-session pack – 1 person',
+    checkoutDescription: 'Latin Addiction – Private Coaching, 4-session pack, 1 person',
+    amountPence: 16500,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-pack4-2',
+    label: '4-session pack – 2 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, 4-session pack, 2 people',
+    amountPence: 25000,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-pack4-3',
+    label: '4-session pack – 3 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, 4-session pack, 3 people',
+    amountPence: 33000,
+    locations: 'all',
+  },
+  // 8-session packs
+  {
+    id: 'coaching-pack8-1',
+    label: '8-session pack – 1 person',
+    checkoutDescription: 'Latin Addiction – Private Coaching, 8-session pack, 1 person',
+    amountPence: 33000,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-pack8-2',
+    label: '8-session pack – 2 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, 8-session pack, 2 people',
+    amountPence: 49500,
+    locations: 'all',
+  },
+  {
+    id: 'coaching-pack8-3',
+    label: '8-session pack – 3 people',
+    checkoutDescription: 'Latin Addiction – Private Coaching, 8-session pack, 3 people',
+    amountPence: 66000,
+    locations: 'all',
+  },
+];

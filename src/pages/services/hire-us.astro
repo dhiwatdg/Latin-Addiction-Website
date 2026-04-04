@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { whatsappUrl } from '../../data/locations';
+
+const waUrl = whatsappUrl("Hi! I'd like to enquire about booking Latin Addiction for an event");
+---
+
+<BaseLayout
+  title="Hire Us — Guest Teaching & Events"
+  description="Book Latin Addiction UK for your event. Guest teaching, DJ sets, workshops, and festival appearances. 4+ years of experience energising UK events with Latin dance."
+>
+  {/* ── HERO ── */}
+  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[45vh] px-5 py-14 md:px-8 md:py-20">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center">
+      <div data-reveal class="flex items-center gap-3 mb-3 justify-center">
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">
+          Events &amp; appearances
+        </span>
+      </div>
+
+      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-5 text-[clamp(2.5rem,6vw,4.5rem)]">
+        Bring Latin Addiction<br />to your event
+      </h1>
+
+      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[560px] mb-8 mx-auto">
+        Guest teaching, DJ sets, workshops, and festival appearances. We bring the energy, the music, and the moves.
+      </p>
+
+      <div data-reveal data-reveal-delay="3">
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          Make an enquiry
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── WHAT WE DO ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[860px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          What we offer
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">
+        We do more than teach
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-[1rem] text-muted leading-[1.7] max-w-[640px] mb-10">
+        With 4+ years of experience and regular appearances at UK festivals and events, we're comfortable on any stage — from intimate social nights to large festival floors.
+      </p>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        {[
+          { title: 'Guest teaching', body: 'We join your existing event as guest instructors — bringing fresh material, fresh energy, and a new perspective for your dancers.' },
+          { title: 'Workshops', body: 'A focused deep-dive on a specific style or technique. Great for socials, festivals, and special events.' },
+          { title: 'DJ sets', body: 'Curated Latin music — Bachata, Salsa, and more — to keep the floor moving all night.' },
+          { title: 'Festival appearances', body: 'From headline workshops to social party sets. We\'ve appeared at UK Latin dance festivals and know how to deliver on a bigger stage.' },
+          { title: 'Party entertainment', body: 'Bring Latin Addiction to your party, launch event, or celebration. We teach a few moves, then get everyone dancing.' },
+        ].map((item, i) => (
+          <div data-reveal data-reveal-delay={String((i % 3) + 1)} class="bg-[#f5f5f5] rounded-[18px] p-6">
+            <h3 class="font-display font-bold text-[1.05rem] mb-2">{item.title}</h3>
+            <p class="text-[0.88rem] text-muted leading-[1.7]">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── WHAT WE BRING ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[860px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          What we bring
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-8">
+        Professional, self-contained, ready to go
+      </h2>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        {[
+          { title: 'Energy', body: '4+ years of teaching and performing. We know how to read a room and keep it moving.' },
+          { title: 'Professional instruction', body: 'Clear, accessible teaching that works for mixed-ability groups — no one gets left behind.' },
+          { title: 'Music', body: 'A curated Latin music library. We bring the atmosphere, you just provide the space.' },
+          { title: 'Equipment', body: 'PA system available for smaller events. For larger venues, we work with your AV setup.' },
+        ].map((item, i) => (
+          <div data-reveal data-reveal-delay={String(i + 1)} class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6">
+            <h3 class="font-display font-bold text-[1rem] mb-1">{item.title}</h3>
+            <p class="text-[0.88rem] text-muted leading-[1.7]">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── PORTFOLIO / SOCIAL LINKS ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[860px] mx-auto">
+      <h2 data-reveal class="font-display font-semibold text-[clamp(1.5rem,3vw,2.25rem)] leading-[1.12] mb-3">
+        See us in action
+      </h2>
+      <p data-reveal data-reveal-delay="1" class="text-[0.95rem] text-muted leading-[1.7] max-w-[560px] mb-6">
+        Follow us on Instagram and TikTok for clips from our classes, socials, and event appearances.
+      </p>
+      <div data-reveal data-reveal-delay="2" class="flex flex-wrap gap-4">
+        <a
+          href="https://www.instagram.com/latinaddictionuk"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 border-[1.5px] border-[#e8e8e8] rounded-full px-5 py-2.5 text-[0.9rem] font-semibold no-underline hover:border-rose/40 transition-colors"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+          @latinaddictionuk
+        </a>
+        <a
+          href="https://www.tiktok.com/@latin.addiction.uk"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 border-[1.5px] border-[#e8e8e8] rounded-full px-5 py-2.5 text-[0.9rem] font-semibold no-underline hover:border-rose/40 transition-colors"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.79 1.53V6.78a4.85 4.85 0 01-1.02-.09z"/>
+          </svg>
+          @latin.addiction.uk
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── FINAL CTA ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto text-center">
+      <h2 data-reveal class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(2rem,5vw,3.5rem)]">
+        Let's make it happen
+      </h2>
+      <p data-reveal data-reveal-delay="1" class="text-[clamp(1rem,2vw,1.12rem)] text-white/[0.55] max-w-[480px] mx-auto leading-[1.7] mb-8">
+        Tell us about your event and we'll get back to you.
+      </p>
+      <div data-reveal data-reveal-delay="2">
+        <a href={waUrl} class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Make an enquiry
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

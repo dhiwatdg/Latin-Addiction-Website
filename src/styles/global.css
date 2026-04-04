@@ -170,6 +170,49 @@
 
 /* CTA section decorative glows (reuses hero glow classes) */
 
+/* Location page timeline */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: 8px; bottom: 8px;
+  width: 3px; background: linear-gradient(to bottom, #fecdd3, #E11D48, #F59E0B);
+  border-radius: 2px;
+}
+.tl-item { position: relative; padding-bottom: 2rem; padding-left: 1.5rem; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -2rem; top: 6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #E11D48; border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #fecdd3;
+}
+.tl-item.social .tl-dot { background: #F59E0B; box-shadow: 0 0 0 2px rgba(245,158,11,0.3); }
+.tl-time { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; margin-bottom: 0.15rem; }
+.tl-item.social .tl-time { color: #B45309; }
+.tl-desc { font-size: 0.92rem; color: #555; line-height: 1.65; }
+
+/* Location page hero background */
+.hero-bg-blur {
+  position: absolute; inset: -20px;
+  background-size: cover; background-position: center;
+  filter: blur(10px); z-index: 0;
+}
+
+/* Newcomer pricing card */
+.newcomer-card {
+  background: #111; color: #fff; border-radius: 20px; padding: 2rem;
+  position: relative; overflow: hidden; margin-bottom: 2rem;
+}
+.newcomer-card::before {
+  content: ''; position: absolute; width: 400px; height: 400px; right: -100px; top: -100px;
+  background: radial-gradient(circle, rgba(225,29,72,0.15) 0%, transparent 60%);
+  filter: blur(60px); pointer-events: none;
+}
+.newcomer-pill {
+  display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; padding: 0.3rem 0.75rem; border-radius: 100px;
+  background: rgba(225,29,72,0.2); color: #fecdd3; margin-bottom: 1rem;
+}
+
 @layer utilities {
   [data-reveal] {
     opacity: 0;

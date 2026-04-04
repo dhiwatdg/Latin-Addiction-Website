@@ -1,0 +1,447 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CheckoutModal from '../../components/CheckoutModal.astro';
+import { coachingProducts } from '../../data/pricing';
+import { whatsappUrl } from '../../data/locations';
+
+const waUrl = whatsappUrl("Hi! I'd like to enquire about private coaching");
+
+const formatPrice = (pence: number) => `£${(pence / 100).toFixed(0)}`;
+
+// Helper to find a product by ID
+const p = (id: string) => coachingProducts.find(x => x.id === id)!;
+
+// Singles data for the table
+const singlesRows = [
+  {
+    slot: 'Off-peak',
+    note: 'Mon-Fri 9am-5pm',
+    p1: p('coaching-offpeak-1'),
+    p2: p('coaching-offpeak-2'),
+    p3: p('coaching-offpeak-3'),
+  },
+  {
+    slot: 'Standard',
+    note: 'Evenings & weekends',
+    p1: p('coaching-standard-1'),
+    p2: p('coaching-standard-2'),
+    p3: p('coaching-standard-3'),
+  },
+  {
+    slot: 'Pre-class',
+    note: 'Fixed slots only',
+    p1: p('coaching-preclass-1'),
+    p2: null,
+    p3: null,
+  },
+];
+
+const packRows = [
+  {
+    pack: '4-session pack',
+    p1: p('coaching-pack4-1'),
+    p2: p('coaching-pack4-2'),
+    p3: p('coaching-pack4-3'),
+  },
+  {
+    pack: '8-session pack',
+    p1: p('coaching-pack8-1'),
+    p2: p('coaching-pack8-2'),
+    p3: p('coaching-pack8-3'),
+  },
+];
+---
+
+<BaseLayout
+  title="Private Bachata Coaching"
+  description="1-to-1 and couples Bachata coaching sessions in Milton Keynes, Leicester, and Reading. Off-peak from £40. Session packs available. Tailored to your goals."
+>
+
+  {/* ── HERO ── */}
+  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[42vh] px-5 py-14 md:px-8 md:py-20">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center md:text-left">
+      <div data-reveal class="flex items-center gap-3 mb-3 justify-center md:justify-start">
+        <span class="hidden md:block w-12 h-[3px] bg-rose-light rounded-sm" aria-hidden="true"></span>
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">Private coaching</span>
+      </div>
+      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-5 text-[clamp(2.5rem,6vw,4.5rem)]">
+        Private Bachata Coaching
+      </h1>
+      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[560px] mb-8 mx-auto md:mx-0">
+        1-to-1 and couples sessions tailored to your goals. Available in Milton Keynes, Leicester, and Reading.
+      </p>
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center md:justify-start">
+        <a href="#pricing" class="btn-rose">See pricing ↓</a>
+        <a href={waUrl} class="btn-white-outline" target="_blank" rel="noopener">Ask a question</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── WHAT'S COVERED ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[1200px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">What you'll work on</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-8">
+        Every session is built around <span class="text-rose">you</span>
+      </h2>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-reveal data-reveal-delay="1" class="bg-[#f5f5f5] rounded-[18px] p-6">
+          <p class="font-display font-bold text-[1.05rem] mb-2">Technique & timing</p>
+          <p class="text-[0.88rem] text-muted leading-[1.7]">
+            Nail the fundamentals: footwork, weight transfer, and rhythmic accuracy so every step feels natural.
+          </p>
+        </div>
+        <div data-reveal data-reveal-delay="2" class="bg-[#f5f5f5] rounded-[18px] p-6">
+          <p class="font-display font-bold text-[1.05rem] mb-2">Body movement & musicality</p>
+          <p class="text-[0.88rem] text-muted leading-[1.7]">
+            Learn to express the music through isolation, body rolls, and dynamic movement that makes your dance feel alive.
+          </p>
+        </div>
+        <div data-reveal data-reveal-delay="3" class="bg-[#f5f5f5] rounded-[18px] p-6">
+          <p class="font-display font-bold text-[1.05rem] mb-2">Styling, turns & spins</p>
+          <p class="text-[0.88rem] text-muted leading-[1.7]">
+            Add flair with arm styling, smooth turns, and controlled spins that look effortless on the social floor.
+          </p>
+        </div>
+        <div data-reveal data-reveal-delay="4" class="bg-[#f5f5f5] rounded-[18px] p-6">
+          <p class="font-display font-bold text-[1.05rem] mb-2">Personalised feedback</p>
+          <p class="text-[0.88rem] text-muted leading-[1.7]">
+            Targeted drills and real-time correction on the specific areas holding you back. No wasted time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── WHO IT'S FOR ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[800px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Who it's for</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-8">
+        Private coaching is right for you if&hellip;
+      </h2>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {([
+          { title: 'Fast-tracking your progress', desc: 'You\'re a beginner who wants to build confidence quickly and skip the steep part of the learning curve.' },
+          { title: 'Refining your technique', desc: 'You\'ve been dancing a while and want expert eyes on the details: connection, musicality, or styling.' },
+          { title: 'Learning as a couple', desc: 'You want to dance together, whether for fun, a wedding, or just a new shared hobby.' },
+          { title: 'Preparing for an event', desc: 'You have a performance, social, or competition coming up and want focused preparation.' },
+        ] as const).map((item, i) => (
+          <div data-reveal data-reveal-delay={String(i + 1)} class="bg-white rounded-[14px] p-5 flex gap-3">
+            <svg class="w-5 h-5 text-rose flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <p class="font-display font-bold text-[0.95rem] mb-1">{item.title}</p>
+              <p class="text-[0.85rem] text-muted leading-[1.6]">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── PRICING — SINGLES ── */}
+  <section id="pricing" class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[900px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Per session</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-3">
+        Single session pricing
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-muted text-[0.95rem] mb-8">
+        90 minutes recommended for best progress. All sessions include warm-up, drills, and feedback.
+      </p>
+
+      <div data-reveal data-reveal-delay="3" class="overflow-x-auto rounded-[18px] border-[1.5px] border-[#e8e8e8]">
+        <table class="w-full text-[0.88rem]">
+          <thead>
+            <tr class="bg-[#f5f5f5] border-b border-[#e8e8e8]">
+              <th class="text-left px-5 py-3 font-semibold text-muted">Time slot</th>
+              <th class="px-5 py-3 font-semibold text-center">1 person</th>
+              <th class="px-5 py-3 font-semibold text-center">2 people</th>
+              <th class="px-5 py-3 font-semibold text-center">3 people</th>
+            </tr>
+          </thead>
+          <tbody>
+            {singlesRows.map((row, i) => (
+              <tr class={i < singlesRows.length - 1 ? 'border-b border-[#f0f0f0]' : ''}>
+                <td class="px-5 py-4">
+                  <p class="font-medium">{row.slot}</p>
+                  <p class="text-[0.78rem] text-muted">{row.note}</p>
+                </td>
+                <td class="px-5 py-4 text-center">
+                  <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.p1.amountPence)}</p>
+                  <button
+                    class="btn-rose btn-checkout text-[0.78rem]"
+                    style="padding:0.45rem 1rem;"
+                    data-product-id={row.p1.id}
+                    data-amount={row.p1.amountPence}
+                    data-description={row.p1.checkoutDescription}
+                  >
+                    Buy
+                  </button>
+                </td>
+                <td class="px-5 py-4 text-center">
+                  {row.p2 ? (
+                    <>
+                      <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.p2.amountPence)}</p>
+                      <button
+                        class="btn-rose btn-checkout text-[0.78rem]"
+                        style="padding:0.45rem 1rem;"
+                        data-product-id={row.p2.id}
+                        data-amount={row.p2.amountPence}
+                        data-description={row.p2.checkoutDescription}
+                      >
+                        Buy
+                      </button>
+                    </>
+                  ) : (
+                    <span class="text-muted text-[0.82rem]">&mdash;</span>
+                  )}
+                </td>
+                <td class="px-5 py-4 text-center">
+                  {row.p3 ? (
+                    <>
+                      <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.p3.amountPence)}</p>
+                      <button
+                        class="btn-rose btn-checkout text-[0.78rem]"
+                        style="padding:0.45rem 1rem;"
+                        data-product-id={row.p3.id}
+                        data-amount={row.p3.amountPence}
+                        data-description={row.p3.checkoutDescription}
+                      >
+                        Buy
+                      </button>
+                    </>
+                  ) : (
+                    <span class="text-muted text-[0.82rem]">&mdash;</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  {/* ── PRICING — PACKS ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[900px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Save with packs</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-3">
+        Session packs
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-muted text-[0.95rem] mb-8">
+        Commit to a block and save. Use your sessions at any of our three locations.
+      </p>
+
+      <div data-reveal data-reveal-delay="3" class="overflow-x-auto rounded-[18px] border-[1.5px] border-[#e8e8e8]">
+        <table class="w-full text-[0.88rem]">
+          <thead>
+            <tr class="bg-white border-b border-[#e8e8e8]">
+              <th class="text-left px-5 py-3 font-semibold text-muted">Pack</th>
+              <th class="px-5 py-3 font-semibold text-center">1 person</th>
+              <th class="px-5 py-3 font-semibold text-center">2 people</th>
+              <th class="px-5 py-3 font-semibold text-center">3 people</th>
+            </tr>
+          </thead>
+          <tbody>
+            {packRows.map((row, i) => (
+              <tr class={i < packRows.length - 1 ? 'border-b border-[#f0f0f0]' : ''}>
+                <td class="px-5 py-4 font-medium">{row.pack}</td>
+                <td class="px-5 py-4 text-center">
+                  <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.p1.amountPence)}</p>
+                  <button
+                    class="btn-rose btn-checkout text-[0.78rem]"
+                    style="padding:0.45rem 1rem;"
+                    data-product-id={row.p1.id}
+                    data-amount={row.p1.amountPence}
+                    data-description={row.p1.checkoutDescription}
+                  >
+                    Buy
+                  </button>
+                </td>
+                <td class="px-5 py-4 text-center">
+                  <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.p2.amountPence)}</p>
+                  <button
+                    class="btn-rose btn-checkout text-[0.78rem]"
+                    style="padding:0.45rem 1rem;"
+                    data-product-id={row.p2.id}
+                    data-amount={row.p2.amountPence}
+                    data-description={row.p2.checkoutDescription}
+                  >
+                    Buy
+                  </button>
+                </td>
+                <td class="px-5 py-4 text-center">
+                  <p class="font-display font-bold text-[1.1rem] mb-1">{formatPrice(row.p3.amountPence)}</p>
+                  <button
+                    class="btn-rose btn-checkout text-[0.78rem]"
+                    style="padding:0.45rem 1rem;"
+                    data-product-id={row.p3.id}
+                    data-amount={row.p3.amountPence}
+                    data-description={row.p3.checkoutDescription}
+                  >
+                    Buy
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  {/* ── PRE-CLASS SLOTS ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[800px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Pre-class coaching</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-3">
+        Warm up with a private session
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-muted text-[0.95rem] mb-8">
+        Perfect warm-up before the group class. Limited to 1 person per slot, fixed times only.
+      </p>
+
+      <div class="grid gap-4 sm:grid-cols-3">
+        {([
+          { city: 'Milton Keynes', day: 'Mondays', time: '7:00 - 8:00 pm' },
+          { city: 'Leicester', day: 'Tuesdays', time: '6:00 - 7:00 pm' },
+          { city: 'Reading', day: 'Wednesdays', time: '6:00 - 7:30 pm' },
+        ] as const).map((slot, i) => (
+          <div data-reveal data-reveal-delay={String(i + 1)} class="bg-[#f5f5f5] rounded-[14px] p-5 text-center">
+            <p class="font-display font-bold text-[1.05rem] mb-1">{slot.city}</p>
+            <p class="text-[0.88rem] text-muted mb-1">{slot.day}</p>
+            <p class="text-[0.92rem] font-semibold mb-3">{slot.time}</p>
+            <p class="font-display font-bold text-rose text-[1.2rem]">£40</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── HOW TO BOOK ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">The process</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-4">
+        How to book
+      </h2>
+
+      <div class="grid gap-5 md:grid-cols-3 mt-8">
+        <div data-reveal data-reveal-delay="1" class="flex flex-col items-center">
+          <div class="w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose">
+            1
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Purchase your session</h3>
+          <p class="text-[0.88rem] text-muted">
+            Pick your time slot and group size from the tables above, then pay securely online.
+          </p>
+        </div>
+
+        <div data-reveal data-reveal-delay="2" class="flex flex-col items-center">
+          <div class="w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose">
+            2
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Confirm date & time</h3>
+          <p class="text-[0.88rem] text-muted">
+            Message us on WhatsApp to agree a date, time, and venue that works for you.
+          </p>
+        </div>
+
+        <div data-reveal data-reveal-delay="3" class="flex flex-col items-center">
+          <div class="w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose">
+            3
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">We'll meet you there</h3>
+          <p class="text-[0.88rem] text-muted">
+            Turn up at the venue and your instructor will be ready. Just bring comfortable shoes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── FINAL CTA ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto text-center">
+      <h2 data-reveal class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(2rem,5vw,3.5rem)]">
+        Not sure which option is right for you?
+      </h2>
+      <p data-reveal data-reveal-delay="1" class="text-[clamp(1rem,2vw,1.12rem)] text-white/[0.55] max-w-[460px] mx-auto leading-[1.7] mb-8">
+        Drop us a message and we'll help you pick the best session type, time, and location.
+      </p>
+      <div data-reveal data-reveal-delay="2" class="flex flex-wrap gap-3 justify-center">
+        <a href={waUrl} class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Message us on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <CheckoutModal waUrl={waUrl} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Private Bachata Coaching",
+    "provider": {
+      "@type": "DanceSchool",
+      "name": "Latin Addiction UK",
+      "url": "https://latinaddiction.co.uk"
+    },
+    "description": "1-to-1 and couples Bachata coaching sessions tailored to your goals. Available in Milton Keynes, Leicester, and Reading.",
+    "areaServed": ["Milton Keynes", "Leicester", "Reading"],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Off-peak single session (1 person)",
+        "price": "40.00",
+        "priceCurrency": "GBP"
+      },
+      {
+        "@type": "Offer",
+        "name": "Standard single session (1 person)",
+        "price": "50.00",
+        "priceCurrency": "GBP"
+      },
+      {
+        "@type": "Offer",
+        "name": "4-session pack (1 person)",
+        "price": "165.00",
+        "priceCurrency": "GBP"
+      },
+      {
+        "@type": "Offer",
+        "name": "8-session pack (1 person)",
+        "price": "330.00",
+        "priceCurrency": "GBP"
+      }
+    ]
+  })} />
+
+</BaseLayout>

@@ -1,240 +1,316 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ScheduleCard from '../components/ScheduleCard.astro';
 import { locations, whatsappUrl, mapsUrl, PHONE_TEL, PHONE_DISPLAY } from '../data/locations';
+import { reviews } from '../data/reviews';
 
 const loc = locations.find(l => l.slug === 'reading')!;
 const waUrl = whatsappUrl(loc.whatsappMessage);
-const stylesLabel = loc.danceStyles.join(' & ');
+const featuredReviews = reviews.filter(r => ['G V James', 'Jonathan Marodona', 'Moha Taher'].includes(r.author));
+const checkSvg = `<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>`;
+const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>`;
 ---
 
 <BaseLayout
   title="Bachata Classes in Reading"
   description="Learn Bachata every Wednesday at Wesley Methodist Church, Reading. Free first class, no partner needed. Beginners welcome."
 >
-  {/* ── SECTION 1: HERO (dark bg, shorter ~50vh) ── */}
-  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[50vh] md:min-h-[55vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+  {/* ── HERO ── */}
+  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[55vh] md:min-h-[60vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-bg-blur" style="background-image:url('/images/locations/reading-bg.png');" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-dark/[0.87] z-[1]" aria-hidden="true"></div>
     <div class="hero-glow-left" aria-hidden="true"></div>
     <div class="hero-glow-right" aria-hidden="true"></div>
 
-    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center md:text-left">
-      {/* Eyebrow */}
-      <div data-reveal class="flex items-center gap-3 mb-3 justify-center md:justify-start">
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-left">
+      <div data-reveal class="flex items-center gap-3 mb-3">
         <span class="hidden md:block w-12 h-[3px] bg-rose-light rounded-sm" aria-hidden="true"></span>
-        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">
-          {stylesLabel} classes &middot; {loc.name}
-        </span>
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">Bachata classes · Reading</span>
       </div>
 
-      {/* H1 */}
       <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-5 text-[clamp(2.5rem,6vw,4.5rem)]">
-        {stylesLabel} in {loc.name}
+        Bachata in Reading
       </h1>
 
-      {/* Subtitle */}
-      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[560px] mb-8 mx-auto md:mx-0">
+      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[560px] mb-8">
         Every {loc.day} at {loc.venue}, {loc.address} {loc.postcode}
       </p>
 
-      {/* CTA buttons */}
-      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 mb-6 justify-center md:justify-start">
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 mb-6">
         <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-          </svg>
+          <Fragment set:html={waSvg} />
           Claim your free class
         </a>
-        <a href="#schedule" class="btn-white-outline">
-          See schedule ↓
-        </a>
+        <a href="#schedule" class="btn-white-outline">See schedule ↓</a>
       </div>
 
-      {/* Trust items */}
-      <div data-reveal data-reveal-delay="4" class="flex flex-wrap gap-5 pt-6 mt-4 border-t border-white/[0.08] justify-center md:justify-start">
-        <span class="text-[0.82rem] text-white/45 flex items-center gap-1.5">
-          <span class="text-gold">★</span> {loc.badgeText}
-        </span>
-        <span class="text-[0.82rem] text-white/45">First class FREE</span>
-        <span class="text-[0.82rem] text-white/45">Free social party</span>
-      </div>
-    </div>
-  </section>
-
-  {/* ── SECTION 2: SCHEDULE (light gray bg) ── */}
-  <section id="schedule" class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
-    <div class="max-w-[800px] mx-auto">
-      <div data-reveal class="mb-3">
-        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
-          Schedule
-        </span>
-      </div>
-      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">
-        {loc.name} class times
-      </h2>
-
-      <div data-reveal data-reveal-delay="2">
-        <ScheduleCard location={loc} />
+      {/* Team strip */}
+      <div data-reveal data-reveal-delay="4" class="flex items-center mb-6">
+        <img src="/images/instructors/Dhiwa & Gloria.jpeg" alt="Dhiwa" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover object-[left_center] border-[2.5px] border-white/15" />
+        <img src="/images/instructors/Gloria.jpg" alt="Gloria" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover object-[center_top] border-[2.5px] border-white/15 -ml-2.5" />
+        <img src="/images/instructors/Chido.jpg" alt="Chido" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover border-[2.5px] border-white/15 -ml-2.5" />
+        <img src="/images/instructors/Daniella.jpeg" alt="Daniella" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover border-[2.5px] border-white/15 -ml-2.5" />
+        <img src="/images/instructors/Imogen.jpg" alt="Imogen" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover border-[2.5px] border-white/15 -ml-2.5" />
+        <img src="/images/instructors/Meg.jpg" alt="Megan" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover border-[2.5px] border-white/15 -ml-2.5" />
+        <img src="/images/instructors/Irina.jpg" alt="Irina" width="48" height="48" loading="lazy" class="w-12 h-12 rounded-full object-cover border-[2.5px] border-white/15 -ml-2.5" />
+        <span class="ml-3 text-[0.85rem] text-white/50"><strong class="text-white/80">7 instructors</strong> · Your Reading team</span>
       </div>
 
-      {loc.note && (
-        <p data-reveal class="text-[0.85rem] text-muted italic mt-3">{loc.note}</p>
-      )}
-
-      <div data-reveal class="mt-5">
-        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
-          Join the {loc.name} class
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {/* ── SECTION 3: VENUE & PARKING (white bg) ── */}
-  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
-    <div class="max-w-[800px] mx-auto">
-      <h2 data-reveal class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">
-        Finding us
-      </h2>
-
-      <div data-reveal data-reveal-delay="1" class="bg-[#f5f5f5] rounded-[18px] p-6 md:p-8">
-        <p class="font-bold text-[1.05rem] mb-2">{loc.venue}</p>
-        <p class="text-[0.92rem] text-muted mb-3">
-          {loc.address} {loc.postcode}
-        </p>
-        <p class="text-[0.92rem] text-muted mb-4">
-          🅿️ <strong>Parking:</strong> {loc.parking}
-        </p>
-        <a
-          href={mapsUrl(loc.mapsQuery)}
-          target="_blank"
-          rel="noopener"
-          class="text-rose-dark font-semibold text-[0.92rem] no-underline hover:underline"
-        >
-          Get directions →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {/* ── SECTION 4: PRICING (light gray bg) ── */}
-  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
-    <div class="max-w-[800px] mx-auto">
-      <h2 data-reveal class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">
-        Pricing
-      </h2>
-
-      <div data-reveal data-reveal-delay="1" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6 md:p-8">
-        <p class="font-bold text-[1.05rem] mb-3">
-          {loc.priceNote}
-        </p>
-        <p class="inline-flex items-center gap-2 bg-rose/[0.08] text-rose-9f font-semibold text-[0.88rem] px-4 py-2 rounded-full mb-4">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
-          First class FREE
-        </p>
-        <p class="text-[0.88rem] text-muted leading-[1.7] mb-4">
-          Cash and card accepted. Student &amp; NHS discount available — ask on WhatsApp.
-        </p>
-        <a href="/pricing" class="text-rose-dark font-semibold text-[0.92rem] no-underline hover:underline">
-          See all pricing options →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {/* ── SECTION 5: GETTING STARTED (white bg) ── */}
-  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
-    <div class="max-w-[1200px] mx-auto text-center">
-      <div data-reveal class="mb-3">
-        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
-          The process
-        </span>
-      </div>
-      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-4">
-        Getting started is <span class="font-display text-rose">ridiculously easy</span>
-      </h2>
-
-      <div class="grid gap-5 md:grid-cols-3 mt-8">
-        <div data-reveal data-reveal-delay="1" class="step-card flex flex-col items-center">
-          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
-            1
-          </div>
-          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Send us a message</h3>
-          <p class="text-[0.88rem] text-muted">
-            Just say hi on WhatsApp — that's it. We'll confirm the next class and answer any questions.
-          </p>
-        </div>
-
-        <div data-reveal data-reveal-delay="2" class="step-card flex flex-col items-center">
-          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
-            2
-          </div>
-          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Turn up</h3>
-          <p class="text-[0.88rem] text-muted">
-            Wear something comfortable. No special shoes needed. We'll be expecting you.
-          </p>
-        </div>
-
-        <div data-reveal data-reveal-delay="3" class="step-card flex flex-col items-center">
-          <div class="step-num w-[52px] h-[52px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.3rem] text-rose transition-all duration-300">
-            3
-          </div>
-          <h3 class="font-display font-bold text-[1.05rem] mt-3 mb-1">Dance</h3>
-          <p class="text-[0.88rem] text-muted">
-            Your first class is free. Stay for the social party afterwards — that's where the real fun starts.
-          </p>
-        </div>
-      </div>
-
-      <div data-reveal data-reveal-delay="4" class="mt-6">
-        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
-          Claim your free class
-        </a>
-      </div>
-    </div>
-  </section>
-
-  {/* ── SECTION 6: FINAL CTA (dark bg) ── */}
-  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
-    <div class="hero-glow-left" aria-hidden="true"></div>
-    <div class="hero-glow-right" aria-hidden="true"></div>
-
-    <div class="relative z-10 max-w-[1200px] mx-auto text-center">
-      <div data-reveal class="mb-6">
-        <span class="inline-flex items-center gap-2 bg-[rgba(225,29,72,0.12)] border border-[rgba(225,29,72,0.25)] rounded-full" style="padding:0.35rem 1rem;">
-          <span class="cta-pulse-dot w-2 h-2 rounded-full bg-rose inline-block" aria-hidden="true"></span>
-          <span class="text-rose-light text-[0.72rem] font-bold uppercase tracking-[0.1em]">
-            Classes running now
-          </span>
-        </span>
-      </div>
-
-      <h2 data-reveal data-reveal-delay="1" class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(2rem,5vw,3.5rem)]">
-        Your next {loc.day} could change everything.
-      </h2>
-
-      <p data-reveal data-reveal-delay="2" class="text-[clamp(1rem,2vw,1.12rem)] text-white/[0.55] max-w-[500px] mx-auto leading-[1.7] mb-8">
-        One free class. No pressure. Just show up.
-      </p>
-
-      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center">
-        <a href={waUrl} class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
-          Claim your free class
-        </a>
-        <a href={`tel:${PHONE_TEL}`} class="btn-white-outline" style="font-size:1.02rem;padding:1rem 2.25rem;">
-          Call {PHONE_DISPLAY}
-        </a>
-      </div>
-
-      <div data-reveal data-reveal-delay="4" class="flex flex-wrap justify-center gap-x-5 gap-y-2.5 mt-8 pt-6 border-t border-white/[0.08]">
-        {(['First class free', 'No partner needed', 'Complete beginners welcome', 'No commitment required'] as const).map((item) => (
+      {/* Trust / worry-buster badges */}
+      <div data-reveal data-reveal-delay="4" class="flex flex-wrap gap-x-6 gap-y-2.5 pt-6 mt-1 border-t border-white/[0.08]">
+        {(['First class free', 'No partner needed', 'Complete beginners welcome', 'Free social party after every class'] as const).map(item => (
           <span class="inline-flex items-center gap-1.5 text-[0.82rem] text-white/[0.55]">
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <Fragment set:html={checkSvg} />
             {item}
           </span>
         ))}
       </div>
     </div>
   </section>
+
+  {/* ── YOUR WEDNESDAY NIGHT ── */}
+  <section id="schedule" class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[860px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Your first night</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-2">
+        Here's what your Wednesday looks like
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-muted text-[0.95rem] mb-10">Turn up, follow along, stay for the party. That's it.</p>
+
+      <div data-reveal data-reveal-delay="3" class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">7:45pm</div>
+          <div class="tl-desc">Doors open. Arrive, grab a drink. We'll introduce ourselves.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">8:00pm — Beginners & Intermediate</div>
+          <div class="tl-desc">Separate groups, same room. If it's your first time, this is your class. We build from scratch — no experience needed.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">9:00pm — Improvers & Advanced</div>
+          <div class="tl-desc">Been coming a few months? This is your next step. More complex moves, musicality, and partner work.</div>
+        </div>
+        <div class="tl-item social">
+          <div class="tl-dot"></div>
+          <div class="tl-time">10:00pm — FREE Social Party</div>
+          <div class="tl-desc">This is where it all clicks. Practice what you just learned, dance with everyone, and enjoy the music. The best part of the night.</div>
+        </div>
+      </div>
+
+      <p data-reveal class="text-[0.88rem] text-muted italic mt-8">Not sure which class? Start with 8pm. Everyone does.</p>
+      <div data-reveal class="mt-5">
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">Claim your free class</a>
+      </div>
+    </div>
+  </section>
+
+  {/* ── WHICH LEVEL? ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[920px] mx-auto">
+      <div data-reveal class="text-center mb-10">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em] block mb-3">Find your level</span>
+        <h2 class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12]">Which level sounds like you?</h2>
+      </div>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        {/* Level 1 — highlighted */}
+        <div data-reveal class="bg-rose text-white rounded-[18px] p-7 flex flex-col">
+          <span class="inline-block bg-white/25 text-white text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Start here</span>
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 1 — Starting from scratch</p>
+          <p class="text-white/85 text-[0.9rem] leading-[1.65] flex-1 mb-4">Learn the rhythm, basic footwork, and your first partner moves. No experience needed — we start from zero every session.</p>
+          <p class="text-white/70 text-[0.85rem] mb-4">Included in your<br /><strong class="text-white text-[1rem]">FREE first class</strong></p>
+          <a href={waUrl} class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full bg-white text-dark no-underline" target="_blank" rel="noopener">Claim free class →</a>
+        </div>
+
+        {/* Level 2 */}
+        <div data-reveal data-reveal-delay="1" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <span class="inline-block bg-rose/[0.08] text-rose-9f text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Building</span>
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 2 — Building your style</p>
+          <p class="text-muted text-[0.9rem] leading-[1.65] flex-1 mb-4">Turn patterns, connection, and developing your personal style. Dancing with confidence and making it your own.</p>
+          <p class="text-muted text-[0.85rem] mb-4">Drop-in from<br /><strong class="text-dark text-[1rem]">£10 / night</strong></p>
+          <a href="/pricing" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-all">See pricing →</a>
+        </div>
+
+        {/* Level 3 */}
+        <div data-reveal data-reveal-delay="2" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <span class="inline-block bg-rose/[0.08] text-rose-9f text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Flow</span>
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 3 — Body & musicality</p>
+          <p class="text-muted text-[0.9rem] leading-[1.65] flex-1 mb-4">Body movement, musical interpretation, and social dancing confidence. This is where Bachata starts to feel really good.</p>
+          <p class="text-muted text-[0.85rem] mb-4">Drop-in from<br /><strong class="text-dark text-[1rem]">£10 / night</strong></p>
+          <a href="/pricing" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-all">See pricing →</a>
+        </div>
+
+        {/* Level 4 */}
+        <div data-reveal data-reveal-delay="3" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <span class="inline-block bg-rose/[0.08] text-rose-9f text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Express</span>
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 4 — Making it your own</p>
+          <p class="text-muted text-[0.9rem] leading-[1.65] flex-1 mb-4">Layered styling, advanced partner work, and deep musicality. You're not just dancing, you're expressing.</p>
+          <p class="text-muted text-[0.85rem] mb-4">Drop-in from<br /><strong class="text-dark text-[1rem]">£10 / night</strong></p>
+          <a href="/pricing" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-all">See pricing →</a>
+        </div>
+      </div>
+
+      <p data-reveal class="text-center text-muted text-[0.88rem] mt-8">
+        Not sure? Just <a href={whatsappUrl("Hi! I'm not sure which level to join")} class="text-rose-dark font-semibold no-underline hover:underline" target="_blank" rel="noopener">message us</a> — we'll point you in the right direction.
+      </p>
+    </div>
+  </section>
+
+  {/* ── PRICING ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[860px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Pricing</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-1">Simple, fair prices</h2>
+      <p data-reveal data-reveal-delay="2" class="text-muted text-[0.95rem] mb-8">No hidden fees. No contracts. Pay as you go, or start with our newcomer deal.</p>
+
+      <div data-reveal data-reveal-delay="3" class="newcomer-card">
+        <div class="relative z-10">
+          <span class="newcomer-pill">New here?</span>
+          <h3 class="font-display font-bold text-[1.5rem] mb-4">Start dancing this week</h3>
+          <p class="text-white/70 text-[0.95rem] mb-2"><strong class="text-white">First class: FREE</strong> — just turn up.</p>
+          <p class="text-white/70 text-[0.95rem] mb-7"><strong class="text-white">4-Week Newcomer Pass: £20</strong> — beginners only, 4 consecutive weeks.</p>
+          <div class="flex flex-wrap gap-3">
+            <a href={waUrl} class="btn-rose bg-white text-dark" target="_blank" rel="noopener">Claim your free class</a>
+            <a href="/pricing" class="btn-white-outline" style="border-color:rgba(255,255,255,0.25);">Buy newcomer pass — £20</a>
+          </div>
+        </div>
+      </div>
+
+      <h3 data-reveal class="font-display font-semibold text-[1.1rem] mb-4">Drop-in (per night)</h3>
+      <div data-reveal class="text-[0.92rem]">
+        <div class="flex justify-between py-3 border-b border-[#f0f0f0]"><span>1 class</span><span class="font-display font-bold text-[1.05rem]">£10</span></div>
+        <div class="flex justify-between py-3"><span>2 classes</span><span class="font-display font-bold text-[1.05rem]">£15</span></div>
+      </div>
+      <p data-reveal class="text-[0.85rem] text-muted mt-5 leading-[1.7]">
+        Cash and card accepted at the door. Student & NHS discount available — <a href={whatsappUrl()} class="text-rose-dark font-semibold no-underline hover:underline" target="_blank" rel="noopener">ask us on WhatsApp</a>.
+      </p>
+      <p data-reveal class="mt-3"><span class="text-rose font-semibold text-[0.92rem]">Coming regularly? Passes from £8/class.</span></p>
+      <p data-reveal class="mt-2"><a href="/pricing" class="text-rose-dark font-semibold text-[0.92rem] no-underline hover:underline">See all pricing options →</a></p>
+    </div>
+  </section>
+
+  {/* ── REVIEWS ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[1200px] mx-auto">
+      <div data-reveal class="text-center mb-8">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em] block mb-3">Reviews</span>
+        <h2 class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12]">What our Reading students say</h2>
+        <p class="text-gold font-semibold text-[0.92rem] mt-2">★★★★★ 14 reviews · 5.0 on Google</p>
+      </div>
+
+      <div data-reveal data-reveal-delay="1" class="grid gap-4 md:grid-cols-3">
+        {featuredReviews.map(review => (
+          <div class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-full bg-rose flex items-center justify-center text-white font-display font-bold text-[0.9rem]">{review.initial}</div>
+              <div>
+                <div class="font-semibold text-[0.88rem]">{review.author}</div>
+                <div class="text-[0.75rem] text-muted">Google Review</div>
+              </div>
+              <div class="ml-auto text-gold text-[0.82rem]">★★★★★</div>
+            </div>
+            <p class="text-[0.88rem] text-muted leading-[1.65]">"{review.text.length > 180 ? review.text.slice(0, 180) + '…' : review.text}"</p>
+          </div>
+        ))}
+      </div>
+      <p data-reveal class="text-center mt-6"><a href="/reviews" class="text-rose-dark font-semibold text-[0.92rem] no-underline hover:underline">See all 14 reviews →</a></p>
+    </div>
+  </section>
+
+  {/* ── FINDING US + GETTING STARTED ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20">
+    <div class="max-w-[860px] mx-auto">
+      <div class="grid gap-8 md:grid-cols-2">
+        <div>
+          <div data-reveal class="mb-3">
+            <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">Location</span>
+          </div>
+          <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">Finding us</h2>
+          <div data-reveal data-reveal-delay="2" class="bg-[#f5f5f5] rounded-[18px] p-7">
+            <p class="font-bold text-[1.05rem] mb-2">{loc.venue}</p>
+            <p class="text-[0.92rem] text-muted mb-3">{loc.address} {loc.postcode}</p>
+            <p class="text-[0.92rem] text-muted mb-4">🅿️ <strong class="text-dark">Parking:</strong> {loc.parking}</p>
+            <a href={mapsUrl(loc.mapsQuery)} class="text-rose-dark font-semibold text-[0.92rem] no-underline hover:underline" target="_blank" rel="noopener">Get directions →</a>
+          </div>
+        </div>
+
+        <div>
+          <div data-reveal class="mb-3">
+            <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">The process</span>
+          </div>
+          <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">Getting started</h2>
+
+          <div data-reveal data-reveal-delay="2" class="flex gap-4 mb-6 group">
+            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-all duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">1</div>
+            <div><p class="font-display font-bold text-[1.05rem] mb-0.5">Send us a message</p><p class="text-[0.88rem] text-muted">Just say hi on WhatsApp — we'll confirm the next class.</p></div>
+          </div>
+          <div data-reveal data-reveal-delay="3" class="flex gap-4 mb-6 group">
+            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-all duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">2</div>
+            <div><p class="font-display font-bold text-[1.05rem] mb-0.5">Turn up</p><p class="text-[0.88rem] text-muted">Wear something comfortable. No special shoes needed.</p></div>
+          </div>
+          <div data-reveal data-reveal-delay="4" class="flex gap-4 group">
+            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-all duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">3</div>
+            <div><p class="font-display font-bold text-[1.05rem] mb-0.5">Dance</p><p class="text-[0.88rem] text-muted">Your first class is free. Stay for the social party.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── FINAL CTA ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-[1200px] mx-auto text-center">
+      <div data-reveal class="mb-6">
+        <span class="inline-flex items-center gap-2 bg-[rgba(225,29,72,0.12)] border border-[rgba(225,29,72,0.25)] rounded-full" style="padding:0.35rem 1rem;">
+          <span class="cta-pulse-dot w-2 h-2 rounded-full bg-rose inline-block" aria-hidden="true"></span>
+          <span class="text-rose-light text-[0.72rem] font-bold uppercase tracking-[0.1em]">Classes running now</span>
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(2rem,5vw,3.5rem)]">
+        Your next Wednesday could change everything.
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-[clamp(1rem,2vw,1.12rem)] text-white/[0.55] max-w-[460px] mx-auto leading-[1.7] mb-8">
+        One free class. No pressure. Just show up.
+      </p>
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center">
+        <a href={waUrl} class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
+          <Fragment set:html={waSvg} />
+          Claim your free class
+        </a>
+        <a href={`tel:${PHONE_TEL}`} class="btn-white-outline" style="font-size:1.02rem;padding:1rem 2.25rem;">
+          Call {PHONE_DISPLAY}
+        </a>
+      </div>
+      <div data-reveal data-reveal-delay="4" class="flex flex-wrap justify-center gap-x-5 gap-y-2.5 mt-8 pt-6 border-t border-white/[0.08]">
+        {(['First class free', 'No partner needed', 'Complete beginners welcome', 'No commitment required'] as const).map(item => (
+          <span class="inline-flex items-center gap-1.5 text-[0.82rem] text-white/[0.55]">
+            <Fragment set:html={checkSvg} />
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── DanceStudio JSON-LD ── */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "DanceSchool"],
+    "name": "Latin Addiction UK — Reading",
+    "description": "Bachata classes every Wednesday in Reading. Beginners welcome. First class free.",
+    "url": "https://latinaddiction.co.uk/reading",
+    "telephone": "+447424063798",
+    "email": "info@latinaddiction.co.uk",
+    "address": { "@type": "PostalAddress", "streetAddress": "84 Queen's Rd", "addressLocality": "Reading", "postalCode": "RG1 4BW", "addressCountry": "GB" },
+    "openingHours": "We 19:45-23:00",
+    "priceRange": "£10-£20"
+  })} />
 </BaseLayout>

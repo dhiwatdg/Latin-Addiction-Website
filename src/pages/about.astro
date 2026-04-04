@@ -1,0 +1,273 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappUrl, PHONE_TEL, PHONE_DISPLAY } from '../data/locations';
+
+const waUrl = whatsappUrl();
+---
+
+<BaseLayout
+  title="About Us"
+  description="Meet the founders and team behind Latin Addiction UK — Bachata and Salsa classes in Reading, Leicester, and Milton Keynes."
+>
+  {/* ── SECTION 1: HERO (dark bg, short) ── */}
+  <section class="relative overflow-hidden bg-dark text-white flex items-center min-h-[40vh] md:min-h-[45vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center">
+      <div data-reveal class="flex items-center gap-3 mb-3 justify-center">
+        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">
+          About Latin Addiction
+        </span>
+      </div>
+
+      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em] mb-5 text-[clamp(2.5rem,6vw,4.5rem)]">
+        The story behind Latin Addiction
+      </h1>
+
+      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[560px] mx-auto">
+        A Bachata and Salsa school built on technique, safety, and genuine fun.
+      </p>
+    </div>
+  </section>
+
+  {/* ── SECTION 2: ORIGIN STORY (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[720px] mx-auto">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          How it started
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">
+        From one class in Reading to three cities
+      </h2>
+
+      <div data-reveal data-reveal-delay="2" class="space-y-4 text-[0.95rem] text-muted leading-[1.8]">
+        <p>
+          Latin Addiction started in Reading in 2021. Dhiwa wanted to build something that didn't exist yet — a Latin dance school where the teaching was rigorous but the atmosphere was welcoming. Somewhere people could learn proper technique without feeling intimidated.
+        </p>
+        <p>
+          What began as weekly Bachata classes in one venue grew into a community. Word spread. People brought friends. The socials got bigger. And it became clear that one city wasn't enough.
+        </p>
+        <p>
+          Today, Latin Addiction runs weekly classes in Reading, Leicester, and Milton Keynes — with a team of over ten instructors, regular SBK parties, and workshops at festivals across the UK. The mission hasn't changed: make Latin dance accessible, teach it properly, and make sure everyone has a good time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 3: FOUNDERS (light gray bg) ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto">
+      <div data-reveal class="text-center mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          The Founders
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] text-center mb-10">
+        Meet Dhiwa & Gloria
+      </h2>
+
+      <div class="grid gap-8 md:grid-cols-2 max-w-[900px] mx-auto">
+        {/* Dhiwa */}
+        <div data-reveal class="bg-white rounded-[20px] overflow-hidden border border-[#e8e8e8]">
+          <div class="flex justify-center pt-8 px-6">
+            <img
+              src="/images/instructors/Dhiwa & Gloria.jpeg"
+              alt="Dhiwa — Founder of Latin Addiction"
+              width="280"
+              height="280"
+              loading="lazy"
+              class="w-[200px] h-[200px] rounded-full object-cover object-[left_center] border-3 border-rose/[0.12]"
+            />
+          </div>
+          <div class="p-6 pt-5 text-center">
+            <h3 class="font-display font-bold text-[1.15rem] mb-1">Dhiwa</h3>
+            <p class="text-rose-dark font-semibold text-[0.82rem] uppercase tracking-[0.06em] mb-3">Founder & Lead Instructor</p>
+            <p class="text-[0.92rem] text-muted leading-[1.7]">
+              Founded Latin Addiction in Reading in 2021, driven by a passion for Bachata and a belief that everyone deserves a welcoming place to learn. Has built a vibrant community across three cities, organises SBK parties, and teaches and DJs at events and festivals across the UK. Also a software engineer.
+            </p>
+          </div>
+        </div>
+
+        {/* Gloria */}
+        <div data-reveal data-reveal-delay="1" class="bg-white rounded-[20px] overflow-hidden border border-[#e8e8e8]">
+          <div class="flex justify-center pt-8 px-6">
+            <img
+              src="/images/instructors/Gloria.jpg"
+              alt="Gloria — Lead Instructor at Latin Addiction"
+              width="280"
+              height="280"
+              loading="lazy"
+              class="w-[200px] h-[200px] rounded-full object-cover object-[center_top] border-3 border-rose/[0.12]"
+            />
+          </div>
+          <div class="p-6 pt-5 text-center">
+            <h3 class="font-display font-bold text-[1.15rem] mb-1">Gloria</h3>
+            <p class="text-rose-dark font-semibold text-[0.82rem] uppercase tracking-[0.06em] mb-3">Lead Instructor & Technique Specialist</p>
+            <p class="text-[0.92rem] text-muted leading-[1.7]">
+              Trained in ballet for ten years before discovering Salsa and Bachata in 2019. Her experience as a follower shaped her teaching approach — she prioritises follower technique, body mechanics, and dancer safety. Together with Dhiwa, runs Bachata Sensual Technique workshops and teaches and DJs at festivals across the UK.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 4: TEACHING PHILOSOPHY (white bg) ── */}
+  <section class="bg-white px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[1200px] mx-auto text-center">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          How We Teach
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-10">
+        Our teaching philosophy
+      </h2>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <div data-reveal class="bg-[#f5f5f5] rounded-[18px] p-7 text-left">
+          <div class="w-12 h-12 rounded-full bg-rose/[0.1] flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mb-2">Technique first</h3>
+          <p class="text-[0.92rem] text-muted leading-[1.7]">
+            We don't just teach steps — we explain the mechanics behind every move so you understand why it works.
+          </p>
+        </div>
+
+        <div data-reveal data-reveal-delay="1" class="bg-[#f5f5f5] rounded-[18px] p-7 text-left">
+          <div class="w-12 h-12 rounded-full bg-rose/[0.1] flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mb-2">Safety always</h3>
+          <p class="text-[0.92rem] text-muted leading-[1.7]">
+            Dancer safety is non-negotiable. We teach proper lead-follow technique, body mechanics, and consent in partner dancing.
+          </p>
+        </div>
+
+        <div data-reveal data-reveal-delay="2" class="bg-[#f5f5f5] rounded-[18px] p-7 text-left">
+          <div class="w-12 h-12 rounded-full bg-rose/[0.1] flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <h3 class="font-display font-bold text-[1.05rem] mb-2">Genuine fun</h3>
+          <p class="text-[0.92rem] text-muted leading-[1.7]">
+            Classes end with a free social party. That's where technique becomes real dancing — and where friendships form.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 5: THE TEAM (light gray bg) ── */}
+  <section class="bg-[#f5f5f5] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="max-w-[800px] mx-auto text-center">
+      <div data-reveal class="mb-3">
+        <span class="text-rose uppercase text-[0.75rem] font-bold tracking-[0.12em]">
+          The Team
+        </span>
+      </div>
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-4">
+        More than just two people
+      </h2>
+      <p data-reveal data-reveal-delay="2" class="text-[0.95rem] text-muted leading-[1.8] mb-6 max-w-[600px] mx-auto">
+        Latin Addiction is supported by a team of 10+ instructors across Reading, Leicester, and Milton Keynes — including Gloria, Chido, Imogen, and Megan.
+      </p>
+
+      <div data-reveal data-reveal-delay="3" class="flex gap-3 justify-center flex-wrap items-center mb-5">
+        <img src="/images/instructors/Gloria.jpg" alt="Gloria" width="64" height="64" loading="lazy" class="w-16 h-16 rounded-full object-cover object-[center_top] border-2 border-rose/[0.12]" />
+        <img src="/images/instructors/Chido.jpg" alt="Chido" width="64" height="64" loading="lazy" class="w-16 h-16 rounded-full object-cover border-2 border-rose/[0.08]" />
+        <img src="/images/instructors/Imogen.jpg" alt="Imogen" width="64" height="64" loading="lazy" class="w-16 h-16 rounded-full object-cover border-2 border-rose/[0.08]" />
+        <img src="/images/instructors/Meg.jpg" alt="Megan" width="64" height="64" loading="lazy" class="w-16 h-16 rounded-full object-cover border-2 border-rose/[0.08]" />
+        <img src="/images/instructors/Daniella.jpeg" alt="Daniella" width="64" height="64" loading="lazy" class="w-16 h-16 rounded-full object-cover border-2 border-rose/[0.08]" />
+        <img src="/images/instructors/Irina.jpg" alt="Irina" width="64" height="64" loading="lazy" class="w-16 h-16 rounded-full object-cover border-2 border-rose/[0.08]" />
+      </div>
+
+      <div data-reveal data-reveal-delay="3" class="flex gap-1.5 justify-center flex-wrap">
+        <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-rose/[0.08] text-rose-9f">Bachata</span>
+        <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-gold/[0.08] text-party">Salsa</span>
+        <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-dark/[0.06] text-muted">Sensual</span>
+        <span class="text-[0.72rem] font-medium px-2.5 py-0.5 rounded-md bg-[rgba(34,197,94,.08)] text-[#166534]">Beginner-Friendly</span>
+      </div>
+    </div>
+  </section>
+
+  {/* ── SECTION 6: FINAL CTA (dark bg) ── */}
+  <section class="relative overflow-hidden bg-dark px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1200px] mx-auto text-center">
+      <div data-reveal class="mb-6">
+        <span class="inline-flex items-center gap-2 bg-[rgba(225,29,72,0.12)] border border-[rgba(225,29,72,0.25)] rounded-full" style="padding:0.35rem 1rem;">
+          <span class="cta-pulse-dot w-2 h-2 rounded-full bg-rose inline-block" aria-hidden="true"></span>
+          <span class="text-rose-light text-[0.72rem] font-bold uppercase tracking-[0.1em]">
+            Classes running now
+          </span>
+        </span>
+      </div>
+
+      <h2 data-reveal data-reveal-delay="1" class="font-display font-bold text-white leading-[1.08] tracking-[-0.02em] mb-4 text-[clamp(2rem,5vw,3.5rem)]">
+        Come and meet us
+      </h2>
+
+      <p data-reveal data-reveal-delay="2" class="text-[clamp(1rem,2vw,1.12rem)] text-white/[0.55] max-w-[500px] mx-auto leading-[1.7] mb-8">
+        Your first class is free. Just show up.
+      </p>
+
+      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center">
+        <a href={waUrl} class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Claim your free class
+        </a>
+        <a href={`tel:${PHONE_TEL}`} class="btn-white-outline" style="font-size:1.02rem;padding:1rem 2.25rem;">
+          Call {PHONE_DISPLAY}
+        </a>
+      </div>
+
+      <div data-reveal data-reveal-delay="4" class="flex flex-wrap justify-center gap-x-5 gap-y-2.5 mt-8 pt-6 border-t border-white/[0.08]">
+        {(['First class free', 'No partner needed', 'Complete beginners welcome'] as const).map((item) => (
+          <span class="inline-flex items-center gap-1.5 text-[0.82rem] text-white/[0.55]">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* ── Organization JSON-LD ── */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Latin Addiction UK",
+    "url": "https://latinaddiction.co.uk",
+    "foundingDate": "2021",
+    "logo": "https://latinaddiction.co.uk/images/logos/logo-mark-golden-tight.png",
+    "description": "Bachata and Salsa dance school with weekly classes in Reading, Leicester, and Milton Keynes.",
+    "sameAs": [
+      "https://www.instagram.com/latinaddictionuk",
+      "https://www.facebook.com/LatinAddictionUK",
+      "https://www.tiktok.com/@latin.addiction.uk",
+      "https://www.youtube.com/@LatinAddictionUK"
+    ]
+  })} />
+</BaseLayout>
