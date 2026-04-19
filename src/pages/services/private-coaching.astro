@@ -11,6 +11,16 @@ const formatPrice = (pence: number) => `£${(pence / 100).toFixed(0)}`;
 // Helper to find a product by ID
 const p = (id: string) => coachingProducts.find(x => x.id === id)!;
 
+// SumUp storefront URL for each coaching product. SumUp only has solo products,
+// so 2/3-person rows link to the coaching category page.
+const SUMUP_SOLO = 'https://latinaddictionuk.sumupstore.com/product/private-bachata-coaching-solo';
+const SUMUP_PACK_SOLO = 'https://latinaddictionuk.sumupstore.com/product/private-coaching-pack-solo-4-sessions-or-8-sessions';
+const SUMUP_CATEGORY = 'https://latinaddictionuk.sumupstore.com/category/private-coaching';
+const storeUrl = (id: string): string => {
+  if (id.startsWith('coaching-pack')) return id.endsWith('-1') ? SUMUP_PACK_SOLO : SUMUP_CATEGORY;
+  return id.endsWith('-1') ? SUMUP_SOLO : SUMUP_CATEGORY;
+};
+
 // Singles data for the table
 const singlesRows = [
   {
@@ -187,6 +197,7 @@ const packRows = [
                     data-product-id={row.p1.id}
                     data-amount={row.p1.amountPence}
                     data-description={row.p1.checkoutDescription}
+                    data-store-url={storeUrl(row.p1.id)}
                   >
                     Buy
                   </button>
@@ -201,6 +212,7 @@ const packRows = [
                         data-product-id={row.p2.id}
                         data-amount={row.p2.amountPence}
                         data-description={row.p2.checkoutDescription}
+                        data-store-url={storeUrl(row.p2.id)}
                       >
                         Buy
                       </button>
@@ -219,6 +231,7 @@ const packRows = [
                         data-product-id={row.p3.id}
                         data-amount={row.p3.amountPence}
                         data-description={row.p3.checkoutDescription}
+                        data-store-url={storeUrl(row.p3.id)}
                       >
                         Buy
                       </button>
@@ -270,6 +283,7 @@ const packRows = [
                     data-product-id={row.p1.id}
                     data-amount={row.p1.amountPence}
                     data-description={row.p1.checkoutDescription}
+                    data-store-url={storeUrl(row.p1.id)}
                   >
                     Buy
                   </button>
@@ -282,6 +296,7 @@ const packRows = [
                     data-product-id={row.p2.id}
                     data-amount={row.p2.amountPence}
                     data-description={row.p2.checkoutDescription}
+                    data-store-url={storeUrl(row.p2.id)}
                   >
                     Buy
                   </button>
@@ -294,6 +309,7 @@ const packRows = [
                     data-product-id={row.p3.id}
                     data-amount={row.p3.amountPence}
                     data-description={row.p3.checkoutDescription}
+                    data-store-url={storeUrl(row.p3.id)}
                   >
                     Buy
                   </button>

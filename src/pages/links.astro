@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { locations, whatsappUrl, mapsUrl } from '../data/locations';
+
+const waUrl = whatsappUrl("Hi! I'd like to try a free class");
+
+const mk = locations.find(l => l.slug === 'milton-keynes')!;
+const leicester = locations.find(l => l.slug === 'leicester')!;
+const reading = locations.find(l => l.slug === 'reading')!;
+
+type TourStop = {
+  num: string;
+  day: string;
+  city: string;
+  styles: string;
+  venue: string;
+  postcode: string;
+  tickets: string;
+  fbEvent: string;
+  mapsQuery: string;
+};
+
+const tour: TourStop[] = [
+  {
+    num: '01',
+    day: 'Mondays',
+    city: 'Milton Keynes',
+    styles: 'Salsa & Bachata',
+    venue: mk.venue,
+    postcode: mk.postcode,
+    tickets: 'https://latinaddictionuk.sumupstore.com/category/milton-keynes-mondays',
+    fbEvent: 'https://www.facebook.com/events/962450339455112',
+    mapsQuery: mk.mapsQuery,
+  },
+  {
+    num: '02',
+    day: 'Tuesdays',
+    city: 'Leicester',
+    styles: 'Bachata',
+    venue: leicester.venue,
+    postcode: leicester.postcode,
+    tickets: 'https://latinaddictionuk.sumupstore.com/category/leicester-bachata-tuesdays',
+    fbEvent: 'https://www.facebook.com/events/2376812196167867',
+    mapsQuery: leicester.mapsQuery,
+  },
+  {
+    num: '03',
+    day: 'Wednesdays',
+    city: 'Reading',
+    styles: 'Bachata',
+    venue: reading.venue,
+    postcode: reading.postcode,
+    tickets: 'https://latinaddictionuk.sumupstore.com/category/reading-bachata-wednesdays',
+    fbEvent: 'https://www.facebook.com/events/1782916562385450',
+    mapsQuery: reading.mapsQuery,
+  },
+];
+
+const socials = [
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/latinaddictionuk',
+    icon: 'M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 5.68a4.16 4.16 0 1 0 0 8.32 4.16 4.16 0 0 0 0-8.32zm0 6.86a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4zm5.3-7.02a.97.97 0 1 0 0-1.94.97.97 0 0 0 0 1.94z',
+  },
+  {
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@latin.addiction.uk',
+    icon: 'M16.6 5.82a4.28 4.28 0 0 1-2.94-3.4 4.3 4.3 0 0 1-.08-.76h-2.76v13.06a2.57 2.57 0 1 1-1.76-2.44v-2.82a5.34 5.34 0 1 0 4.52 5.28V8.58a7.05 7.05 0 0 0 3.02.8V6.62a4.27 4.27 0 0 1 0-.8z',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/LatinAddictionUK',
+    icon: 'M22 12A10 10 0 1 0 10.44 21.88v-7H7.9V12h2.54V9.8c0-2.5 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.88h-2.33v7A10 10 0 0 0 22 12z',
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@LatinAddictionUK',
+    icon: 'M23.5 6.2a3 3 0 0 0-2.1-2.1C19.4 3.5 12 3.5 12 3.5s-7.4 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c2 .6 9.4.6 9.4.6s7.4 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z',
+  },
+];
+---
+
+<BaseLayout
+  title="Links"
+  description="Latin Addiction UK — book a trial class, buy tickets, find venues, and follow us on socials."
+  minimal={true}
+>
+  <div class="links-page relative overflow-hidden bg-dark text-white min-h-screen">
+    <div class="hero-glow-left" aria-hidden="true"></div>
+    <div class="hero-glow-right" aria-hidden="true"></div>
+    <div class="links-grain" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[500px] mx-auto px-6 pt-10 pb-12 md:pt-14">
+
+      {/* ── HEADER / WORDMARK ── */}
+      <header class="mb-9">
+        <div data-reveal class="flex items-center gap-3 mb-5 justify-center">
+          <span class="w-8 h-[2px] bg-rose-light/80 rounded-sm" aria-hidden="true"></span>
+          <span class="text-rose-light uppercase text-[0.68rem] font-bold tracking-[0.22em]">
+            Bachata · Salsa · UK
+          </span>
+          <span class="w-8 h-[2px] bg-rose-light/80 rounded-sm" aria-hidden="true"></span>
+        </div>
+
+        <a href="/" class="block text-center group" aria-label="Latin Addiction UK home">
+          <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold leading-[0.92] tracking-[-0.03em] text-[clamp(2.75rem,11vw,3.75rem)]">
+            <span class="block">LATIN</span>
+            <span class="block italic not-italic-stroke text-rose">ADDICTION</span>
+          </h1>
+        </a>
+
+        <p data-reveal data-reveal-delay="2" class="mt-4 text-center text-white/55 text-[0.92rem] leading-[1.55] font-light">
+          Classes every week in<br/>
+          <span class="text-white/80 font-medium">Milton Keynes · Leicester · Reading</span>
+        </p>
+
+        <div data-reveal data-reveal-delay="2" class="mt-4 flex items-center justify-center gap-2 text-[0.75rem]">
+          <span class="text-gold" aria-hidden="true">★★★★★</span>
+          <span class="text-white/45">5.0 on Google · 4+ years · 100+ dancers/week</span>
+        </div>
+      </header>
+
+      {/* ── PRIMARY CTA ── */}
+      <a
+        data-reveal
+        data-reveal-delay="3"
+        href={waUrl}
+        target="_blank"
+        rel="noopener"
+        class="cta-primary"
+      >
+        <svg class="flex-shrink-0" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        <span class="flex flex-col items-start leading-tight">
+          <span class="text-[1.02rem] font-semibold">Claim your free class</span>
+          <span class="text-[0.78rem] text-white/70 font-normal">We reply within hours on WhatsApp</span>
+        </span>
+        <span class="ml-auto text-white/70" aria-hidden="true">→</span>
+      </a>
+
+      {/* ── TOUR DATES (tickets + FB event + map in one row) ── */}
+      <section data-reveal class="mt-10">
+        <div class="links-eyebrow"><span></span>Weekly schedule<span></span></div>
+
+        <ol class="tour-list">
+          {tour.map((stop, i) => (
+            <li class="tour-row" data-reveal data-reveal-delay={String(Math.min(i + 1, 4))}>
+              <div class="tour-row-head">
+                <span class="tour-num" aria-hidden="true">{stop.num}</span>
+                <div class="tour-main">
+                  <p class="tour-day">{stop.day}</p>
+                  <p class="tour-city">{stop.city}</p>
+                </div>
+                <a
+                  href={stop.tickets}
+                  target="_blank"
+                  rel="noopener"
+                  class="tour-cta"
+                  aria-label={`Buy tickets for ${stop.city} ${stop.day}`}
+                >
+                  Tickets
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+              <div class="tour-meta">
+                <span class="tour-styles">{stop.styles}</span>
+                <span class="links-dot" aria-hidden="true">·</span>
+                <span class="tour-venue">{stop.venue}, {stop.postcode}</span>
+              </div>
+              <div class="tour-sublinks">
+                <a href={mapsUrl(stop.mapsQuery)} target="_blank" rel="noopener">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Map
+                </a>
+                <a href={stop.fbEvent} target="_blank" rel="noopener">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12A10 10 0 1 0 10.44 21.88v-7H7.9V12h2.54V9.8c0-2.5 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.88h-2.33v7A10 10 0 0 0 22 12z"/></svg>
+                  FB event
+                </a>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <p class="tour-footnote">
+          <span class="gold-dot" aria-hidden="true"></span>
+          Free social party after every class
+        </p>
+      </section>
+
+      {/* ── FOLLOW US (icon row) ── */}
+      <section data-reveal class="mt-10">
+        <div class="links-eyebrow"><span></span>Follow us<span></span></div>
+        <div class="socials-row">
+          {socials.map(s => (
+            <a href={s.href} target="_blank" rel="noopener" class="social-btn" aria-label={s.label}>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d={s.icon}/>
+              </svg>
+              <span class="social-label">{s.label}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ── PRIVATE COACHING (editorial strip) ── */}
+      <a href="/services/private-coaching" class="coaching-strip mt-10" data-reveal>
+        <div>
+          <p class="coaching-eyebrow">Also available</p>
+          <p class="coaching-title">Private coaching</p>
+          <p class="coaching-meta">1-to-1 or couples · from £40 / session</p>
+        </div>
+        <span class="coaching-arrow" aria-hidden="true">→</span>
+      </a>
+
+      {/* ── FOOTER ── */}
+      <footer class="mt-12 pt-6 border-t border-white/[0.08] text-center">
+        <a href="/" class="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors text-[0.82rem] font-medium tracking-wide">
+          latinaddiction.co.uk
+          <span aria-hidden="true">→</span>
+        </a>
+      </footer>
+
+    </div>
+  </div>
+</BaseLayout>
