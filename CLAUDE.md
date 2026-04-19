@@ -45,6 +45,8 @@ Built 2026-04-04. Location pages redesigned with blurred event image hero backgr
 - Design polish on /about, /services/* before unhiding from nav
 - /learn articles deferred to Phase 4
 - OG share images per page
+- Add "Buy newcomer pass" button to `/milton-keynes` location page (currently only has "See all pricing options") — should deep-link to `sumupstore.com/product/new-to-bachata-newcomer-pass-beginners-2`
+- Normalize "Salsa & Bachata" vs "Bachata & Salsa" ordering on `milton-keynes.astro` — H1 currently says "Bachata & Salsa" but eyebrow says "Salsa & Bachata". `/links` uses "Salsa & Bachata" for MK.
 
 ### Phase 3.5 — /links + SumUp simplification (DONE ✓)
 Deployed 2026-04-19 (commit `7686499`). Added `/links` page (tour-poster link-in-bio) at latinaddiction.co.uk/links/. Stripped on-site SumUp Card Widget; `.btn-checkout` clicks now open sumupstore.com with per-product deep-links where a 1:1 match exists. `BaseLayout` now supports a `minimal={true}` prop that hides Header/Footer/WhatsAppButton/MobileStickyBar for bio-style pages.
