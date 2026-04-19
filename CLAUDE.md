@@ -22,11 +22,12 @@ npm run build    # Production build → dist/
 npm run preview  # Preview production build locally
 ```
 
-## Current Status (2026-04-04)
+## Current Status (2026-04-19)
 
 - **Phase 1:** DONE — Homepage + 3 location pages + 404 deployed to latinaddiction.co.uk
-- **Phase 2:** DONE — /pricing page + SumUp on-site checkout via Cloudflare Worker
+- **Phase 2:** PAUSED — /pricing page live but **SumUp on-site checkout disabled**; `.btn-checkout` clicks now redirect to `latinaddictionuk.sumupstore.com` (per-product deep-links where possible). Cloudflare Worker still deployed but orphaned. See memory `project_sumup_checkout_disabled.md`.
 - **Phase 3:** MOSTLY DONE — 8 new pages built. Location pages redesigned with blurred hero backgrounds. Services + About hidden from nav (need design polish). Private coaching pricing WRONG (shows headcount columns, should be duration). /learn deferred.
+- **Phase 3.5 (2026-04-19):** DONE — `/links` page live (tour-poster link-in-bio) at latinaddiction.co.uk/links/. Reading/Leicester location pages' "Buy newcomer pass" now deep-link directly to SumUp products.
 
 ## Build Phases
 
@@ -45,6 +46,9 @@ Built 2026-04-04. Location pages redesigned with blurred event image hero backgr
 - /learn articles deferred to Phase 4
 - OG share images per page
 
+### Phase 3.5 — /links + SumUp simplification (DONE ✓)
+Deployed 2026-04-19 (commit `7686499`). Added `/links` page (tour-poster link-in-bio) at latinaddiction.co.uk/links/. Stripped on-site SumUp Card Widget; `.btn-checkout` clicks now open sumupstore.com with per-product deep-links where a 1:1 match exists. `BaseLayout` now supports a `minimal={true}` prop that hides Header/Footer/WhatsAppButton/MobileStickyBar for bio-style pages.
+
 ### Quality Gate
 After each major build step, use Codex plugin for code review. See memory `feedback_codex_usage_strategy.md`.
 
@@ -62,12 +66,12 @@ After each major build step, use Codex plugin for code review. See memory `feedb
 
 ```
 src/
-  pages/           index, milton-keynes, leicester, reading, pricing, classes, about, faq, reviews, privacy, 404
+  pages/           index, milton-keynes, leicester, reading, pricing, classes, about, faq, reviews, privacy, links, 404
   pages/services/  private-coaching, corporate, hire-us
-  layouts/         BaseLayout.astro (HTML shell, fonts, SEO, header/footer)
-  components/      Header, Footer, CheckoutModal, WhatsAppButton, MobileStickyBar, ScheduleCard, SEO
+  layouts/         BaseLayout.astro (HTML shell; supports `minimal` prop for bio-style pages)
+  components/      Header, Footer, CheckoutModal (redirect shim), WhatsAppButton, MobileStickyBar, ScheduleCard, SEO
   data/            locations.ts, navigation.ts, reviews.ts, faqs.ts, pricing.ts
-  styles/          global.css (Tailwind v4 @theme tokens, button styles, reveal animations)
+  styles/          global.css (Tailwind v4 @theme tokens, button styles, reveal animations, `.links-page` styles)
 public/images/     instructors/ (7 photos), logos/ (2 logos), locations/ (3 bg images)
 ```
 
