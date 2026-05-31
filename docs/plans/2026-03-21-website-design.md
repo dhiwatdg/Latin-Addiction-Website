@@ -5,6 +5,8 @@
 > **Source of truth for pricing/schedules:** `../Latin Addiction/KNOWLEDGE-BASE.md` (SumUp store data as of 2026-02-15)
 >
 > **2026-04-03 UPDATE:** Milton Keynes added as third location. 8Dance acquisition completed 2026-03-28 (£3,900 buyout). MK teaches Salsa & Bachata (Mondays at Midsummer Tap). All sections updated: nav, pages, hero, schedule, SEO, schema, scope guards, build list. MK removed from "out of scope" — now fully in scope with `/milton-keynes` city page.
+>
+> **⚠️ 2026-06-01 UPDATE — supersedes MK Salsa references below:** MK dropped Salsa and is now **Bachata-only**, with the **same timing/format as Leicester** (doors 7:00pm; Beginners 7:15 / Improver-Int 8:15 / Int-Adv 9:15; FREE social 10:15). MK pricing unchanged (£10 flat for the night). The school is now Bachata-only across all locations; any "Salsa & Bachata" / MK-Salsa schedule text in this document is historical. Heritage Salsa mentions (instructor bios, corporate/DJ services, the educational "difference between Bachata and Salsa" FAQ) are intentionally retained. See `docs/plans/2026-05-31-mk-bachata-only-design.md`.
 
 ---
 

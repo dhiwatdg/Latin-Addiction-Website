@@ -24,7 +24,7 @@ export const dropInProducts: PricingProduct[] = [
   {
     id: 'dropin-mk',
     label: 'Milton Keynes – Night ticket',
-    checkoutDescription: 'Latin Addiction MK – 1-night ticket (Bachata + Salsa)',
+    checkoutDescription: 'Latin Addiction MK – 1-night ticket (all classes + social)',
     amountPence: 1000,
     locations: 'mk',
   },

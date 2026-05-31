@@ -14,7 +14,7 @@ export const pageFaqs: FAQ[] = [
   },
   {
     question: "What's the difference between Bachata and Salsa?",
-    answer: "Both are Latin partner dances, but they feel very different. Salsa is faster and more energetic with complex footwork. Bachata is slower, more intimate, built on a simple side-to-side rhythm. It's widely considered one of the most beginner-friendly Latin dances — you can be dancing socially after one class. We teach both Salsa and Bachata in Milton Keynes, and Bachata in Leicester and Reading.",
+    answer: "Both are Latin partner dances, but they feel very different. Salsa is faster and more energetic with complex footwork. Bachata is slower, more intimate, built on a simple side-to-side rhythm. It's widely considered one of the most beginner-friendly Latin dances — you can be dancing socially after one class. We teach Bachata at all our locations.",
   },
   {
     question: 'Do I need to book in advance?',
@@ -69,7 +69,7 @@ export const homepageFaqs: FAQ[] = [
   },
   {
     question: "What's the difference between Bachata and Salsa?",
-    answer: "Both are Latin partner dances, but they feel very different. Salsa is faster and more energetic with complex footwork. Bachata is slower, more intimate, built on a simple side-to-side rhythm. It's widely considered one of the most beginner-friendly Latin dances — you can be dancing socially after one class. We teach both Salsa and Bachata in Milton Keynes, and Bachata in Leicester and Reading.",
+    answer: "Both are Latin partner dances, but they feel very different. Salsa is faster and more energetic with complex footwork. Bachata is slower, more intimate, built on a simple side-to-side rhythm. It's widely considered one of the most beginner-friendly Latin dances — you can be dancing socially after one class. We teach Bachata at all our locations.",
   },
   {
     question: 'Do I need to book in advance?',

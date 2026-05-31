@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-New website for **Latin Addiction UK**, a Bachata and Salsa dance school with locations in Milton Keynes, Leicester, and Reading.
+New website for **Latin Addiction UK**, a Bachata dance school with locations in Milton Keynes, Leicester, and Reading. (Salsa was dropped at MK on 2026-06-01 — the school is now Bachata-only; instructor/heritage Salsa mentions are intentionally kept.)
 
 - **Tech stack:** Astro 6.1 + Tailwind CSS 4.2 (via `@tailwindcss/vite`) + TypeScript
 - **Node:** v22+ required (`.nvmrc` set)
@@ -22,8 +22,9 @@ npm run build    # Production build → dist/
 npm run preview  # Preview production build locally
 ```
 
-## Current Status (2026-04-19)
+## Current Status (2026-05-31)
 
+- **MK Bachata-only (2026-06-01):** DONE — MK dropped Salsa; now Bachata-only with Leicester's exact timing/format (doors 7:00pm; Beginners 7:15 / Improver-Int 8:15 / Int-Adv 9:15; social 10:15). MK pricing stays £10 flat. Whole site rebranded Bachata-only; heritage Salsa mentions (instructor bios, corporate/DJ services, educational FAQ) kept. See `docs/plans/2026-05-31-mk-bachata-only-design.md`.
 - **Phase 1:** DONE — Homepage + 3 location pages + 404 deployed to latinaddiction.co.uk
 - **Phase 2:** PAUSED — /pricing page live but **SumUp on-site checkout disabled**; `.btn-checkout` clicks now redirect to `latinaddictionuk.sumupstore.com` (per-product deep-links where possible). Cloudflare Worker still deployed but orphaned. See memory `project_sumup_checkout_disabled.md`.
 - **Phase 3:** MOSTLY DONE — 8 new pages built. Location pages redesigned with blurred hero backgrounds. Services + About hidden from nav (need design polish). Private coaching pricing WRONG (shows headcount columns, should be duration). /learn deferred.
@@ -46,7 +47,6 @@ Built 2026-04-04. Location pages redesigned with blurred event image hero backgr
 - /learn articles deferred to Phase 4
 - OG share images per page
 - Add "Buy newcomer pass" button to `/milton-keynes` location page (currently only has "See all pricing options") — should deep-link to `sumupstore.com/product/new-to-bachata-newcomer-pass-beginners-2`
-- Normalize "Salsa & Bachata" vs "Bachata & Salsa" ordering on `milton-keynes.astro` — H1 currently says "Bachata & Salsa" but eyebrow says "Salsa & Bachata". `/links` uses "Salsa & Bachata" for MK.
 
 ### Phase 3.5 — /links + SumUp simplification (DONE ✓)
 Deployed 2026-04-19 (commit `7686499`). Added `/links` page (tour-poster link-in-bio) at latinaddiction.co.uk/links/. Stripped on-site SumUp Card Widget; `.btn-checkout` clicks now open sumupstore.com with per-product deep-links where a 1:1 match exists. `BaseLayout` now supports a `minimal={true}` prop that hides Header/Footer/WhatsAppButton/MobileStickyBar for bio-style pages.
