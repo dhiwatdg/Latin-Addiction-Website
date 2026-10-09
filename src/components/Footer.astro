@@ -1,5 +1,6 @@
 ---
-import { whatsappUrl, PHONE_DISPLAY, PHONE_TEL, EMAIL } from '../data/locations';
+import { whatsappUrl, WHATSAPP_DISPLAY, PHONE_DISPLAY, PHONE_TEL, EMAIL } from '../data/locations';
+import { COMPANY_NAME, COMPANY_NUMBER } from '../data/company';
 ---
 
 <footer class="bg-dark text-white" style="padding: 3.5rem 1.25rem 2rem;">
@@ -30,7 +31,7 @@ import { whatsappUrl, PHONE_DISPLAY, PHONE_TEL, EMAIL } from '../data/locations'
 
       <p class="text-[0.82rem] leading-[1.7] mt-3" style="color: rgba(255,255,255,0.5);">
         <strong class="text-white">WhatsApp:</strong>{' '}
-        <a href={whatsappUrl()} class="footer-link">{PHONE_DISPLAY}</a><br />
+        <a href={whatsappUrl()} class="footer-link">{WHATSAPP_DISPLAY}</a><br />
         <strong class="text-white">Phone:</strong>{' '}
         <a href={`tel:${PHONE_TEL}`} class="footer-link">{PHONE_DISPLAY}</a><br />
         <strong class="text-white">Email:</strong>{' '}
@@ -75,8 +76,8 @@ import { whatsappUrl, PHONE_DISPLAY, PHONE_TEL, EMAIL } from '../data/locations'
 
   <!-- Bottom bar -->
   <div class="max-w-[1200px] mx-auto mt-8 pt-5 flex flex-wrap justify-between gap-4 text-[0.75rem]" style="border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);">
-    <p>Student &amp; NHS discount available — <a href={whatsappUrl()} class="footer-link">ask us on WhatsApp</a>.</p>
-    <p><a href="/privacy" class="footer-link">Privacy Policy</a> &middot; &copy; 2026 Latin Addiction UK Ltd</p>
+    <p>£2 Student &amp; NHS discount at the door only — <a href={whatsappUrl()} class="footer-link">ask us on WhatsApp</a>.</p>
+    <p><a href="/privacy" class="footer-link">Privacy Policy</a> &middot; &copy; 2026 {COMPANY_NAME}<br />Company number {COMPANY_NUMBER}</p>
   </div>
 </footer>
 

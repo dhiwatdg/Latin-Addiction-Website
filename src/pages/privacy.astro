@@ -1,55 +1,91 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { EMAIL } from '../data/locations';
+import { COMPANY_NAME, COMPANY_NUMBER, COMPANY_JURISDICTION } from '../data/company';
 ---
 
 <BaseLayout
   title="Privacy Policy"
-  description="Privacy policy for Latin Addiction UK — how we handle your data when you use our website, checkout, and contact forms."
+  description="Privacy policy for Latin Addiction — how we use information for website enquiries and bookings, our service providers, retention periods and your rights."
 >
-
   <section class="bg-white px-5 py-14 md:px-8 md:py-20">
-    <div class="max-w-[800px] mx-auto prose-container">
-      <h1 data-reveal class="font-display font-extrabold text-[clamp(2rem,5vw,3rem)] leading-[1.1] mb-8">Privacy Policy</h1>
+    <div class="max-w-[800px] mx-auto prose-container privacy-copy">
+      <h1 class="font-display font-extrabold text-[clamp(2rem,5vw,3rem)] leading-[1.1] mb-8">Privacy Policy</h1>
+      <p class="privacy-date">Updated 9 October 2026.</p>
 
-      <p data-reveal class="text-muted text-[0.92rem] mb-6">
-        <strong class="text-dark">Latin Addiction UK Ltd</strong> ("we", "us") is committed to protecting your privacy. This policy explains what data we collect and how we use it.
-      </p>
+      <p>Latin Addiction is operated by <strong>{COMPANY_NAME}</strong>, company number <strong>{COMPANY_NUMBER}</strong>, registered in {COMPANY_JURISDICTION}. We are responsible for the personal information we use to respond to website enquiries and manage the bookings described below. For privacy questions or requests, email <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.</p>
 
-      <h2 data-reveal class="font-display font-semibold text-[1.25rem] mt-8 mb-3">What we collect</h2>
+      <h2>Information we use</h2>
+      <p>When you contact us by WhatsApp, email or phone, we use the name, contact details and information you provide to answer your enquiry and arrange classes or private coaching. Our website currently directs enquiries to these channels and does not have an online registration or contact form.</p>
+      <p>Purchase links take you to our external SumUp store. We use the order details available to us, including the items and options purchased, customer contact details, order references and payment status, to manage your booking and provide support. Store order records are currently held in SumUp. Payment details are handled through SumUp's payment services; please do not send card details by email or WhatsApp.</p>
+      <p>When you load the website, your browser connects to Cloudflare, our hosting provider, and Google Fonts, which supplies the website fonts. These connections involve technical information such as your IP address, browser information and the requested resource. Links to maps, reviews and social platforms take you to those providers' services.</p>
 
-      <h3 data-reveal class="font-display font-semibold text-[1.05rem] mt-6 mb-2">Contact form</h3>
-      <p data-reveal class="text-muted text-[0.92rem] mb-4">
-        If you use our contact form, we collect your name, email address, and message. This data is processed by <strong class="text-dark">Web3Forms</strong> and delivered to info@latinaddiction.co.uk. We use it only to respond to your enquiry.
-      </p>
+      <h2>Why we use information</h2>
+      <ul>
+        <li><strong>Bookings and arrangements:</strong> to fulfil your booking, arrange a session, provide confirmations, or handle cancellations and refunds. Our lawful basis is performing our contract with you or taking necessary steps at your request before you book.</li>
+        <li><strong>General enquiries and support:</strong> to answer questions, resolve problems and handle relevant disputes. Our lawful basis is our legitimate interests in running and supporting the business, balanced against your rights.</li>
+        <li><strong>Website operation and security:</strong> to deliver the website and protect it against misuse. Our lawful basis is our legitimate interests in providing a functioning, secure website, balanced against your rights.</li>
+        <li><strong>Accounting and legal records:</strong> to retain necessary transaction evidence and meet applicable accounting, tax and legal requirements. Our lawful basis is compliance with legal obligations. Relevant dispute records may also be needed for our legitimate interests in establishing or defending legal claims.</li>
+      </ul>
+      <p>We need sufficient booking and contact information to arrange and supply the service you request. Without it, we may be unable to complete the booking or provide the requested support. Buying a pass does not add you to a marketing email list; we do not currently send marketing emails to store buyers.</p>
 
-      <h3 data-reveal class="font-display font-semibold text-[1.05rem] mt-6 mb-2">Online payments</h3>
-      <p data-reveal class="text-muted text-[0.92rem] mb-4">
-        Payments are processed by <strong class="text-dark">SumUp</strong> via their Card Widget. Your payment card details are handled entirely by SumUp as the payment processor — we never see or store your card information. SumUp's privacy policy applies to payment data.
-      </p>
+      <h2>Service providers and overseas processing</h2>
+      <p>Cloudflare hosts the website; Google provides Gmail and the externally loaded fonts; WhatsApp provides messaging; SumUp provides the external storefront, order and payment services. These providers process information under the terms and privacy notices that apply to their services. SumUp also acts independently for payment processing and its own legal obligations.</p>
+      <p>These services may involve processing outside the UK, including in the United States. Cloudflare and Google describe adequacy arrangements, including the applicable UK–US Data Privacy Framework arrangements, and contractual safeguards for relevant transfers. WhatsApp describes international processing and transfer mechanisms in its regional notice. SumUp describes overseas transfers and contractual protections in its notice. The applicable mechanism depends on the provider, service and destination; the notices below give further information. Contact us if you need information about safeguards relevant to your data.</p>
+      <ul>
+        <li><a href="https://www.cloudflare.com/privacypolicy/">Cloudflare privacy notice</a></li>
+        <li><a href="https://policies.google.com/privacy">Google privacy notice</a> and <a href="https://policies.google.com/privacy/frameworks">transfer frameworks</a></li>
+        <li><a href="https://www.whatsapp.com/legal/privacy-policy">WhatsApp privacy notice</a></li>
+        <li><a href="https://www.sumup.com/en-gb/privacy/">SumUp privacy notice</a></li>
+      </ul>
+      <p>We may disclose relevant information where necessary to comply with the law or establish, exercise or defend legal claims.</p>
 
-      <h3 data-reveal class="font-display font-semibold text-[1.05rem] mt-6 mb-2">WhatsApp</h3>
-      <p data-reveal class="text-muted text-[0.92rem] mb-4">
-        Our WhatsApp links direct you to Meta's WhatsApp service. Any messages you send are subject to <strong class="text-dark">Meta's</strong> privacy policy. We use WhatsApp to communicate with you about classes, bookings, and enquiries.
-      </p>
+      <h2>Cookies and external services</h2>
+      <p>We have not added an advertising or analytics tracking tool to this website. Hosting and security services may use essential technical measures to deliver and protect it. External services you choose to visit, including SumUp and WhatsApp, have their own cookie and privacy notices. We will review this notice before introducing new tracking or online contact-collection features.</p>
 
-      <h2 data-reveal class="font-display font-semibold text-[1.25rem] mt-8 mb-3">Cookies</h2>
-      <p data-reveal class="text-muted text-[0.92rem] mb-4">
-        This website does not currently set any cookies. If we add analytics in the future, we will update this policy and add a consent mechanism where required.
-      </p>
+      <h2>How long we keep information</h2>
+      <p><strong>Enquiries:</strong> we manually review WhatsApp and email enquiries after 12 months without activity and delete messages we no longer need. Relevant information may be retained longer for an active booking, support issue or dispute.</p>
+      <p><strong>Purchase and accounting records:</strong> we retain the necessary purchase, payment, refund and accounting evidence for six years from the end of the last company financial year it relates to, or longer where statutory requirements or relevant unresolved enquiries or disputes require it. This does not mean every enquiry or full customer profile is kept for six years.</p>
+      <p>Providers may retain technical information or other records for their own service, security and legal purposes as described in their notices. Our enquiry cleanup does not automatically delete information held independently by a provider.</p>
 
-      <h2 data-reveal class="font-display font-semibold text-[1.25rem] mt-8 mb-3">Your rights</h2>
-      <p data-reveal class="text-muted text-[0.92rem] mb-4">
-        Under UK data protection law, you have the right to access, correct, or delete any personal data we hold about you. To make a request, email <a href="mailto:info@latinaddiction.co.uk" class="text-rose-dark font-semibold hover:underline">info@latinaddiction.co.uk</a>.
-      </p>
-
-      <h2 data-reveal class="font-display font-semibold text-[1.25rem] mt-8 mb-3">Contact</h2>
-      <p data-reveal class="text-muted text-[0.92rem] mb-4">
-        Data controller: Latin Addiction UK Ltd<br />
-        Email: <a href="mailto:info@latinaddiction.co.uk" class="text-rose-dark font-semibold hover:underline">info@latinaddiction.co.uk</a>
-      </p>
-
-      <p data-reveal class="text-muted text-[0.82rem] mt-8">Last updated: April 2026</p>
+      <h2>Your rights and complaints</h2>
+      <p>Depending on how and why your information is used, you may have rights to access or correct it, request erasure or restriction, object to its use, or receive a portable copy. Rights have conditions and exceptions; records that must legally be kept cannot always be erased immediately.</p>
+      <p>You can object to processing based on legitimate interests, and to direct marketing at any time. Where processing relies on consent, you can withdraw it without affecting earlier lawful processing.</p>
+      <p>Email <a href={`mailto:${EMAIL}`}>{EMAIL}</a> with a request or concern. We may need to verify your identity. You can also complain to the <a href="https://ico.org.uk/make-a-complaint/">Information Commissioner's Office</a>.</p>
     </div>
   </section>
-
 </BaseLayout>
+
+<style>
+  .privacy-copy p,
+  .privacy-copy li {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+  .privacy-copy p { margin-bottom: 1rem; }
+  .privacy-copy .privacy-date {
+    font-size: 0.82rem;
+    margin-bottom: 1.5rem;
+  }
+  .privacy-copy h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .privacy-copy strong { color: var(--color-dark); }
+  .privacy-copy ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .privacy-copy li { margin-bottom: 0.75rem; }
+  .privacy-copy a {
+    color: var(--color-rose-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    overflow-wrap: anywhere;
+  }
+</style>

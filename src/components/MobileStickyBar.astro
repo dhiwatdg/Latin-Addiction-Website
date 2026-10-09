@@ -3,14 +3,14 @@ import { whatsappUrl } from '../data/locations';
 ---
 
 <div
-  class="fixed bottom-0 left-0 right-0 z-[150] bg-rose flex items-center justify-center gap-2 md:hidden"
+  class="mobile-cta fixed bottom-0 left-0 right-0 z-[150] bg-rose flex items-center justify-center gap-2 md:hidden"
   style="padding: 0.7rem 1.25rem; padding-bottom: calc(0.7rem + env(safe-area-inset-bottom));"
   role="complementary"
   aria-label="Book a free class"
 >
   <a
     href={whatsappUrl()}
-    class="text-white font-semibold text-[0.88rem] no-underline flex items-center gap-[0.4rem]"
+    class="text-white font-semibold text-[0.88rem] no-underline flex items-center justify-center gap-[0.4rem] min-h-[44px] w-full"
     target="_blank"
     rel="noopener"
   >

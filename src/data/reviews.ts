@@ -111,3 +111,8 @@ export const reviews: Review[] = [
     stars: 5,
   },
 ];
+
+// Reading profile and aggregate checked in the live Google profile on 9 October 2026.
+export const READING_GOOGLE_PROFILE = 'https://share.google/1Qb8cPpoJIHsO0nnb';
+
+export const READING_GOOGLE_RATING = { value: '5.0', count: 14, verified: '2026-10-09' } as const;

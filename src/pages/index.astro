@@ -2,12 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ScheduleCard from '../components/ScheduleCard.astro';
 import { locations, whatsappUrl, mapsUrl, PHONE_TEL } from '../data/locations';
-import { reviews } from '../data/reviews';
+import { reviews, READING_GOOGLE_RATING } from '../data/reviews';
 import { homepageFaqs } from '../data/faqs';
 
 const waUrl = whatsappUrl();
 const featuredReview = reviews.find((r) => r.featured)!;
-const miniReviews = reviews.filter((r) => !r.featured);
+const miniReviews = reviews.filter((r) => !r.featured).slice(0, 2);
+const featuredExcerpt = featuredReview.text.match(/[^.!?]+[.!?]+/g)?.slice(0, 2).join('').trim() ?? featuredReview.text;
 
 /** Map location slug to short panel ID used in the prototype */
 const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
@@ -64,7 +65,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
       </div>
 
       {/* Reply note */}
-      <p data-reveal data-reveal-delay="4" class="text-[0.82rem] text-white/40 mb-2">
+      <p data-reveal data-reveal-delay="4" class="text-[0.82rem] text-white/65 mb-2">
         We typically reply within a few hours.
       </p>
 
@@ -77,13 +78,13 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
 
       {/* Trust bar */}
       <div data-reveal data-reveal-delay="4" class="flex flex-wrap gap-5 pt-6 mt-10 border-t border-white/[0.08] justify-center md:justify-start">
-        <span class="text-[0.82rem] text-white/45 flex items-center gap-1.5">
-          <span class="text-gold">★</span> 5.0 on Google
+        <span class="text-[0.82rem] text-white/65 flex items-center gap-1.5">
+          <span class="text-gold">★</span> {READING_GOOGLE_RATING.value} on Google · Reading
         </span>
-        <span class="text-[0.82rem] text-white/45">3 cities</span>
-        <span class="text-[0.82rem] text-white/45">100+ students weekly</span>
-        <span class="text-[0.82rem] text-white/45">4+ years running</span>
-        <span class="text-[0.82rem] text-white/45">Free social after every class</span>
+        <span class="text-[0.82rem] text-white/65">3 cities</span>
+        <span class="text-[0.82rem] text-white/65">100+ students weekly</span>
+        <span class="text-[0.82rem] text-white/65">4+ years running</span>
+        <span class="text-[0.82rem] text-white/65">Free social after every class</span>
       </div>
     </div>
   </section>
@@ -132,7 +133,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
           </div>
           <h3 class="font-display font-bold text-[1.15rem] mb-1.5">Your first class is free</h3>
           <p class="text-[0.9rem] text-muted leading-[1.7]">
-            No card details. No sign-up form. No commitment. Just message us on WhatsApp, turn up, and dance. That's it.
+            No card details. No sign-up form. No commitment. Just turn up and dance. Message us on WhatsApp if you have questions.
           </p>
           <div class="flex items-center gap-1.5 mt-3 text-rose font-semibold text-[0.82rem]">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0" aria-hidden="true"><path d="M13.5 4.5L6 12L2.5 8.5" stroke="#E11D48" stroke-width="2" stroke-linecap="round"/></svg>
@@ -164,7 +165,9 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
         <div data-reveal class="flex justify-center">
           <div class="relative">
             <img
-              src="/images/instructors/Dhiwa & Gloria.jpeg"
+              src="/images/optimised/founders-400.webp"
+              srcset="/images/optimised/founders-400.webp 400w, /images/optimised/founders-800.webp 800w"
+              sizes="(max-width: 440px) calc(100vw - 40px), 400px"
               alt="Dhiwa and Gloria — founders of Latin Addiction"
               width="400"
               height="400"
@@ -284,7 +287,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
 
         {/* CTA */}
         <div data-reveal class="mt-5 text-center">
-          <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
+          <a href="#schedule" class="btn-rose" target="_blank" rel="noopener">
             Claim your free class
           </a>
         </div>
@@ -307,12 +310,12 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
       </div>
 
       {/* Visually-hidden heading for accessibility */}
-      <h2 class="sr-only">Student Reviews</h2>
+      <h2 id="student-reviews" class="sr-only">Student Reviews</h2>
 
       {/* Featured review */}
       <div data-reveal data-reveal-delay="1" class="mb-10 border-l-4 border-rose pl-[clamp(1.25rem,3vw,2rem)] max-w-[820px]">
-        <blockquote class="font-display font-bold text-[clamp(1.5rem,3.5vw,2.5rem)] leading-[1.18] text-white">
-          &ldquo;{featuredReview.text}&rdquo;
+        <blockquote class="font-display font-bold text-[clamp(1.15rem,2.5vw,1.8rem)] leading-[1.18] text-white">
+          &ldquo;{featuredExcerpt}&rdquo;
         </blockquote>
         <div class="flex items-center gap-3 mt-5">
           <div class="w-[44px] h-[44px] rounded-full bg-gradient-to-br from-rose to-rose-dark flex items-center justify-center font-display font-bold text-base text-white">
@@ -320,15 +323,15 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
           </div>
           <div>
             <p class="text-[0.85rem] font-medium text-white">{featuredReview.author}</p>
-            <p class="text-[0.75rem] text-white/40">
-              {featuredReview.source} · <span class="text-gold">★★★★★</span>
+            <p class="text-[0.75rem] text-white/65">
+              {featuredReview.source} · Excerpt · <span class="text-gold">★★★★★</span>
             </p>
           </div>
         </div>
       </div>
 
-      {/* 3 mini review cards */}
-      <div data-reveal data-reveal-delay="2" class="grid gap-5 md:grid-cols-3 mb-8">
+      {/* Additional reviews on larger screens */}
+      <div data-reveal data-reveal-delay="2" class="hidden md:grid gap-5 md:grid-cols-2 mb-8">
         {miniReviews.map((review) => (
           <div class="mini-review-card bg-white/[0.04] border border-[rgba(225,29,72,0.12)] rounded-[16px] p-5 px-6 flex flex-col transition-colors duration-300 hover:border-[rgba(225,29,72,0.3)]">
             <q class="text-[0.88rem] italic text-white/70 leading-[1.7] flex-1" style="quotes:none;">
@@ -347,10 +350,12 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
         ))}
       </div>
 
+      <a href="/reviews/" class="inline-block text-white underline underline-offset-4 py-3 mb-4">Read more student reviews →</a>
+
       {/* Bottom row — Google pill + CTA */}
       <div data-reveal data-reveal-delay="3" class="flex flex-wrap items-center justify-center gap-4">
         <span class="inline-flex items-center gap-2 bg-white/[0.06] border border-[rgba(225,29,72,0.15)] rounded-full px-5 py-2 text-[0.82rem] font-medium text-white/65">
-          <span class="text-gold">★</span> 5.0 on Google Reviews
+          <span class="text-gold">★</span> {READING_GOOGLE_RATING.value} on Google · Reading
         </span>
         <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
           Try a free class
@@ -478,7 +483,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
           )}
 
           {/* Per-location CTA */}
-          <div class={loc.note ? 'mt-4' : 'mt-5'}>
+          <div class:list={[loc.note ? 'mt-4' : 'mt-5', 'flex flex-wrap items-center gap-3']}>
             <a
               href={whatsappUrl(loc.whatsappMessage)}
               class="btn-rose"
@@ -487,6 +492,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
             >
               Join the {loc.name} class
             </a>
+            <a href={`/pricing/#${loc.slug}`} class="inline-flex min-h-[44px] items-center px-4 py-2 text-rose-dark font-semibold underline underline-offset-4">{loc.name} prices &amp; passes →</a>
           </div>
         </div>
       ))}
@@ -497,7 +503,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
           First class: FREE · Newcomer 4-week pass: £20 · Drop-in from £10/night
         </p>
         <p class="text-[0.82rem] text-muted mt-1.5">
-          Cash and card accepted. Student &amp; NHS discount available — ask on WhatsApp.{' '}
+          Cash and card accepted. £2 Student &amp; NHS discount at the door only.{' '}
           <a href="/pricing" class="text-rose-dark font-medium">See all pricing →</a>
         </p>
       </div>
@@ -619,6 +625,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
       </div>
     </div>
   </section>
+  <noscript><style>.schedule-panel.hidden,.faq-answer.hidden{display:block!important}.schedule-tab{display:none!important}</style></noscript>
 </BaseLayout>
 
 <script>
@@ -629,6 +636,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
         t.classList.remove('active-tab', 'bg-rose', 'text-white', 'border-rose');
         t.classList.add('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
         t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
       });
       // Hide all panels
       document.querySelectorAll('.schedule-panel').forEach(p => p.classList.add('hidden'));
@@ -637,6 +645,7 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
       tab.classList.add('active-tab', 'bg-rose', 'text-white', 'border-rose');
       tab.classList.remove('bg-transparent', 'text-muted', 'border-[rgba(225,29,72,0.25)]');
       tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('tabindex', '0');
 
       // Show matching panel
       const loc = (tab as HTMLElement).dataset.loc;
@@ -644,6 +653,14 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
     });
   });
 
+  const scheduleTabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.schedule-tab'));
+  scheduleTabs.forEach((tab, index) => {
+    tab.tabIndex = tab.getAttribute('aria-selected') === 'true' ? 0 : -1;
+    tab.addEventListener('keydown', (event) => {
+      const next = event.key === 'ArrowRight' ? (index + 1) % scheduleTabs.length : event.key === 'ArrowLeft' ? (index + scheduleTabs.length - 1) % scheduleTabs.length : event.key === 'Home' ? 0 : event.key === 'End' ? scheduleTabs.length - 1 : null;
+      if (next !== null) { event.preventDefault(); scheduleTabs[next].click(); scheduleTabs[next].focus(); }
+    });
+  });
   // FAQ accordion — single open at a time
   document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {

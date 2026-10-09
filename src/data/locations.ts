@@ -98,11 +98,12 @@ export const locations: Location[] = [
   },
 ];
 
-export const WHATSAPP_NUMBER = '447424063798';
+export const WHATSAPP_NUMBER = '447951522216';
+export const WHATSAPP_DISPLAY = '07951 522216';
 export const WHATSAPP_DEFAULT_MESSAGE = "Hi! I'd like to try a free class";
 export const PHONE_DISPLAY = '07424 063798';
 export const PHONE_TEL = '07424063798';
-export const EMAIL = 'info@latinaddiction.co.uk';
+export const EMAIL = 'latin.addiction.uk@gmail.com';
 
 export function whatsappUrl(message: string = WHATSAPP_DEFAULT_MESSAGE): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

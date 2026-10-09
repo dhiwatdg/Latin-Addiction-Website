@@ -15,6 +15,7 @@ npm-debug.log*
 # Astro
 dist/
 .astro/
+.wrangler/
 
 # Environment
 .env
@@ -25,6 +26,10 @@ media/
 
 # Playwright
 .playwright-mcp/
+
+# Installed design-tool engines and local working state
+.agents/skills/impeccable/scripts/bin/
+.impeccable/
 
 # Build
 .cache/

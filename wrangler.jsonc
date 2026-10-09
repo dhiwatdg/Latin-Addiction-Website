@@ -1,0 +1,17 @@
+{
+  // Existing production Worker; this is separate from workers/checkout/.
+  "name": "latin-addiction",
+  // Verified website account; avoid deploying through the separate personal account.
+  "account_id": "aeeaebfdb8ce95f0de45a8fae3602a17",
+  "send_metrics": false,
+  "compatibility_date": "2026-05-31",
+  "compatibility_flags": ["global_fetch_strictly_public"],
+  "workers_dev": true,
+  "routes": [{ "pattern": "latinaddiction.co.uk", "custom_domain": true }],
+  // Purely static Astro output: no SSR adapter, session KV or Worker script.
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

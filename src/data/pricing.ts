@@ -1,267 +1,287 @@
-export type LocationScope = 'all' | 'mk' | 'leicester' | 'reading' | 'leicester-reading';
-
-export interface PricingProduct {
-  id: string;
-  label: string;
-  checkoutDescription: string; // passed to Worker → SumUp checkout
-  amountPence: number;
-  locations: LocationScope;
+// Public offer snapshot verified against the hub on 2026-10-09.
+// SumUp product destinations verified in the public city catalogues on that date.
+// Display catalogue only: any future checkout must validate prices server-side.
+export type CitySlug = 'milton-keynes' | 'leicester' | 'reading';
+export interface MembershipOffer {
+  id: string; weeks: 4 | 8; flexiValidityWeeks: 8 | 12; storeUrl: string;
+  rows: { classes: number; label: string; fixedPence: number; flexiPence: number }[];
 }
-
-// ── NEWCOMER ────────────────────────────────────────────────────────────────
-
-export const newcomerPass: PricingProduct = {
-  id: 'newcomer-pass',
-  label: '4-Week Newcomer Pass',
-  checkoutDescription: 'Latin Addiction – 4-Week Newcomer Pass (beginners)',
-  amountPence: 2000,
-  locations: 'all',
+export interface CityOffers {
+  city: CitySlug; firstClass: string;
+  newcomer: { id: string; amountPence: number; storeUrl: string };
+  dropIn: { id: string; storeUrl: string; options: { classes: number; label: string; amountPence: number }[] };
+  memberships: MembershipOffer[];
+}
+export const cityOffers: CityOffers[] = [
+  {
+    "city": "milton-keynes",
+    "firstClass": "19:15",
+    "newcomer": {
+      "id": "milton-keynes-newcomer",
+      "amountPence": 2000,
+      "storeUrl": "https://latinaddictionuk.sumupstore.com/product/new-to-bachata-newcomer-pass-beginners-2"
+    },
+    "dropIn": {
+      "id": "milton-keynes-drop-in",
+      "storeUrl": "https://latinaddictionuk.sumupstore.com/product/weekly-drop-in-2",
+      "options": [
+        {
+          "classes": 3,
+          "label": "All classes + social",
+          "amountPence": 1000
+        }
+      ]
+    },
+    "memberships": [
+      {
+        "id": "milton-keynes-4-week",
+        "weeks": 4,
+        "flexiValidityWeeks": 8,
+        "storeUrl": "https://latinaddictionuk.sumupstore.com/product/4-week-pass-2",
+        "rows": [
+          {
+            "classes": 3,
+            "label": "All classes on the night",
+            "fixedPence": 3200,
+            "flexiPence": 3600
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "city": "leicester",
+    "firstClass": "19:15",
+    "newcomer": {
+      "id": "leicester-newcomer",
+      "amountPence": 2000,
+      "storeUrl": "https://latinaddictionuk.sumupstore.com/product/new-to-bachata-newcomer-pass-beginners"
+    },
+    "dropIn": {
+      "id": "leicester-drop-in",
+      "storeUrl": "https://latinaddictionuk.sumupstore.com/product/weekly-drop-in-1",
+      "options": [
+        {
+          "classes": 1,
+          "label": "1 class",
+          "amountPence": 1000
+        },
+        {
+          "classes": 2,
+          "label": "2 classes",
+          "amountPence": 1500
+        },
+        {
+          "classes": 3,
+          "label": "3 classes",
+          "amountPence": 1800
+        }
+      ]
+    },
+    "memberships": [
+      {
+        "id": "leicester-4-week",
+        "weeks": 4,
+        "flexiValidityWeeks": 8,
+        "storeUrl": "https://latinaddictionuk.sumupstore.com/product/4-week-pass-1",
+        "rows": [
+          {
+            "classes": 1,
+            "label": "1 class per night",
+            "fixedPence": 3600,
+            "flexiPence": 3800
+          },
+          {
+            "classes": 2,
+            "label": "2 classes per night",
+            "fixedPence": 5200,
+            "flexiPence": 5800
+          },
+          {
+            "classes": 3,
+            "label": "3 classes per night",
+            "fixedPence": 6200,
+            "flexiPence": 7000
+          }
+        ]
+      },
+      {
+        "id": "leicester-8-week",
+        "weeks": 8,
+        "flexiValidityWeeks": 12,
+        "storeUrl": "https://latinaddictionuk.sumupstore.com/product/8-week-pass-1",
+        "rows": [
+          {
+            "classes": 1,
+            "label": "1 class per night",
+            "fixedPence": 6400,
+            "flexiPence": 7200
+          },
+          {
+            "classes": 2,
+            "label": "2 classes per night",
+            "fixedPence": 9200,
+            "flexiPence": 10400
+          },
+          {
+            "classes": 3,
+            "label": "3 classes per night",
+            "fixedPence": 11000,
+            "flexiPence": 12400
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "city": "reading",
+    "firstClass": "20:00",
+    "newcomer": {
+      "id": "reading-newcomer",
+      "amountPence": 2000,
+      "storeUrl": "https://latinaddictionuk.sumupstore.com/product/new-to-bachata-newcomer-pass-beginners-1"
+    },
+    "dropIn": {
+      "id": "reading-drop-in",
+      "storeUrl": "https://latinaddictionuk.sumupstore.com/product/weekly-drop-in",
+      "options": [
+        {
+          "classes": 1,
+          "label": "1 class",
+          "amountPence": 1000
+        },
+        {
+          "classes": 2,
+          "label": "2 classes",
+          "amountPence": 1500
+        }
+      ]
+    },
+    "memberships": [
+      {
+        "id": "reading-4-week",
+        "weeks": 4,
+        "flexiValidityWeeks": 8,
+        "storeUrl": "https://latinaddictionuk.sumupstore.com/product/4-week-pass",
+        "rows": [
+          {
+            "classes": 1,
+            "label": "1 class per night",
+            "fixedPence": 3600,
+            "flexiPence": 3800
+          },
+          {
+            "classes": 2,
+            "label": "2 classes per night",
+            "fixedPence": 5200,
+            "flexiPence": 5800
+          }
+        ]
+      },
+      {
+        "id": "reading-8-week",
+        "weeks": 8,
+        "flexiValidityWeeks": 12,
+        "storeUrl": "https://latinaddictionuk.sumupstore.com/product/8-week-pass",
+        "rows": [
+          {
+            "classes": 1,
+            "label": "1 class per night",
+            "fixedPence": 6400,
+            "flexiPence": 7200
+          },
+          {
+            "classes": 2,
+            "label": "2 classes per night",
+            "fixedPence": 9200,
+            "flexiPence": 10400
+          }
+        ]
+      }
+    ]
+  }
+];
+export interface CoachingOffer {
+  id: string; audience: 'Solo' | 'Couple'; minutes: number; sessions: number; amountPence: number;
+}
+export const coachingOffers: CoachingOffer[] = [
+  {
+    "id": "solo-60",
+    "audience": "Solo",
+    "minutes": 60,
+    "sessions": 1,
+    "amountPence": 5000
+  },
+  {
+    "id": "solo-90",
+    "audience": "Solo",
+    "minutes": 90,
+    "sessions": 1,
+    "amountPence": 7500
+  },
+  {
+    "id": "solo-120",
+    "audience": "Solo",
+    "minutes": 120,
+    "sessions": 1,
+    "amountPence": 10000
+  },
+  {
+    "id": "solo-4x90",
+    "audience": "Solo",
+    "minutes": 90,
+    "sessions": 4,
+    "amountPence": 25000
+  },
+  {
+    "id": "solo-4x120",
+    "audience": "Solo",
+    "minutes": 120,
+    "sessions": 4,
+    "amountPence": 35000
+  },
+  {
+    "id": "couple-90",
+    "audience": "Couple",
+    "minutes": 90,
+    "sessions": 1,
+    "amountPence": 12000
+  },
+  {
+    "id": "couple-120",
+    "audience": "Couple",
+    "minutes": 120,
+    "sessions": 1,
+    "amountPence": 15000
+  },
+  {
+    "id": "couple-4x90",
+    "audience": "Couple",
+    "minutes": 90,
+    "sessions": 4,
+    "amountPence": 40000
+  },
+  {
+    "id": "couple-4x120",
+    "audience": "Couple",
+    "minutes": 120,
+    "sessions": 4,
+    "amountPence": 50000
+  }
+];
+export const bookingRules = {
+  city: 'All tickets and passes are valid only in the city selected. They cannot be used across cities.',
+  newcomer: 'After your free first beginner class, your £20 pass covers four consecutive paid beginner weeks in your selected city. It starts on your first paid beginner class; missed weeks count.',
+  fixed: 'Fixed passes start on your first agreed or attended class date after purchase and run for consecutive calendar weeks. Missed weeks count.',
+  flexi: 'Flexi passes start on your first paid attendance. A 4-week pass gives you four nights within 8 weeks; an 8-week pass gives you eight nights within 12 weeks. Unused nights expire.',
+  dropIn: 'Advance tickets cover the next scheduled night in your selected city; same-day tickets cover that night. Message before classes start for one transfer to a later night in the same city. Otherwise the ticket expires.',
+  discount: '£2 Student/NHS discount at the door only. It is not available in the online store.',
+  coaching: 'Agree your slot on WhatsApp before paying. Payment through SumUp confirms the agreed booking.',
 };
-
-// ── DROP-IN ─────────────────────────────────────────────────────────────────
-
-export const dropInProducts: PricingProduct[] = [
-  {
-    id: 'dropin-mk',
-    label: 'Milton Keynes – Night ticket',
-    checkoutDescription: 'Latin Addiction MK – 1-night ticket (all classes + social)',
-    amountPence: 1000,
-    locations: 'mk',
-  },
-  {
-    id: 'dropin-1class',
-    label: '1 class',
-    checkoutDescription: 'Latin Addiction – Drop-in, 1 class',
-    amountPence: 1000,
-    locations: 'leicester-reading',
-  },
-  {
-    id: 'dropin-2class',
-    label: '2 classes',
-    checkoutDescription: 'Latin Addiction – Drop-in, 2 classes',
-    amountPence: 1500,
-    locations: 'leicester-reading',
-  },
-  {
-    id: 'dropin-3class',
-    label: '3 classes',
-    checkoutDescription: 'Latin Addiction – Drop-in, 3 classes (Leicester only)',
-    amountPence: 1800,
-    locations: 'leicester',
-  },
-];
-
-// ── MEMBERSHIPS ──────────────────────────────────────────────────────────────
-// 4-week Fixed / Flexi — 1 / 2 / 3 classes per week
-// 3-class options: Leicester only
-
-export interface MembershipRow {
-  classesPerWeek: 1 | 2 | 3;
-  locations: LocationScope;
-  fixed4: PricingProduct;
-  flexi4: PricingProduct;
-  fixed8: PricingProduct;
-  flexi8: PricingProduct;
-}
-
-export const membershipRows: MembershipRow[] = [
-  {
-    classesPerWeek: 1,
-    locations: 'leicester-reading',
-    fixed4: {
-      id: 'mem-4wk-fixed-1',
-      label: '4-week Fixed – 1 class/week',
-      checkoutDescription: 'Latin Addiction – 4-week Fixed membership (1 class/week)',
-      amountPence: 3600,
-      locations: 'leicester-reading',
-    },
-    flexi4: {
-      id: 'mem-4wk-flexi-1',
-      label: '4-week Flexi – 1 class/week',
-      checkoutDescription: 'Latin Addiction – 4-week Flexi membership (1 class/week)',
-      amountPence: 3800,
-      locations: 'leicester-reading',
-    },
-    fixed8: {
-      id: 'mem-8wk-fixed-1',
-      label: '8-week Fixed – 1 class/week',
-      checkoutDescription: 'Latin Addiction – 8-week Fixed membership (1 class/week)',
-      amountPence: 6400,
-      locations: 'leicester-reading',
-    },
-    flexi8: {
-      id: 'mem-8wk-flexi-1',
-      label: '8-week Flexi – 1 class/week',
-      checkoutDescription: 'Latin Addiction – 8-week Flexi membership (1 class/week)',
-      amountPence: 7200,
-      locations: 'leicester-reading',
-    },
-  },
-  {
-    classesPerWeek: 2,
-    locations: 'leicester-reading',
-    fixed4: {
-      id: 'mem-4wk-fixed-2',
-      label: '4-week Fixed – 2 classes/week',
-      checkoutDescription: 'Latin Addiction – 4-week Fixed membership (2 classes/week)',
-      amountPence: 5200,
-      locations: 'leicester-reading',
-    },
-    flexi4: {
-      id: 'mem-4wk-flexi-2',
-      label: '4-week Flexi – 2 classes/week',
-      checkoutDescription: 'Latin Addiction – 4-week Flexi membership (2 classes/week)',
-      amountPence: 5800,
-      locations: 'leicester-reading',
-    },
-    fixed8: {
-      id: 'mem-8wk-fixed-2',
-      label: '8-week Fixed – 2 classes/week',
-      checkoutDescription: 'Latin Addiction – 8-week Fixed membership (2 classes/week)',
-      amountPence: 9200,
-      locations: 'leicester-reading',
-    },
-    flexi8: {
-      id: 'mem-8wk-flexi-2',
-      label: '8-week Flexi – 2 classes/week',
-      checkoutDescription: 'Latin Addiction – 8-week Flexi membership (2 classes/week)',
-      amountPence: 10400,
-      locations: 'leicester-reading',
-    },
-  },
-  {
-    classesPerWeek: 3,
-    locations: 'leicester',
-    fixed4: {
-      id: 'mem-4wk-fixed-3',
-      label: '4-week Fixed – 3 classes/week',
-      checkoutDescription: 'Latin Addiction – 4-week Fixed membership (3 classes/week, Leicester)',
-      amountPence: 6200,
-      locations: 'leicester',
-    },
-    flexi4: {
-      id: 'mem-4wk-flexi-3',
-      label: '4-week Flexi – 3 classes/week',
-      checkoutDescription: 'Latin Addiction – 4-week Flexi membership (3 classes/week, Leicester)',
-      amountPence: 7000,
-      locations: 'leicester',
-    },
-    fixed8: {
-      id: 'mem-8wk-fixed-3',
-      label: '8-week Fixed – 3 classes/week',
-      checkoutDescription: 'Latin Addiction – 8-week Fixed membership (3 classes/week, Leicester)',
-      amountPence: 11000,
-      locations: 'leicester',
-    },
-    flexi8: {
-      id: 'mem-8wk-flexi-3',
-      label: '8-week Flexi – 3 classes/week',
-      checkoutDescription: 'Latin Addiction – 8-week Flexi membership (3 classes/week, Leicester)',
-      amountPence: 12400,
-      locations: 'leicester',
-    },
-  },
-];
-
-// ── PRIVATE COACHING ────────────────────────────────────────────────────────
-// Singles: per-session pricing by time slot and group size
-// Packs: 4 or 8 sessions by group size
-
-export const coachingProducts: PricingProduct[] = [
-  // Off-peak singles (Mon-Fri 9am-5pm)
-  {
-    id: 'coaching-offpeak-1',
-    label: 'Off-peak – 1 person',
-    checkoutDescription: 'Latin Addiction – Private Coaching, Off-peak, 1 person',
-    amountPence: 4000,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-offpeak-2',
-    label: 'Off-peak – 2 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, Off-peak, 2 people',
-    amountPence: 6000,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-offpeak-3',
-    label: 'Off-peak – 3 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, Off-peak, 3 people',
-    amountPence: 8000,
-    locations: 'all',
-  },
-  // Standard/peak singles (evenings & weekends)
-  {
-    id: 'coaching-standard-1',
-    label: 'Standard – 1 person',
-    checkoutDescription: 'Latin Addiction – Private Coaching, Standard, 1 person',
-    amountPence: 5000,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-standard-2',
-    label: 'Standard – 2 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, Standard, 2 people',
-    amountPence: 7500,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-standard-3',
-    label: 'Standard – 3 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, Standard, 3 people',
-    amountPence: 10000,
-    locations: 'all',
-  },
-  // Pre-class singles (1 person only)
-  {
-    id: 'coaching-preclass-1',
-    label: 'Pre-class – 1 person',
-    checkoutDescription: 'Latin Addiction – Private Coaching, Pre-class, 1 person',
-    amountPence: 4000,
-    locations: 'all',
-  },
-  // 4-session packs
-  {
-    id: 'coaching-pack4-1',
-    label: '4-session pack – 1 person',
-    checkoutDescription: 'Latin Addiction – Private Coaching, 4-session pack, 1 person',
-    amountPence: 16500,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-pack4-2',
-    label: '4-session pack – 2 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, 4-session pack, 2 people',
-    amountPence: 25000,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-pack4-3',
-    label: '4-session pack – 3 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, 4-session pack, 3 people',
-    amountPence: 33000,
-    locations: 'all',
-  },
-  // 8-session packs
-  {
-    id: 'coaching-pack8-1',
-    label: '8-session pack – 1 person',
-    checkoutDescription: 'Latin Addiction – Private Coaching, 8-session pack, 1 person',
-    amountPence: 33000,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-pack8-2',
-    label: '8-session pack – 2 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, 8-session pack, 2 people',
-    amountPence: 49500,
-    locations: 'all',
-  },
-  {
-    id: 'coaching-pack8-3',
-    label: '8-session pack – 3 people',
-    checkoutDescription: 'Latin Addiction – Private Coaching, 8-session pack, 3 people',
-    amountPence: 66000,
-    locations: 'all',
-  },
-];
+const currency = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
+export const formatPrice = (pence: number) => currency.format(pence / 100);
+export const offersFor = (city: string) => {
+  const offers = cityOffers.find(item => item.city === city);
+  if (!offers) throw new Error(`Unknown booking city: ${city}`);
+  return offers;
+};

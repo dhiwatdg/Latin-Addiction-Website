@@ -7,6 +7,8 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://latinaddiction.co.uk',
+  // Keep HTML-aware spacing used by our existing inline city and venue copy.
+  compressHTML: true,
 
   vite: {
     plugins: [tailwindcss()],

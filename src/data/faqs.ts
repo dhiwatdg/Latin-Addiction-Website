@@ -5,6 +5,10 @@ export interface FAQ {
 
 export const pageFaqs: FAQ[] = [
   {
+    question: 'Can I try a free class in each city?',
+    answer: 'Your free first beginner class is available once per person across Latin Addiction, rather than once in each city. After attending your trial, choose a paid ticket or pass for the city you want to join.',
+  },
+  {
     question: 'What should I wear?',
     answer: "Comfortable clothes you can move in — jeans are fine. Wear clean, smooth-soled shoes if you have them (trainers work too, just avoid anything that grips the floor). No special dance shoes needed.",
   },
@@ -41,8 +45,8 @@ export const pageFaqs: FAQ[] = [
     answer: "Every class night ends with a free social party where you can practise what you've learned in a relaxed setting. It's the best part of the night.",
   },
   {
-    question: 'Can I come to multiple locations?',
-    answer: "Yes. Your pass works at any Latin Addiction location. Many students attend more than one city per week.",
+    question: 'Can I use one pass in multiple cities?',
+    answer: "No. Each Newcomer, Fixed or Flexi pass is valid only in the city you chose when buying it. To attend another city, you need a ticket or pass for that city.",
   },
   {
     question: 'Do you offer private coaching?',
@@ -50,11 +54,11 @@ export const pageFaqs: FAQ[] = [
   },
   {
     question: 'Is there a student/NHS discount?',
-    answer: "Yes. £2 off any purchase. Just ask at the door or on WhatsApp.",
+    answer: "Yes. The £2 Student/NHS discount is available at the door only, where eligibility can be checked. It is not available in the online store.",
   },
   {
     question: 'What if I miss a week on my membership pass?',
-    answer: "Fixed passes must be used in consecutive weeks. Flexi passes give you double the window — a 4-week pass is valid for 8 weeks, an 8-week pass valid for 12 weeks — to account for missed weeks.",
+    answer: "Fixed passes must be used in consecutive weeks. Flexi passes give you a longer window — a 4-week pass is valid for 8 weeks, an 8-week pass valid for 12 weeks — to account for missed weeks.",
   },
 ];
 

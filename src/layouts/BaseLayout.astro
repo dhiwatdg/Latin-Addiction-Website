@@ -12,9 +12,10 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   minimal?: boolean;
+  showStickyBar?: boolean;
 }
 
-const { title, description, canonical, ogImage, minimal = false } = Astro.props;
+const { title, description, canonical, ogImage, minimal = false, showStickyBar = true } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -31,28 +32,17 @@ const { title, description, canonical, ogImage, minimal = false } = Astro.props;
     />
     <SEO title={title} description={description} canonical={canonical} ogImage={ogImage} />
   </head>
-  <body class="font-body text-dark leading-relaxed">
+  <body class:list={["font-body text-dark leading-relaxed", !minimal && showStickyBar && "has-mobile-cta"]}>
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[999] focus:bg-rose focus:text-white focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold">
       Skip to content
     </a>
     {!minimal && <Header />}
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
     {!minimal && <Footer />}
     {!minimal && <WhatsAppButton />}
-    {!minimal && <MobileStickyBar />}
-    <script>
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    {!minimal && showStickyBar && <MobileStickyBar />}
 
-      document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
-    </script>
   </body>
 </html>

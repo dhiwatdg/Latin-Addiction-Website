@@ -1,8 +1,7 @@
 ---
 import { navigation } from '../data/navigation';
-import { whatsappUrl } from '../data/locations';
 
-const ctaHref = whatsappUrl();
+const ctaHref = '/#schedule';
 ---
 
 <nav id="nav" class="sticky top-0 z-100 bg-white/92 backdrop-blur-[16px] border-b border-rose/6 transition-shadow duration-300">
@@ -18,11 +17,11 @@ const ctaHref = whatsappUrl();
         class="h-12 w-auto -my-1.5"
         style="filter:brightness(0)"
       />
-      <span class="font-display font-[800] text-[1.25rem] text-dark">Latin Addiction</span>
+      <span class="font-display font-[800] text-[1rem] min-[380px]:text-[1.25rem] whitespace-nowrap text-dark">Latin Addiction</span>
     </a>
 
     <!-- Desktop links -->
-    <ul class="hidden md:flex gap-7 list-none">
+    <ul class="hidden lg:flex gap-7 list-none">
       {navigation.map((item) =>
         item.children ? (
           <li class="has-dd relative">
@@ -59,10 +58,9 @@ const ctaHref = whatsappUrl();
     </ul>
 
     <!-- Desktop CTA -->
-    <div class="hidden md:block">
+    <div class="hidden lg:block">
       <a
         href={ctaHref}
-        target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-1.5 bg-rose text-white text-[.78rem] font-semibold py-2 px-5 rounded-full no-underline transition-all duration-200 hover:bg-rose-dark hover:-translate-y-px"
       >
@@ -77,8 +75,9 @@ const ctaHref = whatsappUrl();
     <!-- Hamburger (mobile only) -->
     <button
       id="ham"
-      class="md:hidden bg-transparent border-none cursor-pointer p-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center"
+      class="lg:hidden bg-transparent border-none cursor-pointer p-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center"
       aria-label="Menu"
+      aria-controls="mob-menu"
       aria-expanded="false"
     >
       <span class="block w-[22px] h-[2px] bg-dark my-[2.5px] transition-all duration-300"></span>
@@ -88,7 +87,7 @@ const ctaHref = whatsappUrl();
   </div>
 
   <!-- Mobile menu -->
-  <div id="mob-menu" class="hidden absolute top-16 left-0 right-0 bg-white border-b border-rose/6 px-5 pt-6 pb-6 flex-col gap-2 overflow-y-auto" style="min-height:calc(100dvh - 64px)">
+  <div id="mob-menu" class="hidden absolute top-16 left-0 right-0 bg-white border-b border-rose/6 px-5 pt-6 pb-6 flex-col gap-2 overflow-y-auto" style="max-height:calc(100dvh - 64px);overscroll-behavior:contain">
     {navigation.map((item) =>
       item.children ? (
         <div class="py-2 border-b border-rose/6">
@@ -115,13 +114,13 @@ const ctaHref = whatsappUrl();
     )}
     <a
       href={ctaHref}
-      target="_blank"
       rel="noopener noreferrer"
       class="mob-link block text-rose font-semibold no-underline border-none mt-2"
     >
       Claim your free class &rarr;
     </a>
   </div>
+  <noscript><div class="px-5 py-3 flex flex-wrap gap-4"><a href="/classes/">Classes</a><a href="/pricing/">Prices & passes</a><a href="/services/private-coaching/">Coaching</a></div></noscript>
 </nav>
 
 <style>
@@ -245,6 +244,16 @@ const ctaHref = whatsappUrl();
       ham.setAttribute('aria-expanded', String(isOpen));
     });
 
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobMenu.classList.contains('open')) {
+        mobMenu.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+        ham.focus();
+      }
+    });
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
+      if (event.matches) { mobMenu.classList.remove('open'); ham.setAttribute('aria-expanded', 'false'); }
+    });
     // Close mobile menu on link click
     mobMenu.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {

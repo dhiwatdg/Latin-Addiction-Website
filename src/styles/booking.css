@@ -1,0 +1,70 @@
+/* Refinement of the existing Poppins / DM Sans, rose / dark identity. */
+.booking-shell { width: min(100% - 2.5rem, 1120px); margin-inline: auto; }
+.booking-hero { background: var(--color-dark); color: white; padding: clamp(2.5rem, 6vw, 5rem) 0; }
+.booking-hero h1 { font-family: var(--font-display); font-size: clamp(2.3rem, 5.5vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -.03em; text-wrap: balance; max-width: 16ch; }
+.booking-hero p { color: #e5e5e5; max-width: 62ch; font-size: 1.08rem; margin: 1.25rem 0; }
+.booking-content { padding-block: 2.5rem 4rem; }
+.booking-page h2,.booking-page h3,.booking-page h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.25; text-wrap: balance; }
+.booking-page h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.booking-page h3 { font-size: clamp(1.25rem, 2.5vw, 1.6rem); }
+.booking-page h4 { font-size: 1.25rem; }
+.booking-page p { max-width: 68ch; margin-block: .75rem 1.25rem; }
+.booking-content p { color: var(--color-muted); }
+.booking-page [id] { scroll-margin-top: 6rem; }
+.booking-page [hidden] { display: none !important; }
+.booking-text-link { color: var(--color-rose-dark); font-weight: 600; text-underline-offset: .25em; text-decoration: underline; display: inline-block; padding-block: .65rem; }
+.booking-text-link:hover { color: var(--color-rose-9f); text-decoration-thickness: 2px; }
+.booking-text-link.light { color: var(--color-rose-light); }
+.city-choices { display: grid; gap: .75rem; margin-block: 1.5rem; }
+.city-choices a { border: 1px solid #d4d4d4; border-radius: 12px; padding: 1rem 1.25rem; display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 1rem; color: var(--color-dark); transition: background-color .2s, border-color .2s; }
+.city-choices a:hover { background: #fff1f2; border-color: var(--color-rose-dark); }
+.city-choices a[aria-current] { background: var(--color-dark); color: white; border-color: var(--color-dark); }
+.city-day { grid-column: 1; font-size: .88rem; }
+.city-choices strong { grid-column: 1; font-family: var(--font-display); font-size: 1.1rem; }
+.city-choice-action { grid-column: 2; grid-row: 1 / 3; font-size: .9rem; }
+#city-prompt { padding-block: 1rem; }
+.city-pricing { padding-block: 2rem; }
+.city-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 2rem; border-bottom: 1px solid #ddd; margin-bottom: 2rem; }
+.first-visit { display: grid; gap: 2rem; padding: 1.5rem; background: #fff1f2; border-radius: 12px; }
+.first-visit > div + div { border-top: 1px solid #e7cbd1; padding-top: 1.5rem; }
+.booking-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; }
+.booking-section { margin-top: 3rem; }
+.drop-in-prices { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin-block: 1.5rem; }
+.drop-in-prices dt { color: var(--color-muted); }
+.drop-in-prices dd { font-family: var(--font-display); font-weight: 700; font-size: 1.75rem; font-variant-numeric: tabular-nums; }
+.pass-options { display: grid; gap: 2rem; margin-block: 1.5rem; }
+.pass-option { min-width: 0; padding-top: 1.5rem; border-top: 2px solid var(--color-dark); }
+.booking-page table { width: 100%; border-collapse: collapse; font-size: .92rem; margin-block: 1rem 1.5rem; font-variant-numeric: tabular-nums; }
+.booking-page th,.booking-page td { padding: .8rem .4rem; border-bottom: 1px solid #ddd; text-align: right; }
+.booking-page th:first-child { text-align: left; width: 52%; }
+.booking-page thead { color: var(--color-muted); }
+.booking-page tbody th { font-weight: 500; }
+.booking-page td { font-weight: 700; }
+.booking-page .btn-rose { min-height: 44px; justify-content: center; text-align: center; background: var(--color-rose-dark); letter-spacing: 0; padding-inline: 1.25rem; }
+.booking-page .btn-rose:hover { background: var(--color-rose-9f); }
+.booking-page .booking-note { font-size: .87rem; margin-top: .65rem; }
+.booking-details { margin-top: 1.5rem; border-block: 1px solid #ddd; padding: .3rem 0; }
+.booking-details summary { cursor: pointer; font-weight: 600; padding-block: 1rem; }
+.booking-help { border-top: 1px solid #ddd; padding-top: 2rem; margin-top: 2rem; }
+.booking-page a,.booking-page summary { touch-action: manipulation; }
+.booking-page :focus-visible { outline: 3px solid var(--color-rose-dark); outline-offset: 4px; }
+.booking-hero :focus-visible { outline-color: var(--color-rose-light); }
+@media(min-width: 700px) {
+  .city-choices { grid-template-columns: repeat(3, 1fr); }
+  .city-choices a { display: flex; flex-direction: column; align-items: flex-start; gap: .25rem; }
+  .city-choice-action { margin-top: .6rem; }
+  .first-visit { grid-template-columns: 1.2fr 1fr; padding: 2rem; gap: 2.5rem; }
+  .first-visit > div + div { border-top: 0; border-left: 1px solid #e7cbd1; padding-top: 0; padding-left: 2rem; }
+  .pass-options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+}
+@media(max-width: 380px) {
+ .booking-shell { width: calc(100% - 2rem); }
+ .booking-page th,.booking-page td { padding-inline: .25rem; }
+ .booking-page .btn-rose { width: 100%; }
+}
+
+.coaching-steps { list-style: decimal; padding-left: 1.5rem; margin-top: 1.5rem; max-width: 65ch; }
+.coaching-steps li { padding-left: .5rem; margin-bottom: 1rem; }
+.booking-hero .btn-rose { margin-right: 0; }
+.booking-hero .btn-rose + a { margin-left: 1rem; }
+@media(max-width: 380px) { .booking-hero .btn-rose + a { margin-left: 0; } }
