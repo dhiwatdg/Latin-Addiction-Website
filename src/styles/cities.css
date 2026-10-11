@@ -1,0 +1,88 @@
+/* Compact city journeys use the existing rose, charcoal and rounded controls. */
+.city-shell { max-width: 1200px; margin-inline: auto; }
+.city-section { padding: 3rem 1.25rem; }
+.city-eyebrow { color: var(--color-rose-dark); font-size: .73rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .75rem; }
+.city-heading { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.65rem,3vw,2.4rem); line-height: 1.2; margin-bottom: 1.5rem; text-wrap: balance; }
+.city-link { color: var(--color-rose-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
+.city-hero { position: relative; overflow: hidden; padding: 3rem 1.25rem; }
+.city-hero-shade { position: absolute; inset: 0; background: rgb(17 17 17 / .87); }
+.city-hero-content { position: relative; z-index: 2; }
+.city-hero .city-eyebrow { color: var(--color-rose-light); }
+.city-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.15rem,5vw,4.25rem); line-height: 1.1; letter-spacing: -.025em; max-width: 950px; text-wrap: balance; }
+.city-hero h1 span { color: var(--color-rose); }
+.city-hero-intro { color: #ccc; font-size: 1rem; line-height: 1.75; margin-block: 1.25rem 1.5rem; max-width: 650px; }
+.city-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.city-actions a { justify-content: center; }
+.city-practical { display: grid; gap: 2rem; align-items: start; }
+.city-timetable { list-style: none; padding: 0; margin: 0; }
+.city-session { display: grid; gap: .5rem; padding-block: 1.15rem; border-top: 1px solid #e6e6e6; }
+.city-session:first-child { padding-top: 0; border-top: 0; }
+.city-time { font-family: var(--font-display); font-size: .85rem; font-weight: 700; color: var(--color-rose-dark); }
+.city-session h3 { font-weight: 600; font-size: .95rem; margin-bottom: .25rem; }
+.city-session div p { font-size: .9rem; color: var(--color-muted); line-height: 1.65; }
+.city-groups { display: grid; gap: 1rem; }
+.city-social h3 { color: #996000; }
+.city-schedule-note { font-size: .85rem; color: var(--color-muted); margin-top: .5rem; }
+.city-venue { background: #f5f5f5; border-radius: 18px; padding: 1.5rem; }
+.city-venue h2 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; line-height: 1.4; margin-bottom: .75rem; }
+.city-venue address { font-style: normal; font-size: .95rem; color: var(--color-muted); }
+.city-parking { padding-block: 1.25rem; font-size: .9rem; }
+.city-parking h3 { font-weight: 600; margin-bottom: .3rem; }
+.city-parking p { color: var(--color-muted); }
+.city-parking-important p { color: var(--color-dark); font-weight: 600; }
+.city-venue > a { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; }
+.city-booking-section { background: #f5f5f5; }
+.city-booking { display: grid; gap: 2rem; }
+.city-flat-price { color: var(--color-muted); font-size: .95rem; margin-bottom: 1.5rem; max-width: 380px; }
+.city-flat-price strong { display: block; color: var(--color-dark); font-family: var(--font-display); font-size: 2.5rem; line-height: 1.2; margin-bottom: .5rem; }
+.city-dropins { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.city-dropins dt { color: var(--color-muted); font-size: .85rem; }
+.city-dropins dd { font-family: var(--font-display); font-size: 1.75rem; font-weight: 600; }
+.city-price-note { font-size: .9rem; color: var(--color-muted); margin-block: .5rem 1.5rem; }
+.city-prices > .btn-rose { font-size: .85rem; padding-inline: 1.25rem; justify-content: center; }
+.city-payment-note { color: var(--color-muted); font-size: .82rem; line-height: 1.7; margin-top: 1.25rem; max-width: 400px; }
+.city-first-visit { background: white; padding: 1.5rem; border-radius: 18px; }
+.city-first-visit .city-heading { font-size: 1.4rem; margin-bottom: 1rem; }
+.city-first-visit p { color: var(--color-muted); font-size: .9rem; line-height: 1.75; }
+.city-first-visit p + p { margin-top: 1rem; }
+.city-first-visit strong { color: var(--color-dark); }
+.city-newcomer { border-top: 1px solid #e6e6e6; padding-top: 1.25rem; margin-top: 1.25rem; }
+.city-newcomer h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: .5rem; }
+.city-proof { display: grid; gap: .5rem; align-items: center; }
+.city-review-card { margin: 0; }
+.city-review-stars { color: #996000; letter-spacing: .12em; margin-bottom: .75rem; }
+.city-review-card blockquote { font-size: 1rem; line-height: 1.75; }
+.city-review-card figcaption { font-size: .8rem; color: var(--color-muted); margin-top: 1rem; }
+.city-review-card > a { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; font-size: .85rem; margin-top: .5rem; }
+.city-team { margin-bottom: 1.5rem; }
+.city-team-portraits { display: flex; padding-left: .3rem; margin-bottom: .5rem; }
+.city-team img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid white; margin-left: -.3rem; }
+.city-team > a { display: inline-flex; align-items: center; min-height: 44px; font-size: .85rem; }
+.city-closing { padding: 2.5rem 1.25rem; }
+.city-closing-content { display: grid; gap: 1.25rem; align-items: center; }
+.city-closing h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; line-height: 1.35; margin-bottom: .5rem; }
+.city-closing p { color: #ccc; font-size: .9rem; max-width: 540px; }
+.city-closing a { justify-self: start; }
+@media (min-width: 600px) {
+  .city-session { grid-template-columns: 135px 1fr; gap: 1rem; }
+  .city-parallel-groups { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+}
+@media (min-width: 768px) {
+  .city-section { padding: 4rem 2rem; }
+  .city-hero { padding: 3.5rem 2rem; }
+  .city-booking { grid-template-columns: .9fr 1.1fr; gap: 3rem; }
+  .city-proof { grid-template-columns: .85fr 1.15fr; gap: 3rem; }
+  .city-proof .city-heading { margin-bottom: 1rem; }
+  .city-closing { padding: 2.75rem 2rem; }
+  .city-closing-content { grid-template-columns: 1fr auto; gap: 2rem; }
+}
+@media (min-width: 1100px) {
+  .city-practical { grid-template-columns: 1.6fr 1fr; gap: 4rem; }
+  .city-venue { padding: 2rem; }
+  .city-booking { gap: 4rem; }
+  .city-first-visit { padding: 2rem; }
+}
+@media (max-width: 379px) {
+  .city-actions { flex-direction: column; }
+  .city-prices > .btn-rose { width: 100%; font-size: .8rem; padding-inline: .75rem; }
+}

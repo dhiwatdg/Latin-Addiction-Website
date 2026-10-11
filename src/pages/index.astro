@@ -15,65 +15,21 @@ const panelId = (slug: string) => slug === 'milton-keynes' ? 'mk' : slug;
   title="Bachata Classes in Milton Keynes, Leicester & Reading"
   description="Learn Bachata with Latin Addiction UK. Free first class, no partner needed. Weekly classes in Milton Keynes (Mon), Leicester (Tue) & Reading (Wed)."
 >
-  {/* ── SECTION 1: HERO (dark bg) ── */}
-  <section class="hero-section relative overflow-hidden bg-dark text-white flex items-center min-h-[85vh] md:min-h-[92vh] px-5 py-14 md:px-8 md:py-20 lg:px-8 lg:py-24">
-    {/* Decorative radial gradient glows */}
+  <section class="home-hero relative overflow-hidden bg-dark text-white">
     <div class="hero-glow-left" aria-hidden="true"></div>
     <div class="hero-glow-right" aria-hidden="true"></div>
-
-    <div class="relative z-10 max-w-[1200px] mx-auto w-full text-center md:text-left">
-      {/* Eyebrow */}
-      <div data-reveal class="flex items-center gap-3 mb-3 justify-center md:justify-start">
-        <span class="hidden md:block w-12 h-[3px] bg-rose-light rounded-sm" aria-hidden="true"></span>
-        <span class="text-rose-light uppercase text-xs font-bold tracking-[0.12em]">
-          Bachata dance classes · UK
-        </span>
+    <div class="home-shell home-hero-content">
+      <p class="home-hero-eyebrow">Bachata classes · Milton Keynes · Leicester · Reading</p>
+      <h1>Your first Bachata<br class="home-hero-break" /> class is <span>free.</span></h1>
+      <p class="home-hero-intro">New to Bachata? Start with our beginner class.<br />No partner or experience needed.</p>
+      <div class="home-hero-actions">
+        <a href="#schedule" class="btn-rose">Find your class &amp; times <span aria-hidden="true">↓</span></a>
+        <a href={whatsappUrl("Hi! I have a question about Latin Addiction.")} class="btn-white-outline" target="_blank" rel="noopener">Questions? WhatsApp us</a>
       </div>
-
-      {/* H1 */}
-      <h1 data-reveal data-reveal-delay="1" class="font-display font-extrabold text-white leading-[1.02] tracking-[-0.02em] mb-5 text-[clamp(3rem,8vw,5.5rem)]">
-        No partner needed.<br />
-        No experience needed.<br />
-        <em class="not-italic text-rose">Your first class is free.</em>
-      </h1>
-
-      {/* Subtitle */}
-      <p data-reveal data-reveal-delay="2" class="font-body font-light text-[clamp(1rem,2vw,1.15rem)] text-white/60 leading-[1.7] max-w-[520px] mb-8 mx-auto md:mx-0">
-        Bachata classes in Milton Keynes, Leicester &amp; Reading — the Latin partner dance everyone's falling for.
-      </p>
-
-      {/* CTA buttons */}
-      <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 mb-5 justify-center md:justify-start">
-        <a
-          href={waUrl}
-          class="btn-rose"
-          target="_blank"
-          rel="noopener"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-          </svg>
-          Ask about your free class
-        </a>
-        <a href="#schedule" class="btn-white-outline">
-          See classes &amp; times ↓
-        </a>
-      </div>
-
-      <p data-reveal data-reveal-delay="4" class="text-[0.85rem] text-white/75 max-w-[560px] mx-auto md:mx-0">
-        No advance booking needed. Walk-ins welcome. Message us if you have questions.
-      </p>
-
-      {/* Trust bar */}
-      <div data-reveal data-reveal-delay="4" class="flex flex-wrap gap-5 pt-6 mt-10 border-t border-white/[0.08] justify-center md:justify-start">
-        <span class="text-[0.82rem] text-white/65 flex items-center gap-1.5">
-          <span class="text-gold">★</span> {READING_GOOGLE_RATING.value} on Google · Reading
-        </span>
-        <span class="text-[0.82rem] text-white/65">3 cities</span>
-        <span class="text-[0.82rem] text-white/65">100+ students weekly</span>
-        <span class="text-[0.82rem] text-white/65">4+ years running</span>
-        <span class="text-[0.82rem] text-white/65">Free social after every class</span>
+      <p class="home-hero-note">No advance booking needed. Walk-ins welcome. Free first beginner class once per person.</p>
+      <div class="home-hero-proof">
+        <span><span class="text-gold" aria-hidden="true">★</span> {READING_GOOGLE_RATING.value} on Google · Reading</span>
+        <span>100+ students weekly</span>
       </div>
     </div>
   </section>
