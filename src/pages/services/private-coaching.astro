@@ -1,4 +1,5 @@
 ---
+import { serviceAreas } from '../../data/structured-data';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { coachingOffers, formatPrice, type CoachingOffer } from '../../data/pricing';
 import { whatsappUrl } from '../../data/locations';
@@ -52,5 +53,5 @@ const savingFor = (offer: CoachingOffer) => {
     <aside class="booking-help"><h2>Let’s find the right session</h2><p>You don’t need to choose a pack before contacting us. Tell us about your dancing and we’ll help you find a suitable starting point.</p><a class="btn-rose" href={waUrl}>Discuss private lessons on WhatsApp</a><p><a class="booking-text-link" href="/pricing/">Looking for group classes instead?</a></p></aside>
   </div>
 </div>
-<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Service",name:"Private Salsa & Bachata Lessons",serviceType:"Private Salsa and Bachata tuition",provider:{"@type":"Organization","@id":"https://latinaddiction.co.uk/#organization",name:"Latin Addiction",url:"https://latinaddiction.co.uk"},areaServed:["Milton Keynes","Leicester","Reading"],offers:coachingOffers.map(offer=>({"@type":"Offer",name:`${offer.audience}: ${offer.sessions} × ${offer.minutes} minutes`,price:offer.amountPence/100,priceCurrency:"GBP"}))})}/>
+<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Service",name:"Private Salsa & Bachata Lessons",serviceType:"Private Salsa and Bachata tuition",provider:{"@type":"Organization","@id":"https://latinaddiction.co.uk/#organization",name:"Latin Addiction",url:"https://latinaddiction.co.uk"},areaServed:serviceAreas,offers:coachingOffers.map(offer=>({"@type":"Offer",name:`${offer.audience}: ${offer.sessions} × ${offer.minutes} minutes`,price:offer.amountPence/100,priceCurrency:"GBP"}))})}/>
 </BaseLayout>

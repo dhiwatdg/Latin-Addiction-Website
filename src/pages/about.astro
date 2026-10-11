@@ -60,12 +60,5 @@ const waUrl = whatsappUrl(enquiry.message);
   <ServiceContact title="Let’s find the right experience for you" href={waUrl} label="Chat with us on WhatsApp">
     <p>Looking for a weekly class, private tuition or something for your event? Tell us what you have in mind.</p>
   </ServiceContact>
-  <script type="application/ld+json" set:html={JSON.stringify({
-    '@context': 'https://schema.org', '@type': 'Organization', '@id': 'https://latinaddiction.co.uk/#organization',
-    name: 'Latin Addiction', url: 'https://latinaddiction.co.uk', foundingDate: '2021-07',
-    founder: [{ '@type': 'Person', name: 'Dhiwa' }, { '@type': 'Person', name: 'Gloria' }],
-    logo: 'https://latinaddiction.co.uk/images/logos/logo-mark-golden-tight.png',
-    description: 'Weekly Bachata classes and tailored Salsa and Bachata private tuition, corporate workshops and event experiences in Milton Keynes, Leicester and Reading.',
-    sameAs: ['https://www.instagram.com/latinaddictionuk', 'https://www.facebook.com/LatinAddictionUK', 'https://www.tiktok.com/@latin.addiction.uk', 'https://www.youtube.com/@LatinAddictionUK']
-  })} />
+
 </BaseLayout>

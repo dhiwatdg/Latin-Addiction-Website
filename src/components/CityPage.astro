@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { locations, whatsappUrl, mapsUrl, EMAIL } from '../data/locations';
+import { locations, whatsappUrl, mapsUrl } from '../data/locations';
 import { cityOffers, type CitySlug } from '../data/pricing';
 import { reviews, reviewExcerpt } from '../data/reviews';
 import '../styles/cities.css';
+import { cityClassService } from '../data/structured-data';
 
 interface Props { city: CitySlug; }
 const { city } = Astro.props;
@@ -144,12 +145,5 @@ const sessions = reading ? [
     </div>
   </section>
 
-  <script type="application/ld+json" set:html={JSON.stringify({
-    '@context': 'https://schema.org', '@type': ['LocalBusiness', 'DanceSchool'],
-    name: `Latin Addiction UK — ${loc.name}`,
-    description: `Bachata classes every ${loc.day} in ${loc.name}. Beginners welcome. First beginner class free.`,
-    url: `https://latinaddiction.co.uk/${city}`, telephone: '+447424063798', email: EMAIL,
-    address: { '@type': 'PostalAddress', streetAddress: street, addressLocality: loc.name, postalCode: loc.postcode, addressCountry: 'GB' },
-    openingHours: `${loc.dayShort.slice(0,2)} ${reading ? '19:45' : '19:00'}-23:00`, priceRange: '£10-£20',
-  })} />
+  <script type="application/ld+json" set:html={JSON.stringify(cityClassService(loc, street))} />
 </BaseLayout>
