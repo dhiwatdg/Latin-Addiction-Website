@@ -33,7 +33,8 @@
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible {
-    outline: 2px solid currentColor;
+    outline: 2px solid #111;
+    box-shadow: 0 0 0 3px #fff;
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -492,6 +493,9 @@
   color: #F59E0B;
 }
 @media (max-width: 360px) {
+  .links-page .tour-row-head { display: grid; grid-template-columns: 1.6rem minmax(0,1fr); }
+  .links-page .tour-cta { grid-column: 2; justify-self: start; min-height: 44px; }
+
   .links-page .tour-city { font-size: 1.35rem; }
   .links-page .tour-meta,
   .links-page .tour-sublinks { margin-left: 2.2rem; }

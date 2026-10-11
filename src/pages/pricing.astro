@@ -33,7 +33,7 @@ import '../styles/booking.css';
           </header>
           <div class="first-visit">
             <div><h3>Your first beginner class is free.</h3><p>Join us at {offers.firstClass === '19:15' ? '7:15pm' : '8:00pm'}. No partner, experience or advance booking needed. Just turn up.</p>
-              <div class="booking-actions"><a class="btn-rose" href={mapsUrl(loc.mapsQuery)}>Get directions</a><a class="booking-text-link" href={whatsappUrl(loc.whatsappMessage)}>Ask a question on WhatsApp</a></div>
+              <div class="booking-actions"><a class="btn-rose" href={mapsUrl(loc.mapsQuery)}>Get directions</a><a class="booking-text-link" href={whatsappUrl(`Hi! I have a question about ${loc.name} classes and passes.`)}>Ask a question on WhatsApp</a></div>
             </div>
             <div><h3>Loved your first class?</h3><p>{bookingRules.newcomer}</p><a class="booking-text-link" data-offer-id={offers.newcomer.id} href={offers.newcomer.storeUrl}>Get the {loc.name} newcomer pass · {formatPrice(offers.newcomer.amountPence)}</a></div>
           </div>

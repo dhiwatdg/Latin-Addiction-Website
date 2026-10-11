@@ -12,6 +12,8 @@ type TourStop = {
   num: string;
   day: string;
   city: string;
+  slug: string;
+  beginnerTime: string;
   styles: string;
   venue: string;
   postcode: string;
@@ -25,6 +27,8 @@ const tour: TourStop[] = [
     num: '01',
     day: 'Mondays',
     city: 'Milton Keynes',
+    slug: mk.slug,
+    beginnerTime: mk.schedule[1].time,
     styles: 'Bachata',
     venue: mk.venue,
     postcode: mk.postcode,
@@ -36,6 +40,8 @@ const tour: TourStop[] = [
     num: '02',
     day: 'Tuesdays',
     city: 'Leicester',
+    slug: leicester.slug,
+    beginnerTime: leicester.schedule[1].time,
     styles: 'Bachata',
     venue: leicester.venue,
     postcode: leicester.postcode,
@@ -47,6 +53,8 @@ const tour: TourStop[] = [
     num: '03',
     day: 'Wednesdays',
     city: 'Reading',
+    slug: reading.slug,
+    beginnerTime: reading.schedule[1].time,
     styles: 'Bachata',
     venue: reading.venue,
     postcode: reading.postcode,
@@ -134,7 +142,7 @@ const socials = [
           <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.336 0-4.512-.703-6.32-1.905l-.44-.303-2.882.966.966-2.882-.303-.44A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
         </svg>
         <span class="flex flex-col items-start leading-tight">
-          <span class="text-[1.02rem] font-semibold">Claim your free class</span>
+          <span class="text-[1.02rem] font-semibold">Ask about your free class</span>
           <span class="text-[0.78rem] text-white/70 font-normal">We reply within hours on WhatsApp</span>
         </span>
         <span class="ml-auto text-white/70" aria-hidden="true">→</span>
@@ -152,6 +160,7 @@ const socials = [
                 <div class="tour-main">
                   <p class="tour-day">{stop.day}</p>
                   <p class="tour-city">{stop.city}</p>
+                  <p class="text-[0.78rem] text-white/75 mt-1">Beginners {stop.beginnerTime}</p>
                 </div>
                 <a
                   href={stop.tickets}
@@ -160,7 +169,7 @@ const socials = [
                   class="tour-cta"
                   aria-label={`Buy tickets for ${stop.city} ${stop.day}`}
                 >
-                  Tickets
+                  Tickets &amp; passes
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
@@ -170,6 +179,7 @@ const socials = [
                 <span class="tour-venue">{stop.venue}, {stop.postcode}</span>
               </div>
               <div class="tour-sublinks">
+                <a href={`/${stop.slug}/#schedule`}>Class details</a>
                 <a href={mapsUrl(stop.mapsQuery)} target="_blank" rel="noopener">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   Map

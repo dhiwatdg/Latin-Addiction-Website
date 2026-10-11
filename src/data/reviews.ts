@@ -116,3 +116,9 @@ export const reviews: Review[] = [
 export const READING_GOOGLE_PROFILE = 'https://share.google/1Qb8cPpoJIHsO0nnb';
 
 export const READING_GOOGLE_RATING = { value: '5.0', count: 14, verified: '2026-10-09' } as const;
+
+/** A short, complete-sentence excerpt; never cut a review mid-word. */
+export function reviewExcerpt(text: string): string {
+  const sentences = text.match(/[^.!?]+[.!?]+(?:[”"’'](?=\s|$))?/g);
+  return sentences?.slice(0, 2).join('').trim() || text;
+}

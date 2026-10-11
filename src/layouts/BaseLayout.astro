@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import MobileStickyBar from '../components/MobileStickyBar.astro';
+import { whatsappUrl } from '../data/locations';
 import '../styles/global.css';
 
 interface Props {
@@ -13,9 +14,12 @@ interface Props {
   ogImage?: string;
   minimal?: boolean;
   showStickyBar?: boolean;
+  showFloatingWhatsApp?: boolean;
+  enquiry?: { message: string; label: string };
 }
 
-const { title, description, canonical, ogImage, minimal = false, showStickyBar = true } = Astro.props;
+const { title, description, canonical, ogImage, minimal = false, showStickyBar = true, showFloatingWhatsApp = true, enquiry } = Astro.props;
+const contactHref = enquiry ? whatsappUrl(enquiry.message) : undefined;
 ---
 
 <!DOCTYPE html>
@@ -36,13 +40,13 @@ const { title, description, canonical, ogImage, minimal = false, showStickyBar =
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[999] focus:bg-rose focus:text-white focus:px-4 focus:py-2 focus:rounded-full focus:text-sm focus:font-semibold">
       Skip to content
     </a>
-    {!minimal && <Header />}
+    {!minimal && <Header enquiryHref={contactHref} />}
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
-    {!minimal && <Footer />}
-    {!minimal && <WhatsAppButton />}
-    {!minimal && showStickyBar && <MobileStickyBar />}
+    {!minimal && <Footer contactHref={contactHref} />}
+    {!minimal && showFloatingWhatsApp && <WhatsAppButton href={contactHref} />}
+    {!minimal && showStickyBar && <MobileStickyBar href={contactHref} label={enquiry?.label} />}
 
   </body>
 </html>

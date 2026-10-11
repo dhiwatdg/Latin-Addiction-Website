@@ -1,42 +1,56 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { coachingOffers, formatPrice } from '../../data/pricing';
+import { coachingOffers, formatPrice, type CoachingOffer } from '../../data/pricing';
 import { whatsappUrl } from '../../data/locations';
 import '../../styles/booking.css';
-const waUrl = whatsappUrl("Hi! I'd like to arrange private Bachata coaching. My preferred city is ... and I'd like to work on ...");
+const enquiry = { message: "Hi! I'd like to discuss private Salsa or Bachata lessons. My preferred city is ... and I'd like to work on ...", label: 'Discuss private lessons' };
+const waUrl = whatsappUrl(enquiry.message);
+const savingFor = (offer: CoachingOffer) => {
+  if (offer.sessions === 1) return 0;
+  const single = coachingOffers.find(item => item.audience === offer.audience && item.minutes === offer.minutes && item.sessions === 1);
+  return single ? single.amountPence * offer.sessions - offer.amountPence : 0;
+};
 ---
-<BaseLayout title="Private Bachata coaching" description="Solo and couples Bachata coaching from £50. Agree your date, time and location with us before paying. Milton Keynes, Leicester and Reading." showStickyBar={false}>
+<BaseLayout title="Private Salsa & Bachata lessons" description="Private Salsa and Bachata lessons for individuals and couples in Milton Keynes, Leicester and Reading. Tailored tuition, with availability agreed on WhatsApp." showStickyBar={false} enquiry={enquiry}>
 <div class="booking-page">
   <header class="booking-hero"><div class="booking-shell">
-    <h1>Time to focus on your dancing.</h1>
-    <p>Private Bachata coaching for you or you and your partner. Work on technique, connection, musicality or confidence, at your own pace.</p>
-    <a class="btn-rose" href={waUrl}>Arrange coaching on WhatsApp</a>
+    <h1>Private Salsa &amp; Bachata lessons</h1>
+    <p>Time to focus on your dancing.</p>
+    <p>Private lessons for you or you and your partner, tailored to your experience and goals. Explore Salsa—including cross-body and Cuban styles—or Bachata, with time to work on technique, partner connection, musicality and confidence.</p>
+    <p>Available by arrangement in Milton Keynes, Leicester and Reading, and surrounding areas.</p>
+    <a class="btn-rose" href={waUrl}>Discuss private lessons on WhatsApp</a>
     <a class="booking-text-link light" href="#pricing">See session prices ↓</a>
   </div></header>
   <div class="booking-shell booking-content">
-    <section class="booking-section"><h2>Agree your session before you pay.</h2>
+    <section class="booking-section"><h2>Arrange your lesson</h2>
       <ol class="coaching-steps">
-        <li><strong>Tell us what you need.</strong> Share your city, availability and what you would like to work on.</li>
-        <li><strong>Agree the details together.</strong> We will confirm the date, time, location, session length and price.</li>
-        <li><strong>Then pay through SumUp.</strong> Once everything is agreed, we will direct you to the appropriate payment option.</li>
+        <li><strong>Tell us what you need.</strong> Share your preferred city, dance style, experience, availability and what you would like to work on.</li>
+        <li><strong>Agree the details together.</strong> We’ll confirm your date, time, location, session length and price, including any travel or venue costs.</li>
+        <li><strong>Confirm your booking.</strong> Once everything is agreed, we’ll arrange payment with you privately. Payment confirms your slot.</li>
       </ol>
     </section>
-    <section id="pricing" class="booking-section"><h2>Choose the time you need.</h2><p>Prices below are the total for the session or pack. Couple prices cover both people. Availability must be confirmed first.</p>
+    <section id="pricing" class="booking-section"><h2>Choose the time you need</h2>
+      <p>The same prices apply to Salsa and Bachata. We usually recommend at least 90 minutes; a 60-minute solo session can suit a specific focus, subject to availability.</p>
+      <p>Prices are the total for the session or four-session pack. Couple prices cover both people. Please confirm availability before paying.</p>
       <div class="pass-options">{(['Solo', 'Couple'] as const).map(audience => <section class="pass-option">
         <h3>{audience === 'Solo' ? 'Just you' : 'You and your partner'}</h3>
         <table><caption class="sr-only">{audience} private coaching prices</caption><thead><tr><th scope="col">Session</th><th scope="col">Total price</th></tr></thead><tbody>
-          {coachingOffers.filter(offer => offer.audience === audience).map(offer => <tr><th scope="row">{offer.sessions === 1 ? `${offer.minutes} minutes` : `${offer.sessions} × ${offer.minutes} minutes`}{offer.minutes === 60 && <small class="block">Subject to availability</small>}</th><td>{formatPrice(offer.amountPence)}</td></tr>)}
+          {coachingOffers.filter(offer => offer.audience === audience).map(offer => <tr><th scope="row">{offer.sessions === 1 ? `${offer.minutes} minutes` : `${offer.sessions} × ${offer.minutes} minutes`}{offer.minutes === 60 && <small class="block">Subject to availability</small>}</th><td>{formatPrice(offer.amountPence)}{savingFor(offer) > 0 && <>{' '}<small class="inline-block whitespace-nowrap font-normal">(save {formatPrice(savingFor(offer))})</small></>}</td></tr>)}
         </tbody></table>
-        <a class="booking-text-link" href={whatsappUrl(`Hi! I'd like to arrange ${audience.toLowerCase()} private Bachata coaching. Can we discuss availability?`)}>Ask about {audience.toLowerCase()} coaching →</a>
+        <a class="booking-text-link" href={whatsappUrl(`Hi! I'd like to discuss ${audience.toLowerCase()} private Salsa or Bachata lessons. Can we discuss availability?`)}>Ask about {audience.toLowerCase()} lessons →</a>
       </section>)}</div>
+      <p class="booking-note">Savings compared with four individual sessions.</p>
     </section>
-    <section class="booking-section"><h2>Where we can meet.</h2><p>Coaching is available by arrangement in Milton Keynes, Leicester and Reading. We will confirm a suitable venue before payment. Other locations may involve travel or venue costs, which we will agree with you first.</p></section>
+    <section class="booking-section"><h2>Where we can meet</h2>
+      <p>Lessons are available by arrangement in Milton Keynes, Leicester and Reading. Leicester also offers lessons in a private mirrored studio, with flexible availability during the week. We’ll agree a suitable location before payment.</p>
+      <p>For surrounding areas or bookings further afield, contact us to discuss availability. Any travel or venue costs will be agreed first.</p>
+    </section>
     <section class="booking-section"><h2>Before you book.</h2>
       <details class="booking-details"><summary>How do four-session packs work?</summary><p>Each pack includes four sessions of your chosen length. We will discuss the schedule and any completion deadline individually when arranging payment.</p></details>
       <details class="booking-details"><summary>What if I need to change or cancel?</summary><p>Give at least 48 hours’ notice for a free change, or a full refund of a single session. For later changes or cancellations, a charge may reflect reasonable direct losses after any replacement booking. Unused pack value can be refunded less reasonable losses; sessions already taught are not refundable. Your statutory rights are unaffected.</p></details>
     </section>
-    <aside class="booking-help"><h2>Let’s find the right session.</h2><p>You do not need to choose a pack before talking to us. Tell us where you are with your dancing and we will help.</p><a class="btn-rose" href={waUrl}>Arrange coaching on WhatsApp</a><p><a class="booking-text-link" href="/pricing/">Looking for group classes instead?</a></p></aside>
+    <aside class="booking-help"><h2>Let’s find the right session</h2><p>You don’t need to choose a pack before contacting us. Tell us about your dancing and we’ll help you find a suitable starting point.</p><a class="btn-rose" href={waUrl}>Discuss private lessons on WhatsApp</a><p><a class="booking-text-link" href="/pricing/">Looking for group classes instead?</a></p></aside>
   </div>
 </div>
-<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Service",name:"Private Bachata Coaching",provider:{"@type":"Organization",name:"Latin Addiction UK",url:"https://latinaddiction.co.uk"},areaServed:["Milton Keynes","Leicester","Reading"],offers:coachingOffers.map(offer=>({"@type":"Offer",name:`${offer.audience}: ${offer.sessions} × ${offer.minutes} minutes`,price:offer.amountPence/100,priceCurrency:"GBP"}))})}/>
+<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Service",name:"Private Salsa & Bachata Lessons",serviceType:"Private Salsa and Bachata tuition",provider:{"@type":"Organization","@id":"https://latinaddiction.co.uk/#organization",name:"Latin Addiction",url:"https://latinaddiction.co.uk"},areaServed:["Milton Keynes","Leicester","Reading"],offers:coachingOffers.map(offer=>({"@type":"Offer",name:`${offer.audience}: ${offer.sessions} × ${offer.minutes} minutes`,price:offer.amountPence/100,priceCurrency:"GBP"}))})}/>
 </BaseLayout>

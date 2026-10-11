@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { locations, whatsappUrl, mapsUrl, PHONE_TEL, PHONE_DISPLAY, EMAIL } from '../data/locations';
-import { reviews } from '../data/reviews';
+import { reviews, reviewExcerpt } from '../data/reviews';
 
 const loc = locations.find(l => l.slug === 'reading')!;
 const waUrl = whatsappUrl(loc.whatsappMessage);
@@ -38,7 +38,7 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
       <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 mb-6">
         <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">
           <Fragment set:html={waSvg} />
-          Claim your free class
+          Ask about your free class
         </a>
         <a href="#schedule" class="btn-white-outline">See schedule ↓</a>
       </div>
@@ -87,12 +87,12 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-time">8:00pm — Beginners & Intermediate</div>
-          <div class="tl-desc">Separate groups, same room. If it's your first time, this is your class. We build from scratch — no experience needed.</div>
+          <div class="tl-desc">Separate groups running at the same time. New to Bachata? Join Beginners.</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-time">9:00pm — Improvers & Advanced</div>
-          <div class="tl-desc">Been coming a few months? This is your next step. More complex moves, musicality, and partner work.</div>
+          <div class="tl-desc">Separate groups running at the same time. Choose the group that suits your experience, or ask us for guidance.</div>
         </div>
         <div class="tl-item social">
           <div class="tl-dot"></div>
@@ -101,9 +101,9 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
         </div>
       </div>
 
-      <p data-reveal class="text-[0.88rem] text-muted italic mt-8">Not sure which class? Start with 8pm. Everyone does.</p>
+      <p data-reveal class="text-[0.88rem] text-muted italic mt-8">New to Bachata? Join Beginners at 8pm. Already dancing? Check the level descriptions or ask us which group to join.</p>
       <div data-reveal class="mt-5">
-        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">Claim your free class</a>
+        <a href={waUrl} class="btn-rose" target="_blank" rel="noopener">Ask about your free class</a>
       </div>
     </div>
   </section>
@@ -120,37 +120,34 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
         {/* Level 1 — highlighted */}
         <div data-reveal class="bg-rose text-white rounded-[18px] p-7 flex flex-col">
           <span class="inline-block bg-white/25 text-white text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Start here</span>
-          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 1 — Starting from scratch</p>
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Beginners · 8pm</p>
           <p class="text-white/85 text-[0.9rem] leading-[1.65] flex-1 mb-4">Learn the rhythm, basic footwork, and your first partner moves. No experience needed — we start from zero every session.</p>
           <p class="text-white/70 text-[0.85rem] mb-4">Included in your<br /><strong class="text-white text-[1rem]">FREE first class</strong></p>
-          <a href={waUrl} class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full bg-white text-dark no-underline" target="_blank" rel="noopener">Claim free class →</a>
+          <a href={waUrl} class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full bg-white text-dark no-underline" target="_blank" rel="noopener">Ask about your free class →</a>
         </div>
 
         {/* Level 2 */}
-        <div data-reveal data-reveal-delay="1" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-          <span class="inline-block bg-rose/[0.08] text-rose-9f text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Building</span>
-          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 2 — Building your style</p>
+        <div data-reveal data-reveal-delay="1" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-[transform,box-shadow,border-color,background-color,color] duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Improvers · 9pm</p>
           <p class="text-muted text-[0.9rem] leading-[1.65] flex-1 mb-4">Turn patterns, connection, and developing your personal style. Dancing with confidence and making it your own.</p>
           <p class="text-muted text-[0.85rem] mb-4">Drop-in from<br /><strong class="text-dark text-[1rem]">£10 / night</strong></p>
-          <a href="/pricing/#reading" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-all">See pricing →</a>
+          <a href="/pricing/#reading" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-[transform,box-shadow,border-color,background-color,color]">See pricing →</a>
         </div>
 
         {/* Level 3 */}
-        <div data-reveal data-reveal-delay="2" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-          <span class="inline-block bg-rose/[0.08] text-rose-9f text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Flow</span>
-          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 3 — Body & musicality</p>
+        <div data-reveal data-reveal-delay="2" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-[transform,box-shadow,border-color,background-color,color] duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Intermediate · 8pm</p>
           <p class="text-muted text-[0.9rem] leading-[1.65] flex-1 mb-4">Body movement, musical interpretation, and social dancing confidence. This is where Bachata starts to feel really good.</p>
           <p class="text-muted text-[0.85rem] mb-4">Drop-in from<br /><strong class="text-dark text-[1rem]">£10 / night</strong></p>
-          <a href="/pricing/#reading" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-all">See pricing →</a>
+          <a href="/pricing/#reading" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-[transform,box-shadow,border-color,background-color,color]">See pricing →</a>
         </div>
 
         {/* Level 4 */}
-        <div data-reveal data-reveal-delay="3" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-          <span class="inline-block bg-rose/[0.08] text-rose-9f text-[0.7rem] font-semibold uppercase tracking-[0.08em] px-3 py-1 rounded-full w-fit mb-3">Express</span>
-          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Level 4 — Making it your own</p>
+        <div data-reveal data-reveal-delay="3" class="bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-7 flex flex-col transition-[transform,box-shadow,border-color,background-color,color] duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <p class="font-display font-bold text-[1.15rem] leading-[1.2] mb-2">Advanced · 9pm</p>
           <p class="text-muted text-[0.9rem] leading-[1.65] flex-1 mb-4">Layered styling, advanced partner work, and deep musicality. You're not just dancing, you're expressing.</p>
           <p class="text-muted text-[0.85rem] mb-4">Drop-in from<br /><strong class="text-dark text-[1rem]">£10 / night</strong></p>
-          <a href="/pricing/#reading" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-all">See pricing →</a>
+          <a href="/pricing/#reading" class="inline-flex items-center justify-center font-semibold text-[0.85rem] px-5 py-2.5 rounded-full border-[1.5px] border-rose/25 text-rose-dark no-underline hover:border-rose hover:bg-rose/[0.04] transition-[transform,box-shadow,border-color,background-color,color]">See pricing →</a>
         </div>
       </div>
 
@@ -176,7 +173,7 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
           <p class="text-white/70 text-[0.95rem] mb-2"><strong class="text-white">First class: FREE</strong> — just turn up.</p>
           <p class="text-white/70 text-[0.95rem] mb-7"><strong class="text-white">4-Week Newcomer Pass: £20</strong> — beginners only, 4 consecutive weeks.</p>
           <div class="flex flex-wrap gap-3">
-            <a href={waUrl} class="btn-rose bg-white text-dark" target="_blank" rel="noopener">Claim your free class</a>
+            <a href={waUrl} class="btn-rose bg-white text-dark" target="_blank" rel="noopener">Ask about your free class</a>
             <a href="https://latinaddictionuk.sumupstore.com/product/new-to-bachata-newcomer-pass-beginners-1" class="btn-white-outline" style="border-color:rgba(255,255,255,0.25);" target="_blank" rel="noopener">Buy newcomer pass — £20</a>
           </div>
         </div>
@@ -206,16 +203,16 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
 
       <div data-reveal data-reveal-delay="1" class="grid gap-4 md:grid-cols-3">
         {featuredReviews.map((review, i) => (
-          <div class:list={["city-review-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md", i > 0 && "hidden md:block"]}>
+          <div class:list={["city-review-card bg-white border-[1.5px] border-[#e8e8e8] rounded-[18px] p-6 transition-[transform,box-shadow,border-color,background-color,color] duration-300 hover:-translate-y-0.5 hover:shadow-md", i > 0 && "hidden md:block"]}>
             <div class="flex items-center gap-3 mb-4">
               <div class="w-10 h-10 rounded-full bg-rose flex items-center justify-center text-white font-display font-bold text-[0.9rem]">{review.initial}</div>
               <div>
                 <div class="font-semibold text-[0.88rem]">{review.author}</div>
-                <div class="text-[0.75rem] text-muted">Google Review</div>
+                <div class="text-[0.75rem] text-muted">Google review excerpt</div>
               </div>
               <div class="ml-auto text-gold text-[0.82rem]">★★★★★</div>
             </div>
-            <p class="text-[0.88rem] text-muted leading-[1.65]">"{review.text.length > 180 ? review.text.slice(0, 180) + '…' : review.text}"</p>
+            <p class="text-[0.88rem] text-muted leading-[1.65]">"{reviewExcerpt(review.text)}"</p>
           </div>
         ))}
       </div>
@@ -247,15 +244,15 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
           <h2 data-reveal data-reveal-delay="1" class="font-display font-semibold text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.12] mb-6">Getting started</h2>
 
           <div data-reveal data-reveal-delay="2" class="flex gap-4 mb-6 group">
-            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-all duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">1</div>
+            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-[transform,box-shadow,border-color,background-color,color] duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">1</div>
             <div><p class="font-display font-bold text-[1.05rem] mb-0.5">Questions before you come?</p><p class="text-[0.88rem] text-muted">No advance booking needed. Message us if you have any questions.</p></div>
           </div>
           <div data-reveal data-reveal-delay="3" class="flex gap-4 mb-6 group">
-            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-all duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">2</div>
+            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-[transform,box-shadow,border-color,background-color,color] duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">2</div>
             <div><p class="font-display font-bold text-[1.05rem] mb-0.5">Turn up</p><p class="text-[0.88rem] text-muted">Wear something comfortable. No special shoes needed.</p></div>
           </div>
           <div data-reveal data-reveal-delay="4" class="flex gap-4 group">
-            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-all duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">3</div>
+            <div class="step-num w-11 h-11 min-w-[44px] rounded-full bg-rose-light border-2 border-[rgba(225,29,72,0.3)] flex items-center justify-center font-display font-bold text-[1.1rem] text-rose transition-[transform,box-shadow,border-color,background-color,color] duration-300 group-hover:bg-rose group-hover:text-white group-hover:border-rose group-hover:scale-110">3</div>
             <div><p class="font-display font-bold text-[1.05rem] mb-0.5">Dance</p><p class="text-[0.88rem] text-muted">Your first class is free. Stay for the social party.</p></div>
           </div>
         </div>
@@ -283,7 +280,7 @@ const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColo
       <div data-reveal data-reveal-delay="3" class="flex flex-wrap gap-3 justify-center">
         <a href={waUrl} class="btn-rose" style="font-size:1.02rem;padding:1rem 2.25rem;" target="_blank" rel="noopener">
           <Fragment set:html={waSvg} />
-          Claim your free class
+          Ask about your free class
         </a>
         <a href={`tel:${PHONE_TEL}`} class="btn-white-outline" style="font-size:1.02rem;padding:1rem 2.25rem;">
           Call {PHONE_DISPLAY}

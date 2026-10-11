@@ -276,7 +276,7 @@ export const bookingRules = {
   flexi: 'Flexi passes start on your first paid attendance. A 4-week pass gives you four nights within 8 weeks; an 8-week pass gives you eight nights within 12 weeks. Unused nights expire.',
   dropIn: 'Advance tickets cover the next scheduled night in your selected city; same-day tickets cover that night. Message before classes start for one transfer to a later night in the same city. Otherwise the ticket expires.',
   discount: '£2 Student/NHS discount at the door only. It is not available in the online store.',
-  coaching: 'Agree your slot on WhatsApp before paying. Payment through SumUp confirms the agreed booking.',
+  coaching: 'Agree your slot on WhatsApp before paying. We’ll arrange payment with you privately. Payment confirms your slot.',
 };
 const currency = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
 export const formatPrice = (pence: number) => currency.format(pence / 100);

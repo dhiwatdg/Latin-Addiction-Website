@@ -1,0 +1,15 @@
+---
+import { EMAIL } from '../data/locations';
+interface Props { title: string; href: string; label: string; }
+const { title, href, label } = Astro.props;
+---
+<section class="service-contact">
+  <div class="service-shell">
+    <h2>{title}</h2>
+    <div class="service-contact-copy"><slot /></div>
+    <div class="service-actions">
+      <a class="btn-rose" href={href} target="_blank" rel="noopener">{label}</a>
+      <a class="service-email" href={`mailto:${EMAIL}`}>Email {EMAIL}</a>
+    </div>
+  </div>
+</section>

@@ -1,12 +1,14 @@
 ---
 import { whatsappUrl, WHATSAPP_DISPLAY, PHONE_DISPLAY, PHONE_TEL, EMAIL } from '../data/locations';
 import { COMPANY_NAME, COMPANY_NUMBER } from '../data/company';
+interface Props { contactHref?: string; }
+const { contactHref = whatsappUrl('Hi! I have a question about Latin Addiction.') } = Astro.props;
 ---
 
 <footer class="bg-dark text-white" style="padding: 3.5rem 1.25rem 2rem;">
-  <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 max-w-[1200px] mx-auto">
+  <div class="grid grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-8 max-w-[1200px] mx-auto">
     <!-- Column 1: Logo + Venues + Contact -->
-    <div>
+    <div class="col-span-2 lg:col-span-1">
       <div class="flex items-center gap-[0.6rem] mb-2">
         <img
           src="/images/logos/logo-mark-golden-tight.png"
@@ -19,19 +21,19 @@ import { COMPANY_NAME, COMPANY_NUMBER } from '../data/company';
         <span class="font-display font-bold text-base" style="margin-bottom: 0;">Latin Addiction UK</span>
       </div>
 
-      <p class="text-[0.82rem] leading-[1.7]" style="color: rgba(255,255,255,0.5);">
+      <p class="text-[0.875rem] leading-[1.7]" style="color: rgba(255,255,255,0.75);">
         <strong class="text-white">Milton Keynes:</strong> Midsummer Tap, Theatre District, Milton Keynes MK9 3PU — Mondays from 7:00pm
       </p>
-      <p class="text-[0.82rem] leading-[1.7] mt-[0.4rem]" style="color: rgba(255,255,255,0.5);">
+      <p class="text-[0.875rem] leading-[1.7] mt-[0.4rem]" style="color: rgba(255,255,255,0.75);">
         <strong class="text-white">Leicester:</strong> Braunstone Frith Recreation Centre, 29A Sharmon Cres, Leicester LE3 6NW — Tuesdays from 7:00pm
       </p>
-      <p class="text-[0.82rem] leading-[1.7] mt-[0.4rem]" style="color: rgba(255,255,255,0.5);">
+      <p class="text-[0.875rem] leading-[1.7] mt-[0.4rem]" style="color: rgba(255,255,255,0.75);">
         <strong class="text-white">Reading:</strong> Wesley Methodist Church, 84 Queen's Rd, Reading RG1 4BW — Wednesdays from 7:45pm
       </p>
 
-      <p class="text-[0.82rem] leading-[1.7] mt-3" style="color: rgba(255,255,255,0.5);">
+      <p class="text-[0.875rem] leading-[1.7] mt-3" style="color: rgba(255,255,255,0.75);">
         <strong class="text-white">WhatsApp:</strong>{' '}
-        <a href={whatsappUrl()} class="footer-link">{WHATSAPP_DISPLAY}</a><br />
+        <a href={contactHref} class="footer-link">{WHATSAPP_DISPLAY}</a><br />
         <strong class="text-white">Phone:</strong>{' '}
         <a href={`tel:${PHONE_TEL}`} class="footer-link">{PHONE_DISPLAY}</a><br />
         <strong class="text-white">Email:</strong>{' '}
@@ -43,12 +45,12 @@ import { COMPANY_NAME, COMPANY_NUMBER } from '../data/company';
     <div>
       <p class="font-display font-bold text-base mb-[0.65rem]">Pages</p>
       <ul class="flex flex-col gap-[0.35rem] list-none">
-        <li><a href="/" class="footer-link text-[0.82rem]">Home</a></li>
-        <li><a href="/milton-keynes" class="footer-link text-[0.82rem]">Milton Keynes</a></li>
-        <li><a href="/leicester" class="footer-link text-[0.82rem]">Leicester</a></li>
-        <li><a href="/reading" class="footer-link text-[0.82rem]">Reading</a></li>
-        <li><a href="/pricing" class="footer-link text-[0.82rem]">Pricing</a></li>
-        <li><a href="/classes" class="footer-link text-[0.82rem]">Classes</a></li>
+        <li><a href="/" class="footer-link text-[0.875rem]">Home</a></li>
+        <li><a href="/milton-keynes" class="footer-link text-[0.875rem]">Milton Keynes</a></li>
+        <li><a href="/leicester" class="footer-link text-[0.875rem]">Leicester</a></li>
+        <li><a href="/reading" class="footer-link text-[0.875rem]">Reading</a></li>
+        <li><a href="/pricing" class="footer-link text-[0.875rem]">Pricing</a></li>
+        <li><a href="/classes" class="footer-link text-[0.875rem]">Classes</a></li>
       </ul>
     </div>
 
@@ -56,37 +58,44 @@ import { COMPANY_NAME, COMPANY_NUMBER } from '../data/company';
     <div>
       <p class="font-display font-bold text-base mb-[0.65rem]">More</p>
       <ul class="flex flex-col gap-[0.35rem] list-none">
-        <li><a href="/classes" class="footer-link text-[0.82rem]">Classes</a></li>
-        <li><a href="/faq" class="footer-link text-[0.82rem]">FAQ</a></li>
-        <li><a href="/reviews" class="footer-link text-[0.82rem]">Reviews</a></li>
+        <li><a href="/about/" class="footer-link text-[0.875rem]">About us</a></li>
+        <li><a href="/services/private-coaching/" class="footer-link text-[0.875rem]">Private lessons</a></li>
+        <li><a href="/services/corporate/" class="footer-link text-[0.875rem]">Corporate workshops</a></li>
+        <li><a href="/services/hire-us/" class="footer-link text-[0.875rem]">Event hire</a></li>
+        <li><a href="/faq" class="footer-link text-[0.875rem]">FAQ</a></li>
+        <li><a href="/reviews" class="footer-link text-[0.875rem]">Reviews</a></li>
       </ul>
     </div>
 
     <!-- Column 4: Connect -->
-    <div>
+    <div class="col-span-2 lg:col-span-1 footer-social">
       <p class="font-display font-bold text-base mb-[0.65rem]">Connect</p>
       <ul class="flex flex-col gap-[0.35rem] list-none">
-        <li><a href="https://www.instagram.com/latinaddictionuk" target="_blank" rel="noopener" class="footer-link text-[0.82rem]">Instagram</a></li>
-        <li><a href="https://www.facebook.com/LatinAddictionUK" target="_blank" rel="noopener" class="footer-link text-[0.82rem]">Facebook</a></li>
-        <li><a href="https://www.tiktok.com/@latin.addiction.uk" target="_blank" rel="noopener" class="footer-link text-[0.82rem]">TikTok</a></li>
-        <li><a href="https://www.youtube.com/@LatinAddictionUK" target="_blank" rel="noopener" class="footer-link text-[0.82rem]">YouTube</a></li>
+        <li><a href="https://www.instagram.com/latinaddictionuk" target="_blank" rel="noopener" class="footer-link text-[0.875rem]">Instagram</a></li>
+        <li><a href="https://www.facebook.com/LatinAddictionUK" target="_blank" rel="noopener" class="footer-link text-[0.875rem]">Facebook</a></li>
+        <li><a href="https://www.tiktok.com/@latin.addiction.uk" target="_blank" rel="noopener" class="footer-link text-[0.875rem]">TikTok</a></li>
+        <li><a href="https://www.youtube.com/@LatinAddictionUK" target="_blank" rel="noopener" class="footer-link text-[0.875rem]">YouTube</a></li>
       </ul>
     </div>
   </div>
 
   <!-- Bottom bar -->
-  <div class="max-w-[1200px] mx-auto mt-8 pt-5 flex flex-wrap justify-between gap-4 text-[0.75rem]" style="border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);">
-    <p>£2 Student &amp; NHS discount at the door only — <a href={whatsappUrl()} class="footer-link">ask us on WhatsApp</a>.</p>
+  <div class="max-w-[1200px] mx-auto mt-8 pt-5 flex flex-wrap justify-between gap-4 text-[0.75rem]" style="border-top: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.75);">
+    <p>£2 Student &amp; NHS discount at the door only — <a href={whatsappUrl('Hi! I have a question about the Student and NHS discount at weekly classes.')} class="footer-link">ask us on WhatsApp</a>.</p>
     <p><a href="/privacy" class="footer-link">Privacy Policy</a> &middot; &copy; 2026 {COMPANY_NAME}<br />Company number {COMPANY_NUMBER}</p>
   </div>
 </footer>
 
 <style>
   .footer-link {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
     text-decoration: none;
     transition: color 0.2s;
   }
+  .footer-link { overflow-wrap: anywhere; }
+  ul .footer-link { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer-social ul { flex-direction: row; flex-wrap: wrap; column-gap: 1.5rem; }
+  @media (min-width: 1024px) { .footer-social ul { flex-direction: column; } }
   .footer-link:hover {
     color: #fff;
   }

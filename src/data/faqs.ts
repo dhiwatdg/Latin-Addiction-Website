@@ -1,6 +1,7 @@
 export interface FAQ {
   question: string;
   answer: string;
+  link?: { href: string; label: string };
 }
 
 export const pageFaqs: FAQ[] = [
@@ -22,7 +23,7 @@ export const pageFaqs: FAQ[] = [
   },
   {
     question: 'Do I need to book in advance?',
-    answer: "You can turn up on the night, but we'd love a heads-up. Send us a WhatsApp message and we'll be expecting you — it also means we can answer any questions before you arrive.",
+    answer: 'No advance booking is needed for weekly classes. You’re welcome to turn up. Message us on WhatsApp if you’d like help planning your first visit.',
   },
   {
     question: 'Do I need a partner?',
@@ -50,7 +51,8 @@ export const pageFaqs: FAQ[] = [
   },
   {
     question: 'Do you offer private coaching?',
-    answer: "Yes. 1-to-1 and couples sessions are available in all three cities. See our private coaching page for pricing.",
+    answer: 'Yes. Private Salsa and Bachata lessons are available for individuals and couples.',
+    link: { href: '/services/private-coaching/', label: 'View private lesson prices and arrangements.' },
   },
   {
     question: 'Is there a student/NHS discount?',
@@ -64,19 +66,19 @@ export const pageFaqs: FAQ[] = [
 
 export const homepageFaqs: FAQ[] = [
   {
+    question: 'Do I need to book?',
+    answer: 'No advance booking is needed for weekly classes. You’re welcome to turn up. Message us on WhatsApp if you’d like help planning your first visit.',
+  },
+  {
     question: 'What should I wear?',
-    answer: "Comfortable clothes you can move in — jeans are fine. Wear clean, smooth-soled shoes if you have them (trainers work too, just avoid anything that grips the floor). No special dance shoes needed.",
+    answer: 'Comfortable clothes you can move in and clean shoes. No special dance clothes or shoes are needed.',
   },
   {
-    question: 'Will it be awkward?',
-    answer: "Honestly? The first five minutes might feel a bit new. But the class is structured so you're moving and laughing within minutes. Everyone remembers being a beginner — the room is on your side.",
+    question: 'Do I need a partner?',
+    answer: 'No. We rotate partners during class, so you can come on your own, with a friend or as a couple.',
   },
   {
-    question: "What's the difference between Bachata and Salsa?",
-    answer: "Both are Latin partner dances, but they feel very different. Salsa is faster and more energetic with complex footwork. Bachata is slower, more intimate, built on a simple side-to-side rhythm. It's widely considered one of the most beginner-friendly Latin dances — you can be dancing socially after one class. We teach Bachata at all our locations.",
-  },
-  {
-    question: 'Do I need to book in advance?',
-    answer: "You can turn up on the night, but we'd love a heads-up. Send us a WhatsApp message and we'll be expecting you — it also means we can answer any questions before you arrive.",
+    question: 'Which class should I join?',
+    answer: 'If you’re new to Bachata, choose Beginners. If you already dance, check your city’s timetable or ask us which group suits your experience.',
   },
 ];
