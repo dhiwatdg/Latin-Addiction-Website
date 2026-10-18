@@ -43,7 +43,7 @@ const sessions = reading ? [
 ];
 ---
 
-<BaseLayout title={`Bachata Classes in ${loc.name}`} description={`Learn Bachata every ${loc.day} at ${loc.venue}, ${loc.name}. Free first beginner class, no partner needed. Timetable, directions and prices.`}>
+<BaseLayout title={`Bachata Classes in ${loc.name}`} description={`Learn Bachata every ${loc.day} at ${loc.venue}, ${loc.name}. Free first beginner class, no partner needed. Timetable, directions and prices.`} whatsappAction={{ message: loc.whatsappMessage, label: 'Ask about your free class' }}>
   <section class="city-hero bg-dark text-white">
     <div class="hero-bg-blur" style={`--hero-small:url('/images/optimised/${reading ? 'reading' : mk ? 'mk' : 'leicester'}-bg-640.webp');--hero-medium:url('/images/optimised/${reading ? 'reading' : mk ? 'mk' : 'leicester'}-bg-1280.webp');--hero-large:url('/images/optimised/${reading ? 'reading' : mk ? 'mk' : 'leicester'}-bg-1920.webp');`} aria-hidden="true"></div>
     <div class="city-hero-shade" aria-hidden="true"></div>

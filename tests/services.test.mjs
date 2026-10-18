@@ -83,8 +83,10 @@ test('privacy reading is uninterrupted and general enquiries do not request a fr
   const faq = page('faq');
   assert.match(faq, /href="\/services\/private-coaching\/"[^>]*>View private lesson prices and arrangements./);
   const questionLinks = [...faq.matchAll(/href="(https:\/\/wa\.me\/[^\"]+)"[^>]*>\s*(?:<svg[^]*?<\/svg>\s*)?Ask us on WhatsApp/g)];
-  assert.equal(questionLinks.length, 1);
-  assert.equal(new URL(questionLinks[0][1]).searchParams.get('text'), 'Hi! I have a question about Latin Addiction.');
+  assert.equal(questionLinks.length, 2);
+  for (const [, href] of questionLinks) {
+    assert.equal(new URL(href).searchParams.get('text'), 'Hi! I have a question about Latin Addiction.');
+  }
   const hire = page('services/hire-us');
   for (const id of ['workshops', 'guest-teaching', 'dj-sets']) {
     assert.ok(hire.includes(`href="#${id}"`));

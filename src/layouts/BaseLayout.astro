@@ -17,10 +17,14 @@ interface Props {
   showStickyBar?: boolean;
   showFloatingWhatsApp?: boolean;
   enquiry?: { message: string; label: string };
+  whatsappAction?: { message: string; label: string };
 }
 
-const { title, description, canonical, ogImage, minimal = false, showStickyBar = true, showFloatingWhatsApp = true, enquiry } = Astro.props;
+const { title, description, canonical, ogImage, minimal = false, showStickyBar = true, showFloatingWhatsApp = true, enquiry, whatsappAction } = Astro.props;
 const contactHref = enquiry ? whatsappUrl(enquiry.message) : undefined;
+// Contextual controls must not replace the header navigation or general footer contact.
+const action = whatsappAction ?? enquiry;
+const actionHref = action ? whatsappUrl(action.message) : undefined;
 ---
 
 <!DOCTYPE html>
@@ -47,8 +51,8 @@ const contactHref = enquiry ? whatsappUrl(enquiry.message) : undefined;
       <slot />
     </main>
     {!minimal && <Footer contactHref={contactHref} />}
-    {!minimal && showFloatingWhatsApp && <WhatsAppButton href={contactHref} />}
-    {!minimal && showStickyBar && <MobileStickyBar href={contactHref} label={enquiry?.label} />}
+    {!minimal && showFloatingWhatsApp && <WhatsAppButton href={actionHref} label={action?.label} />}
+    {!minimal && showStickyBar && <MobileStickyBar href={actionHref} label={action?.label} />}
 
   </body>
 </html>

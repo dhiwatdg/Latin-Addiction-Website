@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { locations, whatsappUrl, mapsUrl } from '../data/locations';
 
-const waUrl = whatsappUrl("Hi! I'd like to try a free class");
+const waUrl = whatsappUrl();
 
 const mk = locations.find(l => l.slug === 'milton-keynes')!;
 const leicester = locations.find(l => l.slug === 'leicester')!;

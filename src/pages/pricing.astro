@@ -4,7 +4,7 @@ import { locations, whatsappUrl, mapsUrl } from '../data/locations';
 import { cityOffers, bookingRules, formatPrice } from '../data/pricing';
 import '../styles/booking.css';
 ---
-<BaseLayout title="Class prices & passes" description="Choose Milton Keynes, Leicester or Reading for city-specific Bachata tickets and passes. First beginner class free. Newcomer pass £20." showStickyBar={false}>
+<BaseLayout title="Class prices & passes" description="Choose Milton Keynes, Leicester or Reading for city-specific Bachata tickets and passes. First beginner class free. Newcomer pass £20." showStickyBar={false} whatsappAction={{ message: "Hi! I need help choosing a class or pass.", label: 'Help choosing a class or pass' }}>
   <div class="booking-page">
     <header class="booking-hero">
       <div class="booking-shell">

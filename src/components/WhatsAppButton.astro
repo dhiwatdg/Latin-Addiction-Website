@@ -1,14 +1,14 @@
 ---
 import { whatsappUrl } from '../data/locations';
-interface Props { href?: string; }
-const { href = whatsappUrl('Hi! I have a question about Latin Addiction.') } = Astro.props;
+interface Props { href?: string; label?: string; }
+const { href = whatsappUrl(), label = 'Ask about your free class' } = Astro.props;
 ---
 
 <a
   href={href}
   class="hidden md:flex fixed bottom-6 right-6 z-[200] w-14 h-14 rounded-full bg-whatsapp items-center justify-center transition-transform duration-200"
   style="box-shadow: 0 4px 20px rgba(37,211,102,.35);"
-  aria-label="WhatsApp us"
+  aria-label={label}
   target="_blank"
   rel="noopener"
 >

@@ -46,7 +46,7 @@ export const locations: Location[] = [
     parking: 'FREE from 6pm.',
     mapsQuery: 'Midsummer+Tap+Theatre+District+Milton+Keynes+MK9+3PU',
     priceNote: '£10 for the night · First class FREE · Newcomer 4-week pass: £20',
-    whatsappMessage: "Hi! I'd like to try a free Bachata class in Milton Keynes",
+    whatsappMessage: "Hi! I'd like to try a free Bachata class in Milton Keynes.",
     danceStyles: ['Bachata'],
   },
   {
@@ -70,7 +70,7 @@ export const locations: Location[] = [
     parking: 'FREE street parking.',
     mapsQuery: 'Braunstone+Frith+Recreation+Centre+29A+Sharmon+Cres+Leicester+LE3+6NW',
     priceNote: '£10/night (1 class) · £15 (2 classes) · First class FREE · Newcomer 4-week pass: £20',
-    whatsappMessage: "Hi! I'd like to try a free Bachata class in Leicester",
+    whatsappMessage: "Hi! I'd like to try a free Bachata class in Leicester.",
     danceStyles: ['Bachata'],
   },
   {
@@ -93,14 +93,14 @@ export const locations: Location[] = [
     parking: 'FREE on premises — register at the kiosk to avoid a fine.',
     mapsQuery: 'Wesley+Methodist+Church+84+Queens+Rd+Reading+RG1+4BW',
     priceNote: '£10/night (1 class) · £15 (2 classes) · First class FREE · Newcomer 4-week pass: £20',
-    whatsappMessage: "Hi! I'd like to try a free Bachata class in Reading",
+    whatsappMessage: "Hi! I'd like to try a free Bachata class in Reading.",
     danceStyles: ['Bachata'],
   },
 ];
 
 export const WHATSAPP_NUMBER = '447951522216';
 export const WHATSAPP_DISPLAY = '07951 522216';
-export const WHATSAPP_DEFAULT_MESSAGE = "Hi! I'd like to try a free class";
+export const WHATSAPP_DEFAULT_MESSAGE = "Hi! I'd like to try a free Bachata class.";
 export const PHONE_DISPLAY = '07424 063798';
 export const PHONE_TEL = '07424063798';
 export const EMAIL = 'latin.addiction.uk@gmail.com';
